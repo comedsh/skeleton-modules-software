@@ -19,9 +19,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.fenghua.auto.backend.core.utills.DateUtil;
-import com.fenghua.auto.backend.core.utills.MessageHelper;
+import com.fenghua.auto.backend.common.utils.DateUtil;
 import com.fenghua.auto.backend.core.utils.MessageAndErrorUtil;
+import com.fenghua.auto.backend.core.utils.MessageHelper;
 import com.fenghua.auto.backend.domain.mto.CommonMessageTransferObject;
 import com.fenghua.auto.backend.domain.mto.MessageTransferObject;
 import com.fenghua.auto.sku.SkuConstants;

@@ -16,7 +16,7 @@ import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.stereotype.Service;
 
-import com.fenghua.auto.backend.core.utills.Constants;
+import com.fenghua.auto.backend.common.utils.Constants;
 import com.fenghua.auto.backend.dao.user.CompanyDao;
 import com.fenghua.auto.backend.dao.user.PaymentTypeDao;
 import com.fenghua.auto.backend.dao.user.UserDao;

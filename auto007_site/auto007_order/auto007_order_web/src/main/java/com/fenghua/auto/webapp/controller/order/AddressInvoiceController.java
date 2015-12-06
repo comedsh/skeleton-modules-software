@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fenghua.auto.backend.core.utils.LabelErrorTranslator;
-import com.fenghua.auto.backend.core.utills.MessageHelper;
+import com.fenghua.auto.backend.core.utils.MessageHelper;
 import com.fenghua.auto.backend.core.utils.UserSecurityUtils;
 import com.fenghua.auto.backend.domain.mto.LabelError;
 import com.fenghua.auto.backend.domain.user.UserAddress;

@@ -3,7 +3,7 @@ package com.fenghua.auto.sku;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.fenghua.auto.backend.core.utills.MessageHelper;
+import com.fenghua.auto.backend.core.utils.MessageHelper;
 
 /**
  * <des>

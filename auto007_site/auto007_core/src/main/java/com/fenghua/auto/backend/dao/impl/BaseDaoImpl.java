@@ -13,8 +13,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
-import com.fenghua.auto.backend.core.utills.BeanUtils;
-import com.fenghua.auto.backend.core.utills.UUIDUtils;
+import com.fenghua.auto.backend.common.utils.BeanUtils;
+import com.fenghua.auto.backend.common.utils.UUIDUtils;
 import com.fenghua.auto.backend.dao.BaseDao;
 import com.fenghua.auto.backend.dao.DaoException;
 import com.fenghua.auto.backend.dao.constants.SqlId;

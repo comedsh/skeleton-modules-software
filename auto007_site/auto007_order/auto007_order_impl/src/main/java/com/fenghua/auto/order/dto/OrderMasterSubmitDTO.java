@@ -12,7 +12,7 @@ import java.util.List;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang.time.DateFormatUtils;
 
-import com.fenghua.auto.backend.core.utills.MessageHelper;
+import com.fenghua.auto.backend.core.utils.MessageHelper;
 import com.fenghua.auto.backend.domain.mto.LabelError;
 import com.fenghua.auto.order.OrderConstants;
 import com.fenghua.auto.order.domain.OrderMaster;

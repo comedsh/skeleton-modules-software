@@ -1,4 +1,4 @@
-package com.fenghua.auto.backend.core.utills.graphValidate;
+package com.fenghua.auto.backend.common.utils.graphValidate;
 
 import java.awt.Color;
 import java.awt.Font;

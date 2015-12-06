@@ -1,4 +1,4 @@
-package com.fenghua.auto.backend.core.utills.message;
+package com.fenghua.auto.backend.common.utils.message;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -8,7 +8,7 @@ import java.net.URL;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.fenghua.auto.backend.core.utills.MD5Encoder;
+import com.fenghua.auto.backend.common.utils.MD5Encoder;
 /**
  * 短信发送接口
  * @author chengbin

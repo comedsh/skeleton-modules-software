@@ -1,4 +1,4 @@
-package com.fenghua.auto.backend.core.utills.mail;
+package com.fenghua.auto.backend.common.utils.mail;
 
 import java.util.Date;
 import java.util.Properties;

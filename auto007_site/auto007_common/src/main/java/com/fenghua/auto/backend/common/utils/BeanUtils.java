@@ -1,4 +1,4 @@
-package com.fenghua.auto.backend.core.utills;
+package com.fenghua.auto.backend.common.utils;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;

@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.fenghua.auto.backend.core.utills.mail.SimpleMailSender;
+import com.fenghua.auto.backend.common.utils.mail.SimpleMailSender;
 import com.fenghua.auto.backend.dao.SysConfigDao;
 import com.fenghua.auto.backend.dao.user.UserDao;
 import com.fenghua.auto.backend.dao.user.UserForgetPassDao;

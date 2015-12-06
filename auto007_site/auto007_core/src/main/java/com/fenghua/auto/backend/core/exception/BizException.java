@@ -5,7 +5,7 @@ package com.fenghua.auto.backend.core.exception;
 
 import org.apache.commons.lang.StringUtils;
 
-import com.fenghua.auto.backend.core.utills.MessageHelper;
+import com.fenghua.auto.backend.core.utils.MessageHelper;
 
 /**
  * 

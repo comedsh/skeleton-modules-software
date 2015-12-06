@@ -6,7 +6,7 @@ import javax.validation.ConstraintValidatorContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.util.StringUtils;
 
-import com.fenghua.auto.backend.core.utills.ApplicationContextHolder;
+import com.fenghua.auto.backend.common.utils.ApplicationContextHolder;
 
 /**
  * @author shang yang

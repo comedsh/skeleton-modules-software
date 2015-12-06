@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.fenghua.auto.backend.core.exception.BizException;
-import com.fenghua.auto.backend.core.utills.UserSecurityUtils;
+import com.fenghua.auto.backend.core.utils.UserSecurityUtils;
 import com.fenghua.auto.finance.domain.OrderPayment;
 import com.fenghua.auto.finance.service.OrderPaymentService;
 import com.fenghua.auto.order.OrderConstants;

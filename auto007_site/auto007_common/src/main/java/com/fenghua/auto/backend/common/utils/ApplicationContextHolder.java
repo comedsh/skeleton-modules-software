@@ -1,4 +1,4 @@
-package com.fenghua.auto.backend.core.utills;
+package com.fenghua.auto.backend.common.utils;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

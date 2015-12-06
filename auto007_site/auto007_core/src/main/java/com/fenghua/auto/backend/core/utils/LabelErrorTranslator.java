@@ -19,7 +19,7 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.beanvalidation.SpringValidatorAdapter;
 
-import com.fenghua.auto.backend.core.utills.MessageHelper;
+import com.fenghua.auto.backend.core.utils.MessageHelper;
 import com.fenghua.auto.backend.domain.mto.LabelError;
 import com.fenghua.auto.backend.domain.validation.DomainValidationException;
 

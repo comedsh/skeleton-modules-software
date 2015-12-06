@@ -18,7 +18,7 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
-import com.fenghua.auto.backend.core.utills.mail.SimpleMailSender;
+import com.fenghua.auto.backend.common.utils.mail.SimpleMailSender;
 
 @Component
 @Aspect

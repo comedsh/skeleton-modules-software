@@ -7,7 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.fenghua.auto.backend.core.utills.PrecisionUtils;
+import com.fenghua.auto.backend.common.utils.PrecisionUtils;
 import com.fenghua.auto.backend.dao.BaseDao;
 import com.fenghua.auto.backend.service.impl.BaseServiceImpl;
 import com.fenghua.auto.sku.SkuConstants;

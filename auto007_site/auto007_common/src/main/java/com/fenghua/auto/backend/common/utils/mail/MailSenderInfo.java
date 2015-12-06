@@ -1,4 +1,4 @@
-package com.fenghua.auto.backend.core.utills.mail;
+package com.fenghua.auto.backend.common.utils.mail;
 
 /**  
  * 发送邮件需要使用的基本信息  

@@ -9,8 +9,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fenghua.auto.backend.common.utils.QQtokenUtils;
 import com.fenghua.auto.backend.core.security.UserInfo;
-import com.fenghua.auto.backend.core.utills.QQtokenUtils;
 import com.fenghua.auto.backend.core.utils.UserSecurityUtils;
 import com.fenghua.auto.backend.domain.user.User;
 import com.fenghua.auto.backend.service.user.AuthService;

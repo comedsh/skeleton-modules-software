@@ -1,4 +1,4 @@
-package com.fenghua.auto.backend.core.utills;
+package com.fenghua.auto.backend.common.utils;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

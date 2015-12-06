@@ -1,8 +1,10 @@
-package com.fenghua.auto.backend.core.utills;
+package com.fenghua.auto.backend.core.utils;
 
 import org.apache.commons.lang.StringUtils;
 import org.springframework.context.NoSuchMessageException;
 import org.springframework.context.i18n.LocaleContextHolder;
+
+import com.fenghua.auto.backend.common.utils.ApplicationContextHolder;
 
 /**
  * 

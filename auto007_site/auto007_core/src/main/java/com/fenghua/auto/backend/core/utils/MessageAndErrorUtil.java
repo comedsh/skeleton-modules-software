@@ -1,6 +1,6 @@
 package com.fenghua.auto.backend.core.utils;
 
-import com.fenghua.auto.backend.core.utills.MessageHelper;
+import com.fenghua.auto.backend.core.utils.MessageHelper;
 import com.fenghua.auto.backend.domain.mto.LabelError;
 import com.fenghua.auto.backend.domain.mto.LabelMessage;
 

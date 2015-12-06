@@ -8,7 +8,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.fenghua.auto.backend.core.utills.MessageHelper;
+import com.fenghua.auto.backend.core.utils.MessageHelper;
 import com.fenghua.auto.backend.dao.BaseDao;
 import com.fenghua.auto.order.dao.OrderHeaderDao;
 import com.fenghua.auto.order.domain.OrderHeader;

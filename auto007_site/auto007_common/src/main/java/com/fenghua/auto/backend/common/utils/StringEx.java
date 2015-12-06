@@ -1,4 +1,4 @@
-package com.fenghua.auto.backend.core.utills;
+package com.fenghua.auto.backend.common.utils;
 
 /**
  * @Description: 字符串处理工具类
