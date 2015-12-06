@@ -1,0 +1,3 @@
+function address() {
+	alert('address');
+}

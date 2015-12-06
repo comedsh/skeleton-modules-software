@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fenghua.auto.finance.domain.BillOrder" >
+  <resultMap id="BaseResultMap" type="com.fenghua.auto.finance.domain.BillOrder" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="bill_no" property="billNo" jdbcType="VARCHAR" />
+    <result column="buyer_id" property="buyerId" jdbcType="BIGINT" />
+    <result column="seller_id" property="sellerId" jdbcType="BIGINT" />
+    <result column="start_date" property="startDate" jdbcType="DATE" />
+    <result column="end_date" property="endDate" jdbcType="DATE" />
+    <result column="in_amount" property="inAmount" jdbcType="DECIMAL" />
+    <result column="out_amount" property="outAmount" jdbcType="DECIMAL" />
+    <result column="bill_amount" property="billAmount" jdbcType="DECIMAL" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="in_qty" property="inQty" jdbcType="INTEGER" />
+    <result column="out_qty" property="outQty" jdbcType="INTEGER" />
+    <result column="sum_operator_id" property="sumOperatorId" jdbcType="BIGINT" />
+    <result column="sum_time" property="sumTime" jdbcType="TIMESTAMP" />
+    <result column="review_id" property="reviewId" jdbcType="BIGINT" />
+    <result column="review_time" property="reviewTime" jdbcType="TIMESTAMP" />
+    <result column="review_note" property="reviewNote" jdbcType="VARCHAR" />
+    <result column="payer_id" property="payerId" jdbcType="BIGINT" />
+    <result column="payed_time" property="payedTime" jdbcType="TIMESTAMP" />
+    <result column="payed_note" property="payedNote" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, bill_no, buyer_id, seller_id, start_date, end_date, in_amount, out_amount, bill_amount, 
+    status, in_qty, out_qty, sum_operator_id, sum_time, review_id, review_time, review_note, 
+    payer_id, payed_time, payed_note
+  </sql>
+  <sql id="Base_Where_Case" >
+    <where >
+      <if test="id != null" >
+         AND id = #{id,jdbcType=BIGINT}
+      </if>
+      <if test="billNo != null" >
+         AND bill_no = #{billNo,jdbcType=VARCHAR}
+      </if>
+      <if test="buyerId != null" >
+         AND buyer_id = #{buyerId,jdbcType=BIGINT}
+      </if>
+      <if test="sellerId != null" >
+         AND seller_id = #{sellerId,jdbcType=BIGINT}
+      </if>
+      <if test="startDate != null" >
+         AND start_date = #{startDate,jdbcType=DATE}
+      </if>
+      <if test="endDate != null" >
+         AND end_date = #{endDate,jdbcType=DATE}
+      </if>
+      <if test="inAmount != null" >
+         AND in_amount = #{inAmount,jdbcType=DECIMAL}
+      </if>
+      <if test="outAmount != null" >
+         AND out_amount = #{outAmount,jdbcType=DECIMAL}
+      </if>
+      <if test="billAmount != null" >
+         AND bill_amount = #{billAmount,jdbcType=DECIMAL}
+      </if>
+      <if test="status != null" >
+         AND status = #{status,jdbcType=INTEGER}
+      </if>
+      <if test="inQty != null" >
+         AND in_qty = #{inQty,jdbcType=INTEGER}
+      </if>
+      <if test="outQty != null" >
+         AND out_qty = #{outQty,jdbcType=INTEGER}
+      </if>
+      <if test="sumOperatorId != null" >
+         AND sum_operator_id = #{sumOperatorId,jdbcType=BIGINT}
+      </if>
+      <if test="sumTime != null" >
+         AND sum_time = #{sumTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="reviewId != null" >
+         AND review_id = #{reviewId,jdbcType=BIGINT}
+      </if>
+      <if test="reviewTime != null" >
+         AND review_time = #{reviewTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="reviewNote != null" >
+         AND review_note = #{reviewNote,jdbcType=VARCHAR}
+      </if>
+      <if test="payerId != null" >
+         AND payer_id = #{payerId,jdbcType=BIGINT}
+      </if>
+      <if test="payedTime != null" >
+         AND payed_time = #{payedTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="payedNote != null" >
+         AND payed_note = #{payedNote,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </sql>
+  <select id="selectCount" resultType="java.lang.Long" parameterType="com.fenghua.auto.finance.domain.BillOrder" >
+    select count( id)
+     from bill_order
+    <include refid="Base_Where_Case" />
+  </select>
+  <select id="select" resultMap="BaseResultMap" parameterType="com.fenghua.auto.finance.domain.BillOrder" >
+    select 
+    <include refid="Base_Column_List" />
+     from bill_order
+    <include refid="Base_Where_Case" />
+    <if test="limit > 0" >
+       limit #{offset},#{limit} 
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from bill_order
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from bill_order
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.fenghua.auto.finance.domain.BillOrder" >
+    insert into bill_order (id, bill_no, buyer_id, 
+      seller_id, start_date, end_date, 
+      in_amount, out_amount, bill_amount, 
+      status, in_qty, out_qty, 
+      sum_operator_id, sum_time, review_id, 
+      review_time, review_note, payer_id, 
+      payed_time, payed_note)
+    values (#{id,jdbcType=BIGINT}, #{billNo,jdbcType=VARCHAR}, #{buyerId,jdbcType=BIGINT}, 
+      #{sellerId,jdbcType=BIGINT}, #{startDate,jdbcType=DATE}, #{endDate,jdbcType=DATE}, 
+      #{inAmount,jdbcType=DECIMAL}, #{outAmount,jdbcType=DECIMAL}, #{billAmount,jdbcType=DECIMAL}, 
+      #{status,jdbcType=INTEGER}, #{inQty,jdbcType=INTEGER}, #{outQty,jdbcType=INTEGER}, 
+      #{sumOperatorId,jdbcType=BIGINT}, #{sumTime,jdbcType=TIMESTAMP}, #{reviewId,jdbcType=BIGINT}, 
+      #{reviewTime,jdbcType=TIMESTAMP}, #{reviewNote,jdbcType=VARCHAR}, #{payerId,jdbcType=BIGINT}, 
+      #{payedTime,jdbcType=TIMESTAMP}, #{payedNote,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.fenghua.auto.finance.domain.BillOrder" >
+    insert into bill_order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="billNo != null" >
+        bill_no,
+      </if>
+      <if test="buyerId != null" >
+        buyer_id,
+      </if>
+      <if test="sellerId != null" >
+        seller_id,
+      </if>
+      <if test="startDate != null" >
+        start_date,
+      </if>
+      <if test="endDate != null" >
+        end_date,
+      </if>
+      <if test="inAmount != null" >
+        in_amount,
+      </if>
+      <if test="outAmount != null" >
+        out_amount,
+      </if>
+      <if test="billAmount != null" >
+        bill_amount,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="inQty != null" >
+        in_qty,
+      </if>
+      <if test="outQty != null" >
+        out_qty,
+      </if>
+      <if test="sumOperatorId != null" >
+        sum_operator_id,
+      </if>
+      <if test="sumTime != null" >
+        sum_time,
+      </if>
+      <if test="reviewId != null" >
+        review_id,
+      </if>
+      <if test="reviewTime != null" >
+        review_time,
+      </if>
+      <if test="reviewNote != null" >
+        review_note,
+      </if>
+      <if test="payerId != null" >
+        payer_id,
+      </if>
+      <if test="payedTime != null" >
+        payed_time,
+      </if>
+      <if test="payedNote != null" >
+        payed_note,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="billNo != null" >
+        #{billNo,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerId != null" >
+        #{buyerId,jdbcType=BIGINT},
+      </if>
+      <if test="sellerId != null" >
+        #{sellerId,jdbcType=BIGINT},
+      </if>
+      <if test="startDate != null" >
+        #{startDate,jdbcType=DATE},
+      </if>
+      <if test="endDate != null" >
+        #{endDate,jdbcType=DATE},
+      </if>
+      <if test="inAmount != null" >
+        #{inAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="outAmount != null" >
+        #{outAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="billAmount != null" >
+        #{billAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="inQty != null" >
+        #{inQty,jdbcType=INTEGER},
+      </if>
+      <if test="outQty != null" >
+        #{outQty,jdbcType=INTEGER},
+      </if>
+      <if test="sumOperatorId != null" >
+        #{sumOperatorId,jdbcType=BIGINT},
+      </if>
+      <if test="sumTime != null" >
+        #{sumTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reviewId != null" >
+        #{reviewId,jdbcType=BIGINT},
+      </if>
+      <if test="reviewTime != null" >
+        #{reviewTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reviewNote != null" >
+        #{reviewNote,jdbcType=VARCHAR},
+      </if>
+      <if test="payerId != null" >
+        #{payerId,jdbcType=BIGINT},
+      </if>
+      <if test="payedTime != null" >
+        #{payedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="payedNote != null" >
+        #{payedNote,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fenghua.auto.finance.domain.BillOrder" >
+    update bill_order
+    <set >
+      <if test="billNo != null" >
+        bill_no = #{billNo,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerId != null" >
+        buyer_id = #{buyerId,jdbcType=BIGINT},
+      </if>
+      <if test="sellerId != null" >
+        seller_id = #{sellerId,jdbcType=BIGINT},
+      </if>
+      <if test="startDate != null" >
+        start_date = #{startDate,jdbcType=DATE},
+      </if>
+      <if test="endDate != null" >
+        end_date = #{endDate,jdbcType=DATE},
+      </if>
+      <if test="inAmount != null" >
+        in_amount = #{inAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="outAmount != null" >
+        out_amount = #{outAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="billAmount != null" >
+        bill_amount = #{billAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="inQty != null" >
+        in_qty = #{inQty,jdbcType=INTEGER},
+      </if>
+      <if test="outQty != null" >
+        out_qty = #{outQty,jdbcType=INTEGER},
+      </if>
+      <if test="sumOperatorId != null" >
+        sum_operator_id = #{sumOperatorId,jdbcType=BIGINT},
+      </if>
+      <if test="sumTime != null" >
+        sum_time = #{sumTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reviewId != null" >
+        review_id = #{reviewId,jdbcType=BIGINT},
+      </if>
+      <if test="reviewTime != null" >
+        review_time = #{reviewTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reviewNote != null" >
+        review_note = #{reviewNote,jdbcType=VARCHAR},
+      </if>
+      <if test="payerId != null" >
+        payer_id = #{payerId,jdbcType=BIGINT},
+      </if>
+      <if test="payedTime != null" >
+        payed_time = #{payedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="payedNote != null" >
+        payed_note = #{payedNote,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.finance.domain.BillOrder" >
+    update bill_order
+    set bill_no = #{billNo,jdbcType=VARCHAR},
+      buyer_id = #{buyerId,jdbcType=BIGINT},
+      seller_id = #{sellerId,jdbcType=BIGINT},
+      start_date = #{startDate,jdbcType=DATE},
+      end_date = #{endDate,jdbcType=DATE},
+      in_amount = #{inAmount,jdbcType=DECIMAL},
+      out_amount = #{outAmount,jdbcType=DECIMAL},
+      bill_amount = #{billAmount,jdbcType=DECIMAL},
+      status = #{status,jdbcType=INTEGER},
+      in_qty = #{inQty,jdbcType=INTEGER},
+      out_qty = #{outQty,jdbcType=INTEGER},
+      sum_operator_id = #{sumOperatorId,jdbcType=BIGINT},
+      sum_time = #{sumTime,jdbcType=TIMESTAMP},
+      review_id = #{reviewId,jdbcType=BIGINT},
+      review_time = #{reviewTime,jdbcType=TIMESTAMP},
+      review_note = #{reviewNote,jdbcType=VARCHAR},
+      payer_id = #{payerId,jdbcType=BIGINT},
+      payed_time = #{payedTime,jdbcType=TIMESTAMP},
+      payed_note = #{payedNote,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

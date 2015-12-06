@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fenghua.auto.backend.domain.core.SysConfig" >
+  <resultMap id="BaseResultMap" type="com.fenghua.auto.backend.domain.core.SysConfigVo" >
+    <id column="Config_Name" property="configName" jdbcType="VARCHAR" />
+    <result column="Config_Value" property="configValue" jdbcType="VARCHAR" />
+    <result column="Created_TS" property="createdTs" jdbcType="TIMESTAMP" />
+    <result column="Created_By" property="createdBy" jdbcType="VARCHAR" />
+    <result column="Last_Modified_By" property="lastModifiedBy" jdbcType="TIMESTAMP" />
+    <result column="Last_Modified_TS" property="lastModifiedTs" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Config_Name, Config_Value, Created_TS, Created_By, Last_Modified_By, Last_Modified_TS
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_config
+    where Config_Name = #{configName,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from sys_config
+    where Config_Name = #{configName,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.fenghua.auto.backend.domain.user.SysConfig" >
+    insert into sys_config (Config_Name, Config_Value, Created_TS, 
+      Created_By, Last_Modified_By, Last_Modified_TS
+      )
+    values (#{configName,jdbcType=VARCHAR}, #{configValue,jdbcType=VARCHAR}, #{createdTs,jdbcType=TIMESTAMP}, 
+      #{createdBy,jdbcType=VARCHAR}, #{lastModifiedBy,jdbcType=TIMESTAMP}, #{lastModifiedTs,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.fenghua.auto.backend.domain.user.SysConfig" >
+    insert into sys_config
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="configName != null" >
+        Config_Name,
+      </if>
+      <if test="configValue != null" >
+        Config_Value,
+      </if>
+      <if test="createdTs != null" >
+        Created_TS,
+      </if>
+      <if test="createdBy != null" >
+        Created_By,
+      </if>
+      <if test="lastModifiedBy != null" >
+        Last_Modified_By,
+      </if>
+      <if test="lastModifiedTs != null" >
+        Last_Modified_TS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="configName != null" >
+        #{configName,jdbcType=VARCHAR},
+      </if>
+      <if test="configValue != null" >
+        #{configValue,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTs != null" >
+        #{createdTs,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifiedBy != null" >
+        #{lastModifiedBy,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastModifiedTs != null" >
+        #{lastModifiedTs,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fenghua.auto.backend.domain.user.SysConfig" >
+    update sys_config
+    <set >
+      <if test="configValue != null" >
+        Config_Value = #{configValue,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTs != null" >
+        Created_TS = #{createdTs,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        Created_By = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifiedBy != null" >
+        Last_Modified_By = #{lastModifiedBy,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastModifiedTs != null" >
+        Last_Modified_TS = #{lastModifiedTs,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Config_Name = #{configName,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.backend.domain.user.SysConfig" >
+    update sys_config
+    set Config_Value = #{configValue,jdbcType=VARCHAR},
+      Created_TS = #{createdTs,jdbcType=TIMESTAMP},
+      Created_By = #{createdBy,jdbcType=VARCHAR},
+      Last_Modified_By = #{lastModifiedBy,jdbcType=TIMESTAMP},
+      Last_Modified_TS = #{lastModifiedTs,jdbcType=VARCHAR}
+    where Config_Name = #{configName,jdbcType=VARCHAR}
+  </update>
+  <!-- 根据名字查询config信息-->
+  <select id="selectByConfigName" parameterType="java.lang.String" resultMap="BaseResultMap">
+	select 
+	 <include refid="Base_Column_List" />				
+		from Sys_Config where Config_Name=#{configName} 
+  </select>
+</mapper>

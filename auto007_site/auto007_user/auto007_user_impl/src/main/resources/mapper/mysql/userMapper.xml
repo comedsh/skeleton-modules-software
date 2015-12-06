@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fenghua.auto.backend.domain.user.User" >
+
+  <!-- <cache eviction="LRU" type="com.fenghua.auto.backend.dao.cache.MybatisRedisCache" />  -->
+  <resultMap id="BaseResultMap" type="com.fenghua.auto.backend.domain.vo.user.UserVo" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="Name" property="name" jdbcType="VARCHAR" />
+    <result column="Password" property="password" jdbcType="VARCHAR" />
+    <result column="Email" property="email" jdbcType="VARCHAR" />
+    <result column="MobilePhone" property="mobilephone" jdbcType="VARCHAR" />
+    <result column="QQ_Number" property="qqNumber" jdbcType="VARCHAR" />
+    <result column="WeChat" property="wechat" jdbcType="VARCHAR" />
+    <result column="Role_ID" property="roleId" jdbcType="BIGINT" />
+    <result column="User_Level_ID" property="userLevelId" jdbcType="BIGINT" />
+    <result column="Company_ID" property="companyId" jdbcType="BIGINT" />
+    <result column="Failed_Login_Times" property="failedLoginTimes" jdbcType="SMALLINT" />
+    <result column="Available" property="available" jdbcType="BIT" />
+    <result column="Created_TS" property="createdTs" jdbcType="TIMESTAMP" />
+    <result column="Created_By" property="createdBy" jdbcType="VARCHAR" />
+    <result column="Last_Modified_TS" property="lastModifiedTs" jdbcType="TIMESTAMP" />
+    <result column="Last_Modified_By" property="lastModifiedBy" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, Name, Password, Email, MobilePhone, QQ_Number, WeChat, Role_ID, User_Level_ID, Company_ID, 
+    Failed_Login_Times, Available, Created_TS, Created_By, Last_Modified_TS, Last_Modified_By
+  </sql>
+  <select id="select" resultMap="BaseResultMap" parameterType="java.util.Map">
+	select
+	<include refid="Base_Column_List" />
+	from user
+  </select>
+  
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <!-- 和上面的sql重复了！ -->
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  
+  <select id="selectByName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where Name = #{name}
+  </select>
+  
+  <select id="selectByEmail" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where Email = #{email}
+  </select>
+  <!-- 根据用户id查询用户详细信息 -->
+    <select id="selectByUserId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+     <include refid="Base_Column_List" />
+    from user
+    where ID = #{userId}
+  </select>
+  <select id="selectByTelephone" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where MobilePhone = #{telephone}
+  </select>
+     <update id="updatePasswordByPhone" parameterType="com.fenghua.auto.backend.domain.user.User" >
+    update user set
+      Password = #{password,jdbcType=VARCHAR}
+    where MobilePhone = #{mobilephone,jdbcType=VARCHAR}
+  </update>
+  <!--根据用户id修改密码  -->
+   <update id="updatePasswordByUserId" parameterType="com.fenghua.auto.backend.domain.user.User" >
+    update user set
+      Password = #{password,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <!-- 更新qq账号 -->
+  <update id="updateQqNumberByUserId" parameterType="com.fenghua.auto.backend.domain.user.User">
+  	update user set
+      QQ_Number = #{qqNumber,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <!-- 更新微信账号 -->
+  <update id="updateWeChatByUserId" parameterType="com.fenghua.auto.backend.domain.user.User">
+  	update user set
+      WeChat = #{wechat,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <delete id="deleteById" parameterType="java.lang.Long" >
+    delete from user
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.fenghua.auto.backend.domain.user.User" >
+    insert into user (ID, Name, Password, 
+      Email, MobilePhone, QQ_Number, 
+      WeChat, Role_ID, User_Level_ID, 
+      Company_ID, Failed_Login_Times, Available, 
+      Created_TS, Created_By, Last_Modified_TS, 
+      Last_Modified_By)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{mobilephone,jdbcType=VARCHAR}, #{qqNumber,jdbcType=VARCHAR}, 
+      #{wechat,jdbcType=VARCHAR}, #{roleId,jdbcType=BIGINT}, #{userLevelId,jdbcType=BIGINT}, 
+      #{companyId,jdbcType=BIGINT}, #{failedLoginTimes,jdbcType=SMALLINT}, #{available,jdbcType=BIT}, 
+      #{createdTs,jdbcType=TIMESTAMP}, #{createdBy,jdbcType=VARCHAR}, #{lastModifiedTs,jdbcType=TIMESTAMP}, 
+      #{lastModifiedBy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="id" parameterType="com.fenghua.auto.backend.domain.user.User" >
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="name != null" >
+        Name,
+      </if>
+      <if test="password != null" >
+        Password,
+      </if>
+      <if test="email != null" >
+        Email,
+      </if>
+      <if test="mobilephone != null" >
+        MobilePhone,
+      </if>
+      <if test="qqNumber != null" >
+        QQ_Number,
+      </if>
+      <if test="wechat != null" >
+        WeChat,
+      </if>
+      <if test="roleId != null" >
+        Role_ID,
+      </if>
+      <if test="userLevelId != null" >
+        User_Level_ID,
+      </if>
+      <if test="companyId != null" >
+        Company_ID,
+      </if>
+      <if test="failedLoginTimes != null" >
+        Failed_Login_Times,
+      </if>
+      <if test="available != null" >
+        Available,
+      </if>
+      <if test="createdTs != null" >
+        Created_TS,
+      </if>
+      <if test="createdBy != null" >
+        Created_By,
+      </if>
+      <if test="lastModifiedTs != null" >
+        Last_Modified_TS,
+      </if>
+      <if test="lastModifiedBy != null" >
+        Last_Modified_By,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="mobilephone != null" >
+        #{mobilephone,jdbcType=VARCHAR},
+      </if>
+      <if test="qqNumber != null" >
+        #{qqNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat != null" >
+        #{wechat,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null" >
+        #{roleId,jdbcType=BIGINT},
+      </if>
+      <if test="userLevelId != null" >
+        #{userLevelId,jdbcType=BIGINT},
+      </if>
+      <if test="companyId != null" >
+        #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="failedLoginTimes != null" >
+        #{failedLoginTimes,jdbcType=SMALLINT},
+      </if>
+      <if test="available != null" >
+        #{available,jdbcType=BIT},
+      </if>
+      <if test="createdTs != null" >
+        #{createdTs,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifiedTs != null" >
+        #{lastModifiedTs,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastModifiedBy != null" >
+        #{lastModifiedBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByIdSelective" parameterType="com.fenghua.auto.backend.domain.user.User" >
+    update user
+    <set >
+      <if test="name != null" >
+        Name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        Password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        Email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="mobilephone != null" >
+        MobilePhone = #{mobilephone,jdbcType=VARCHAR},
+      </if>
+      <if test="qqNumber != null" >
+        QQ_Number = #{qqNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat != null" >
+        WeChat = #{wechat,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null" >
+        Role_ID = #{roleId,jdbcType=BIGINT},
+      </if>
+      <if test="userLevelId != null" >
+        User_Level_ID = #{userLevelId,jdbcType=BIGINT},
+      </if>
+      <if test="companyId != null" >
+        Company_ID = #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="failedLoginTimes != null" >
+        Failed_Login_Times = #{failedLoginTimes,jdbcType=SMALLINT},
+      </if>
+      <if test="available != null" >
+        Available = #{available,jdbcType=BIT},
+      </if>
+      <if test="createdTs != null" >
+        Created_TS = #{createdTs,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        Created_By = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifiedTs != null" >
+        Last_Modified_TS = #{lastModifiedTs,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastModifiedBy != null" >
+        Last_Modified_By = #{lastModifiedBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateById" parameterType="com.fenghua.auto.backend.domain.user.User" >
+    update user
+    set Name = #{name,jdbcType=VARCHAR},
+      Password = #{password,jdbcType=VARCHAR},
+      Email = #{email,jdbcType=VARCHAR},
+      MobilePhone = #{mobilephone,jdbcType=VARCHAR},
+      QQ_Number = #{qqNumber,jdbcType=VARCHAR},
+      WeChat = #{wechat,jdbcType=VARCHAR},
+      Role_ID = #{roleId,jdbcType=BIGINT},
+      User_Level_ID = #{userLevelId,jdbcType=BIGINT},
+      Company_ID = #{companyId,jdbcType=BIGINT},
+      Failed_Login_Times = #{failedLoginTimes,jdbcType=SMALLINT},
+      Available = #{available,jdbcType=BIT},
+      Created_TS = #{createdTs,jdbcType=TIMESTAMP},
+      Created_By = #{createdBy,jdbcType=VARCHAR},
+      Last_Modified_TS = #{lastModifiedTs,jdbcType=TIMESTAMP},
+      Last_Modified_By = #{lastModifiedBy,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateFailtimesByName" parameterType="com.fenghua.auto.backend.domain.user.User" >
+    update user
+    set Failed_Login_Times = #{failedLoginTimes,jdbcType=SMALLINT}
+    where Name = #{name,jdbcType=VARCHAR}
+  </update>
+
+  <select id="selectByQQ_Number" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where QQ_Number = #{QQ_Number}
+  </select>
+  <select id="selectByWeChat" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where WeChat = #{WeChat}
+  </select>
+
+</mapper>

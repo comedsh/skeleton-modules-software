@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fenghua.auto.finance.domain.TransactionFlow" >
+  <resultMap id="BaseResultMap" type="com.fenghua.auto.finance.domain.TransactionFlow" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="tran_type" property="tranType" jdbcType="INTEGER" />
+    <result column="biz_order_id" property="bizOrderId" jdbcType="BIGINT" />
+    <result column="master_order_id" property="masterOrderId" jdbcType="BIGINT" />
+    <result column="master_order_no" property="masterOrderNo" jdbcType="VARCHAR" />
+    <result column="order_id" property="orderId" jdbcType="BIGINT" />
+    <result column="order_no" property="orderNo" jdbcType="VARCHAR" />
+    <result column="buyer_id" property="buyerId" jdbcType="BIGINT" />
+    <result column="seller_id" property="sellerId" jdbcType="BIGINT" />
+    <result column="tran_method" property="tranMethod" jdbcType="INTEGER" />
+    <result column="trade_no" property="tradeNo" jdbcType="VARCHAR" />
+    <result column="tran_amount" property="tranAmount" jdbcType="DECIMAL" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="operator_id" property="operatorId" jdbcType="BIGINT" />
+    <result column="tran_time" property="tranTime" jdbcType="TIMESTAMP" />
+    <result column="bill_id" property="billId" jdbcType="BIGINT" />
+    <result column="sum_operator_id" property="sumOperatorId" jdbcType="BIGINT" />
+    <result column="sum_time" property="sumTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, tran_type, biz_order_id, master_order_id, master_order_no, order_id, order_no, 
+    buyer_id, seller_id, tran_method, trade_no, tran_amount, status, operator_id, tran_time, 
+    bill_id, sum_operator_id, sum_time
+  </sql>
+  <sql id="Base_Where_Case" >
+    <where >
+      <if test="id != null" >
+         AND id = #{id,jdbcType=BIGINT}
+      </if>
+      <if test="tranType != null" >
+         AND tran_type = #{tranType,jdbcType=INTEGER}
+      </if>
+      <if test="bizOrderId != null" >
+         AND biz_order_id = #{bizOrderId,jdbcType=BIGINT}
+      </if>
+      <if test="masterOrderId != null" >
+         AND master_order_id = #{masterOrderId,jdbcType=BIGINT}
+      </if>
+      <if test="masterOrderNo != null" >
+         AND master_order_no = #{masterOrderNo,jdbcType=VARCHAR}
+      </if>
+      <if test="orderId != null" >
+         AND order_id = #{orderId,jdbcType=BIGINT}
+      </if>
+      <if test="orderNo != null" >
+         AND order_no = #{orderNo,jdbcType=VARCHAR}
+      </if>
+      <if test="buyerId != null" >
+         AND buyer_id = #{buyerId,jdbcType=BIGINT}
+      </if>
+      <if test="sellerId != null" >
+         AND seller_id = #{sellerId,jdbcType=BIGINT}
+      </if>
+      <if test="tranMethod != null" >
+         AND tran_method = #{tranMethod,jdbcType=INTEGER}
+      </if>
+      <if test="tradeNo != null" >
+         AND trade_no = #{tradeNo,jdbcType=VARCHAR}
+      </if>
+      <if test="tranAmount != null" >
+         AND tran_amount = #{tranAmount,jdbcType=DECIMAL}
+      </if>
+      <if test="status != null" >
+         AND status = #{status,jdbcType=INTEGER}
+      </if>
+      <if test="operatorId != null" >
+         AND operator_id = #{operatorId,jdbcType=BIGINT}
+      </if>
+      <if test="tranTime != null" >
+         AND tran_time = #{tranTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="billId != null" >
+         AND bill_id = #{billId,jdbcType=BIGINT}
+      </if>
+      <if test="sumOperatorId != null" >
+         AND sum_operator_id = #{sumOperatorId,jdbcType=BIGINT}
+      </if>
+      <if test="sumTime != null" >
+         AND sum_time = #{sumTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </sql>
+  <select id="selectCount" resultType="java.lang.Long" parameterType="com.fenghua.auto.finance.domain.TransactionFlow" >
+    select count( id)
+     from transaction_flow
+    <include refid="Base_Where_Case" />
+  </select>
+  <select id="select" resultMap="BaseResultMap" parameterType="com.fenghua.auto.finance.domain.TransactionFlow" >
+    select 
+    <include refid="Base_Column_List" />
+     from transaction_flow
+    <include refid="Base_Where_Case" />
+    <if test="limit > 0" >
+       limit #{offset},#{limit} 
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from transaction_flow
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from transaction_flow
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.fenghua.auto.finance.domain.TransactionFlow" >
+    insert into transaction_flow (id, tran_type, biz_order_id, 
+      master_order_id, master_order_no, order_id, 
+      order_no, buyer_id, seller_id, 
+      tran_method, trade_no, tran_amount, 
+      status, operator_id, tran_time, 
+      bill_id, sum_operator_id, sum_time
+      )
+    values (#{id,jdbcType=BIGINT}, #{tranType,jdbcType=INTEGER}, #{bizOrderId,jdbcType=BIGINT}, 
+      #{masterOrderId,jdbcType=BIGINT}, #{masterOrderNo,jdbcType=VARCHAR}, #{orderId,jdbcType=BIGINT}, 
+      #{orderNo,jdbcType=VARCHAR}, #{buyerId,jdbcType=BIGINT}, #{sellerId,jdbcType=BIGINT}, 
+      #{tranMethod,jdbcType=INTEGER}, #{tradeNo,jdbcType=VARCHAR}, #{tranAmount,jdbcType=DECIMAL}, 
+      #{status,jdbcType=INTEGER}, #{operatorId,jdbcType=BIGINT}, #{tranTime,jdbcType=TIMESTAMP}, 
+      #{billId,jdbcType=BIGINT}, #{sumOperatorId,jdbcType=BIGINT}, #{sumTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.fenghua.auto.finance.domain.TransactionFlow" >
+    insert into transaction_flow
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="tranType != null" >
+        tran_type,
+      </if>
+      <if test="bizOrderId != null" >
+        biz_order_id,
+      </if>
+      <if test="masterOrderId != null" >
+        master_order_id,
+      </if>
+      <if test="masterOrderNo != null" >
+        master_order_no,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="orderNo != null" >
+        order_no,
+      </if>
+      <if test="buyerId != null" >
+        buyer_id,
+      </if>
+      <if test="sellerId != null" >
+        seller_id,
+      </if>
+      <if test="tranMethod != null" >
+        tran_method,
+      </if>
+      <if test="tradeNo != null" >
+        trade_no,
+      </if>
+      <if test="tranAmount != null" >
+        tran_amount,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="operatorId != null" >
+        operator_id,
+      </if>
+      <if test="tranTime != null" >
+        tran_time,
+      </if>
+      <if test="billId != null" >
+        bill_id,
+      </if>
+      <if test="sumOperatorId != null" >
+        sum_operator_id,
+      </if>
+      <if test="sumTime != null" >
+        sum_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="tranType != null" >
+        #{tranType,jdbcType=INTEGER},
+      </if>
+      <if test="bizOrderId != null" >
+        #{bizOrderId,jdbcType=BIGINT},
+      </if>
+      <if test="masterOrderId != null" >
+        #{masterOrderId,jdbcType=BIGINT},
+      </if>
+      <if test="masterOrderNo != null" >
+        #{masterOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="orderNo != null" >
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerId != null" >
+        #{buyerId,jdbcType=BIGINT},
+      </if>
+      <if test="sellerId != null" >
+        #{sellerId,jdbcType=BIGINT},
+      </if>
+      <if test="tranMethod != null" >
+        #{tranMethod,jdbcType=INTEGER},
+      </if>
+      <if test="tradeNo != null" >
+        #{tradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tranAmount != null" >
+        #{tranAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=BIGINT},
+      </if>
+      <if test="tranTime != null" >
+        #{tranTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="billId != null" >
+        #{billId,jdbcType=BIGINT},
+      </if>
+      <if test="sumOperatorId != null" >
+        #{sumOperatorId,jdbcType=BIGINT},
+      </if>
+      <if test="sumTime != null" >
+        #{sumTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fenghua.auto.finance.domain.TransactionFlow" >
+    update transaction_flow
+    <set >
+      <if test="tranType != null" >
+        tran_type = #{tranType,jdbcType=INTEGER},
+      </if>
+      <if test="bizOrderId != null" >
+        biz_order_id = #{bizOrderId,jdbcType=BIGINT},
+      </if>
+      <if test="masterOrderId != null" >
+        master_order_id = #{masterOrderId,jdbcType=BIGINT},
+      </if>
+      <if test="masterOrderNo != null" >
+        master_order_no = #{masterOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="orderNo != null" >
+        order_no = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerId != null" >
+        buyer_id = #{buyerId,jdbcType=BIGINT},
+      </if>
+      <if test="sellerId != null" >
+        seller_id = #{sellerId,jdbcType=BIGINT},
+      </if>
+      <if test="tranMethod != null" >
+        tran_method = #{tranMethod,jdbcType=INTEGER},
+      </if>
+      <if test="tradeNo != null" >
+        trade_no = #{tradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tranAmount != null" >
+        tran_amount = #{tranAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="operatorId != null" >
+        operator_id = #{operatorId,jdbcType=BIGINT},
+      </if>
+      <if test="tranTime != null" >
+        tran_time = #{tranTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="billId != null" >
+        bill_id = #{billId,jdbcType=BIGINT},
+      </if>
+      <if test="sumOperatorId != null" >
+        sum_operator_id = #{sumOperatorId,jdbcType=BIGINT},
+      </if>
+      <if test="sumTime != null" >
+        sum_time = #{sumTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.finance.domain.TransactionFlow" >
+    update transaction_flow
+    set tran_type = #{tranType,jdbcType=INTEGER},
+      biz_order_id = #{bizOrderId,jdbcType=BIGINT},
+      master_order_id = #{masterOrderId,jdbcType=BIGINT},
+      master_order_no = #{masterOrderNo,jdbcType=VARCHAR},
+      order_id = #{orderId,jdbcType=BIGINT},
+      order_no = #{orderNo,jdbcType=VARCHAR},
+      buyer_id = #{buyerId,jdbcType=BIGINT},
+      seller_id = #{sellerId,jdbcType=BIGINT},
+      tran_method = #{tranMethod,jdbcType=INTEGER},
+      trade_no = #{tradeNo,jdbcType=VARCHAR},
+      tran_amount = #{tranAmount,jdbcType=DECIMAL},
+      status = #{status,jdbcType=INTEGER},
+      operator_id = #{operatorId,jdbcType=BIGINT},
+      tran_time = #{tranTime,jdbcType=TIMESTAMP},
+      bill_id = #{billId,jdbcType=BIGINT},
+      sum_operator_id = #{sumOperatorId,jdbcType=BIGINT},
+      sum_time = #{sumTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fenghua.auto.sku.domain.SkuExtendAttrs" >
+  <resultMap id="BaseResultMap" type="com.fenghua.auto.sku.domain.SkuExtendAttrs" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="contents" property="contents" jdbcType="VARCHAR" />
+    <result column="sort_no" property="sortNo" jdbcType="INTEGER" />
+    <result column="sku_id" property="skuId" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, contents, sort_no, sku_id
+  </sql>
+  <sql id="Base_Where_Case" >
+    <where>
+      <if test="id != null" >
+         AND id = #{id,jdbcType=BIGINT}
+      </if>
+      <if test="name != null" >
+         AND name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="contents != null" >
+         AND contents = #{contents,jdbcType=VARCHAR}
+      </if>
+      <if test="sortNo != null" >
+         AND sort_no = #{sortNo,jdbcType=INTEGER}
+      </if>
+      <if test="skuId != null" >
+         AND sku_id = #{skuId,jdbcType=BIGINT}
+      </if>
+    </where>
+  </sql>
+  <select id="selectCount" resultType="java.lang.Long" parameterType="com.fenghua.auto.sku.domain.SkuExtendAttrs" >
+    select count( id)
+     from sku_extend_attrs
+    <include refid="Base_Where_Case" />
+  </select>
+  <select id="select" resultMap="BaseResultMap" parameterType="com.fenghua.auto.sku.domain.SkuExtendAttrs" >
+    select 
+    <include refid="Base_Column_List" />
+     from sku_extend_attrs
+    <include refid="Base_Where_Case" />
+    order by sort_no
+    <if test="limit > 0" >
+       limit #{offset},#{limit} 
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from sku_extend_attrs
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from sku_extend_attrs
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.fenghua.auto.sku.domain.SkuExtendAttrs" >
+    insert into sku_extend_attrs (id, name, contents, 
+      sort_no, sku_id)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{contents,jdbcType=VARCHAR}, 
+      #{sortNo,jdbcType=INTEGER}, #{skuId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fenghua.auto.sku.domain.SkuExtendAttrs" >
+    insert into sku_extend_attrs
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="contents != null" >
+        contents,
+      </if>
+      <if test="sortNo != null" >
+        sort_no,
+      </if>
+      <if test="skuId != null" >
+        sku_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="contents != null" >
+        #{contents,jdbcType=VARCHAR},
+      </if>
+      <if test="sortNo != null" >
+        #{sortNo,jdbcType=INTEGER},
+      </if>
+      <if test="skuId != null" >
+        #{skuId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fenghua.auto.sku.domain.SkuExtendAttrs" >
+    update sku_extend_attrs
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="contents != null" >
+        contents = #{contents,jdbcType=VARCHAR},
+      </if>
+      <if test="sortNo != null" >
+        sort_no = #{sortNo,jdbcType=INTEGER},
+      </if>
+      <if test="skuId != null" >
+        sku_id = #{skuId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.sku.domain.SkuExtendAttrs" >
+    update sku_extend_attrs
+    set name = #{name,jdbcType=VARCHAR},
+      contents = #{contents,jdbcType=VARCHAR},
+      sort_no = #{sortNo,jdbcType=INTEGER},
+      sku_id = #{skuId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

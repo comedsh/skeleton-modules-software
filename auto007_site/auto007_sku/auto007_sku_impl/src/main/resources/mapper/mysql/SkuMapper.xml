@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fenghua.auto.sku.domain.Sku" >
+  <resultMap id="BaseResultMap" type="com.fenghua.auto.sku.domain.Sku" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="code" property="code" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="shelf_time" property="shelfTime" jdbcType="TIMESTAMP" />
+    <result column="under_time" property="underTime" jdbcType="TIMESTAMP" />
+    <result column="produce_time" property="produceTime" jdbcType="DATE" />
+    <result column="down_time" property="downTime" jdbcType="DATE" />
+    <result column="min_quantity" property="minQuantity" jdbcType="INTEGER" />
+    <result column="gross_weight" property="grossWeight" jdbcType="DOUBLE" />
+    <result column="weight" property="weight" jdbcType="DOUBLE" />
+    <result column="unit" property="unit" jdbcType="VARCHAR" />
+    <result column="brand" property="brand" jdbcType="VARCHAR" />
+    <result column="score" property="score" jdbcType="INTEGER" />
+    <result column="price" property="price" jdbcType="DECIMAL" />
+    <result column="sale_price" property="salePrice" jdbcType="DECIMAL" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="url" property="url" jdbcType="LONGVARCHAR" />
+    <result column="introduce" property="introduce" jdbcType="LONGVARCHAR" />
+    
+    <result column="supplier_id" property="supplierId" jdbcType="BIGINT" />
+    <result column="seller_id" property="sellerId" jdbcType="BIGINT" />
+    
+  </resultMap>
+
+  
+  <sql id="Base_Column_List" >
+    id, code, seller_id, name, title, status, type, shelf_time, under_time, produce_time, 
+    down_time, min_quantity, gross_weight, weight, unit, brand, score, supplier_id, price, 
+    sale_price, create_time, update_time,url,introduce
+  </sql>
+  
+  <select id="select" resultMap="BaseResultMap"  parameterType="com.fenghua.auto.sku.domain.Sku">
+   select  
+   <include refid="Base_Column_List" />
+   from sku
+   <where>
+     <if test="type != null">
+       and type=#{type,jdbcType=BIGINT}
+     </if>
+   </where>
+  </select>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+     from sku
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  
+  <delete id="delete" parameterType="java.lang.Long" >
+    delete from sku
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.fenghua.auto.sku.domain.Sku" >
+    insert into sku (id, code, seller_id, 
+      name, title, status, type, 
+      shelf_time, under_time, produce_time, 
+      down_time, min_quantity, gross_weight, 
+      weight, unit, brand, 
+      score, supplier_id, price, 
+      sale_price, create_time, update_time, 
+      url, introduce)
+    values (#{id,jdbcType=BIGINT}, #{code,jdbcType=VARCHAR}, #{sellerId,jdbcType=BIGINT}, 
+      #{name,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, 
+      #{shelfTime,jdbcType=TIMESTAMP}, #{underTime,jdbcType=TIMESTAMP}, #{produceTime,jdbcType=DATE}, 
+      #{downTime,jdbcType=DATE}, #{minQuantity,jdbcType=INTEGER}, #{grossWeight,jdbcType=DOUBLE}, 
+      #{weight,jdbcType=DOUBLE}, #{unit,jdbcType=VARCHAR}, #{brand,jdbcType=VARCHAR}, 
+      #{score,jdbcType=INTEGER}, #{supplierId,jdbcType=BIGINT}, #{price,jdbcType=DECIMAL}, 
+      #{salePrice,jdbcType=DECIMAL}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{url,jdbcType=LONGVARCHAR}, #{introduce,jdbcType=LONGVARCHAR})
+  </insert>
+ 
+  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.sku.domain.Sku" >
+    update sku
+    <set >
+      <if test="code != null" >
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="sellerId != null" >
+        seller_id = #{sellerId,jdbcType=BIGINT},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="shelfTime != null" >
+        shelf_time = #{shelfTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="underTime != null" >
+        under_time = #{underTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="produceTime != null" >
+        produce_time = #{produceTime,jdbcType=DATE},
+      </if>
+      <if test="downTime != null" >
+        down_time = #{downTime,jdbcType=DATE},
+      </if>
+      <if test="minQuantity != null" >
+        min_quantity = #{minQuantity,jdbcType=INTEGER},
+      </if>
+      <if test="grossWeight != null" >
+        gross_weight = #{grossWeight,jdbcType=DOUBLE},
+      </if>
+      <if test="weight != null" >
+        weight = #{weight,jdbcType=DOUBLE},
+      </if>
+      <if test="unit != null" >
+        unit = #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="brand != null" >
+        brand = #{brand,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null" >
+        score = #{score,jdbcType=INTEGER},
+      </if>
+      <if test="supplierId != null" >
+        supplier_id = #{supplierId,jdbcType=BIGINT},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="salePrice != null" >
+        sale_price = #{salePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="introduce != null" >
+        introduce = #{introduce,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <!-- 根据查询条件查询Sku SKU,发布时间，商品类目，商品状态[time,catalogId,status] -->
+  <select id="selectByParams" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+   select create_time,name,url,brand,code,sale_price,`status`,id 
+   from sku where 1=1 
+   <if test="sellerId != null"> and seller_id =#{sellerId}</if>
+   <if test="status != null"> and status =#{status}</if>
+   <if test="beginTime != null and endTime != null"> and  create_time between  #{beginTime} and #{endTime}</if>
+   <if test="idList != null" >
+        and id in 
+        <foreach collection="idList" item="idItem" index="index"
+             open="(" close=")" separator=",">
+             #{idItem}
+         </foreach>       
+     </if>
+     <if test="name != null">
+        and name like #{name} or code like #{name}
+      </if> 
+  </select>
+ 
+  <!-- 更新商品状态 -->
+   <update id="updateSkuStatus" parameterType="java.util.HashMap" >
+    update sku
+    <set >
+      <if test="status != null" >
+        status = #{status},
+      </if>
+    </set>
+    where id in 
+     <foreach collection="ids" item="item" index="index"
+             open="(" close=")" separator=",">
+             #{item.id}
+     </foreach>     
+   </update>
+   
+   <select id="selectSkuByIds" parameterType="java.util.HashMap" resultMap="BaseResultMap">
+    select  
+    <include refid="Base_Column_List" />
+    from sku
+    where id in 
+     <foreach collection="ids" item="item" index="index"
+             open="(" close=")" separator=",">
+             #{item}
+     </foreach>     
+  </select>
+</mapper>

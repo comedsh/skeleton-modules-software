@@ -1,0 +1,330 @@
+.Retrieve_password{
+    width: 900px;
+    height: 630px;
+    margin: 0 auto;
+    /*border:1px solid red;*/
+    /*background-color: #eee;*/
+}
+.Retrieve_password p{
+    width: 875px;
+    height: 42px;
+    color: #989898;
+    padding-left: 25px;
+    padding-top: 20px;
+    /*background-color: red;*/
+}
+.Retrieve_password p .a_tab{
+    font-size: 16px;
+    float: left;
+    width: 160px;
+    height: 41px;
+    text-align: center;
+    line-height: 41px;
+    color: #4f4f4f;
+    background-color: #eceae8;
+    border-top:2px solid #eceae8;
+    border-left:1px solid #eceae8;
+    border-right:1px solid #eceae8;
+    position: relative;
+    z-index:99;
+}
+.Retrieve_password p a.active_tab{
+    border-top:2px solid #ff8d02;
+    background-color: #fff;
+}
+.Retrieve_password p .a_tab:hover{
+    background-color: #fff;
+    color:#ff8d02 ;
+}
+.Retrieve_password p label{
+    float: right;
+    width: 115px;
+    height: 40px;
+    line-height: 50px;
+    font-size: 12px;
+    color: #a7a7a7;
+    margin-left: 100px;
+}
+.Retrieve_password p label a{
+    color: #ff8d02;
+}
+.border_div{
+    height: 560px;
+    border:1px solid #eceae8;
+}
+.border_div1{
+    height: 560px;
+    border:1px solid #eceae8;
+    display: none;
+}
+/*.border_div1 .email_one,.border_div1 .email_two{*/
+    /*display: none;*/
+/*}*/
+.progress_bar,.progress_ul{
+    display: block;
+    width: 499px;
+    height: 33px;
+    margin: 0 auto;
+    background: url("../../imgs/progress.jpg") no-repeat center;
+}
+.progress_bar{
+    margin-top: 100px;
+}
+.progress_bar1{
+    background: url("../../imgs/progress1.jpg") no-repeat center;
+}
+.progress_bar2{
+    background: url("../../imgs/progress2.png") no-repeat center;
+}
+.progress_ul{
+    width: 720px;
+    line-height: 36px;
+    background: none;
+    /*background-color: red;*/
+}
+.progress_ul li{
+    width: 56px;
+    float: left;
+    font-size: 14px;
+    color: #989898;
+    margin-left: 100px;
+    list-style-type: none;
+}
+.progress_ul li.left_li{
+    width: 76px;
+    margin-left: 178px;
+}
+.progress_ul li.last_il{
+    margin-left:155px;
+}
+.progress_ul li.active_color{
+    color: #0581d8;
+}
+.form_div{
+    width:520px;
+    height: 350px;
+    padding-top: 20px;
+    margin: 0 auto;
+    color: #666666;
+    font-size: 14px;
+}
+.form_div div{
+    width: 470px;
+    height: 35px;
+    line-height: 35px;
+    margin-top: 5px;
+    margin-left: 50px;
+}
+.form_div .chren_div{
+    float: left;
+}
+.form_div div.left_div{
+    float: left;
+    margin-left: 10px;
+    width: 485px;
+}
+.form_div div label{
+    float: left;
+    width: 75px;
+    height: 36px;
+    line-height: 36px;
+    text-align:right;
+    margin-right: 15px;
+}
+
+.border_div1 .form_div div label{
+    width: 70px;
+}
+.form_div div.left_div label{
+    width: 100px;
+}
+.form_div div.left_div .button_a{
+    float: left;
+    width: 100px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    background-color: #ff8d02;
+    color: #fff;
+    margin-left: 10px;
+    font-size: 12px;
+}
+.form_div div .button_a{
+    display: inline-block;
+    background-color: #9c9c9c;
+    width: 120px;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    background-color: #0281d4;
+    color: #fff;
+    margin-left: 5px;
+    font-size: 12px;
+}
+.form_div div.left_div .button_a:hover{
+    background-color: #ffae02;
+}
+.form_div div.icon_div{
+    float: left;
+    width: 110px;
+    height: 140px;
+    padding-top: 10px;
+    padding-left: 70px;
+}
+.form_div div.left{
+    float: left;
+    width: 230px;
+    height: 150px;
+    margin-left:30px;
+}
+.form_div div.left label{
+    width:200px;
+    height:30px;
+    font-size: 17px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+.form_div div input{
+    float: left;
+    padding: 8px;
+    width: 250px;
+    outline: none;
+    border:1px solid #c1c1c1;
+}
+.form_div div .code,.form_div div .iPhone_code{
+    width: 110px;
+}
+
+.form_div div .img_code{
+    float: left;
+    margin-left: 8px;
+    margin-top: 3px;
+    cursor: pointer;
+    width: 80px;
+    height: 28px;
+    border:none;
+}
+.form_div div span{
+    float: left;
+    margin-left: 5px;
+    height: 20px;
+    line-height: 20px;
+    margin-top: 10px;
+}
+.form_div div span a{
+    color: #0380d8;
+}
+.form_div div span a:hover{
+    text-decoration: underline;
+}
+.error_lab{
+    float: left;
+    width: 250px;
+    height: 30px;
+    line-height: 30px;
+    margin-left: 140px;
+    color: red;
+}
+.pwd_new_error,.email_pwd_error{
+    width: 360px;
+    margin-left: 125px;
+    font-size: 12px;
+}
+
+.pwd_agin_error,.email_agin_error{
+    margin-left: 125px;
+    font-size: 12px;
+}
+.iPhone_code_error{
+    margin-top: 5px;
+}
+.error_lab img{
+    float: left;
+    border:none;
+    margin-top: 5px;
+    display: none;
+}
+.error_lab span{
+    float: left;
+    margin-left: 5px;
+}
+.error_lab1{
+    margin-left: 110px;
+    margin-top: 10px;
+}
+.btn_login{
+    float: left;
+    width: 150px;
+    height:40px;
+    line-height: 40px;
+    text-align: center;
+    margin-left: 140px;
+    margin-top: 50px;
+    background-color: #ff8d02;
+    color: #fff;
+    outline: none;
+    border:none;
+    cursor: pointer;
+    font-size: 16px;
+}
+.btn_login1{
+    margin-left: 120px;
+    margin-top: 60px;
+}
+.btn_login2 {
+    margin-left: 260px;
+    margin-top: 10px;
+}
+/*.border_div .ipone_three,.border_div .ipone_two{*/
+    /*display: none;*/
+/*}*/
+.fanhui{
+    float: left;
+    width: 150px;
+    height: 40px;
+    line-height: 40px;
+    margin-left:40px;
+    margin-top: 60px;
+    text-align: right;
+    color: #0281d4;
+    cursor: pointer;
+    text-decoration: none;
+}
+.fanhui:hover{
+    text-decoration: underline;
+}
+.email_success{
+    width: 470px;
+    height: 200px;
+    margin: 0 auto;
+    margin-top: 20px;
+    color: #666;
+}
+.email_success p{
+    width:440px;
+    font-size: 16px;
+    height: 22px;
+    overflow: hidden;
+}
+.email_success p strong{
+    color:#fd9500;
+    font-weight:500;
+}
+.email_success span{
+    display:block;
+    width:450px;
+    font-size: 12px;
+    padding-left: 20px;
+    padding-top: 20px;
+}
+.email_success a{
+    color:#0380d8;
+    font-size: 12px;
+    display: block;
+    margin-left: 20px;
+    margin-top: 20px;
+    width: 110px;
+}
+.email_success a:hover{
+    text-decoration: underline;
+}

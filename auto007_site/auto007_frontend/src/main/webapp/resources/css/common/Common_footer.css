@@ -1,0 +1,145 @@
+.fooder{
+    width: 100%;
+    height: auto;
+}
+.tail_description{
+    width: 600px;
+    height: 60px;
+    margin: 0 auto;
+    padding-top: 50px;
+    padding-bottom:40px;
+}
+.tail_description ul{
+    width: 250px;
+    height: auto;
+    margin: 0 auto;
+}
+.tail_description ul li{
+    float:left;
+    padding-left: 7px;
+    padding-right:7px;
+    list-style-type: none;
+    font: 12px/1.5 tahoma,arial,'Hiragino Sans GB',\5b8b\4f53,sans-serif;
+}
+.tail_description ul li a{
+    color: #666;
+    font-size: 14px;
+    font-weight: 500;
+}
+.tail_description p{
+    padding-top: 20px;
+    text-align: center;
+    font: 12px/1.5 tahoma,arial,'Hiragino Sans GB',\5b8b\4f53,sans-serif;
+    color: #989898;
+}
+.content_login{
+    width: 1100px;
+    height: 430px;
+    margin: 0 auto;
+}
+.img_login{
+    float: left;
+}
+.img_login img{
+    display: block;
+    margin-top:45px;
+}
+.right_login{
+    float: right;
+    margin-right: 10px;
+    margin-top: 30px;
+    width: 280px;
+    height: 340px;
+    padding: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border:1px solid #eee;
+    border-top: 2px solid #0281d4;
+}
+.right_login h1{
+    width: 280px;
+    font-size:24px;
+    font-weight: 600;
+    color: #989898;
+}
+.right_login h1 span{
+    margin-left: 49px;
+    font-size:12px;
+    color: #676767;
+}
+.right_login h1 span a{
+    color:#fd9500;
+}
+.input_li{
+    width: 237px;
+    height: 40px;
+    line-height: 40px;
+    border:1px solid #eee;
+    margin-bottom: 15px;
+    padding-left: 40px;
+    background: url("../imgs/email.jpg") no-repeat 6px 10px;
+}
+.pwd{
+    background: url("../imgs/pwd.png") no-repeat 6px 5px;
+}
+.input_li input{
+    width: 230px;
+    outline: none;
+    border:none;
+}
+.Keep_div{
+    width: 278px;
+    height: 40px;
+    line-height: 40px;
+    margin-top: 0;
+    margin-bottom:20px;
+}
+.Remember_pwd{
+    float:left;
+    width: 55px;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 25px;
+    font-size: 12px;
+    color:#333;
+    cursor: pointer;
+    background: url('../imgs/as.png') no-repeat -2px 12px;
+}
+.Remember_pwd1{
+    background: url('../imgs/as1.jpg') no-repeat -2px 12px
+}
+.Keep_div a{
+    float: right;
+    font-size: 12px;
+    color:#333;
+}
+.Keep_div a:hover{
+    color:#fd9500
+}
+.error1{
+    width: 282px;
+    height: 41px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.error{
+    width: 282px;
+    height: 41px;
+    line-height: 42px;
+    font-size: 12px;
+    color:red;
+    text-indent: 3em;
+    background:url("../imgs/eeror.png") no-repeat -1px 0;
+    display: none;
+}
+.login_btn{
+    display: inline-block;
+    width: 278px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: #fff;
+    font-size: 16px;
+    background-color: #0281d4;
+    cursor: pointer;
+}

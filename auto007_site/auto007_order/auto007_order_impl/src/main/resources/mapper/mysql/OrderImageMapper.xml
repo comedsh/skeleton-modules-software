@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fenghua.auto.order.domain.OrderImage" >
+  <resultMap id="BaseResultMap" type="com.fenghua.auto.order.domain.OrderImage" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="biz_type" property="bizType" jdbcType="INTEGER" />
+    <result column="biz_id" property="bizId" jdbcType="BIGINT" />
+    <result column="path" property="path" jdbcType="VARCHAR" />
+    <result column="entry_id" property="entryId" jdbcType="BIGINT" />
+    <result column="entry_time" property="entryTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, biz_type, biz_id, path, entry_id, entry_time
+  </sql>
+  <sql id="Base_Where_Case" >
+    <where >
+      <if test="id != null" >
+         AND id = #{id,jdbcType=BIGINT}
+      </if>
+      <if test="bizType != null" >
+         AND biz_type = #{bizType,jdbcType=INTEGER}
+      </if>
+      <if test="bizId != null" >
+         AND biz_id = #{bizId,jdbcType=BIGINT}
+      </if>
+      <if test="path != null" >
+         AND path = #{path,jdbcType=VARCHAR}
+      </if>
+      <if test="entryId != null" >
+         AND entry_id = #{entryId,jdbcType=BIGINT}
+      </if>
+      <if test="entryTime != null" >
+         AND entry_time = #{entryTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </sql>
+  <select id="selectCount" resultType="java.lang.Long" parameterType="com.fenghua.auto.order.domain.OrderImage" >
+    select count( id)
+     from order_image
+    <include refid="Base_Where_Case" />
+  </select>
+  <select id="select" resultMap="BaseResultMap" parameterType="com.fenghua.auto.order.domain.OrderImage" >
+    select 
+    <include refid="Base_Column_List" />
+     from order_image
+    <include refid="Base_Where_Case" />
+    <if test="limit > 0" >
+       limit #{offset},#{limit} 
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from order_image
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from order_image
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.fenghua.auto.order.domain.OrderImage" >
+    insert into order_image (id, biz_type, biz_id, 
+      path, entry_id, entry_time
+      )
+    values (#{id,jdbcType=BIGINT}, #{bizType,jdbcType=INTEGER}, #{bizId,jdbcType=BIGINT}, 
+      #{path,jdbcType=VARCHAR}, #{entryId,jdbcType=BIGINT}, #{entryTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.fenghua.auto.order.domain.OrderImage" >
+    insert into order_image
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="bizType != null" >
+        biz_type,
+      </if>
+      <if test="bizId != null" >
+        biz_id,
+      </if>
+      <if test="path != null" >
+        path,
+      </if>
+      <if test="entryId != null" >
+        entry_id,
+      </if>
+      <if test="entryTime != null" >
+        entry_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="bizType != null" >
+        #{bizType,jdbcType=INTEGER},
+      </if>
+      <if test="bizId != null" >
+        #{bizId,jdbcType=BIGINT},
+      </if>
+      <if test="path != null" >
+        #{path,jdbcType=VARCHAR},
+      </if>
+      <if test="entryId != null" >
+        #{entryId,jdbcType=BIGINT},
+      </if>
+      <if test="entryTime != null" >
+        #{entryTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fenghua.auto.order.domain.OrderImage" >
+    update order_image
+    <set >
+      <if test="bizType != null" >
+        biz_type = #{bizType,jdbcType=INTEGER},
+      </if>
+      <if test="bizId != null" >
+        biz_id = #{bizId,jdbcType=BIGINT},
+      </if>
+      <if test="path != null" >
+        path = #{path,jdbcType=VARCHAR},
+      </if>
+      <if test="entryId != null" >
+        entry_id = #{entryId,jdbcType=BIGINT},
+      </if>
+      <if test="entryTime != null" >
+        entry_time = #{entryTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.order.domain.OrderImage" >
+    update order_image
+    set biz_type = #{bizType,jdbcType=INTEGER},
+      biz_id = #{bizId,jdbcType=BIGINT},
+      path = #{path,jdbcType=VARCHAR},
+      entry_id = #{entryId,jdbcType=BIGINT},
+      entry_time = #{entryTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

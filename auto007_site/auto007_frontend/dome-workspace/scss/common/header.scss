@@ -1,0 +1,227 @@
+.header{
+	width:100%;
+	background-color:#f1f1f1;
+	.header-top{
+		position: relative;
+		height: 30px;
+		width: 1200px;
+		margin: 0 auto;
+		line-height: 30px;
+		font-size: 12px;
+		color: $siteMainFontColor;
+		a{
+			color: $siteMainFontColor;
+		}
+		.header-phone{
+			position: absolute;
+			top: 0;
+			left: 114px;
+			font-weight: bold;
+			font-size:18px;
+		}
+		.quick-menu{
+			position: absolute;
+			top: 0;
+			right: .5em;
+			li{
+				float: left;
+				margin-left: 20px;
+			}
+		}
+		.all-city-panel{
+			position: absolute;
+			top:30px;
+			left: 0;
+			padding:1em;
+			min-height: 100px;
+			width: 200px;
+			height: auto!important;
+			background-color:#fff;
+			overflow: hidden;
+			z-index: 9;
+			li{
+				display: inline-block;
+			    float: left;
+			    white-space: nowrap;
+			    padding: 0 10px;
+			    color: #808080;
+			    &.current{
+			    	a{
+			    		color: #f00;
+			    	}
+			    	
+			    }
+			    a{
+			    	&:hover{
+			    		color:#f00;
+			    	}
+			    }
+			}
+		}
+		.user-name{
+			color: $siteBtnMainColor;
+		}
+	}
+	.header-content-wrap{
+		background-color:$siteBtnMainColor;
+		.header-content{
+			height: 80px;
+			width: 1200px;
+			margin: 0 auto;
+			position: relative;
+			h1{
+				margin-left:17px;
+			}
+			.search-box{
+				position: absolute;
+				top: 21px;
+				right: 294px;
+				.search-text-box{
+					display: inline-block;
+					height: $siteBtnHeight;
+					width:340px;
+					padding:0 1em;
+					line-height: $siteBtnHeight;
+					border-radius:3px 0 0 3px;
+					background-color:#fff;
+					.search-text{
+						font-size: 12px;
+						border:none;
+						width: 100%;
+					}
+				}
+				.search-btn{
+					position:absolute;
+					top: 0;
+					right: -90px;
+					height: $siteBtnHeight;
+					width: 90px;
+					line-height: $siteBtnHeight;
+					background-color:$siteBtnViceColor;
+					color: #fff;
+					font-size: 16px;
+					text-align:center;
+					border-radius:0 3px 3px 0;
+				}
+			}
+			.cart-box{
+				position: absolute;
+				top: 21px;
+				right: 30px;
+				height: $siteBtnHeight;
+				width: 142px;
+				line-height: $siteBtnHeight;
+				text-align: center;
+				background-color:#fff;
+				font-size: 12px;
+				cursor: pointer;
+				z-index: 99;
+				.icon-cart{
+					position:absolute;
+					top: 10px;
+					left: 1em;
+				}
+				.icon-arrow_right{
+					position: absolute;
+					top: 12px;
+					right: .5em;
+				}
+				.cart-num{
+					position: absolute;
+					top: -8px;
+					right: 1.2em;
+					width: 30px;
+  					height: 17px;
+					text-align: center;
+					line-height: 17px;
+					color: #fff;
+					background-color:$siteBtnViceColor;
+					border-radius:8px;
+					font-size: 10px;
+				}
+			}
+			.cart-list-box{
+				position: absolute;
+				top:58px;
+				right: 30px;
+				border:1px solid #c2c8cc;
+				background-color:#fff;
+				z-index: 9;
+				font-size: 14px;
+				padding-top:1em;
+				box-shadow: 0px 0px 15px;
+				.cart-list{
+					overflow-y: auto;
+					overflow-x: hidden;
+					max-height: 350px;
+					height: auto!important;
+					padding:0 .5em 0 10px;
+					li{
+						padding:15px 90px 16px 0;
+						border-bottom:1px solid #c2c8cc;
+						position: relative;
+						.product-title{
+							display: block;
+							width: 165px;
+						    height: 38px;
+						    overflow: hidden;
+						    color: #505050;
+						    line-height: 1.4;
+						}
+						.product-para{
+							margin-top: .4em;
+							height: 16px;
+							line-height: 1em;
+						}
+						.product-price{
+							margin-top: .4em;
+							text-align: left;
+						}
+						.delete-btn{
+							position:absolute;
+							top: 15px;
+							right: .5em;
+							font-size: 12px;
+							color: $siteMainFontColor;
+						}
+						.num{
+							color: #ed5565;
+						}
+					}
+				}
+				.cart-total{
+					height: 40px;
+					line-height: 40px;
+					position: relative;
+					text-align: left;
+					font-size: 12px;
+					background-color:#e8e8e8;
+					padding-left:1em;
+					.product-num{
+						color: #000;
+					}
+					.go-cart-btn{
+						position: absolute;
+						top: 5px;
+						right: 1em;
+						height: 30px;
+						line-height: 30px;
+						padding:0 10px;
+						background-color:$siteBtnViceColor;
+						color: #fff;
+						font-size: 14px;
+					}
+				}
+			}
+		}
+	}
+	
+}
+.icon-arrow_down{
+	display:inline-block;
+	margin-left:.5em;
+}
+.icon-phone{
+	display:inline-block;
+	margin-right:.5em;
+}

@@ -1,0 +1,414 @@
+.Retrieve_password{
+    width: 900px;
+    height: auto;
+    margin: 0 auto;
+    /*border:1px solid red;*/
+    background-color: #fff;
+}
+.Retrieve_password p{
+    width: 875px;
+    height: 42px;
+    color: #989898;
+    padding-left: 25px;
+    padding-top: 20px;
+    background-color: #f0f2f4;
+}
+.Retrieve_password p .a_tab{
+    font-size: 16px;
+    float: left;
+    width: 160px;
+    height: 41px;
+    text-align: center;
+    line-height: 41px;
+    color: #4f4f4f;
+    background-color: #eceae8;
+    border-top:2px solid #eceae8;
+    border-left:1px solid #eceae8;
+    border-right:1px solid #eceae8;
+    position: relative;
+    z-index:99;
+}
+.Retrieve_password p a.active_tab{
+    border-top:2px solid #ff8d02;
+    background-color: #fff;
+}
+.Retrieve_password p .a_tab:hover{
+    background-color: #fff;
+    color:#ff8d02 ;
+}
+.Retrieve_password p label{
+    float: right;
+    width: 115px;
+    height: 40px;
+    line-height: 50px;
+    font-size: 12px;
+    color: #a7a7a7;
+    margin-left: 100px;
+}
+.Retrieve_password p label a{
+    color: #ff8d02;
+}
+.border_div,.border_div1,.border_div2{
+    height: auto;
+    border:1px solid #eceae8;
+    font-size: 14px;
+    color: #666666;
+    display: none;
+}
+.border_div1{
+    padding-top: 30px;
+    display: block;
+}
+.header_titile{
+    width: 100%;
+    height:100px;
+    line-height: 100px;
+    text-indent: 2em;
+}
+.border_div h3,.border_div2 h3{
+    width: 100%;
+    height:40px;
+    line-height: 40px;
+    font-size: 16px;
+    text-indent: 2em;
+    color: #333;
+    font-weight: 500;
+    background-color: #f5f5f5;
+}
+.name_pwd{
+    width: 900px;
+    height: 250px;
+}
+.name_pwd .chren_div,.name_pwd .chren_divs {
+    width: 750px;
+    height: 35px;
+    line-height: 35px;
+    margin-top: 35px;
+    margin-left: 130px;
+    float: left;
+    position: relative;
+}
+.name_pwd .chren_div label,.name_pwd .chren_divs label{
+    float: left;
+    width: 90px;
+    height: 36px;
+    line-height: 36px;
+    text-align: right;
+    margin-right: 15px;
+}
+.name_pwd .chren_div .input_d,.name_pwd .chren_divs .input_d{
+    float: left;
+    height: 34px;
+    line-height: 34px;
+    width: 250px;
+    outline: none;
+    padding-left: 10px;
+    border: 1px solid #c1c1c1;
+}
+.name_pwd .chren_div .check_box{
+    width: 600px;
+    border:none;
+    padding-left: 0;
+    line-height: 39px;
+    font-size: 14px;
+    color: #666;
+}
+.name_pwd .chren_div .check_box span{
+    color: #989898;
+    margin-left: 20px;
+}
+.name_pwd .chren_div .input_select{
+    width:145px;
+    position: relative;
+    padding-right: 30px;
+    background:url("../../../resources/imgs/arrow.jpg") no-repeat 160px 11px; 
+}
+.name_pwd .chren_div .input_select ul{
+    width:185px;
+    height: auto;
+    position: absolute;
+    z-index: 99;
+    top:35px;
+    left:-1px;
+    border: 1px solid #c1c1c1;
+    background-color: #fff;
+    border-top: none;
+    display: none;
+}
+.name_pwd .chren_div .input_select ul li{
+    width: 185px;
+    height: 34px;
+    line-height: 34px;
+    text-indent: 1em;
+    list-style-type: none;
+    cursor: pointer;
+
+}
+.name_pwd .chren_div .input_select ul li:hover{
+    background-color: #fd9602;
+    color: #fff;
+}
+.name_pwd .chren_div .input_d input{
+    width: 205px;
+    outline: none;
+    border: none;
+    background-color: #fff;
+}
+.name_pwd .chren_div .input_d .telephone_code{
+    width: 120px;
+}
+.remove_d{
+    position: absolute;
+    top: 5px;
+    left: 335px;
+    width: 23px;
+    height: 25px;
+    display: none;
+    cursor: pointer;
+}
+.remove_d img{
+    display: block;
+    border:none;
+}
+.button_a{
+    float: left;
+    width: 100px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    background-color: #ff8d02;
+    color: #fff;
+    margin-left: 10px;
+    font-size: 12px;
+    cursor: pointer;
+}
+.user_error1,.user_error2,.user_error3{
+    float: left;
+    height: 34px;
+    line-height: 34px;
+    padding-left: 30px;
+    padding-right: 10px;
+    margin-left: 10px;
+    background: #fef0ef url("../../../resources/imgs/error.png") no-repeat 5px center;
+    color: red;
+    border:1px solid #ff857e;
+    display: none;
+    font-size: 13px;
+}
+
+.user_error1{
+   background: none;
+   border:none;
+   padding-left: 0;
+   color: #989898;
+}
+
+.user_error3{
+    border:none;
+    color: #02a847;
+    background:url("../../../resources/imgs/ok.png") no-repeat 5px center;
+}
+
+.tip,.wrong,.correct{
+    float: left;
+    height: 34px;
+    line-height: 34px;
+    padding-left: 30px;
+    padding-right: 10px;
+    margin-left: 10px;
+    background: #fef0ef url("../../../resources/imgs/error.png") no-repeat 5px center;
+    color: red;
+    border:1px solid #ff857e;
+    font-size: 13px;		
+}
+
+.tip{
+   background: none;
+   border:none;
+   padding-left: 0;
+   color: #989898;
+}
+
+.correct{
+    border:none;
+    color: #02a847;
+    background:url("../../../resources/imgs/ok.png") no-repeat 5px center;	
+}
+
+.input_focus{
+	border:1px solid red;
+}
+
+.name_pwd .chren_div .select_province,.name_pwd .chren_div .select_city,.name_pwd .chren_div .select_area{
+    width: 85px;
+    background: url("../../../resources/imgs/arrow.jpg") no-repeat 104px 11px;
+}
+.name_pwd .chren_div .select_province ul,.name_pwd .chren_div .select_city ul,
+.name_pwd .chren_div .select_area ul,.name_pwd .chren_div .select_province ul li,
+.name_pwd .chren_div .select_city ul li, .name_pwd .chren_div .select_area ul li{
+     width: 125px;
+ }
+.company_d p{
+    float: left;
+    width: 30px;
+    height: 36px;
+    line-height: 36px;
+    padding: 0;
+    text-align: center;
+    background-color: #fff;
+}
+.file_div{
+    text-align: center;
+    color:#fff;
+    outline: none;
+    border:none;
+    background-color: #0281d4;
+    position: relative;
+    overflow:hidden;
+    cursor: pointer;
+}
+.name_pwd .chren_divs .file_div input{
+    position: absolute;
+    top:0;
+    left: 0;
+    font-size:100px;
+    outline: none;
+    border:none;
+    opacity:0;
+    cursor: pointer;
+    filter:alpha(opacity=0); /* 针对 IE8 以及更早的版本 */
+}
+.Payment{
+    display: none;
+    margin-left: 20px;
+}
+.img_code{
+    float: left;
+    border:none;
+    margin-left: 10px;
+    /* margin-top: 4px; */
+    cursor: pointer;
+}
+.hun_span{
+    float: left;
+    margin-left: 10px;
+}
+.hun_span a{
+	cursor: pointer;
+    color: blue;
+}
+.hun_span a:hover{
+    text-decoration: underline;
+}
+.name_pwd .chren_div .radio_r{
+    border:none;
+    width: 130px;
+    cursor: pointer;
+    font-size: 12px;
+    padding: 0;
+}
+.name_pwd .chren_div .radio_r1{
+    width: 90px;
+    padding-left: 25px;
+    background: url("../../../resources/imgs/radio.jpg") no-repeat 0 center;
+}
+.name_pwd .chren_div .radio_r2{
+    width: 90px;
+    padding-left: 25px;
+    background: url("../../../resources/imgs/radio1.jpg") no-repeat 0 center;
+}
+.name_pwd .chren_div .radio_r3{
+    cursor: pointer;
+    color: #0380d8;
+}
+.name_pwd .chren_div .check_radio1，.name_pwd .chren_div .check_radio2{
+    width: 60px;
+    font-size: 14px;
+}
+.Gray_mask{
+    position: fixed;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #d0ccc7;
+    z-index: 99;
+    display: none;
+}
+.Pop_up{
+    position: fixed;
+    top:50%;
+    left:50%;
+    width: 430px;
+    height: 390px;
+    padding: 20px;
+    padding-top: 0;
+    margin-left: -215px;
+    margin-top: -205px;
+    background-color: #fff;
+    z-index: 100;
+    display: none;
+}
+.Pop_up p{
+    width: 100%;
+    height: 50px;
+    color: #0281d4;
+    font-size: 18px;
+    border-bottom: 1px solid #eee;
+}
+.Pop_up p label{
+    float: left;
+    width: 200px;
+    height: 30px;
+    margin-top: 20px;
+}
+.Pop_up p img{
+    float: right;
+    border:none;
+    margin-top: 10px;
+    cursor: pointer;
+}
+.content_d{
+    width: 100%;
+    height: auto;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+.Pop_up button{
+    display: block;
+    outline: none;
+    border:none;
+    width: 280px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background-color: #0281d4;
+    color: #fff;
+    margin: 0 auto;
+    cursor: pointer;
+    font-size: 16px;
+}
+.name_pwd .chren_div .submit_btn{
+    width: 150px;
+    padding: 0;
+    text-align: center;
+    font-size: 16px;
+    color: #fff;
+    background-color: #ff8d02;
+    border:none;
+    cursor: pointer;
+    height: 40px;
+    line-height: 40px;
+}
+.Remember_pwd{
+    font-size: 12px;
+    color:#333;
+    cursor: pointer;
+    background: url('../../../resources/imgs/as.png') no-repeat 72px 12px;
+}
+.Remember_pwd1{
+    background: url('../../../resources/imgs/as1.jpg') no-repeat 72px 12px
+}
+.radio_div{
+    display: none;
+}

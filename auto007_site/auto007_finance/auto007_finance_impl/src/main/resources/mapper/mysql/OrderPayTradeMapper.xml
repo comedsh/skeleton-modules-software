@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fenghua.auto.finance.domain.OrderPayTrade" >
+  <resultMap id="BaseResultMap" type="com.fenghua.auto.finance.domain.OrderPayTrade" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="order_payment_id" property="orderPaymentId" jdbcType="BIGINT" />
+    <result column="order_payment_sub_no" property="orderPaymentSubNo" jdbcType="VARCHAR" />
+    <result column="pay_method" property="payMethod" jdbcType="INTEGER" />
+    <result column="pay_status" property="payStatus" jdbcType="INTEGER" />
+    <result column="trade_no" property="tradeNo" jdbcType="VARCHAR" />
+    <result column="submit_time" property="submitTime" jdbcType="TIMESTAMP" />
+    <result column="pay_time" property="payTime" jdbcType="TIMESTAMP" />
+    <result column="cancel_time" property="cancelTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, order_payment_id, order_payment_sub_no, pay_method, pay_status, trade_no, submit_time, 
+    pay_time, cancel_time
+  </sql>
+  <sql id="Base_Where_Case" >
+    <where >
+      <if test="id != null" >
+         AND id = #{id,jdbcType=BIGINT}
+      </if>
+      <if test="orderPaymentId != null" >
+         AND order_payment_id = #{orderPaymentId,jdbcType=BIGINT}
+      </if>
+      <if test="orderPaymentSubNo != null" >
+         AND order_payment_sub_no = #{orderPaymentSubNo,jdbcType=VARCHAR}
+      </if>
+      <if test="payMethod != null" >
+         AND pay_method = #{payMethod,jdbcType=INTEGER}
+      </if>
+      <if test="payStatus != null" >
+         AND pay_status = #{payStatus,jdbcType=INTEGER}
+      </if>
+      <if test="tradeNo != null" >
+         AND trade_no = #{tradeNo,jdbcType=VARCHAR}
+      </if>
+      <if test="submitTime != null" >
+         AND submit_time = #{submitTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="payTime != null" >
+         AND pay_time = #{payTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="cancelTime != null" >
+         AND cancel_time = #{cancelTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </sql>
+  <select id="selectCount" resultType="java.lang.Long" parameterType="com.fenghua.auto.finance.domain.OrderPayTrade" >
+    select count( id)
+     from order_pay_trade
+    <include refid="Base_Where_Case" />
+  </select>
+  <select id="select" resultMap="BaseResultMap" parameterType="com.fenghua.auto.finance.domain.OrderPayTrade" >
+    select 
+    <include refid="Base_Column_List" />
+     from order_pay_trade
+    <include refid="Base_Where_Case" />
+    <if test="limit > 0" >
+       limit #{offset},#{limit} 
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from order_pay_trade
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from order_pay_trade
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.fenghua.auto.finance.domain.OrderPayTrade" >
+    insert into order_pay_trade (id, order_payment_id, order_payment_sub_no, 
+      pay_method, pay_status, trade_no, 
+      submit_time, pay_time, cancel_time
+      )
+    values (#{id,jdbcType=BIGINT}, #{orderPaymentId,jdbcType=BIGINT}, #{orderPaymentSubNo,jdbcType=VARCHAR}, 
+      #{payMethod,jdbcType=INTEGER}, #{payStatus,jdbcType=INTEGER}, #{tradeNo,jdbcType=VARCHAR}, 
+      #{submitTime,jdbcType=TIMESTAMP}, #{payTime,jdbcType=TIMESTAMP}, #{cancelTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.fenghua.auto.finance.domain.OrderPayTrade" >
+    insert into order_pay_trade
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="orderPaymentId != null" >
+        order_payment_id,
+      </if>
+      <if test="orderPaymentSubNo != null" >
+        order_payment_sub_no,
+      </if>
+      <if test="payMethod != null" >
+        pay_method,
+      </if>
+      <if test="payStatus != null" >
+        pay_status,
+      </if>
+      <if test="tradeNo != null" >
+        trade_no,
+      </if>
+      <if test="submitTime != null" >
+        submit_time,
+      </if>
+      <if test="payTime != null" >
+        pay_time,
+      </if>
+      <if test="cancelTime != null" >
+        cancel_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="orderPaymentId != null" >
+        #{orderPaymentId,jdbcType=BIGINT},
+      </if>
+      <if test="orderPaymentSubNo != null" >
+        #{orderPaymentSubNo,jdbcType=VARCHAR},
+      </if>
+      <if test="payMethod != null" >
+        #{payMethod,jdbcType=INTEGER},
+      </if>
+      <if test="payStatus != null" >
+        #{payStatus,jdbcType=INTEGER},
+      </if>
+      <if test="tradeNo != null" >
+        #{tradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="submitTime != null" >
+        #{submitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="payTime != null" >
+        #{payTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cancelTime != null" >
+        #{cancelTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fenghua.auto.finance.domain.OrderPayTrade" >
+    update order_pay_trade
+    <set >
+      <if test="orderPaymentId != null" >
+        order_payment_id = #{orderPaymentId,jdbcType=BIGINT},
+      </if>
+      <if test="orderPaymentSubNo != null" >
+        order_payment_sub_no = #{orderPaymentSubNo,jdbcType=VARCHAR},
+      </if>
+      <if test="payMethod != null" >
+        pay_method = #{payMethod,jdbcType=INTEGER},
+      </if>
+      <if test="payStatus != null" >
+        pay_status = #{payStatus,jdbcType=INTEGER},
+      </if>
+      <if test="tradeNo != null" >
+        trade_no = #{tradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="submitTime != null" >
+        submit_time = #{submitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="payTime != null" >
+        pay_time = #{payTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cancelTime != null" >
+        cancel_time = #{cancelTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.finance.domain.OrderPayTrade" >
+    update order_pay_trade
+    set order_payment_id = #{orderPaymentId,jdbcType=BIGINT},
+      order_payment_sub_no = #{orderPaymentSubNo,jdbcType=VARCHAR},
+      pay_method = #{payMethod,jdbcType=INTEGER},
+      pay_status = #{payStatus,jdbcType=INTEGER},
+      trade_no = #{tradeNo,jdbcType=VARCHAR},
+      submit_time = #{submitTime,jdbcType=TIMESTAMP},
+      pay_time = #{payTime,jdbcType=TIMESTAMP},
+      cancel_time = #{cancelTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

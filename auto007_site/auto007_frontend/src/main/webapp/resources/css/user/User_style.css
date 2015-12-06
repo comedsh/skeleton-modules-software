@@ -1,0 +1,317 @@
+.content_login{
+    width: 1200px;
+    height: auto;
+    margin: 0 auto;
+    padding-top:60px;
+}
+.content_left{
+    float: left;
+    width:120px;
+    height: auto;
+    text-align: left;
+    font-size: 12px;
+}
+.content_left p{
+    width: 100%;
+    height: 40px;
+    color: #0281d4;
+}
+.content_left ul{
+    width: 100%;
+    height: auto;
+    margin-bottom: 30px;
+}
+.content_left ul li{
+    list-style-type: none;
+    height: 25px;
+    line-height: 25px;
+    color: #7d7d7d;
+}
+.content_left ul li:hover{
+    color: #ff8d02;
+    cursor: pointer;
+}
+.content_left ul li.heder{
+    color: #333333;
+}
+.content_right{
+    float: left;
+    width: 1080px;
+    height: auto;
+}
+.content_right_header{
+    width: 1080px;
+    height:117px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    background:url('../../../resources/images/hang.png') no-repeat 0 center;
+}
+.order{
+    width: 1050px;
+    height: 540px;
+    overflow: hidden;
+    background-color: #fff;
+    padding:15px;
+    padding-bottom: 55px;
+}
+.order_header{
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+}
+.order_header label{
+    float: left;
+    width: 150px;
+    font-size: 16px;
+    color: #666666;
+    text-align: left;
+    font-weight: 600;
+}
+.order_header .lab_right{
+    font-size: 12px;
+    float: right;
+    text-align: right;
+}
+.order_header .lab_right a:hover{
+    color: #ff8d02;
+}
+.order_header .lab_right a{
+    color: #666;
+}
+.tab_header{
+    width: 1050px;
+    height: 40px;
+    line-height: 40px;
+    border:1px solid #dfe1e3;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+    background-color: #f5f5f4;
+}
+.tab_order{
+    width: 1050px;
+    height: 120px;
+    border:1px solid #dfe1e3;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+    background-color: #f5f5f4;
+}
+.tab_order p{
+    width: 1030px;
+    height: 35px;
+    line-height: 35px;
+    padding-left: 20px;
+    text-align: left;
+
+}
+.tab_order p span{
+    margin-right: 20px;
+}
+ul li{
+    list-style-type: none;
+}
+.tab_header li{
+    float: left;
+}
+.tab_order li{
+    float: left;
+    border-right: 1px solid #dfe1e3;
+    height: 55px;
+    background-color: #fff;
+    padding-top:20px;
+    padding-bottom: 10px;
+}
+.tab_order li span{
+    display: block;
+    overflow: hidden;
+}
+.one_li{
+    width: 154px;
+    text-align: left;
+    padding-left: 10px;
+}
+.one_li span{
+    width: 150px;
+    height:60px;
+}
+.one_li span a{
+color:#666;
+}
+.two_li{
+    width: 170px;
+}
+.two_li span{
+    width: 150px;
+    height:50px;
+}
+.two_li span a{
+    color:#666;
+}
+.three_li{
+    width: 215px;
+    padding-left: 15px;
+    text-align: left;
+}
+.three_li span{
+    width: 200px;
+    height:50px;
+}
+.four_li{
+    width: 130px;
+}
+.four_li span{
+    width: 110px;
+    height:50px;
+    padding-left: 10px;
+}
+.five_li{
+    width: 150px;
+}
+.five_li span{
+    width: 130px;
+    height:50px;
+    padding-left: 10px;
+}
+.six_li{
+    width: 100px;
+}
+.six_li span{
+    width: 70px;
+    height:50px;
+    padding-left: 10px;
+}
+.seven_li{
+    width: 99px;
+}
+.seven_li span{
+    width: 80px;
+    height:50px;
+    padding-left: 10px;
+}
+.tab_order .seven_li{
+    border-right: none;
+}
+.portrait{
+    float: left;
+    width:100px;
+    height:100px;
+    border-radius: 100%;
+    background-color:#eee;
+    margin-top: 9px;
+    margin-left: 10px;
+    overflow: hidden;
+}
+.portrait img{
+    display: block;
+    border:none;
+}
+.user_d{
+    float: left;
+    width:200px;
+    height:60px;
+    margin-top: 9px;
+    margin-left: 30px;
+    border-right: 1px solid #b8b8b8;
+    padding: 20px 0;
+}
+.user_ul{
+    width: 330px;
+    height:100px;
+    margin-left: 0;
+    padding: 0 70px;
+}
+.user_ul ul{
+    width: 330px;
+    height:60px;
+    padding: 20px 0;
+}
+.user_d a{
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    color: #262626;
+    font-size: 18px;
+}
+.user_d span{
+    color: #666;
+    font-size: 12px;
+}
+.user_ul ul li{
+    float: left;
+    width: 110px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+}
+.user_ul ul li a{
+    font-size: 14px;
+    color:#666;
+}
+.user_ul ul li a:hover{
+    color: #ff8d02;
+}
+.buyers{
+    float: left;
+    width: 252px;
+    height: 102px;
+    margin-left: 5px;
+    margin-top: 8px;
+    background:url('../../../resources/images/buyers.png') no-repeat center;
+}
+.buyers p{
+    width: 200px;
+    height:30px;
+    line-height: 30px;
+    padding-left: 20px;
+    font-size: 14px;
+    color: #333;
+}
+.buyers div{
+    width: 190px;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 50px;
+}
+.buyers div span{
+    display: inline-block;
+    width: 104px;
+    height: 27px;
+    text-align: center;
+    line-height: 27px;
+    background: url('../../../resources/images/buyers1.png') no-repeat center;
+    font-size: 14px;
+}
+.buyers div .span_active{
+    color: #0782d8;
+    background: url('../../../resources/images/buyers2.png') no-repeat 1px 2px;
+}
+.buyers div a{
+    display: inline-block;
+    font-size: 14px;
+    color:#666;
+    margin-left: 5px;
+}
+.buyers div a:hover{
+    color: #ff8d02;
+}
+.No_data{
+    width: 100%;
+    height: 400px;
+    padding-top: 70px;
+    display: none;
+}
+.No_data img{
+    display: block;
+    margin: 0 auto;
+}
+.No_data p{
+    width: 100%;
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+    font-size: 14px;
+    color: #b8b8b8;
+}

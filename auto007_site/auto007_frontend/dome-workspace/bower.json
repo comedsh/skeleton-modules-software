@@ -1,0 +1,9 @@
+{
+  "name": "fenghua",
+  "private": "true",
+  "dependencies": {
+    "jquery": "1.8.3",
+    "angular": "1.2.20",
+    "underscore": "1.8.3"
+  }
+}

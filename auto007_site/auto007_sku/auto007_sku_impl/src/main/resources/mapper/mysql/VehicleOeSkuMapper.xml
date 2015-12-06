@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fenghua.auto.sku.domain.VehicleOeSku">
+  <resultMap id="BaseResultMap" type="com.fenghua.auto.sku.domain.VehicleOeSku">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="oe_code" jdbcType="VARCHAR" property="oeCode" />
+    <result column="vehicle_id" jdbcType="BIGINT" property="vehicleId" />
+    <result column="vehicle_name" jdbcType="VARCHAR" property="vehicleName" />
+    <result column="brand" jdbcType="VARCHAR" property="brand" />
+    <result column="engine" jdbcType="VARCHAR" property="engine" />
+    <result column="period" jdbcType="VARCHAR" property="period" />
+    <result column="output_value" jdbcType="VARCHAR" property="outputValue" />
+    <result column="sku_id" jdbcType="BIGINT" property="skuId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, oe_code, vehicle_id, vehicle_name, brand, engine, period, output_value, sku_id
+  </sql>
+  <sql id="Base_Where_Case">
+    <where>
+      <if test="id != null">
+         AND id = #{id,jdbcType=BIGINT}
+      </if>
+      <if test="oeCode != null">
+         AND oe_code = #{oeCode,jdbcType=VARCHAR}
+      </if>
+      <if test="vehicleId != null">
+         AND vehicle_id = #{vehicleId,jdbcType=BIGINT}
+      </if>
+      <if test="vehicleName != null">
+         AND vehicle_name = #{vehicleName,jdbcType=VARCHAR}
+      </if>
+      <if test="brand != null">
+         AND brand = #{brand,jdbcType=VARCHAR}
+      </if>
+      <if test="engine != null">
+         AND engine = #{engine,jdbcType=VARCHAR}
+      </if>
+      <if test="period != null">
+         AND period = #{period,jdbcType=VARCHAR}
+      </if>
+      <if test="outputValue != null">
+         AND output_value = #{outputValue,jdbcType=VARCHAR}
+      </if>
+      <if test="skuId != null">
+         AND sku_id = #{skuId,jdbcType=BIGINT}
+      </if>
+    </where>
+  </sql>
+  <select id="selectCount" parameterType="com.fenghua.auto.sku.domain.VehicleOeSku" resultType="java.lang.Long">
+    select count( id)
+     from vehicle_oe_sku
+    <include refid="Base_Where_Case" />
+  </select>
+  <select id="select" parameterType="com.fenghua.auto.sku.domain.VehicleOeSku" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+     from vehicle_oe_sku
+    <include refid="Base_Where_Case" />
+    <if test="limit &gt; 0">
+       limit #{offset},#{limit} 
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from vehicle_oe_sku
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from vehicle_oe_sku
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.fenghua.auto.sku.domain.VehicleOeSku">
+    insert into vehicle_oe_sku (id, oe_code, vehicle_id, 
+      vehicle_name, brand, engine, 
+      period, output_value, sku_id
+      )
+    values (#{id,jdbcType=BIGINT}, #{oeCode,jdbcType=VARCHAR}, #{vehicleId,jdbcType=BIGINT}, 
+      #{vehicleName,jdbcType=VARCHAR}, #{brand,jdbcType=VARCHAR}, #{engine,jdbcType=VARCHAR}, 
+      #{period,jdbcType=VARCHAR}, #{outputValue,jdbcType=VARCHAR}, #{skuId,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.fenghua.auto.sku.domain.VehicleOeSku">
+    insert into vehicle_oe_sku
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="oeCode != null">
+        oe_code,
+      </if>
+      <if test="vehicleId != null">
+        vehicle_id,
+      </if>
+      <if test="vehicleName != null">
+        vehicle_name,
+      </if>
+      <if test="brand != null">
+        brand,
+      </if>
+      <if test="engine != null">
+        engine,
+      </if>
+      <if test="period != null">
+        period,
+      </if>
+      <if test="outputValue != null">
+        output_value,
+      </if>
+      <if test="skuId != null">
+        sku_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="oeCode != null">
+        #{oeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleId != null">
+        #{vehicleId,jdbcType=BIGINT},
+      </if>
+      <if test="vehicleName != null">
+        #{vehicleName,jdbcType=VARCHAR},
+      </if>
+      <if test="brand != null">
+        #{brand,jdbcType=VARCHAR},
+      </if>
+      <if test="engine != null">
+        #{engine,jdbcType=VARCHAR},
+      </if>
+      <if test="period != null">
+        #{period,jdbcType=VARCHAR},
+      </if>
+      <if test="outputValue != null">
+        #{outputValue,jdbcType=VARCHAR},
+      </if>
+      <if test="skuId != null">
+        #{skuId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fenghua.auto.sku.domain.VehicleOeSku">
+    update vehicle_oe_sku
+    <set>
+      <if test="oeCode != null">
+        oe_code = #{oeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleId != null">
+        vehicle_id = #{vehicleId,jdbcType=BIGINT},
+      </if>
+      <if test="vehicleName != null">
+        vehicle_name = #{vehicleName,jdbcType=VARCHAR},
+      </if>
+      <if test="brand != null">
+        brand = #{brand,jdbcType=VARCHAR},
+      </if>
+      <if test="engine != null">
+        engine = #{engine,jdbcType=VARCHAR},
+      </if>
+      <if test="period != null">
+        period = #{period,jdbcType=VARCHAR},
+      </if>
+      <if test="outputValue != null">
+        output_value = #{outputValue,jdbcType=VARCHAR},
+      </if>
+      <if test="skuId != null">
+        sku_id = #{skuId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.sku.domain.VehicleOeSku">
+    update vehicle_oe_sku
+    set oe_code = #{oeCode,jdbcType=VARCHAR},
+      vehicle_id = #{vehicleId,jdbcType=BIGINT},
+      vehicle_name = #{vehicleName,jdbcType=VARCHAR},
+      brand = #{brand,jdbcType=VARCHAR},
+      engine = #{engine,jdbcType=VARCHAR},
+      period = #{period,jdbcType=VARCHAR},
+      output_value = #{outputValue,jdbcType=VARCHAR},
+      sku_id = #{skuId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+</mapper>

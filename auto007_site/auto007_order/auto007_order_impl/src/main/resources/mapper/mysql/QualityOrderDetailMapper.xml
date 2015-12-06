@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fenghua.auto.order.domain.QualityOrderDetail" >
+  <resultMap id="BaseResultMap" type="com.fenghua.auto.order.domain.QualityOrderDetail" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="quality_id" property="qualityId" jdbcType="BIGINT" />
+    <result column="quality_no" property="qualityNo" jdbcType="VARCHAR" />
+    <result column="order_item_id" property="orderItemId" jdbcType="BIGINT" />
+    <result column="sku_id" property="skuId" jdbcType="BIGINT" />
+    <result column="sku_code" property="skuCode" jdbcType="VARCHAR" />
+    <result column="sku_name" property="skuName" jdbcType="VARCHAR" />
+    <result column="qty" property="qty" jdbcType="INTEGER" />
+    <result column="problem_desc" property="problemDesc" jdbcType="VARCHAR" />
+    <result column="process_desc" property="processDesc" jdbcType="VARCHAR" />
+    <result column="processor_id" property="processorId" jdbcType="BIGINT" />
+    <result column="process_time" property="processTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, quality_id, quality_no, order_item_id, sku_id, sku_code, sku_name, qty, problem_desc, 
+    process_desc, processor_id, process_time
+  </sql>
+  <sql id="Base_Where_Case" >
+    <where >
+      <if test="id != null" >
+         AND id = #{id,jdbcType=BIGINT}
+      </if>
+      <if test="qualityId != null" >
+         AND quality_id = #{qualityId,jdbcType=BIGINT}
+      </if>
+      <if test="qualityNo != null" >
+         AND quality_no = #{qualityNo,jdbcType=VARCHAR}
+      </if>
+      <if test="orderItemId != null" >
+         AND order_item_id = #{orderItemId,jdbcType=BIGINT}
+      </if>
+      <if test="skuId != null" >
+         AND sku_id = #{skuId,jdbcType=BIGINT}
+      </if>
+      <if test="skuCode != null" >
+         AND sku_code = #{skuCode,jdbcType=VARCHAR}
+      </if>
+      <if test="skuName != null" >
+         AND sku_name = #{skuName,jdbcType=VARCHAR}
+      </if>
+      <if test="qty != null" >
+         AND qty = #{qty,jdbcType=INTEGER}
+      </if>
+      <if test="problemDesc != null" >
+         AND problem_desc = #{problemDesc,jdbcType=VARCHAR}
+      </if>
+      <if test="processDesc != null" >
+         AND process_desc = #{processDesc,jdbcType=VARCHAR}
+      </if>
+      <if test="processorId != null" >
+         AND processor_id = #{processorId,jdbcType=BIGINT}
+      </if>
+      <if test="processTime != null" >
+         AND process_time = #{processTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </sql>
+  <select id="selectCount" resultType="java.lang.Long" parameterType="com.fenghua.auto.order.domain.QualityOrderDetail" >
+    select count( id)
+     from quality_order_detail
+    <include refid="Base_Where_Case" />
+  </select>
+  <select id="select" resultMap="BaseResultMap" parameterType="com.fenghua.auto.order.domain.QualityOrderDetail" >
+    select 
+    <include refid="Base_Column_List" />
+     from quality_order_detail
+    <include refid="Base_Where_Case" />
+    <if test="limit > 0" >
+       limit #{offset},#{limit} 
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from quality_order_detail
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from quality_order_detail
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.fenghua.auto.order.domain.QualityOrderDetail" >
+    insert into quality_order_detail (id, quality_id, quality_no, 
+      order_item_id, sku_id, sku_code, 
+      sku_name, qty, problem_desc, 
+      process_desc, processor_id, process_time
+      )
+    values (#{id,jdbcType=BIGINT}, #{qualityId,jdbcType=BIGINT}, #{qualityNo,jdbcType=VARCHAR}, 
+      #{orderItemId,jdbcType=BIGINT}, #{skuId,jdbcType=BIGINT}, #{skuCode,jdbcType=VARCHAR}, 
+      #{skuName,jdbcType=VARCHAR}, #{qty,jdbcType=INTEGER}, #{problemDesc,jdbcType=VARCHAR}, 
+      #{processDesc,jdbcType=VARCHAR}, #{processorId,jdbcType=BIGINT}, #{processTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.fenghua.auto.order.domain.QualityOrderDetail" >
+    insert into quality_order_detail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="qualityId != null" >
+        quality_id,
+      </if>
+      <if test="qualityNo != null" >
+        quality_no,
+      </if>
+      <if test="orderItemId != null" >
+        order_item_id,
+      </if>
+      <if test="skuId != null" >
+        sku_id,
+      </if>
+      <if test="skuCode != null" >
+        sku_code,
+      </if>
+      <if test="skuName != null" >
+        sku_name,
+      </if>
+      <if test="qty != null" >
+        qty,
+      </if>
+      <if test="problemDesc != null" >
+        problem_desc,
+      </if>
+      <if test="processDesc != null" >
+        process_desc,
+      </if>
+      <if test="processorId != null" >
+        processor_id,
+      </if>
+      <if test="processTime != null" >
+        process_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="qualityId != null" >
+        #{qualityId,jdbcType=BIGINT},
+      </if>
+      <if test="qualityNo != null" >
+        #{qualityNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderItemId != null" >
+        #{orderItemId,jdbcType=BIGINT},
+      </if>
+      <if test="skuId != null" >
+        #{skuId,jdbcType=BIGINT},
+      </if>
+      <if test="skuCode != null" >
+        #{skuCode,jdbcType=VARCHAR},
+      </if>
+      <if test="skuName != null" >
+        #{skuName,jdbcType=VARCHAR},
+      </if>
+      <if test="qty != null" >
+        #{qty,jdbcType=INTEGER},
+      </if>
+      <if test="problemDesc != null" >
+        #{problemDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="processDesc != null" >
+        #{processDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="processorId != null" >
+        #{processorId,jdbcType=BIGINT},
+      </if>
+      <if test="processTime != null" >
+        #{processTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fenghua.auto.order.domain.QualityOrderDetail" >
+    update quality_order_detail
+    <set >
+      <if test="qualityId != null" >
+        quality_id = #{qualityId,jdbcType=BIGINT},
+      </if>
+      <if test="qualityNo != null" >
+        quality_no = #{qualityNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderItemId != null" >
+        order_item_id = #{orderItemId,jdbcType=BIGINT},
+      </if>
+      <if test="skuId != null" >
+        sku_id = #{skuId,jdbcType=BIGINT},
+      </if>
+      <if test="skuCode != null" >
+        sku_code = #{skuCode,jdbcType=VARCHAR},
+      </if>
+      <if test="skuName != null" >
+        sku_name = #{skuName,jdbcType=VARCHAR},
+      </if>
+      <if test="qty != null" >
+        qty = #{qty,jdbcType=INTEGER},
+      </if>
+      <if test="problemDesc != null" >
+        problem_desc = #{problemDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="processDesc != null" >
+        process_desc = #{processDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="processorId != null" >
+        processor_id = #{processorId,jdbcType=BIGINT},
+      </if>
+      <if test="processTime != null" >
+        process_time = #{processTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.order.domain.QualityOrderDetail" >
+    update quality_order_detail
+    set quality_id = #{qualityId,jdbcType=BIGINT},
+      quality_no = #{qualityNo,jdbcType=VARCHAR},
+      order_item_id = #{orderItemId,jdbcType=BIGINT},
+      sku_id = #{skuId,jdbcType=BIGINT},
+      sku_code = #{skuCode,jdbcType=VARCHAR},
+      sku_name = #{skuName,jdbcType=VARCHAR},
+      qty = #{qty,jdbcType=INTEGER},
+      problem_desc = #{problemDesc,jdbcType=VARCHAR},
+      process_desc = #{processDesc,jdbcType=VARCHAR},
+      processor_id = #{processorId,jdbcType=BIGINT},
+      process_time = #{processTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

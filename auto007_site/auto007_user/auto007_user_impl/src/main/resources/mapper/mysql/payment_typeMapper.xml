@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fenghua.auto.backend.domain.user.PaymentType" >
+  <resultMap id="BaseResultMap" type="com.fenghua.auto.backend.domain.user.PaymentType" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="TypeName" property="typename" jdbcType="VARCHAR" />
+    <result column="Description" property="description" jdbcType="VARCHAR" />
+    <result column="NeedApprove" property="needapprove" jdbcType="CHAR" />
+    <result column="Created_TS" property="createdTs" jdbcType="TIMESTAMP" />
+    <result column="Created_By" property="createdBy" jdbcType="VARCHAR" />
+    <result column="Last_Modified_TS" property="lastModifiedTs" jdbcType="TIMESTAMP" />
+    <result column="Last_Modified_By" property="lastModifiedBy" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, TypeName, Description, NeedApprove, Created_TS, Created_By, Last_Modified_TS, 
+    Last_Modified_By
+  </sql>
+  <sql id="Base_Where_Case" >
+    <where >
+      <if test="id != null" >
+         AND ID = #{id,jdbcType=BIGINT}
+      </if>
+      <if test="typename != null" >
+         AND TypeName = #{typename,jdbcType=VARCHAR}
+      </if>
+      <if test="description != null" >
+         AND Description = #{description,jdbcType=VARCHAR}
+      </if>
+      <if test="needapprove != null" >
+         AND NeedApprove = #{needapprove,jdbcType=CHAR}
+      </if>
+      <if test="createdTs != null" >
+         AND Created_TS = #{createdTs,jdbcType=TIMESTAMP}
+      </if>
+      <if test="createdBy != null" >
+         AND Created_By = #{createdBy,jdbcType=VARCHAR}
+      </if>
+      <if test="lastModifiedTs != null" >
+         AND Last_Modified_TS = #{lastModifiedTs,jdbcType=TIMESTAMP}
+      </if>
+      <if test="lastModifiedBy != null" >
+         AND Last_Modified_By = #{lastModifiedBy,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </sql>
+  <select id="selectCount" resultType="java.lang.Long" parameterType="com.fenghua.auto.backend.domain.user.PaymentType" >
+    select count( ID)
+     from payment_type
+    <include refid="Base_Where_Case" />
+  </select>
+  <select id="select" resultMap="BaseResultMap" parameterType="com.fenghua.auto.backend.domain.user.PaymentType" >
+    select 
+    <include refid="Base_Column_List" />
+     from payment_type
+    <include refid="Base_Where_Case" />
+    <if test="limit > 0" >
+       limit #{offset},#{limit} 
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from payment_type
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from payment_type
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.fenghua.auto.backend.domain.user.PaymentType" >
+    insert into payment_type (ID, TypeName, Description, 
+      NeedApprove, Created_TS, Created_By, 
+      Last_Modified_TS, Last_Modified_By)
+    values (#{id,jdbcType=BIGINT}, #{typename,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
+      #{needapprove,jdbcType=CHAR}, #{createdTs,jdbcType=TIMESTAMP}, #{createdBy,jdbcType=VARCHAR}, 
+      #{lastModifiedTs,jdbcType=TIMESTAMP}, #{lastModifiedBy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fenghua.auto.backend.domain.user.PaymentType" >
+    insert into payment_type
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="typename != null" >
+        TypeName,
+      </if>
+      <if test="description != null" >
+        Description,
+      </if>
+      <if test="needapprove != null" >
+        NeedApprove,
+      </if>
+      <if test="createdTs != null" >
+        Created_TS,
+      </if>
+      <if test="createdBy != null" >
+        Created_By,
+      </if>
+      <if test="lastModifiedTs != null" >
+        Last_Modified_TS,
+      </if>
+      <if test="lastModifiedBy != null" >
+        Last_Modified_By,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="typename != null" >
+        #{typename,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="needapprove != null" >
+        #{needapprove,jdbcType=CHAR},
+      </if>
+      <if test="createdTs != null" >
+        #{createdTs,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifiedTs != null" >
+        #{lastModifiedTs,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastModifiedBy != null" >
+        #{lastModifiedBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fenghua.auto.backend.domain.user.PaymentType" >
+    update payment_type
+    <set >
+      <if test="typename != null" >
+        TypeName = #{typename,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        Description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="needapprove != null" >
+        NeedApprove = #{needapprove,jdbcType=CHAR},
+      </if>
+      <if test="createdTs != null" >
+        Created_TS = #{createdTs,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        Created_By = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifiedTs != null" >
+        Last_Modified_TS = #{lastModifiedTs,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastModifiedBy != null" >
+        Last_Modified_By = #{lastModifiedBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.backend.domain.user.PaymentType" >
+    update payment_type
+    set TypeName = #{typename,jdbcType=VARCHAR},
+      Description = #{description,jdbcType=VARCHAR},
+      NeedApprove = #{needapprove,jdbcType=CHAR},
+      Created_TS = #{createdTs,jdbcType=TIMESTAMP},
+      Created_By = #{createdBy,jdbcType=VARCHAR},
+      Last_Modified_TS = #{lastModifiedTs,jdbcType=TIMESTAMP},
+      Last_Modified_By = #{lastModifiedBy,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

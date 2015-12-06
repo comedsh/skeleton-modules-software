@@ -1,0 +1,59 @@
+/*
+Icon classes can be used entirely standalone. They are named after their original file names.
+
+```html
+<!-- `display: block` sprite -->
+<div class="icon-home"></div>
+
+<!-- `display: inline-block` sprite -->
+<img class="icon-home" />
+```
+*/
+.icon-arrow_down {
+  background-image: url(../img/sprite.png);
+  background-position: -8px 0px;
+  width: 9px;
+  height: 5px;
+}
+.icon-arrow_right {
+  background-image: url(../img/sprite.png);
+  background-position: 0px 0px;
+  width: 8px;
+  height: 14px;
+}
+.icon-cart {
+  background-image: url(../img/sprite.png);
+  background-position: -33px 0px;
+  width: 17px;
+  height: 17px;
+}
+.icon-email {
+  background-image: url(../img/sprite.png);
+  background-position: -86px 0px;
+  width: 20px;
+  height: 14px;
+}
+.icon-error {
+  background-image: url(../img/sprite.png);
+  background-position: -67px 0px;
+  width: 19px;
+  height: 18px;
+}
+.icon-lock {
+  background-image: url(../img/sprite.png);
+  background-position: -17px 0px;
+  width: 16px;
+  height: 20px;
+}
+.icon-numbackground {
+  background-image: url(../img/sprite.png);
+  background-position: -106px 0px;
+  width: 29px;
+  height: 17px;
+}
+.icon-phone {
+  background-image: url(../img/sprite.png);
+  background-position: -50px 0px;
+  width: 17px;
+  height: 16px;
+}

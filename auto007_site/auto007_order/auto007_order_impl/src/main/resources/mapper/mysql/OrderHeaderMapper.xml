@@ -1,0 +1,594 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fenghua.auto.order.domain.OrderHeader" >
+  <resultMap id="BaseResultMap" type="com.fenghua.auto.order.domain.OrderHeader" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="order_no" property="orderNo" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="fork_status" property="forkStatus" jdbcType="INTEGER" />
+    <result column="buyer_id" property="buyerId" jdbcType="BIGINT" />
+    <result column="seller_id" property="sellerId" jdbcType="BIGINT" />
+    <result column="warehouse_id" property="warehouseId" jdbcType="BIGINT" />
+    <result column="master_order_id" property="masterOrderId" jdbcType="BIGINT" />
+    <result column="total_amount" property="totalAmount" jdbcType="DECIMAL" />
+    <result column="discount_amount" property="discountAmount" jdbcType="DECIMAL" />
+    <result column="need_pay_amount" property="needPayAmount" jdbcType="DECIMAL" />
+    <result column="transport_amount" property="transportAmount" jdbcType="DECIMAL" />
+    <result column="payed_amount" property="payedAmount" jdbcType="DECIMAL" />
+    <result column="payment_type" property="paymentType" jdbcType="BIGINT" />
+    <result column="pay_method" property="payMethod" jdbcType="INTEGER" />
+    <result column="pay_status" property="payStatus" jdbcType="INTEGER" />
+    <result column="delivery_method" property="deliveryMethod" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="pay_time" property="payTime" jdbcType="TIMESTAMP" />
+    <result column="confirm_time" property="confirmTime" jdbcType="TIMESTAMP" />
+    <result column="send_time" property="sendTime" jdbcType="TIMESTAMP" />
+    <result column="receive_delay_times" property="receiveDelayTimes" jdbcType="INTEGER" />
+    <result column="receive_expire_time" property="receiveExpireTime" jdbcType="TIMESTAMP" />
+    <result column="received_time" property="receivedTime" jdbcType="TIMESTAMP" />
+    <result column="city_id" property="cityId" jdbcType="BIGINT" />
+    <result column="sender" property="sender" jdbcType="VARCHAR" />
+    <result column="sender_address" property="senderAddress" jdbcType="VARCHAR" />
+    <result column="receiver" property="receiver" jdbcType="VARCHAR" />
+    <result column="receiver_phone" property="receiverPhone" jdbcType="VARCHAR" />
+    <result column="receiver_idcard" property="receiverIdcard" jdbcType="VARCHAR" />
+    <result column="receiver_address" property="receiverAddress" jdbcType="VARCHAR" />
+    <result column="invoice_flag" property="invoiceFlag" jdbcType="INTEGER" />
+    <result column="come_from" property="comeFrom" jdbcType="INTEGER" />
+    <result column="evaluated_flag" property="evaluatedFlag" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="evaluated_time" property="evaluatedTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, order_no, status, fork_status, buyer_id, seller_id, warehouse_id, master_order_id, 
+    total_amount, discount_amount, need_pay_amount, transport_amount, payed_amount, payment_type, 
+    pay_method, pay_status, delivery_method, create_time, pay_time, confirm_time, send_time, 
+    receive_delay_times, receive_expire_time, received_time, city_id, sender, sender_address, 
+    receiver, receiver_phone, receiver_idcard, receiver_address, invoice_flag, come_from, 
+    evaluated_flag, remark, evaluated_time
+  </sql>
+  <sql id="Base_Where_Case" >
+    <where >
+      <if test="id != null" >
+         AND id = #{id,jdbcType=BIGINT}
+      </if>
+      <if test="orderNo != null" >
+         AND order_no = #{orderNo,jdbcType=VARCHAR}
+      </if>
+      <if test="status != null" >
+         AND status = #{status,jdbcType=INTEGER}
+      </if>
+      <if test="forkStatus != null" >
+         AND fork_status = #{forkStatus,jdbcType=INTEGER}
+      </if>
+      <if test="buyerId != null" >
+         AND buyer_id = #{buyerId,jdbcType=BIGINT}
+      </if>
+      <if test="sellerId != null" >
+         AND seller_id = #{sellerId,jdbcType=BIGINT}
+      </if>
+      <if test="warehouseId != null" >
+         AND warehouse_id = #{warehouseId,jdbcType=BIGINT}
+      </if>
+      <if test="masterOrderId != null" >
+         AND master_order_id = #{masterOrderId,jdbcType=BIGINT}
+      </if>
+      <if test="totalAmount != null" >
+         AND total_amount = #{totalAmount,jdbcType=DECIMAL}
+      </if>
+      <if test="discountAmount != null" >
+         AND discount_amount = #{discountAmount,jdbcType=DECIMAL}
+      </if>
+      <if test="needPayAmount != null" >
+         AND need_pay_amount = #{needPayAmount,jdbcType=DECIMAL}
+      </if>
+      <if test="transportAmount != null" >
+         AND transport_amount = #{transportAmount,jdbcType=DECIMAL}
+      </if>
+      <if test="payedAmount != null" >
+         AND payed_amount = #{payedAmount,jdbcType=DECIMAL}
+      </if>
+      <if test="paymentType != null" >
+         AND payment_type = #{paymentType,jdbcType=BIGINT}
+      </if>
+      <if test="payMethod != null" >
+         AND pay_method = #{payMethod,jdbcType=INTEGER}
+      </if>
+      <if test="payStatus != null" >
+         AND pay_status = #{payStatus,jdbcType=INTEGER}
+      </if>
+      <if test="deliveryMethod != null" >
+         AND delivery_method = #{deliveryMethod,jdbcType=INTEGER}
+      </if>
+      <if test="createTime != null" >
+         AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="payTime != null" >
+         AND pay_time = #{payTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="confirmTime != null" >
+         AND confirm_time = #{confirmTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="sendTime != null" >
+         AND send_time = #{sendTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="receiveDelayTimes != null" >
+         AND receive_delay_times = #{receiveDelayTimes,jdbcType=INTEGER}
+      </if>
+      <if test="receiveExpireTime != null" >
+         AND receive_expire_time = #{receiveExpireTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="receivedTime != null" >
+         AND received_time = #{receivedTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="cityId != null" >
+         AND city_id = #{cityId,jdbcType=BIGINT}
+      </if>
+      <if test="sender != null" >
+         AND sender = #{sender,jdbcType=VARCHAR}
+      </if>
+      <if test="senderAddress != null" >
+         AND sender_address = #{senderAddress,jdbcType=VARCHAR}
+      </if>
+      <if test="receiver != null" >
+         AND receiver = #{receiver,jdbcType=VARCHAR}
+      </if>
+      <if test="receiverPhone != null" >
+         AND receiver_phone = #{receiverPhone,jdbcType=VARCHAR}
+      </if>
+      <if test="receiverIdcard != null" >
+         AND receiver_idcard = #{receiverIdcard,jdbcType=VARCHAR}
+      </if>
+      <if test="receiverAddress != null" >
+         AND receiver_address = #{receiverAddress,jdbcType=VARCHAR}
+      </if>
+      <if test="invoiceFlag != null" >
+         AND invoice_flag = #{invoiceFlag,jdbcType=INTEGER}
+      </if>
+      <if test="comeFrom != null" >
+         AND come_from = #{comeFrom,jdbcType=INTEGER}
+      </if>
+      <if test="evaluatedFlag != null" >
+         AND evaluated_flag = #{evaluatedFlag,jdbcType=INTEGER}
+      </if>
+      <if test="remark != null" >
+         AND remark = #{remark,jdbcType=VARCHAR}
+      </if>
+      <if test="evaluatedTime != null" >
+         AND evaluated_time = #{evaluatedTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </sql>
+  <select id="selectCount" resultType="java.lang.Long" parameterType="com.fenghua.auto.order.domain.OrderHeader" >
+    select count( id)
+     from order_header
+    <include refid="Base_Where_Case" />
+  </select>
+  <select id="select" resultMap="BaseResultMap" parameterType="com.fenghua.auto.order.domain.OrderHeader" >
+    select 
+    <include refid="Base_Column_List" />
+     from order_header
+    <include refid="Base_Where_Case" />
+    <if test="limit > 0" >
+       limit #{offset},#{limit} 
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from order_header
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <!-- 根据主订单id查询所有的子订单 -->
+  <select id="selectOrderHeadersByOrdermaserId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from order_header
+    where master_order_id = #{masterOrderId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from order_header
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.fenghua.auto.order.domain.OrderHeader" >
+    insert into order_header (id, order_no, status, 
+      fork_status, buyer_id, seller_id, 
+      warehouse_id, master_order_id, total_amount, 
+      discount_amount, need_pay_amount, transport_amount, 
+      payed_amount, payment_type, pay_method, 
+      pay_status, delivery_method, create_time, 
+      pay_time, confirm_time, send_time, 
+      receive_delay_times, receive_expire_time, 
+      received_time, city_id, sender, 
+      sender_address, receiver, receiver_phone, 
+      receiver_idcard, receiver_address, invoice_flag, 
+      come_from, evaluated_flag, remark, 
+      evaluated_time)
+    values (#{id,jdbcType=BIGINT}, #{orderNo,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{forkStatus,jdbcType=INTEGER}, #{buyerId,jdbcType=BIGINT}, #{sellerId,jdbcType=BIGINT}, 
+      #{warehouseId,jdbcType=BIGINT}, #{masterOrderId,jdbcType=BIGINT}, #{totalAmount,jdbcType=DECIMAL}, 
+      #{discountAmount,jdbcType=DECIMAL}, #{needPayAmount,jdbcType=DECIMAL}, #{transportAmount,jdbcType=DECIMAL}, 
+      #{payedAmount,jdbcType=DECIMAL}, #{paymentType,jdbcType=BIGINT}, #{payMethod,jdbcType=INTEGER}, 
+      #{payStatus,jdbcType=INTEGER}, #{deliveryMethod,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{payTime,jdbcType=TIMESTAMP}, #{confirmTime,jdbcType=TIMESTAMP}, #{sendTime,jdbcType=TIMESTAMP}, 
+      #{receiveDelayTimes,jdbcType=INTEGER}, #{receiveExpireTime,jdbcType=TIMESTAMP}, 
+      #{receivedTime,jdbcType=TIMESTAMP}, #{cityId,jdbcType=BIGINT}, #{sender,jdbcType=VARCHAR}, 
+      #{senderAddress,jdbcType=VARCHAR}, #{receiver,jdbcType=VARCHAR}, #{receiverPhone,jdbcType=VARCHAR}, 
+      #{receiverIdcard,jdbcType=VARCHAR}, #{receiverAddress,jdbcType=VARCHAR}, #{invoiceFlag,jdbcType=INTEGER}, 
+      #{comeFrom,jdbcType=INTEGER}, #{evaluatedFlag,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, 
+      #{evaluatedTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.fenghua.auto.order.domain.OrderHeader" >
+    insert into order_header
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="orderNo != null" >
+        order_no,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="forkStatus != null" >
+        fork_status,
+      </if>
+      <if test="buyerId != null" >
+        buyer_id,
+      </if>
+      <if test="sellerId != null" >
+        seller_id,
+      </if>
+      <if test="warehouseId != null" >
+        warehouse_id,
+      </if>
+      <if test="masterOrderId != null" >
+        master_order_id,
+      </if>
+      <if test="totalAmount != null" >
+        total_amount,
+      </if>
+      <if test="discountAmount != null" >
+        discount_amount,
+      </if>
+      <if test="needPayAmount != null" >
+        need_pay_amount,
+      </if>
+      <if test="transportAmount != null" >
+        transport_amount,
+      </if>
+      <if test="payedAmount != null" >
+        payed_amount,
+      </if>
+      <if test="paymentType != null" >
+        payment_type,
+      </if>
+      <if test="payMethod != null" >
+        pay_method,
+      </if>
+      <if test="payStatus != null" >
+        pay_status,
+      </if>
+      <if test="deliveryMethod != null" >
+        delivery_method,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="payTime != null" >
+        pay_time,
+      </if>
+      <if test="confirmTime != null" >
+        confirm_time,
+      </if>
+      <if test="sendTime != null" >
+        send_time,
+      </if>
+      <if test="receiveDelayTimes != null" >
+        receive_delay_times,
+      </if>
+      <if test="receiveExpireTime != null" >
+        receive_expire_time,
+      </if>
+      <if test="receivedTime != null" >
+        received_time,
+      </if>
+      <if test="cityId != null" >
+        city_id,
+      </if>
+      <if test="sender != null" >
+        sender,
+      </if>
+      <if test="senderAddress != null" >
+        sender_address,
+      </if>
+      <if test="receiver != null" >
+        receiver,
+      </if>
+      <if test="receiverPhone != null" >
+        receiver_phone,
+      </if>
+      <if test="receiverIdcard != null" >
+        receiver_idcard,
+      </if>
+      <if test="receiverAddress != null" >
+        receiver_address,
+      </if>
+      <if test="invoiceFlag != null" >
+        invoice_flag,
+      </if>
+      <if test="comeFrom != null" >
+        come_from,
+      </if>
+      <if test="evaluatedFlag != null" >
+        evaluated_flag,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="evaluatedTime != null" >
+        evaluated_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="orderNo != null" >
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="forkStatus != null" >
+        #{forkStatus,jdbcType=INTEGER},
+      </if>
+      <if test="buyerId != null" >
+        #{buyerId,jdbcType=BIGINT},
+      </if>
+      <if test="sellerId != null" >
+        #{sellerId,jdbcType=BIGINT},
+      </if>
+      <if test="warehouseId != null" >
+        #{warehouseId,jdbcType=BIGINT},
+      </if>
+      <if test="masterOrderId != null" >
+        #{masterOrderId,jdbcType=BIGINT},
+      </if>
+      <if test="totalAmount != null" >
+        #{totalAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="discountAmount != null" >
+        #{discountAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="needPayAmount != null" >
+        #{needPayAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="transportAmount != null" >
+        #{transportAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="payedAmount != null" >
+        #{payedAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="paymentType != null" >
+        #{paymentType,jdbcType=BIGINT},
+      </if>
+      <if test="payMethod != null" >
+        #{payMethod,jdbcType=INTEGER},
+      </if>
+      <if test="payStatus != null" >
+        #{payStatus,jdbcType=INTEGER},
+      </if>
+      <if test="deliveryMethod != null" >
+        #{deliveryMethod,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="payTime != null" >
+        #{payTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="confirmTime != null" >
+        #{confirmTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sendTime != null" >
+        #{sendTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="receiveDelayTimes != null" >
+        #{receiveDelayTimes,jdbcType=INTEGER},
+      </if>
+      <if test="receiveExpireTime != null" >
+        #{receiveExpireTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="receivedTime != null" >
+        #{receivedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cityId != null" >
+        #{cityId,jdbcType=BIGINT},
+      </if>
+      <if test="sender != null" >
+        #{sender,jdbcType=VARCHAR},
+      </if>
+      <if test="senderAddress != null" >
+        #{senderAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="receiver != null" >
+        #{receiver,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverPhone != null" >
+        #{receiverPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverIdcard != null" >
+        #{receiverIdcard,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverAddress != null" >
+        #{receiverAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="invoiceFlag != null" >
+        #{invoiceFlag,jdbcType=INTEGER},
+      </if>
+      <if test="comeFrom != null" >
+        #{comeFrom,jdbcType=INTEGER},
+      </if>
+      <if test="evaluatedFlag != null" >
+        #{evaluatedFlag,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluatedTime != null" >
+        #{evaluatedTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fenghua.auto.order.domain.OrderHeader" >
+    update order_header
+    <set >
+      <if test="orderNo != null" >
+        order_no = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="forkStatus != null" >
+        fork_status = #{forkStatus,jdbcType=INTEGER},
+      </if>
+      <if test="buyerId != null" >
+        buyer_id = #{buyerId,jdbcType=BIGINT},
+      </if>
+      <if test="sellerId != null" >
+        seller_id = #{sellerId,jdbcType=BIGINT},
+      </if>
+      <if test="warehouseId != null" >
+        warehouse_id = #{warehouseId,jdbcType=BIGINT},
+      </if>
+      <if test="masterOrderId != null" >
+        master_order_id = #{masterOrderId,jdbcType=BIGINT},
+      </if>
+      <if test="totalAmount != null" >
+        total_amount = #{totalAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="discountAmount != null" >
+        discount_amount = #{discountAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="needPayAmount != null" >
+        need_pay_amount = #{needPayAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="transportAmount != null" >
+        transport_amount = #{transportAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="payedAmount != null" >
+        payed_amount = #{payedAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="paymentType != null" >
+        payment_type = #{paymentType,jdbcType=BIGINT},
+      </if>
+      <if test="payMethod != null" >
+        pay_method = #{payMethod,jdbcType=INTEGER},
+      </if>
+      <if test="payStatus != null" >
+        pay_status = #{payStatus,jdbcType=INTEGER},
+      </if>
+      <if test="deliveryMethod != null" >
+        delivery_method = #{deliveryMethod,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="payTime != null" >
+        pay_time = #{payTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="confirmTime != null" >
+        confirm_time = #{confirmTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sendTime != null" >
+        send_time = #{sendTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="receiveDelayTimes != null" >
+        receive_delay_times = #{receiveDelayTimes,jdbcType=INTEGER},
+      </if>
+      <if test="receiveExpireTime != null" >
+        receive_expire_time = #{receiveExpireTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="receivedTime != null" >
+        received_time = #{receivedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cityId != null" >
+        city_id = #{cityId,jdbcType=BIGINT},
+      </if>
+      <if test="sender != null" >
+        sender = #{sender,jdbcType=VARCHAR},
+      </if>
+      <if test="senderAddress != null" >
+        sender_address = #{senderAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="receiver != null" >
+        receiver = #{receiver,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverPhone != null" >
+        receiver_phone = #{receiverPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverIdcard != null" >
+        receiver_idcard = #{receiverIdcard,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverAddress != null" >
+        receiver_address = #{receiverAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="invoiceFlag != null" >
+        invoice_flag = #{invoiceFlag,jdbcType=INTEGER},
+      </if>
+      <if test="comeFrom != null" >
+        come_from = #{comeFrom,jdbcType=INTEGER},
+      </if>
+      <if test="evaluatedFlag != null" >
+        evaluated_flag = #{evaluatedFlag,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluatedTime != null" >
+        evaluated_time = #{evaluatedTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.order.domain.OrderHeader" >
+    update order_header
+    set order_no = #{orderNo,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      fork_status = #{forkStatus,jdbcType=INTEGER},
+      buyer_id = #{buyerId,jdbcType=BIGINT},
+      seller_id = #{sellerId,jdbcType=BIGINT},
+      warehouse_id = #{warehouseId,jdbcType=BIGINT},
+      master_order_id = #{masterOrderId,jdbcType=BIGINT},
+      total_amount = #{totalAmount,jdbcType=DECIMAL},
+      discount_amount = #{discountAmount,jdbcType=DECIMAL},
+      need_pay_amount = #{needPayAmount,jdbcType=DECIMAL},
+      transport_amount = #{transportAmount,jdbcType=DECIMAL},
+      payed_amount = #{payedAmount,jdbcType=DECIMAL},
+      payment_type = #{paymentType,jdbcType=BIGINT},
+      pay_method = #{payMethod,jdbcType=INTEGER},
+      pay_status = #{payStatus,jdbcType=INTEGER},
+      delivery_method = #{deliveryMethod,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      pay_time = #{payTime,jdbcType=TIMESTAMP},
+      confirm_time = #{confirmTime,jdbcType=TIMESTAMP},
+      send_time = #{sendTime,jdbcType=TIMESTAMP},
+      receive_delay_times = #{receiveDelayTimes,jdbcType=INTEGER},
+      receive_expire_time = #{receiveExpireTime,jdbcType=TIMESTAMP},
+      received_time = #{receivedTime,jdbcType=TIMESTAMP},
+      city_id = #{cityId,jdbcType=BIGINT},
+      sender = #{sender,jdbcType=VARCHAR},
+      sender_address = #{senderAddress,jdbcType=VARCHAR},
+      receiver = #{receiver,jdbcType=VARCHAR},
+      receiver_phone = #{receiverPhone,jdbcType=VARCHAR},
+      receiver_idcard = #{receiverIdcard,jdbcType=VARCHAR},
+      receiver_address = #{receiverAddress,jdbcType=VARCHAR},
+      invoice_flag = #{invoiceFlag,jdbcType=INTEGER},
+      come_from = #{comeFrom,jdbcType=INTEGER},
+      evaluated_flag = #{evaluatedFlag,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      evaluated_time = #{evaluatedTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fenghua.auto.user.domain.Seller" >
+  <resultMap id="BaseResultMap" type="com.fenghua.auto.user.domain.Seller" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="Created_TS" property="createdTs" jdbcType="TIMESTAMP" />
+    <result column="Created_by" property="createdBy" jdbcType="VARCHAR" />
+    <result column="Last_Modified_TS" property="lastModifiedTs" jdbcType="TIMESTAMP" />
+    <result column="Last_Modified_By" property="lastModifiedBy" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, name, Created_TS, Created_by, Last_Modified_TS, Last_Modified_By
+  </sql>
+  <sql id="Base_Where_Case" >
+    <where >
+      <if test="id != null" >
+         AND ID = #{id,jdbcType=BIGINT}
+      </if>
+      <if test="name != null" >
+         AND name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="createdTs != null" >
+         AND Created_TS = #{createdTs,jdbcType=TIMESTAMP}
+      </if>
+      <if test="createdBy != null" >
+         AND Created_by = #{createdBy,jdbcType=VARCHAR}
+      </if>
+      <if test="lastModifiedTs != null" >
+         AND Last_Modified_TS = #{lastModifiedTs,jdbcType=TIMESTAMP}
+      </if>
+      <if test="lastModifiedBy != null" >
+         AND Last_Modified_By = #{lastModifiedBy,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </sql>
+  <select id="selectCount" resultType="java.lang.Long" parameterType="com.fenghua.auto.user.domain.Seller" >
+    select count( ID)
+     from seller
+    <include refid="Base_Where_Case" />
+  </select>
+  <select id="select" resultMap="BaseResultMap" parameterType="com.fenghua.auto.user.domain.Seller" >
+    select 
+    <include refid="Base_Column_List" />
+     from seller
+    <include refid="Base_Where_Case" />
+    <if test="limit > 0" >
+       limit #{offset},#{limit} 
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from seller
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from seller
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.fenghua.auto.user.domain.Seller" >
+    insert into seller (ID, name, Created_TS, 
+      Created_by, Last_Modified_TS, Last_Modified_By
+      )
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{createdTs,jdbcType=TIMESTAMP}, 
+      #{createdBy,jdbcType=VARCHAR}, #{lastModifiedTs,jdbcType=TIMESTAMP}, #{lastModifiedBy,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.fenghua.auto.user.domain.Seller" >
+    insert into seller
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="createdTs != null" >
+        Created_TS,
+      </if>
+      <if test="createdBy != null" >
+        Created_by,
+      </if>
+      <if test="lastModifiedTs != null" >
+        Last_Modified_TS,
+      </if>
+      <if test="lastModifiedBy != null" >
+        Last_Modified_By,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTs != null" >
+        #{createdTs,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifiedTs != null" >
+        #{lastModifiedTs,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastModifiedBy != null" >
+        #{lastModifiedBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fenghua.auto.user.domain.Seller" >
+    update seller
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTs != null" >
+        Created_TS = #{createdTs,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        Created_by = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifiedTs != null" >
+        Last_Modified_TS = #{lastModifiedTs,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastModifiedBy != null" >
+        Last_Modified_By = #{lastModifiedBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.user.domain.Seller" >
+    update seller
+    set name = #{name,jdbcType=VARCHAR},
+      Created_TS = #{createdTs,jdbcType=TIMESTAMP},
+      Created_by = #{createdBy,jdbcType=VARCHAR},
+      Last_Modified_TS = #{lastModifiedTs,jdbcType=TIMESTAMP},
+      Last_Modified_By = #{lastModifiedBy,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

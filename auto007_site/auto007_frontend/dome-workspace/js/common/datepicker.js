@@ -1,0 +1,3 @@
+function datepicker() {
+	alert('datepicker');
+}

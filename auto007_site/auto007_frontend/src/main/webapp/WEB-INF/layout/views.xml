@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+  "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+  "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+  
+<tiles-definitions>
+
+<!-- defined for education -->
+   <definition name="forgot.findPassbyphoneOrEmail" extends="web.default_template">
+      <put-attribute name="body" value="/WEB-INF/views/user/forgetPass/findPassbyphone.jsp" />  
+      
+  </definition>
+   <definition name="forgot.findPassbyphoneSecond" extends="web.default_template">
+      <put-attribute name="body" value="/WEB-INF/views/user/forgetPass/findPassbyphone_second.jsp" />  
+  </definition>
+     <definition name="forgot.findPassbyphoneLast" extends="web.default_template">
+      <put-attribute name="body" value="/WEB-INF/views/user/forgetPass/findPassbyphone_last.jsp" />  
+  </definition>
+   <definition name="forgot.findPassbyEmailSecond" extends="web.default_template">
+      <put-attribute name="body" value="/WEB-INF/views/user/forgetPass/findPssByEamil_Second.jsp" />  
+  </definition>
+   <definition name="forgot.findPassbyEmailThired" extends="web.default_template">
+      <put-attribute name="body" value="/WEB-INF/views/user/forgetPass/findPassbyemail.jsp" />  
+  </definition>
+   <definition name="forgot.findPassbyEmailLast" extends="web.default_template">
+      <put-attribute name="body" value="/WEB-INF/views/user/forgetPass/findPssByEamil_last.jsp" />  
+  </definition>
+  <definition name="education.spittle_home" extends="education.default_template">
+      <put-attribute name="body" value="/WEB-INF/views/education/home_body.jsp" />
+  </definition>
+<definition name="forgot.findPassbyemail" >
+      <put-attribute name="body" value="/WEB-INF/views/user/forgetpass/findPassbyemail.jsp" />
+  </definition>
+  <definition name="education.spittle_view" extends="education.default_template">
+      <put-attribute name="body" value="/WEB-INF/views/education/view_body.jsp" />
+  </definition>
+
+<!-- defined for education -->
+  
+  <definition name="web.index_view" extends="web.common_template">
+  
+      <put-attribute name="title" value="AUTO007汽车配件配送中心" />
+
+      <put-attribute name="body" value="/WEB-INF/views/web/index_body.jsp" />  
+      
+  </definition>
+  <definition name="web.ocatalogs_view" extends="web.common_template">
+  
+      <put-attribute name="title" value="AUTO007 原厂目录" />
+
+      <put-attribute name="body" value="/WEB-INF/views/catalogs/ocatalogs.jsp" />  
+      
+  </definition>  
+  
+  <definition name="web.i18n" extends="web.default_template">
+  
+      <put-attribute name="title" value="AUTO007汽车配件配送中心" />
+
+      <put-attribute name="body" value="/WEB-INF/views/web/i18n.jsp" />  
+      
+  </definition>
+  <definition name="web.i18n_en_US" extends="web.default_template">
+  
+      <put-attribute name="title" value="AUTO007汽车配件配送中心" />
+
+      <put-attribute name="body" value="/WEB-INF/views/web/i18n_en_US.jsp" />  
+      
+  </definition>
+  
+  <definition name="web.i18n_ru_RU" extends="web.default_template">
+  
+      <put-attribute name="title" value="AUTO007汽车配件配送中心" />
+
+      <put-attribute name="body" value="/WEB-INF/views/web/i18n_ru_RU.jsp" />  
+      
+  </definition>
+  
+
+  <!-- 登录页面 -->
+  <definition name="web.login" extends="web.default_template">
+      <put-attribute name="body" value="/WEB-INF/views/user/login.jsp" />  
+  </definition>
+  <!-- 登陆或注册（绑定第三方账号） -->
+  <definition name="web.bindingUser" extends="web.default_template">
+      <put-attribute name="body" value="/WEB-INF/views/user/bindingUser.jsp" />  
+  </definition>
+  <!-- 用户中心 -->
+  <definition name="user.center" extends="web.default_template">
+      <put-attribute name="body" value="/WEB-INF/views/user/userCenter/userCenter.jsp" />  
+  </definition>
+  <!-- 注册成功页面 -->
+  <definition name="register.success" extends="web.default_template">
+      <put-attribute name="body" value="/WEB-INF/views/user/register/successRegister.jsp" />  
+  </definition>
+  <!-- 个人修改信息页面 -->
+  <definition name="personal.information" extends="web.default_template">
+      <put-attribute name="body" value="/WEB-INF/views/user/userCenter/sellerInformation.jsp" />  
+  </definition>
+
+  <!-- 注册页面 -->
+  <definition name="register.information" extends="web.default_template">
+      <put-attribute name="body" value="/WEB-INF/views/user/registration.jsp" />  
+  </definition>
+</tiles-definitions>

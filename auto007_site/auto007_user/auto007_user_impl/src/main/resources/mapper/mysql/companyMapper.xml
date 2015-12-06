@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fenghua.auto.backend.domain.user.Company" >
+  <resultMap id="BaseResultMap" type="com.fenghua.auto.backend.domain.vo.user.CompanyVo" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="Compnay_Name" property="compnayName" jdbcType="VARCHAR" />
+    <result column="City_Area_ID" property="cityAreaId" jdbcType="BIGINT" />
+    <result column="Detail_Address" property="detailAddress" jdbcType="VARCHAR" />
+    <result column="Headcount" property="headcount" jdbcType="VARCHAR" />
+    <result column="Business_Licence" property="businessLicence" jdbcType="VARCHAR" />
+    <result column="Taxpayer_Licence" property="taxpayerLicence" jdbcType="VARCHAR" />
+    <result column="Taxpayer_Number" property="taxpayerNumber" jdbcType="VARCHAR" />
+    <result column="Contacts_Name" property="contactsName" jdbcType="VARCHAR" />
+    <result column="Contacts_Phone" property="contactsPhone" jdbcType="VARCHAR" />
+    <result column="Contacts_Mobile" property="contactsMobile" jdbcType="VARCHAR" />
+    <result column="Contacts_Dept" property="contactsDept" jdbcType="VARCHAR" />
+    <result column="Contacts_Email" property="contactsEmail" jdbcType="VARCHAR" />
+    <result column="Created_TS" property="createdTs" jdbcType="TIMESTAMP" />
+    <result column="Created_by" property="createdBy" jdbcType="VARCHAR" />
+    <result column="Last_Modified_TS" property="lastModifiedTs" jdbcType="TIMESTAMP" />
+    <result column="Last_Modified_By" property="lastModifiedBy" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, Compnay_Name, City_Area_ID, Detail_Address, Headcount, Business_Licence, Taxpayer_Licence, 
+    Taxpayer_Number, Contacts_Name, Contacts_Phone, Contacts_Mobile, Contacts_Dept, Contacts_Email, 
+    Created_TS, Created_by, Last_Modified_TS, Last_Modified_By
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from company
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from company
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.fenghua.auto.backend.domain.user.Company" >
+    insert into company (ID, Compnay_Name, City_Area_ID, 
+      Detail_Address, Headcount, Business_Licence, 
+      Taxpayer_Licence, Taxpayer_Number, Contacts_Name, 
+      Contacts_Phone, Contacts_Mobile, Contacts_Dept, 
+      Contacts_Email, Created_TS, Created_by, 
+      Last_Modified_TS, Last_Modified_By)
+    values (#{id,jdbcType=BIGINT}, #{compnayName,jdbcType=VARCHAR}, #{cityAreaId,jdbcType=BIGINT}, 
+      #{detailAddress,jdbcType=VARCHAR}, #{headcount,jdbcType=VARCHAR}, #{businessLicence,jdbcType=VARCHAR}, 
+      #{taxpayerLicence,jdbcType=VARCHAR}, #{taxpayerNumber,jdbcType=VARCHAR}, #{contactsName,jdbcType=VARCHAR}, 
+      #{contactsPhone,jdbcType=VARCHAR}, #{contactsMobile,jdbcType=VARCHAR}, #{contactsDept,jdbcType=VARCHAR}, 
+      #{contactsEmail,jdbcType=VARCHAR}, #{createdTs,jdbcType=TIMESTAMP}, #{createdBy,jdbcType=VARCHAR}, 
+      #{lastModifiedTs,jdbcType=TIMESTAMP}, #{lastModifiedBy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="id" parameterType="com.fenghua.auto.backend.domain.user.Company" >
+    insert into company
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="compnayName != null" >
+        Compnay_Name,
+      </if>
+      <if test="cityAreaId != null" >
+        City_Area_ID,
+      </if>
+      <if test="detailAddress != null" >
+        Detail_Address,
+      </if>
+      <if test="headcount != null" >
+        Headcount,
+      </if>
+      <if test="businessLicence != null" >
+        Business_Licence,
+      </if>
+      <if test="taxpayerLicence != null" >
+        Taxpayer_Licence,
+      </if>
+      <if test="taxpayerNumber != null" >
+        Taxpayer_Number,
+      </if>
+      <if test="contactsName != null" >
+        Contacts_Name,
+      </if>
+      <if test="contactsPhone != null" >
+        Contacts_Phone,
+      </if>
+      <if test="contactsMobile != null" >
+        Contacts_Mobile,
+      </if>
+      <if test="contactsDept != null" >
+        Contacts_Dept,
+      </if>
+      <if test="contactsEmail != null" >
+        Contacts_Email,
+      </if>
+      <if test="createdTs != null" >
+        Created_TS,
+      </if>
+      <if test="createdBy != null" >
+        Created_by,
+      </if>
+      <if test="lastModifiedTs != null" >
+        Last_Modified_TS,
+      </if>
+      <if test="lastModifiedBy != null" >
+        Last_Modified_By,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="compnayName != null" >
+        #{compnayName,jdbcType=VARCHAR},
+      </if>
+      <if test="cityAreaId != null" >
+        #{cityAreaId,jdbcType=BIGINT},
+      </if>
+      <if test="detailAddress != null" >
+        #{detailAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="headcount != null" >
+        #{headcount,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLicence != null" >
+        #{businessLicence,jdbcType=VARCHAR},
+      </if>
+      <if test="taxpayerLicence != null" >
+        #{taxpayerLicence,jdbcType=VARCHAR},
+      </if>
+      <if test="taxpayerNumber != null" >
+        #{taxpayerNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="contactsName != null" >
+        #{contactsName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactsPhone != null" >
+        #{contactsPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactsMobile != null" >
+        #{contactsMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="contactsDept != null" >
+        #{contactsDept,jdbcType=VARCHAR},
+      </if>
+      <if test="contactsEmail != null" >
+        #{contactsEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTs != null" >
+        #{createdTs,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifiedTs != null" >
+        #{lastModifiedTs,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastModifiedBy != null" >
+        #{lastModifiedBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fenghua.auto.backend.domain.user.Company" >
+    update company
+    <set >
+      <if test="compnayName != null" >
+        Compnay_Name = #{compnayName,jdbcType=VARCHAR},
+      </if>
+      <if test="cityAreaId != null" >
+        City_Area_ID = #{cityAreaId,jdbcType=BIGINT},
+      </if>
+      <if test="detailAddress != null" >
+        Detail_Address = #{detailAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="headcount != null" >
+        Headcount = #{headcount,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLicence != null" >
+        Business_Licence = #{businessLicence,jdbcType=VARCHAR},
+      </if>
+      <if test="taxpayerLicence != null" >
+        Taxpayer_Licence = #{taxpayerLicence,jdbcType=VARCHAR},
+      </if>
+      <if test="taxpayerNumber != null" >
+        Taxpayer_Number = #{taxpayerNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="contactsName != null" >
+        Contacts_Name = #{contactsName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactsPhone != null" >
+        Contacts_Phone = #{contactsPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactsMobile != null" >
+        Contacts_Mobile = #{contactsMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="contactsDept != null" >
+        Contacts_Dept = #{contactsDept,jdbcType=VARCHAR},
+      </if>
+      <if test="contactsEmail != null" >
+        Contacts_Email = #{contactsEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTs != null" >
+        Created_TS = #{createdTs,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        Created_by = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifiedTs != null" >
+        Last_Modified_TS = #{lastModifiedTs,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastModifiedBy != null" >
+        Last_Modified_By = #{lastModifiedBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.backend.domain.user.Company" >
+    update company
+    set Compnay_Name = #{compnayName,jdbcType=VARCHAR},
+      City_Area_ID = #{cityAreaId,jdbcType=BIGINT},
+      Detail_Address = #{detailAddress,jdbcType=VARCHAR},
+      Headcount = #{headcount,jdbcType=VARCHAR},
+      Business_Licence = #{businessLicence,jdbcType=VARCHAR},
+      Taxpayer_Licence = #{taxpayerLicence,jdbcType=VARCHAR},
+      Taxpayer_Number = #{taxpayerNumber,jdbcType=VARCHAR},
+      Contacts_Name = #{contactsName,jdbcType=VARCHAR},
+      Contacts_Phone = #{contactsPhone,jdbcType=VARCHAR},
+      Contacts_Mobile = #{contactsMobile,jdbcType=VARCHAR},
+      Contacts_Dept = #{contactsDept,jdbcType=VARCHAR},
+      Contacts_Email = #{contactsEmail,jdbcType=VARCHAR},
+      Created_TS = #{createdTs,jdbcType=TIMESTAMP},
+      Created_by = #{createdBy,jdbcType=VARCHAR},
+      Last_Modified_TS = #{lastModifiedTs,jdbcType=TIMESTAMP},
+      Last_Modified_By = #{lastModifiedBy,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByFixed" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from company
+    where Contacts_Phone = #{contactsPhone,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByContactsTelephone" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from company
+    where Contacts_Mobile = #{contactsMobile,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByContactsEmail" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from company
+    where Contacts_Email = #{contactsEmail,jdbcType=VARCHAR}
+  </select>
+</mapper>

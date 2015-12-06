@@ -1,0 +1,12 @@
+@import 
+	"common/configuration.scss", 
+	"common/base.scss",
+	"common/header.scss",
+	"common/footer.scss";
+
+.content{
+	width:$siteWidth;
+	height:438px;
+	margin:45px auto 0;
+	background:url('../img/login_banner.png') no-repeat;
+}

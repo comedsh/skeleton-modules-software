@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        *{margin: 0;padding: 0}
+        @charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-animate){display:none !important;}ng\:form{display:block;}
+    </style>
+    <script type="text/javascript" src="./resources/angular/angular.js"></script>
+</head>
+<body>
+<div ng-controller="myctrl">
+    <input ng-model="test" type="text" placeholder="aa">
+    <span><button ng-click="add()">提交</button></span><br>
+    <h4 ng-if="tests.length>0">任务列表1</h4>
+    <ul>
+        <li ng-repeat="item in tests track by $index">
+            {{item}}
+            <a ng-click="tests.splice($index,1)" href="javascript:void(0)">删除</a>
+        </li>
+    </ul>
+</div>
+<script type="text/javascript">
+   var app=angular.module('myApp',[]);
+    app.controller('myctrl',function($scope){
+        $scope.test='';
+        $scope.tests=[];
+        $scope.add=function(){
+            $scope.tests.push($scope.test);
+        }
+    })
+</script>
+</body>
+</html>

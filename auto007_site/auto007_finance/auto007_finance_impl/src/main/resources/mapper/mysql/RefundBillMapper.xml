@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fenghua.auto.finance.domain.RefundBill" >
+  <resultMap id="BaseResultMap" type="com.fenghua.auto.finance.domain.RefundBill" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="rebill_no" property="rebillNo" jdbcType="VARCHAR" />
+    <result column="retrade_no" property="retradeNo" jdbcType="VARCHAR" />
+    <result column="refund_id" property="refundId" jdbcType="BIGINT" />
+    <result column="refund_no" property="refundNo" jdbcType="VARCHAR" />
+    <result column="order_id" property="orderId" jdbcType="BIGINT" />
+    <result column="order_no" property="orderNo" jdbcType="VARCHAR" />
+    <result column="buyer_id" property="buyerId" jdbcType="BIGINT" />
+    <result column="seller_id" property="sellerId" jdbcType="BIGINT" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="refund_amount" property="refundAmount" jdbcType="DECIMAL" />
+    <result column="act_refund_mount" property="actRefundMount" jdbcType="DECIMAL" />
+    <result column="refund_method" property="refundMethod" jdbcType="INTEGER" />
+    <result column="pay_method" property="payMethod" jdbcType="INTEGER" />
+    <result column="account_type" property="accountType" jdbcType="INTEGER" />
+    <result column="account_name" property="accountName" jdbcType="INTEGER" />
+    <result column="bank_code" property="bankCode" jdbcType="VARCHAR" />
+    <result column="account_no" property="accountNo" jdbcType="INTEGER" />
+    <result column="payed_time" property="payedTime" jdbcType="TIMESTAMP" />
+    <result column="process_content" property="processContent" jdbcType="VARCHAR" />
+    <result column="processor_id" property="processorId" jdbcType="BIGINT" />
+    <result column="audit_time" property="auditTime" jdbcType="TIMESTAMP" />
+    <result column="submit_id" property="submitId" jdbcType="BIGINT" />
+    <result column="submit_time" property="submitTime" jdbcType="TIMESTAMP" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="trade_no" property="tradeNo" jdbcType="VARCHAR" />
+    <result column="refund_time" property="refundTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, rebill_no, retrade_no, refund_id, refund_no, order_id, order_no, buyer_id, seller_id, 
+    status, refund_amount, act_refund_mount, refund_method, pay_method, account_type, 
+    account_name, bank_code, account_no, payed_time, process_content, processor_id, audit_time, 
+    submit_id, submit_time, remark, trade_no, refund_time
+  </sql>
+  <sql id="Base_Where_Case" >
+    <where >
+      <if test="id != null" >
+         AND id = #{id,jdbcType=BIGINT}
+      </if>
+      <if test="rebillNo != null" >
+         AND rebill_no = #{rebillNo,jdbcType=VARCHAR}
+      </if>
+      <if test="retradeNo != null" >
+         AND retrade_no = #{retradeNo,jdbcType=VARCHAR}
+      </if>
+      <if test="refundId != null" >
+         AND refund_id = #{refundId,jdbcType=BIGINT}
+      </if>
+      <if test="refundNo != null" >
+         AND refund_no = #{refundNo,jdbcType=VARCHAR}
+      </if>
+      <if test="orderId != null" >
+         AND order_id = #{orderId,jdbcType=BIGINT}
+      </if>
+      <if test="orderNo != null" >
+         AND order_no = #{orderNo,jdbcType=VARCHAR}
+      </if>
+      <if test="buyerId != null" >
+         AND buyer_id = #{buyerId,jdbcType=BIGINT}
+      </if>
+      <if test="sellerId != null" >
+         AND seller_id = #{sellerId,jdbcType=BIGINT}
+      </if>
+      <if test="status != null" >
+         AND status = #{status,jdbcType=INTEGER}
+      </if>
+      <if test="refundAmount != null" >
+         AND refund_amount = #{refundAmount,jdbcType=DECIMAL}
+      </if>
+      <if test="actRefundMount != null" >
+         AND act_refund_mount = #{actRefundMount,jdbcType=DECIMAL}
+      </if>
+      <if test="refundMethod != null" >
+         AND refund_method = #{refundMethod,jdbcType=INTEGER}
+      </if>
+      <if test="payMethod != null" >
+         AND pay_method = #{payMethod,jdbcType=INTEGER}
+      </if>
+      <if test="accountType != null" >
+         AND account_type = #{accountType,jdbcType=INTEGER}
+      </if>
+      <if test="accountName != null" >
+         AND account_name = #{accountName,jdbcType=INTEGER}
+      </if>
+      <if test="bankCode != null" >
+         AND bank_code = #{bankCode,jdbcType=VARCHAR}
+      </if>
+      <if test="accountNo != null" >
+         AND account_no = #{accountNo,jdbcType=INTEGER}
+      </if>
+      <if test="payedTime != null" >
+         AND payed_time = #{payedTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="processContent != null" >
+         AND process_content = #{processContent,jdbcType=VARCHAR}
+      </if>
+      <if test="processorId != null" >
+         AND processor_id = #{processorId,jdbcType=BIGINT}
+      </if>
+      <if test="auditTime != null" >
+         AND audit_time = #{auditTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="submitId != null" >
+         AND submit_id = #{submitId,jdbcType=BIGINT}
+      </if>
+      <if test="submitTime != null" >
+         AND submit_time = #{submitTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="remark != null" >
+         AND remark = #{remark,jdbcType=VARCHAR}
+      </if>
+      <if test="tradeNo != null" >
+         AND trade_no = #{tradeNo,jdbcType=VARCHAR}
+      </if>
+      <if test="refundTime != null" >
+         AND refund_time = #{refundTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </sql>
+  <select id="selectCount" resultType="java.lang.Long" parameterType="com.fenghua.auto.finance.domain.RefundBill" >
+    select count( id)
+     from refund_bill
+    <include refid="Base_Where_Case" />
+  </select>
+  <select id="select" resultMap="BaseResultMap" parameterType="com.fenghua.auto.finance.domain.RefundBill" >
+    select 
+    <include refid="Base_Column_List" />
+     from refund_bill
+    <include refid="Base_Where_Case" />
+    <if test="limit > 0" >
+       limit #{offset},#{limit} 
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from refund_bill
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from refund_bill
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.fenghua.auto.finance.domain.RefundBill" >
+    insert into refund_bill (id, rebill_no, retrade_no, 
+      refund_id, refund_no, order_id, 
+      order_no, buyer_id, seller_id, 
+      status, refund_amount, act_refund_mount, 
+      refund_method, pay_method, account_type, 
+      account_name, bank_code, account_no, 
+      payed_time, process_content, processor_id, 
+      audit_time, submit_id, submit_time, 
+      remark, trade_no, refund_time
+      )
+    values (#{id,jdbcType=BIGINT}, #{rebillNo,jdbcType=VARCHAR}, #{retradeNo,jdbcType=VARCHAR}, 
+      #{refundId,jdbcType=BIGINT}, #{refundNo,jdbcType=VARCHAR}, #{orderId,jdbcType=BIGINT}, 
+      #{orderNo,jdbcType=VARCHAR}, #{buyerId,jdbcType=BIGINT}, #{sellerId,jdbcType=BIGINT}, 
+      #{status,jdbcType=INTEGER}, #{refundAmount,jdbcType=DECIMAL}, #{actRefundMount,jdbcType=DECIMAL}, 
+      #{refundMethod,jdbcType=INTEGER}, #{payMethod,jdbcType=INTEGER}, #{accountType,jdbcType=INTEGER}, 
+      #{accountName,jdbcType=INTEGER}, #{bankCode,jdbcType=VARCHAR}, #{accountNo,jdbcType=INTEGER}, 
+      #{payedTime,jdbcType=TIMESTAMP}, #{processContent,jdbcType=VARCHAR}, #{processorId,jdbcType=BIGINT}, 
+      #{auditTime,jdbcType=TIMESTAMP}, #{submitId,jdbcType=BIGINT}, #{submitTime,jdbcType=TIMESTAMP}, 
+      #{remark,jdbcType=VARCHAR}, #{tradeNo,jdbcType=VARCHAR}, #{refundTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.fenghua.auto.finance.domain.RefundBill" >
+    insert into refund_bill
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="rebillNo != null" >
+        rebill_no,
+      </if>
+      <if test="retradeNo != null" >
+        retrade_no,
+      </if>
+      <if test="refundId != null" >
+        refund_id,
+      </if>
+      <if test="refundNo != null" >
+        refund_no,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="orderNo != null" >
+        order_no,
+      </if>
+      <if test="buyerId != null" >
+        buyer_id,
+      </if>
+      <if test="sellerId != null" >
+        seller_id,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="refundAmount != null" >
+        refund_amount,
+      </if>
+      <if test="actRefundMount != null" >
+        act_refund_mount,
+      </if>
+      <if test="refundMethod != null" >
+        refund_method,
+      </if>
+      <if test="payMethod != null" >
+        pay_method,
+      </if>
+      <if test="accountType != null" >
+        account_type,
+      </if>
+      <if test="accountName != null" >
+        account_name,
+      </if>
+      <if test="bankCode != null" >
+        bank_code,
+      </if>
+      <if test="accountNo != null" >
+        account_no,
+      </if>
+      <if test="payedTime != null" >
+        payed_time,
+      </if>
+      <if test="processContent != null" >
+        process_content,
+      </if>
+      <if test="processorId != null" >
+        processor_id,
+      </if>
+      <if test="auditTime != null" >
+        audit_time,
+      </if>
+      <if test="submitId != null" >
+        submit_id,
+      </if>
+      <if test="submitTime != null" >
+        submit_time,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="tradeNo != null" >
+        trade_no,
+      </if>
+      <if test="refundTime != null" >
+        refund_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="rebillNo != null" >
+        #{rebillNo,jdbcType=VARCHAR},
+      </if>
+      <if test="retradeNo != null" >
+        #{retradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="refundId != null" >
+        #{refundId,jdbcType=BIGINT},
+      </if>
+      <if test="refundNo != null" >
+        #{refundNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="orderNo != null" >
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerId != null" >
+        #{buyerId,jdbcType=BIGINT},
+      </if>
+      <if test="sellerId != null" >
+        #{sellerId,jdbcType=BIGINT},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="refundAmount != null" >
+        #{refundAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="actRefundMount != null" >
+        #{actRefundMount,jdbcType=DECIMAL},
+      </if>
+      <if test="refundMethod != null" >
+        #{refundMethod,jdbcType=INTEGER},
+      </if>
+      <if test="payMethod != null" >
+        #{payMethod,jdbcType=INTEGER},
+      </if>
+      <if test="accountType != null" >
+        #{accountType,jdbcType=INTEGER},
+      </if>
+      <if test="accountName != null" >
+        #{accountName,jdbcType=INTEGER},
+      </if>
+      <if test="bankCode != null" >
+        #{bankCode,jdbcType=VARCHAR},
+      </if>
+      <if test="accountNo != null" >
+        #{accountNo,jdbcType=INTEGER},
+      </if>
+      <if test="payedTime != null" >
+        #{payedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="processContent != null" >
+        #{processContent,jdbcType=VARCHAR},
+      </if>
+      <if test="processorId != null" >
+        #{processorId,jdbcType=BIGINT},
+      </if>
+      <if test="auditTime != null" >
+        #{auditTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="submitId != null" >
+        #{submitId,jdbcType=BIGINT},
+      </if>
+      <if test="submitTime != null" >
+        #{submitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeNo != null" >
+        #{tradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="refundTime != null" >
+        #{refundTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fenghua.auto.finance.domain.RefundBill" >
+    update refund_bill
+    <set >
+      <if test="rebillNo != null" >
+        rebill_no = #{rebillNo,jdbcType=VARCHAR},
+      </if>
+      <if test="retradeNo != null" >
+        retrade_no = #{retradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="refundId != null" >
+        refund_id = #{refundId,jdbcType=BIGINT},
+      </if>
+      <if test="refundNo != null" >
+        refund_no = #{refundNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="orderNo != null" >
+        order_no = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerId != null" >
+        buyer_id = #{buyerId,jdbcType=BIGINT},
+      </if>
+      <if test="sellerId != null" >
+        seller_id = #{sellerId,jdbcType=BIGINT},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="refundAmount != null" >
+        refund_amount = #{refundAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="actRefundMount != null" >
+        act_refund_mount = #{actRefundMount,jdbcType=DECIMAL},
+      </if>
+      <if test="refundMethod != null" >
+        refund_method = #{refundMethod,jdbcType=INTEGER},
+      </if>
+      <if test="payMethod != null" >
+        pay_method = #{payMethod,jdbcType=INTEGER},
+      </if>
+      <if test="accountType != null" >
+        account_type = #{accountType,jdbcType=INTEGER},
+      </if>
+      <if test="accountName != null" >
+        account_name = #{accountName,jdbcType=INTEGER},
+      </if>
+      <if test="bankCode != null" >
+        bank_code = #{bankCode,jdbcType=VARCHAR},
+      </if>
+      <if test="accountNo != null" >
+        account_no = #{accountNo,jdbcType=INTEGER},
+      </if>
+      <if test="payedTime != null" >
+        payed_time = #{payedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="processContent != null" >
+        process_content = #{processContent,jdbcType=VARCHAR},
+      </if>
+      <if test="processorId != null" >
+        processor_id = #{processorId,jdbcType=BIGINT},
+      </if>
+      <if test="auditTime != null" >
+        audit_time = #{auditTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="submitId != null" >
+        submit_id = #{submitId,jdbcType=BIGINT},
+      </if>
+      <if test="submitTime != null" >
+        submit_time = #{submitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeNo != null" >
+        trade_no = #{tradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="refundTime != null" >
+        refund_time = #{refundTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.finance.domain.RefundBill" >
+    update refund_bill
+    set rebill_no = #{rebillNo,jdbcType=VARCHAR},
+      retrade_no = #{retradeNo,jdbcType=VARCHAR},
+      refund_id = #{refundId,jdbcType=BIGINT},
+      refund_no = #{refundNo,jdbcType=VARCHAR},
+      order_id = #{orderId,jdbcType=BIGINT},
+      order_no = #{orderNo,jdbcType=VARCHAR},
+      buyer_id = #{buyerId,jdbcType=BIGINT},
+      seller_id = #{sellerId,jdbcType=BIGINT},
+      status = #{status,jdbcType=INTEGER},
+      refund_amount = #{refundAmount,jdbcType=DECIMAL},
+      act_refund_mount = #{actRefundMount,jdbcType=DECIMAL},
+      refund_method = #{refundMethod,jdbcType=INTEGER},
+      pay_method = #{payMethod,jdbcType=INTEGER},
+      account_type = #{accountType,jdbcType=INTEGER},
+      account_name = #{accountName,jdbcType=INTEGER},
+      bank_code = #{bankCode,jdbcType=VARCHAR},
+      account_no = #{accountNo,jdbcType=INTEGER},
+      payed_time = #{payedTime,jdbcType=TIMESTAMP},
+      process_content = #{processContent,jdbcType=VARCHAR},
+      processor_id = #{processorId,jdbcType=BIGINT},
+      audit_time = #{auditTime,jdbcType=TIMESTAMP},
+      submit_id = #{submitId,jdbcType=BIGINT},
+      submit_time = #{submitTime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR},
+      trade_no = #{tradeNo,jdbcType=VARCHAR},
+      refund_time = #{refundTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

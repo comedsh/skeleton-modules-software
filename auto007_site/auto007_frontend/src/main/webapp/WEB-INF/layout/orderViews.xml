@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+  "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+  "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+  
+<tiles-definitions>
+
+  <definition name="web.order.shoppingCart_list" extends="web.default_template">
+ 	  <put-attribute name="title" value="我的购物车" />
+      <put-attribute name="body" value="/WEB-INF/views/order/cart/list.jsp" />  
+  </definition>
+  <definition name="web.order.addSkuToCart" extends="web.default_template">
+ 	  <put-attribute name="title" value="商品已成功加入购物车" />
+      <put-attribute name="body" value="/WEB-INF/views/order/cart/add.jsp" />  
+  </definition>
+  
+  <definition name="web.order.submit" extends="web.default_template">
+ 	  <put-attribute name="title" value="提交订单" />
+      <put-attribute name="body" value="/WEB-INF/views/order/submit/submit.jsp" /> 
+  </definition> 
+  
+  <definition name="web.order.buyerOrder_list" extends="web.default_template">
+ 	  <put-attribute name="title" value="买家订单列表" />
+      <put-attribute name="body" value="/WEB-INF/views/order/list/buyerOrderList.jsp" />  
+  </definition>
+  
+  <definition name="web.order.buyerOrder_item" extends="web.default_template">
+ 	  <put-attribute name="title" value="买家订单详情" />
+      <put-attribute name="body" value="/WEB-INF/views/order/list/buyerOrderItem.jsp" />  
+  </definition>
+  
+  <definition name="web.finance.order.pay" extends="web.default_template">
+ 	  <put-attribute name="title" value="订单支付" />
+      <put-attribute name="body" value="/WEB-INF/views/finance/pay/payMethod.jsp" />  
+  </definition>
+
+</tiles-definitions>

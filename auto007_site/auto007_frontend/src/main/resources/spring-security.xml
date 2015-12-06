@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans:beans xmlns:beans="http://www.springframework.org/schema/beans"  
+    xmlns="http://www.springframework.org/schema/security"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+						http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">  
+
+  <global-method-security pre-post-annotations="enabled"/>
+  <http pattern="/login.jsp*" security="none"></http>
+
+  <http entry-point-ref="loginUrlAuthenticationEntryPoint"> 
+  
+    <!-- 需要ssl认证的url start -->
+    <intercept-url pattern="/ssl/test" requires-channel="https"/>
+    <intercept-url pattern="/secure/main" access="authenticated"/>
+    <!-- end -->
+    <!-- 表单登录过滤器 -->
+    <custom-filter position="FORM_LOGIN_FILTER" ref="customUsernamePasswordAuthenticationFilter" />
+    <custom-filter position="CONCURRENT_SESSION_FILTER" ref="concurrencyFilter" />
+    <!-- 自定义过滤器 -->
+    <custom-filter ref="customSecurityFilter" before="FILTER_SECURITY_INTERCEPTOR" />
+    <custom-filter ref="rememberMeFilter" position="REMEMBER_ME_FILTER"></custom-filter>
+    <!-- 需要认证的url -->
+    <intercept-url pattern="/**" access="permitAll"/>
+    <csrf disabled="true"/>
+    <logout success-handler-ref="logoutAuthenticationSuccessHandler" delete-cookies="JSESSIONID"/>
+    <csrf request-matcher-ref="csrfSecurityRequestMatcher"/>
+	<!-- session 管理中 有一些关于用户登录的策略 -->
+  	<session-management session-authentication-strategy-ref="sas"/>
+  </http>
+  
+  <!-- 加密方式，密码长度60位, -->
+  <beans:bean id="encoder"
+		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+  
+  <authentication-manager alias="authenticationManager">
+		<!--  <authentication-provider user-service-ref="userDetailService">
+			<password-encoder ref="encoder" />
+	     </authentication-provider> -->
+	     
+	     <authentication-provider ref="loginAuthenticationProvider"></authentication-provider>
+	     <authentication-provider ref="rememberMeAuthenticationProvider"></authentication-provider>
+  </authentication-manager>
+
+    <beans:bean id="loginAuthenticationProvider" 
+       class="com.fenghua.auto.user.authentication.LoginAuthenticationProvider">
+         <beans:property name="userDetailsService" ref="userDetailService"/>
+         <beans:property name="passwordEncoder" ref="encoder"></beans:property>
+       </beans:bean>
+	<beans:bean id="userDetailService"
+		class="com.fenghua.auto.user.authentication.CustomUserDetailService"></beans:bean>
+
+
+
+   <!-- 定义登录界面-->
+  <beans:bean id="loginUrlAuthenticationEntryPoint" class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
+		<beans:constructor-arg name="loginFormUrl" value="/secure/login"></beans:constructor-arg>
+  </beans:bean>
+  
+  <!-- 登录表单Filter -->
+  <beans:bean id="customUsernamePasswordAuthenticationFilter" class="com.fenghua.auto.user.authentication.CustomUsernamePasswordAuthenticationFilter">
+		<beans:property name="authenticationManager" ref="authenticationManager" />
+		<beans:property name="authenticationFailureHandler" ref="simpleUrlAuthenticationFailureHandler" />
+		<beans:property name="authenticationSuccessHandler" ref="loginAuthenticationSuccessHandler" />
+		<beans:property name="rememberMeServices" ref="rememberMeServices"/>
+		<beans:property name="sessionAuthenticationStrategy" ref="sas"></beans:property>	
+	</beans:bean>
+   
+    <!-- 登出成功跳转URL-->
+    <beans:bean id="logoutAuthenticationSuccessHandler"
+		class="org.springframework.security.web.authentication.logout.SimpleUrlLogoutSuccessHandler">
+		<beans:property name="defaultTargetUrl" value="/secure/logout"></beans:property>
+	</beans:bean>
+
+    <!-- 认证成功跳转URL -->
+	<beans:bean id="loginAuthenticationSuccessHandler"
+		class="org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler">
+		<beans:property name="defaultTargetUrl" value="/secure/userCenter"></beans:property>	
+	</beans:bean>
+
+    <!-- 认证失败跳转URL -->
+	<beans:bean id="simpleUrlAuthenticationFailureHandler" class="org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler">
+		<beans:property name="defaultFailureUrl" value="/secure/failure"></beans:property>
+		<beans:property name="useForward" value="true"></beans:property>
+	</beans:bean>
+
+    <!-- 资源管理类 -->
+    <beans:bean id="customSecurityMetadataSource" init-method="loadResourceDefine" class="com.fenghua.auto.backend.service.security.InvocationSecurityMetadataSourceService"></beans:bean>
+
+    <!-- 访问决策类 -->
+	<beans:bean id="accessDecisionManager"	class="com.fenghua.auto.backend.core.security.CustomAccessDecisionManager"></beans:bean>
+	
+	<beans:bean id="customSecurityFilter" class="com.fenghua.auto.backend.core.security.CustomFilterSecurityInterceptor">
+		<beans:property name="authenticationManager" ref="authenticationManager" />
+		<!-- 访问决策器，决定用户是否有权限去访问某个资源 -->
+		<beans:property name="accessDecisionManager" ref="accessDecisionManager" />
+		<beans:property name="securityMetadataSource" ref="customSecurityMetadataSource" />
+	</beans:bean>
+   <beans:bean class="com.fenghua.auto.backend.core.security.DefaultRolesPrefixPostProcessor"/>
+   
+   <!-- 自动登录 -->
+   <beans:bean id="rememberMeServices" class="org.springframework.security.web.authentication.rememberme.PersistentTokenBasedRememberMeServices">
+		
+	    <beans:constructor-arg name="key" value="fenghuads"></beans:constructor-arg>
+	    <beans:constructor-arg name="userDetailsService" ref="userDetailService"></beans:constructor-arg>
+	    <beans:constructor-arg name="tokenRepository" ref="jdbcTokenRepo"></beans:constructor-arg>
+
+		<!-- 指定参数 -->
+		<beans:property name="parameter" value="autoLogin"></beans:property>
+
+   </beans:bean>
+   
+    <beans:bean name="jdbcTokenRepo" class="org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl">
+            <!-- 数据源 -->
+            <beans:property name="dataSource" ref="dataSource"/>
+            <!-- 是否在系统启动时创建持久化token的数据库表 -->
+            <beans:property name="createTableOnStartup" value="false"/>
+         </beans:bean>
+   
+     <beans:bean id="rememberMeFilter" class="org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter">
+		<beans:constructor-arg name="rememberMeServices" ref="rememberMeServices"/>
+		<beans:constructor-arg name="authenticationManager" ref="authenticationManager"/>
+   </beans:bean>
+   
+
+   <beans:bean id="rememberMeAuthenticationProvider" class="org.springframework.security.authentication.RememberMeAuthenticationProvider">
+	    <beans:constructor-arg name="key" value="fenghuads"/>
+   </beans:bean>
+   
+   <!-- 配置session  -->
+   <beans:bean id="concurrencyFilter" class="org.springframework.security.web.session.ConcurrentSessionFilter">
+        <beans:constructor-arg name="sessionRegistry" ref="sessionRegistry"></beans:constructor-arg>
+         <beans:constructor-arg name="expiredUrl" value="/secure/session/invalid"></beans:constructor-arg>
+    </beans:bean>
+
+   <beans:bean id="sessionRegistry" class="org.springframework.security.core.session.SessionRegistryImpl" />
+	
+	<beans:bean id="sas" class="org.springframework.security.web.authentication.session.CompositeSessionAuthenticationStrategy">
+       <beans:constructor-arg>
+		 <beans:list>
+		     <!-- 并发session -->
+			<beans:bean class="org.springframework.security.web.authentication.session.ConcurrentSessionControlAuthenticationStrategy">
+				<beans:constructor-arg ref="sessionRegistry"/>
+				<beans:property name="maximumSessions" value="1" />
+				<beans:property name="exceptionIfMaximumExceeded" value="false" />
+			</beans:bean>
+			<beans:bean class="org.springframework.security.web.authentication.session.SessionFixationProtectionStrategy"/>
+			<beans:bean class="org.springframework.security.web.authentication.session.RegisterSessionAuthenticationStrategy">
+				<beans:constructor-arg ref="sessionRegistry"/>
+			</beans:bean>
+		</beans:list>
+   	 </beans:constructor-arg>
+	</beans:bean>
+
+	<beans:bean id="csrfSecurityRequestMatcher" class="com.fenghua.auto.backend.core.security.CsrfSecurityRequestMatcher">
+         <!-- 不需要crsf认证的页面 -->
+         <beans:property name="execludeUrls">
+             <beans:list>
+                 <beans:value>/**/user/**</beans:value>
+             </beans:list>
+         </beans:property>
+     </beans:bean>
+	
+	<beans:bean id="defaultForwardStrategy" class="com.fenghua.auto.backend.core.security.DefaultForwardStrategy"></beans:bean>
+ 
+</beans:beans>       

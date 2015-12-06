@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head lang="en">
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="" />
+    <meta name="description" content=""/>
+    <link rel="stylesheet" href="../css/index/index.css"/>
+</head>
+<body>
+    <div class="content">
+        <div class="header-box" ng-controller="HeaderController as header">
+            <input ng-click="header.click()" type="button" value="header" />
+        </div>
+        <div class="footer-box" ng-controller="FooterController as footer">
+            <input ng-click="footer.click()" type="button" value="footer" />
+        </div>
+    </div>
+    
+
+	<script type="text/javascript" src="../js/lib/fenghua.lib.min.js"></script>
+	<script type="text/javascript" src="../js/index/index.min.js"></script>
+
+</body>
+</html>

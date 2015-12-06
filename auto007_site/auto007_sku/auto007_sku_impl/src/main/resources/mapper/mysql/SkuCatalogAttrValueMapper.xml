@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fenghua.auto.sku.domain.SkuCatalogAttrValue" >
+  <resultMap id="BaseResultMap" type="com.fenghua.auto.sku.domain.SkuCatalogAttrValue" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="catalog_attr_id" property="catalogAttrId" jdbcType="BIGINT" />
+    <result column="sttr_value" property="sttrValue" jdbcType="VARCHAR" />
+    <result column="sku_id" property="skuId" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, catalog_attr_id, sttr_value, sku_id
+  </sql>
+  <sql id="Base_Where_Case" >
+    <where >
+      <if test="id != null" >
+         AND id = #{id,jdbcType=BIGINT}
+      </if>
+      <if test="catalogAttrId != null" >
+         AND catalog_attr_id = #{catalogAttrId,jdbcType=BIGINT}
+      </if>
+      <if test="sttrValue != null" >
+         AND sttr_value = #{sttrValue,jdbcType=VARCHAR}
+      </if>
+      <if test="skuId != null" >
+         AND sku_id = #{skuId,jdbcType=BIGINT}
+      </if>
+    </where>
+  </sql>
+  <select id="selectCount" resultType="java.lang.Long" parameterType="com.fenghua.auto.sku.domain.SkuCatalogAttrValue" >
+    select count( id)
+     from sku_catalog_attr_value
+    <include refid="Base_Where_Case" />
+  </select>
+  <select id="select" resultMap="BaseResultMap" parameterType="com.fenghua.auto.sku.domain.SkuCatalogAttrValue" >
+    select 
+    <include refid="Base_Column_List" />
+     from sku_catalog_attr_value
+    <include refid="Base_Where_Case" />
+    <if test="limit > 0" >
+       limit #{offset},#{limit} 
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from sku_catalog_attr_value
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from sku_catalog_attr_value
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.fenghua.auto.sku.domain.SkuCatalogAttrValue" >
+    insert into sku_catalog_attr_value (id, catalog_attr_id, sttr_value, 
+      sku_id)
+    values (#{id,jdbcType=BIGINT}, #{catalogAttrId,jdbcType=BIGINT}, #{sttrValue,jdbcType=VARCHAR}, 
+      #{skuId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fenghua.auto.sku.domain.SkuCatalogAttrValue" >
+    insert into sku_catalog_attr_value
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="catalogAttrId != null" >
+        catalog_attr_id,
+      </if>
+      <if test="sttrValue != null" >
+        sttr_value,
+      </if>
+      <if test="skuId != null" >
+        sku_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="catalogAttrId != null" >
+        #{catalogAttrId,jdbcType=BIGINT},
+      </if>
+      <if test="sttrValue != null" >
+        #{sttrValue,jdbcType=VARCHAR},
+      </if>
+      <if test="skuId != null" >
+        #{skuId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fenghua.auto.sku.domain.SkuCatalogAttrValue" >
+    update sku_catalog_attr_value
+    <set >
+      <if test="catalogAttrId != null" >
+        catalog_attr_id = #{catalogAttrId,jdbcType=BIGINT},
+      </if>
+      <if test="sttrValue != null" >
+        sttr_value = #{sttrValue,jdbcType=VARCHAR},
+      </if>
+      <if test="skuId != null" >
+        sku_id = #{skuId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.sku.domain.SkuCatalogAttrValue" >
+    update sku_catalog_attr_value
+    set catalog_attr_id = #{catalogAttrId,jdbcType=BIGINT},
+      sttr_value = #{sttrValue,jdbcType=VARCHAR},
+      sku_id = #{skuId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

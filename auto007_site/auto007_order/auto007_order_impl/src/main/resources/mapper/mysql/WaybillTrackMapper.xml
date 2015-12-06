@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fenghua.auto.order.domain.WaybillTrack" >
+  <resultMap id="BaseResultMap" type="com.fenghua.auto.order.domain.WaybillTrack" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="transport_id" property="transportId" jdbcType="BIGINT" />
+    <result column="waybill_no" property="waybillNo" jdbcType="VARCHAR" />
+    <result column="waybill_status" property="waybillStatus" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="track_time" property="trackTime" jdbcType="TIMESTAMP" />
+    <result column="operator_id" property="operatorId" jdbcType="BIGINT" />
+    <result column="operator_name" property="operatorName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, transport_id, waybill_no, waybill_status, content, track_time, operator_id, operator_name
+  </sql>
+  <sql id="Base_Where_Case" >
+    <where >
+      <if test="id != null" >
+         AND id = #{id,jdbcType=BIGINT}
+      </if>
+      <if test="transportId != null" >
+         AND transport_id = #{transportId,jdbcType=BIGINT}
+      </if>
+      <if test="waybillNo != null" >
+         AND waybill_no = #{waybillNo,jdbcType=VARCHAR}
+      </if>
+      <if test="waybillStatus != null" >
+         AND waybill_status = #{waybillStatus,jdbcType=VARCHAR}
+      </if>
+      <if test="content != null" >
+         AND content = #{content,jdbcType=VARCHAR}
+      </if>
+      <if test="trackTime != null" >
+         AND track_time = #{trackTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="operatorId != null" >
+         AND operator_id = #{operatorId,jdbcType=BIGINT}
+      </if>
+      <if test="operatorName != null" >
+         AND operator_name = #{operatorName,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </sql>
+  <select id="selectCount" resultType="java.lang.Long" parameterType="com.fenghua.auto.order.domain.WaybillTrack" >
+    select count( id)
+     from waybill_track
+    <include refid="Base_Where_Case" />
+  </select>
+  <select id="select" resultMap="BaseResultMap" parameterType="com.fenghua.auto.order.domain.WaybillTrack" >
+    select 
+    <include refid="Base_Column_List" />
+     from waybill_track
+    <include refid="Base_Where_Case" />
+    <if test="limit > 0" >
+       limit #{offset},#{limit} 
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from waybill_track
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from waybill_track
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.fenghua.auto.order.domain.WaybillTrack" >
+    insert into waybill_track (id, transport_id, waybill_no, 
+      waybill_status, content, track_time, 
+      operator_id, operator_name)
+    values (#{id,jdbcType=BIGINT}, #{transportId,jdbcType=BIGINT}, #{waybillNo,jdbcType=VARCHAR}, 
+      #{waybillStatus,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{trackTime,jdbcType=TIMESTAMP}, 
+      #{operatorId,jdbcType=BIGINT}, #{operatorName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.fenghua.auto.order.domain.WaybillTrack" >
+    insert into waybill_track
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="transportId != null" >
+        transport_id,
+      </if>
+      <if test="waybillNo != null" >
+        waybill_no,
+      </if>
+      <if test="waybillStatus != null" >
+        waybill_status,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="trackTime != null" >
+        track_time,
+      </if>
+      <if test="operatorId != null" >
+        operator_id,
+      </if>
+      <if test="operatorName != null" >
+        operator_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="transportId != null" >
+        #{transportId,jdbcType=BIGINT},
+      </if>
+      <if test="waybillNo != null" >
+        #{waybillNo,jdbcType=VARCHAR},
+      </if>
+      <if test="waybillStatus != null" >
+        #{waybillStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="trackTime != null" >
+        #{trackTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=BIGINT},
+      </if>
+      <if test="operatorName != null" >
+        #{operatorName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fenghua.auto.order.domain.WaybillTrack" >
+    update waybill_track
+    <set >
+      <if test="transportId != null" >
+        transport_id = #{transportId,jdbcType=BIGINT},
+      </if>
+      <if test="waybillNo != null" >
+        waybill_no = #{waybillNo,jdbcType=VARCHAR},
+      </if>
+      <if test="waybillStatus != null" >
+        waybill_status = #{waybillStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="trackTime != null" >
+        track_time = #{trackTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operatorId != null" >
+        operator_id = #{operatorId,jdbcType=BIGINT},
+      </if>
+      <if test="operatorName != null" >
+        operator_name = #{operatorName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.order.domain.WaybillTrack" >
+    update waybill_track
+    set transport_id = #{transportId,jdbcType=BIGINT},
+      waybill_no = #{waybillNo,jdbcType=VARCHAR},
+      waybill_status = #{waybillStatus,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      track_time = #{trackTime,jdbcType=TIMESTAMP},
+      operator_id = #{operatorId,jdbcType=BIGINT},
+      operator_name = #{operatorName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

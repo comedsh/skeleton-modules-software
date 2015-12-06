@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fenghua.auto.sku.domain.CatalogSku" >
+  <resultMap id="BaseResultMap" type="com.fenghua.auto.sku.domain.CatalogSku" >
+    <result column="catalog_id" property="catalogId" jdbcType="BIGINT" />
+    <result column="sku_id" property="skuId" jdbcType="BIGINT" />
+  </resultMap>
+  
+    <sql id="Base_Column_List" >
+    catalog_id, sku_id
+  </sql>
+  
+  <sql id="Base_Where_Case" >
+    <where >
+      <if test="catalogId != null" >
+         AND catalog_id = #{catalogId,jdbcType=BIGINT}
+      </if>
+      <if test="skuId != null" >
+         AND sku_id = #{skuId,jdbcType=BIGINT}
+      </if>
+    </where>
+  </sql>
+  <select id="selectCount" resultType="java.lang.Long" parameterType="com.fenghua.auto.sku.domain.CatalogSku" >
+    select count( )
+     from catalog_sku
+    <include refid="Base_Where_Case" />
+  </select>
+  <select id="select" resultMap="BaseResultMap" parameterType="com.fenghua.auto.sku.domain.CatalogSku" >
+    select 
+    <include refid="Base_Column_List" />
+     from catalog_sku
+    <include refid="Base_Where_Case" />
+    <if test="limit > 0" >
+       limit #{offset},#{limit} 
+    </if>
+  </select>
+  <insert id="insert" parameterType="com.fenghua.auto.sku.domain.CatalogSku" >
+    insert into catalog_sku (catalog_id, sku_id)
+    values (#{catalogId,jdbcType=BIGINT}, #{skuId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fenghua.auto.sku.domain.CatalogSku" >
+    insert into catalog_sku
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="catalogId != null" >
+        catalog_id,
+      </if>
+      <if test="skuId != null" >
+        sku_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="catalogId != null" >
+        #{catalogId,jdbcType=BIGINT},
+      </if>
+      <if test="skuId != null" >
+        #{skuId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  
+  
+ 
+</mapper>

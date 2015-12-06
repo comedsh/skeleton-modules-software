@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:tx="http://www.springframework.org/schema/tx" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+						http://www.springframework.org/schema/tx 
+						http://www.springframework.org/schema/tx/spring-tx-3.0.xsd 
+						http://www.springframework.org/schema/jee 
+						http://www.springframework.org/schema/jee/spring-jee-3.0.xsd 
+						http://www.springframework.org/schema/aop 
+						http://www.springframework.org/schema/aop/spring-aop-3.0.xsd 
+						http://www.springframework.org/schema/context 
+						http://www.springframework.org/schema/context/spring-context-3.0.xsd
+						http://www.springframework.org/schema/mvc
+  						http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd"
+  						
+	default-lazy-init="true">
+  	
+  	<context:annotation-config />
+	<context:component-scan base-package="com.fenghua.auto" />
+	
+	<mvc:annotation-driven /> 
+	<mvc:default-servlet-handler />
+	
+	<!-- 自动将静态资源导向 -->
+	<mvc:resources mapping="/resources/**" location="/resources/" /> 
+	
+	<mvc:view-controller path="/" view-name="index" />
+	
+	<!-- Order 的意义：意思是说，当有多个 view resovler 的时候，按照 order 的数字大小，由小到大依次解析；很关键 -->
+	<bean id="tilesViewResolver" class="com.fenghua.auto.webapp.view.FHTilesViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"></property>
+	    <property name="order" value="1"></property>
+	</bean>
+		
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+		<property name="prefix" value="/WEB-INF/views"></property>
+		<property name="suffix" value=".jsp"></property>
+		<property name="order" value="2"></property>
+	</bean>
+	
+ 	<!-- 又是一个坑，Spring 4.2.2 默认启动时不会初始化 bean，而之前 3.x 会自动初始化，
+ 		 所以这里需要设置 lazy-init="false"，让 TilesConfigurer 在 Spring 容器启动时就初始化，否则，titlesConfigurer 加载 definitions 失败 -->
+	<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer" lazy-init="false">
+		
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/layout/layouts.xml</value>
+				<value>/WEB-INF/layout/views.xml</value>
+				<value>/WEB-INF/layout/orderViews.xml</value>
+				<value>/WEB-INF/layout/skuViews.xml</value>
+			</list>
+		</property>
+	
+		<property name="preparerFactoryClass" value="org.springframework.web.servlet.view.tiles3.SpringBeanPreparerFactory" />
+
+	</bean>
+</beans>  

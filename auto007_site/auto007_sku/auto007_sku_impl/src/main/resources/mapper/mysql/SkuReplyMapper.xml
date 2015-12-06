@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fenghua.auto.sku.domain.SkuReply" >
+  <resultMap id="BaseResultMap" type="com.fenghua.auto.sku.domain.SkuReply" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="reply_code" property="replyCode" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="user_id" property="userId" jdbcType="CHAR" />
+    <result column="sku_comment_id" property="skuCommentId" jdbcType="BIGINT" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.fenghua.auto.sku.domain.SkuReply" extends="BaseResultMap" >
+    <result column="comtent" property="comtent" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, reply_code, create_time, user_id, sku_comment_id
+  </sql>
+  <sql id="Blob_Column_List" >
+    comtent
+  </sql>
+  <sql id="Base_Where_Case" >
+    <where >
+      <if test="id != null" >
+         AND id = #{id,jdbcType=BIGINT}
+      </if>
+      <if test="replyCode != null" >
+         AND reply_code = #{replyCode,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null" >
+         AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="userId != null" >
+         AND user_id = #{userId,jdbcType=CHAR}
+      </if>
+      <if test="skuCommentId != null" >
+         AND sku_comment_id = #{skuCommentId,jdbcType=BIGINT}
+      </if>
+      <if test="comtent != null" >
+         AND comtent = #{comtent,jdbcType=LONGVARCHAR}
+      </if>
+    </where>
+  </sql>
+  <select id="selectCount" resultType="java.lang.Long" parameterType="com.fenghua.auto.sku.domain.SkuReply" >
+    select count( id)
+     from sku_reply
+    <include refid="Base_Where_Case" />
+  </select>
+  <select id="select" resultMap="BaseResultMap" parameterType="com.fenghua.auto.sku.domain.SkuReply" >
+    select 
+    <include refid="Base_Column_List" />
+     from sku_reply
+    <include refid="Base_Where_Case" />
+    <if test="limit > 0" >
+       limit #{offset},#{limit} 
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from sku_reply
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from sku_reply
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.fenghua.auto.sku.domain.SkuReply" >
+    insert into sku_reply (id, reply_code, create_time, 
+      user_id, sku_comment_id, comtent
+      )
+    values (#{id,jdbcType=BIGINT}, #{replyCode,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{userId,jdbcType=CHAR}, #{skuCommentId,jdbcType=BIGINT}, #{comtent,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.fenghua.auto.sku.domain.SkuReply" >
+    insert into sku_reply
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="replyCode != null" >
+        reply_code,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="skuCommentId != null" >
+        sku_comment_id,
+      </if>
+      <if test="comtent != null" >
+        comtent,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="replyCode != null" >
+        #{replyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=CHAR},
+      </if>
+      <if test="skuCommentId != null" >
+        #{skuCommentId,jdbcType=BIGINT},
+      </if>
+      <if test="comtent != null" >
+        #{comtent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fenghua.auto.sku.domain.SkuReply" >
+    update sku_reply
+    <set >
+      <if test="replyCode != null" >
+        reply_code = #{replyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=CHAR},
+      </if>
+      <if test="skuCommentId != null" >
+        sku_comment_id = #{skuCommentId,jdbcType=BIGINT},
+      </if>
+      <if test="comtent != null" >
+        comtent = #{comtent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.fenghua.auto.sku.domain.SkuReply" >
+    update sku_reply
+    set reply_code = #{replyCode,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      user_id = #{userId,jdbcType=CHAR},
+      sku_comment_id = #{skuCommentId,jdbcType=BIGINT},
+      comtent = #{comtent,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.sku.domain.SkuReply" >
+    update sku_reply
+    set reply_code = #{replyCode,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      user_id = #{userId,jdbcType=CHAR},
+      sku_comment_id = #{skuCommentId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

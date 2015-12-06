@@ -1,0 +1,3 @@
+function pagebar() {
+	alert('pagebar');
+}

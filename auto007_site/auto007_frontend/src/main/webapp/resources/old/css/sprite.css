@@ -1,0 +1,167 @@
+/*
+Icon classes can be used entirely standalone. They are named after their original file names.
+
+```html
+<!-- `display: block` sprite -->
+<div class="icon-home"></div>
+
+<!-- `display: inline-block` sprite -->
+<img class="icon-home" />
+```
+*/
+.icon-arrow_down {
+  background-image: url(../img/sprite.png);
+  background-position: -9px 0px;
+  width: 9px;
+  height: 5px;
+}
+.icon-arrow_right {
+  background-image: url(../img/sprite.png);
+  background-position: -36px 0px;
+  width: 10px;
+  height: 14px;
+}
+.icon-arrow_up {
+  background-image: url(../img/sprite.png);
+  background-position: -27px 0px;
+  width: 9px;
+  height: 5px;
+}
+.icon-cart {
+  background-image: url(../img/sprite.png);
+  background-position: -321px 0px;
+  width: 22px;
+  height: 20px;
+}
+.icon-dark_grey_circle_fail {
+  background-image: url(../img/sprite.png);
+  background-position: -283px 0px;
+  width: 18px;
+  height: 18px;
+}
+.icon-dark_grey_fail {
+  background-image: url(../img/sprite.png);
+  background-position: -99px 0px;
+  width: 15px;
+  height: 15px;
+}
+.icon-double_arrow_down {
+  background-image: url(../img/sprite.png);
+  background-position: 0px 0px;
+  width: 9px;
+  height: 9px;
+}
+.icon-double_arrow_up {
+  background-image: url(../img/sprite.png);
+  background-position: -18px 0px;
+  width: 9px;
+  height: 9px;
+}
+.icon-email {
+  background-image: url(../img/sprite.png);
+  background-position: -301px 0px;
+  width: 20px;
+  height: 14px;
+}
+.icon-error {
+  background-image: url(../img/sprite.png);
+  background-position: -265px 0px;
+  width: 18px;
+  height: 18px;
+}
+.icon-light_blue_msg {
+  background-image: url(../img/sprite.png);
+  background-position: -177px 0px;
+  width: 17px;
+  height: 20px;
+}
+.icon-light_gray_fail {
+  background-image: url(../img/sprite.png);
+  background-position: -85px 0px;
+  width: 14px;
+  height: 15px;
+}
+.icon-light_gray_rubbish {
+  background-image: url(../img/sprite.png);
+  background-position: -368px 0px;
+  width: 25px;
+  height: 22px;
+}
+.icon-lock {
+  background-image: url(../img/sprite.png);
+  background-position: -145px 0px;
+  width: 16px;
+  height: 20px;
+}
+.icon-navy_blue_fail {
+  background-image: url(../img/sprite.png);
+  background-position: -114px 0px;
+  width: 15px;
+  height: 15px;
+}
+.icon-navy_blue_msg {
+  background-image: url(../img/sprite.png);
+  background-position: -194px 0px;
+  width: 17px;
+  height: 20px;
+}
+.icon-navy_blue_rubbish {
+  background-image: url(../img/sprite.png);
+  background-position: -343px 0px;
+  width: 25px;
+  height: 22px;
+}
+.icon-phone {
+  background-image: url(../img/sprite.png);
+  background-position: -161px 0px;
+  width: 16px;
+  height: 16px;
+}
+.icon-red_circle_fail {
+  background-image: url(../img/sprite.png);
+  background-position: -247px 0px;
+  width: 18px;
+  height: 18px;
+}
+.icon-scale_selected {
+  background-image: url(../img/sprite.png);
+  background-position: -46px 0px;
+  width: 11px;
+  height: 11px;
+}
+.icon-seleted_checkbox {
+  background-image: url(../img/sprite.png);
+  background-position: -129px 0px;
+  width: 16px;
+  height: 16px;
+}
+.icon-seleted_radio {
+  background-image: url(../img/sprite.png);
+  background-position: -57px 0px;
+  width: 14px;
+  height: 14px;
+}
+.icon-sucess {
+  background-image: url(../img/sprite.png);
+  background-position: -229px 0px;
+  width: 18px;
+  height: 18px;
+}
+.icon-unseleted_radio {
+  background-image: url(../img/sprite.png);
+  background-position: -71px 0px;
+  width: 14px;
+  height: 14px;
+}
+.icon-white_lock {
+  background-image: url(../img/sprite.png);
+  background-position: -393px 0px;
+  width: 29px;
+  height: 31px;
+}
+.icon-yellow_circle_error {
+  background-image: url(../img/sprite.png);
+  background-position: -211px 0px;
+  width: 18px;
+  height: 18px;
+}

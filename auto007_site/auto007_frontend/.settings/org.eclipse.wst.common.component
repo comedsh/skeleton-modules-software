@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="auto007_frontend">
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <dependent-module archiveName="auto007_admin_impl-0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/auto007_admin_impl/auto007_admin_impl">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="auto007_admin_intf-0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/auto007_admin_intf/auto007_admin_intf">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="auto007_user_intf-0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/auto007_user_intf/auto007_user_intf">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="auto007_finance_intf-0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/auto007_finance_intf/auto007_finance_intf">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="auto007_order_intf-0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/auto007_order_intf/auto007_order_intf">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="auto007_admin_web-0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/auto007_admin_web/auto007_admin_web">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="auto007_common-0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/auto007_common/auto007_common">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="auto007_core-0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/auto007_core/auto007_core">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="auto007_finance_impl-0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/auto007_finance_impl/auto007_finance_impl">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="auto007_finance_web-0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/auto007_finance_web/auto007_finance_web">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="auto007_order_impl-0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/auto007_order_impl/auto007_order_impl">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="auto007_price_intf-0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/auto007_price_intf/auto007_price_intf">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="auto007_stock_intf-0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/auto007_stock_intf/auto007_stock_intf">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="auto007_order_web-0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/auto007_order_web/auto007_order_web">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="auto007_price_impl-0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/auto007_price_impl/auto007_price_impl">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="auto007_price_web-0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/auto007_price_web/auto007_price_web">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="auto007_sku_impl-0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/auto007_sku_impl/auto007_sku_impl">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="auto007_sku_intf-0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/auto007_sku_intf/auto007_sku_intf">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="auto007_sku_web-0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/auto007_sku_web/auto007_sku_web">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="auto007_stock_impl-0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/auto007_stock_impl/auto007_stock_impl">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="auto007_user_impl-0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/auto007_user_impl/auto007_user_impl">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="auto007_user_web-0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/auto007_user_web/auto007_user_web">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="auto007_stock_web-0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/auto007_stock_web/auto007_stock_web">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="context-root" value="auto007_frontend"/>
+        <property name="java-output-path" value="/auto007_frontend/target/classes"/>
+    </wb-module>
+</project-modules>

@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fenghua.auto.order.domain.OrderTask" >
+  <resultMap id="BaseResultMap" type="com.fenghua.auto.order.domain.OrderTask" >
+    <id column="task_id" property="taskId" jdbcType="BIGINT" />
+    <result column="order_id" property="orderId" jdbcType="BIGINT" />
+    <result column="order_no" property="orderNo" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="begin_time" property="beginTime" jdbcType="TIMESTAMP" />
+    <result column="expire_time" property="expireTime" jdbcType="TIMESTAMP" />
+    <result column="handle_type" property="handleType" jdbcType="INTEGER" />
+    <result column="handler" property="handler" jdbcType="VARCHAR" />
+    <result column="handle_times" property="handleTimes" jdbcType="INTEGER" />
+    <result column="entry_id" property="entryId" jdbcType="BIGINT" />
+    <result column="entry_time" property="entryTime" jdbcType="TIMESTAMP" />
+    <result column="processor_id" property="processorId" jdbcType="BIGINT" />
+    <result column="process_time" property="processTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    task_id, order_id, order_no, type, status, begin_time, expire_time, handle_type, 
+    handler, handle_times, entry_id, entry_time, processor_id, process_time
+  </sql>
+  <sql id="Base_Where_Case" >
+    <where >
+      <if test="taskId != null" >
+         AND task_id = #{taskId,jdbcType=BIGINT}
+      </if>
+      <if test="orderId != null" >
+         AND order_id = #{orderId,jdbcType=BIGINT}
+      </if>
+      <if test="orderNo != null" >
+         AND order_no = #{orderNo,jdbcType=VARCHAR}
+      </if>
+      <if test="type != null" >
+         AND type = #{type,jdbcType=INTEGER}
+      </if>
+      <if test="status != null" >
+         AND status = #{status,jdbcType=INTEGER}
+      </if>
+      <if test="beginTime != null" >
+         AND begin_time = #{beginTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="expireTime != null" >
+         AND expire_time = #{expireTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="handleType != null" >
+         AND handle_type = #{handleType,jdbcType=INTEGER}
+      </if>
+      <if test="handler != null" >
+         AND handler = #{handler,jdbcType=VARCHAR}
+      </if>
+      <if test="handleTimes != null" >
+         AND handle_times = #{handleTimes,jdbcType=INTEGER}
+      </if>
+      <if test="entryId != null" >
+         AND entry_id = #{entryId,jdbcType=BIGINT}
+      </if>
+      <if test="entryTime != null" >
+         AND entry_time = #{entryTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="processorId != null" >
+         AND processor_id = #{processorId,jdbcType=BIGINT}
+      </if>
+      <if test="processTime != null" >
+         AND process_time = #{processTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </sql>
+  <select id="selectCount" resultType="java.lang.Long" parameterType="com.fenghua.auto.order.domain.OrderTask" >
+    select count( task_id)
+     from order_task
+    <include refid="Base_Where_Case" />
+  </select>
+  <select id="select" resultMap="BaseResultMap" parameterType="com.fenghua.auto.order.domain.OrderTask" >
+    select 
+    <include refid="Base_Column_List" />
+     from order_task
+    <include refid="Base_Where_Case" />
+    <if test="limit > 0" >
+       limit #{offset},#{limit} 
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from order_task
+    where task_id = #{taskId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from order_task
+    where task_id = #{taskId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.fenghua.auto.order.domain.OrderTask" >
+    insert into order_task (task_id, order_id, order_no, 
+      type, status, begin_time, 
+      expire_time, handle_type, handler, 
+      handle_times, entry_id, entry_time, 
+      processor_id, process_time)
+    values (#{taskId,jdbcType=BIGINT}, #{orderId,jdbcType=BIGINT}, #{orderNo,jdbcType=VARCHAR}, 
+      #{type,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{beginTime,jdbcType=TIMESTAMP}, 
+      #{expireTime,jdbcType=TIMESTAMP}, #{handleType,jdbcType=INTEGER}, #{handler,jdbcType=VARCHAR}, 
+      #{handleTimes,jdbcType=INTEGER}, #{entryId,jdbcType=BIGINT}, #{entryTime,jdbcType=TIMESTAMP}, 
+      #{processorId,jdbcType=BIGINT}, #{processTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.fenghua.auto.order.domain.OrderTask" >
+    insert into order_task
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="taskId != null" >
+        task_id,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="orderNo != null" >
+        order_no,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="beginTime != null" >
+        begin_time,
+      </if>
+      <if test="expireTime != null" >
+        expire_time,
+      </if>
+      <if test="handleType != null" >
+        handle_type,
+      </if>
+      <if test="handler != null" >
+        handler,
+      </if>
+      <if test="handleTimes != null" >
+        handle_times,
+      </if>
+      <if test="entryId != null" >
+        entry_id,
+      </if>
+      <if test="entryTime != null" >
+        entry_time,
+      </if>
+      <if test="processorId != null" >
+        processor_id,
+      </if>
+      <if test="processTime != null" >
+        process_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="taskId != null" >
+        #{taskId,jdbcType=BIGINT},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="orderNo != null" >
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="beginTime != null" >
+        #{beginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expireTime != null" >
+        #{expireTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="handleType != null" >
+        #{handleType,jdbcType=INTEGER},
+      </if>
+      <if test="handler != null" >
+        #{handler,jdbcType=VARCHAR},
+      </if>
+      <if test="handleTimes != null" >
+        #{handleTimes,jdbcType=INTEGER},
+      </if>
+      <if test="entryId != null" >
+        #{entryId,jdbcType=BIGINT},
+      </if>
+      <if test="entryTime != null" >
+        #{entryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="processorId != null" >
+        #{processorId,jdbcType=BIGINT},
+      </if>
+      <if test="processTime != null" >
+        #{processTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fenghua.auto.order.domain.OrderTask" >
+    update order_task
+    <set >
+      <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="orderNo != null" >
+        order_no = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="beginTime != null" >
+        begin_time = #{beginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expireTime != null" >
+        expire_time = #{expireTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="handleType != null" >
+        handle_type = #{handleType,jdbcType=INTEGER},
+      </if>
+      <if test="handler != null" >
+        handler = #{handler,jdbcType=VARCHAR},
+      </if>
+      <if test="handleTimes != null" >
+        handle_times = #{handleTimes,jdbcType=INTEGER},
+      </if>
+      <if test="entryId != null" >
+        entry_id = #{entryId,jdbcType=BIGINT},
+      </if>
+      <if test="entryTime != null" >
+        entry_time = #{entryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="processorId != null" >
+        processor_id = #{processorId,jdbcType=BIGINT},
+      </if>
+      <if test="processTime != null" >
+        process_time = #{processTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where task_id = #{taskId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.order.domain.OrderTask" >
+    update order_task
+    set order_id = #{orderId,jdbcType=BIGINT},
+      order_no = #{orderNo,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      begin_time = #{beginTime,jdbcType=TIMESTAMP},
+      expire_time = #{expireTime,jdbcType=TIMESTAMP},
+      handle_type = #{handleType,jdbcType=INTEGER},
+      handler = #{handler,jdbcType=VARCHAR},
+      handle_times = #{handleTimes,jdbcType=INTEGER},
+      entry_id = #{entryId,jdbcType=BIGINT},
+      entry_time = #{entryTime,jdbcType=TIMESTAMP},
+      processor_id = #{processorId,jdbcType=BIGINT},
+      process_time = #{processTime,jdbcType=TIMESTAMP}
+    where task_id = #{taskId,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fenghua.auto.order.domain.OrderInvoice" >
+  <resultMap id="BaseResultMap" type="com.fenghua.auto.order.domain.OrderInvoice" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="order_id" property="orderId" jdbcType="BIGINT" />
+    <result column="value_add_id" property="valueAddId" jdbcType="BIGINT" />
+    <result column="invoice_type" property="invoiceType" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="content_type" property="contentType" jdbcType="INTEGER" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="rec_contact" property="recContact" jdbcType="VARCHAR" />
+    <result column="rec_contact_phone" property="recContactPhone" jdbcType="VARCHAR" />
+    <result column="rec_address" property="recAddress" jdbcType="VARCHAR" />
+    <result column="rec_zipcode" property="recZipcode" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="entry_time" property="entryTime" jdbcType="TIMESTAMP" />
+    <result column="printer_id" property="printerId" jdbcType="BIGINT" />
+    <result column="printer_name" property="printerName" jdbcType="VARCHAR" />
+    <result column="print_time" property="printTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, order_id, value_add_id, invoice_type, title, content_type, content, rec_contact, 
+    rec_contact_phone, rec_address, rec_zipcode, status, entry_time, printer_id, printer_name, 
+    print_time
+  </sql>
+  <sql id="Base_Where_Case" >
+    <where >
+      <if test="id != null" >
+         AND id = #{id,jdbcType=BIGINT}
+      </if>
+      <if test="orderId != null" >
+         AND order_id = #{orderId,jdbcType=BIGINT}
+      </if>
+      <if test="valueAddId != null" >
+         AND value_add_id = #{valueAddId,jdbcType=BIGINT}
+      </if>
+      <if test="invoiceType != null" >
+         AND invoice_type = #{invoiceType,jdbcType=INTEGER}
+      </if>
+      <if test="title != null" >
+         AND title = #{title,jdbcType=VARCHAR}
+      </if>
+      <if test="contentType != null" >
+         AND content_type = #{contentType,jdbcType=INTEGER}
+      </if>
+      <if test="content != null" >
+         AND content = #{content,jdbcType=VARCHAR}
+      </if>
+      <if test="recContact != null" >
+         AND rec_contact = #{recContact,jdbcType=VARCHAR}
+      </if>
+      <if test="recContactPhone != null" >
+         AND rec_contact_phone = #{recContactPhone,jdbcType=VARCHAR}
+      </if>
+      <if test="recAddress != null" >
+         AND rec_address = #{recAddress,jdbcType=VARCHAR}
+      </if>
+      <if test="recZipcode != null" >
+         AND rec_zipcode = #{recZipcode,jdbcType=VARCHAR}
+      </if>
+      <if test="status != null" >
+         AND status = #{status,jdbcType=INTEGER}
+      </if>
+      <if test="entryTime != null" >
+         AND entry_time = #{entryTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="printerId != null" >
+         AND printer_id = #{printerId,jdbcType=BIGINT}
+      </if>
+      <if test="printerName != null" >
+         AND printer_name = #{printerName,jdbcType=VARCHAR}
+      </if>
+      <if test="printTime != null" >
+         AND print_time = #{printTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </sql>
+  <select id="selectCount" resultType="java.lang.Long" parameterType="com.fenghua.auto.order.domain.OrderInvoice" >
+    select count( id)
+     from order_invoice
+    <include refid="Base_Where_Case" />
+  </select>
+  <select id="select" resultMap="BaseResultMap" parameterType="com.fenghua.auto.order.domain.OrderInvoice" >
+    select 
+    <include refid="Base_Column_List" />
+     from order_invoice
+    <include refid="Base_Where_Case" />
+    <if test="limit > 0" >
+       limit #{offset},#{limit} 
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from order_invoice
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from order_invoice
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.fenghua.auto.order.domain.OrderInvoice" >
+    insert into order_invoice (id, order_id, value_add_id, 
+      invoice_type, title, content_type, 
+      content, rec_contact, rec_contact_phone, 
+      rec_address, rec_zipcode, status, 
+      entry_time, printer_id, printer_name, 
+      print_time)
+    values (#{id,jdbcType=BIGINT}, #{orderId,jdbcType=BIGINT}, #{valueAddId,jdbcType=BIGINT}, 
+      #{invoiceType,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{contentType,jdbcType=INTEGER}, 
+      #{content,jdbcType=VARCHAR}, #{recContact,jdbcType=VARCHAR}, #{recContactPhone,jdbcType=VARCHAR}, 
+      #{recAddress,jdbcType=VARCHAR}, #{recZipcode,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{entryTime,jdbcType=TIMESTAMP}, #{printerId,jdbcType=BIGINT}, #{printerName,jdbcType=VARCHAR}, 
+      #{printTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.fenghua.auto.order.domain.OrderInvoice" >
+    insert into order_invoice
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="valueAddId != null" >
+        value_add_id,
+      </if>
+      <if test="invoiceType != null" >
+        invoice_type,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="contentType != null" >
+        content_type,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="recContact != null" >
+        rec_contact,
+      </if>
+      <if test="recContactPhone != null" >
+        rec_contact_phone,
+      </if>
+      <if test="recAddress != null" >
+        rec_address,
+      </if>
+      <if test="recZipcode != null" >
+        rec_zipcode,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="entryTime != null" >
+        entry_time,
+      </if>
+      <if test="printerId != null" >
+        printer_id,
+      </if>
+      <if test="printerName != null" >
+        printer_name,
+      </if>
+      <if test="printTime != null" >
+        print_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="valueAddId != null" >
+        #{valueAddId,jdbcType=BIGINT},
+      </if>
+      <if test="invoiceType != null" >
+        #{invoiceType,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="contentType != null" >
+        #{contentType,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="recContact != null" >
+        #{recContact,jdbcType=VARCHAR},
+      </if>
+      <if test="recContactPhone != null" >
+        #{recContactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="recAddress != null" >
+        #{recAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="recZipcode != null" >
+        #{recZipcode,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="entryTime != null" >
+        #{entryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="printerId != null" >
+        #{printerId,jdbcType=BIGINT},
+      </if>
+      <if test="printerName != null" >
+        #{printerName,jdbcType=VARCHAR},
+      </if>
+      <if test="printTime != null" >
+        #{printTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fenghua.auto.order.domain.OrderInvoice" >
+    update order_invoice
+    <set >
+      <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="valueAddId != null" >
+        value_add_id = #{valueAddId,jdbcType=BIGINT},
+      </if>
+      <if test="invoiceType != null" >
+        invoice_type = #{invoiceType,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="contentType != null" >
+        content_type = #{contentType,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="recContact != null" >
+        rec_contact = #{recContact,jdbcType=VARCHAR},
+      </if>
+      <if test="recContactPhone != null" >
+        rec_contact_phone = #{recContactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="recAddress != null" >
+        rec_address = #{recAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="recZipcode != null" >
+        rec_zipcode = #{recZipcode,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="entryTime != null" >
+        entry_time = #{entryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="printerId != null" >
+        printer_id = #{printerId,jdbcType=BIGINT},
+      </if>
+      <if test="printerName != null" >
+        printer_name = #{printerName,jdbcType=VARCHAR},
+      </if>
+      <if test="printTime != null" >
+        print_time = #{printTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.order.domain.OrderInvoice" >
+    update order_invoice
+    set order_id = #{orderId,jdbcType=BIGINT},
+      value_add_id = #{valueAddId,jdbcType=BIGINT},
+      invoice_type = #{invoiceType,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR},
+      content_type = #{contentType,jdbcType=INTEGER},
+      content = #{content,jdbcType=VARCHAR},
+      rec_contact = #{recContact,jdbcType=VARCHAR},
+      rec_contact_phone = #{recContactPhone,jdbcType=VARCHAR},
+      rec_address = #{recAddress,jdbcType=VARCHAR},
+      rec_zipcode = #{recZipcode,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      entry_time = #{entryTime,jdbcType=TIMESTAMP},
+      printer_id = #{printerId,jdbcType=BIGINT},
+      printer_name = #{printerName,jdbcType=VARCHAR},
+      print_time = #{printTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

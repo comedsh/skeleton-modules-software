@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+  <!-- 该模板仅用于培训使用 -->
+  
+  <definition name="education.default_template" template="/WEB-INF/views/education/common/template.jsp">
+  
+    <put-attribute name="title" value="education tutorial homepage" />
+    
+    <put-attribute name="header" value="/WEB-INF/views/education/common/header.jsp" />
+    
+    <put-attribute name="menu" value="/WEB-INF/views/education/common/menu.jsp" />
+    
+    <!-- remain the body as blank, let its inheritance to fill it up -->
+    <put-attribute name="body" value="" />
+
+    <put-attribute name="footer" value="/WEB-INF/views/education/common/footer.jsp" />
+
+  </definition>
+    
+  <!-- 
+  		重构首页布局，注意 tiles 嵌套模板的用法，这里定义 header 模板，然后作为嵌套模板 供 首页模板 default_tempalte 使用
+  		refactored by shang yang on 2015-9-12  
+  -->
+  <definition name="web.default_header_template" template="/WEB-INF/template/web/header_template.jsp">
+  
+    <put-attribute name="shortcut" value="/WEB-INF/views/web/common/shortcut.jsp" />
+ 
+    <put-attribute name="logo" value="/WEB-INF/views/web/common/logo.jsp" />
+ 
+    <put-attribute name="search" value="/WEB-INF/views/web/common/search.jsp" />
+ 
+    <put-attribute name="shopcat" value="/WEB-INF/views/web/common/shopcat.jsp" />
+  
+  </definition> 
+  
+  <definition name="web.default_template" template="/WEB-INF/template/web/default_template.jsp">
+    
+    <put-attribute name="title" value="" />
+    
+   	<put-attribute name="header" value="web.default_header_template" /> <!-- 调用 header_template 的实现 -->
+   	
+   	<put-attribute name="menu" value="/WEB-INF/views/web/common/menu.jsp" /> 
+    
+    <put-attribute name="body" value="" />
+    
+    <put-attribute name="footer" value="/WEB-INF/views/web/common/footer.jsp" />
+    
+  </definition>
+  
+  
+  <definition name="web.common_template" template="/WEB-INF/template/web/common_template.jsp">
+    
+    <put-attribute name="title" value="" />
+    
+   	<put-attribute name="header" value="/WEB-INF/views/common/header.jsp" /> <!-- 调用 header_template 的实现 -->
+    
+    <put-attribute name="body" value="" />
+    
+    <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
+    
+  </definition>
+</tiles-definitions>
