@@ -4,6 +4,7 @@
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/webapp"/>
         <dependent-module archiveName="auto007_admin_impl-0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/auto007_admin_impl/auto007_admin_impl">
             <dependency-type>uses</dependency-type>
         </dependent-module>
@@ -43,6 +44,9 @@
         <dependent-module archiveName="auto007_stock_intf-0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/auto007_stock_intf/auto007_stock_intf">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="auto007_sku_intf-0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/auto007_sku_intf/auto007_sku_intf">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <dependent-module archiveName="auto007_order_web-0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/auto007_order_web/auto007_order_web">
             <dependency-type>uses</dependency-type>
         </dependent-module>
@@ -53,9 +57,6 @@
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="auto007_sku_impl-0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/auto007_sku_impl/auto007_sku_impl">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="auto007_sku_intf-0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/auto007_sku_intf/auto007_sku_intf">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="auto007_sku_web-0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/auto007_sku_web/auto007_sku_web">

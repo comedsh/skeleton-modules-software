@@ -43,5 +43,15 @@
   		<artifactId>auto007_stock_intf</artifactId>
   		<version>0.1</version>
   	</dependency>
+  	<dependency>
+  		<groupId>com.fenghua</groupId>
+  		<artifactId>auto007_user_intf</artifactId>
+  		<version>0.1</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>com.fenghua</groupId>
+  		<artifactId>auto007_sku_intf</artifactId>
+  		<version>0.1</version>
+  	</dependency>
   </dependencies>
 </project>

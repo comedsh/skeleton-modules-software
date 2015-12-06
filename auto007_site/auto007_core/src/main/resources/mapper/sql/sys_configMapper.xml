@@ -22,7 +22,7 @@
     delete from sys_config
     where Config_Name = #{configName,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.fenghua.auto.backend.domain.user.SysConfig" >
+  <insert id="insert" parameterType="com.fenghua.auto.backend.domain.core.SysConfig" >
     insert into sys_config (Config_Name, Config_Value, Created_TS, 
       Created_By, Last_Modified_By, Last_Modified_TS
       )
@@ -30,7 +30,7 @@
       #{createdBy,jdbcType=VARCHAR}, #{lastModifiedBy,jdbcType=TIMESTAMP}, #{lastModifiedTs,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.fenghua.auto.backend.domain.user.SysConfig" >
+  <insert id="insertSelective" parameterType="com.fenghua.auto.backend.domain.core.SysConfig" >
     insert into sys_config
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="configName != null" >
@@ -73,7 +73,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fenghua.auto.backend.domain.user.SysConfig" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.fenghua.auto.backend.domain.core.SysConfig" >
     update sys_config
     <set >
       <if test="configValue != null" >
@@ -94,7 +94,7 @@
     </set>
     where Config_Name = #{configName,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.backend.domain.user.SysConfig" >
+  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.backend.domain.core.SysConfig" >
     update sys_config
     set Config_Value = #{configValue,jdbcType=VARCHAR},
       Created_TS = #{createdTs,jdbcType=TIMESTAMP},
