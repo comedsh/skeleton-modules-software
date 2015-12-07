@@ -8,6 +8,8 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fenghua.auto.user.intf.dto.SellerDTO;
+
 /**
  * 
  * @author zhiyuan.wang@auto007.com
@@ -18,9 +20,9 @@ public class ShoppingCartGroupVO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private List<ShoppingCartVO> cartList;
-	private Seller seller;
+	private SellerDTO seller;
 	
-	public ShoppingCartGroupVO(Seller seller) {
+	public ShoppingCartGroupVO(SellerDTO seller) {
 		super();
 		this.seller = seller;
 	}
@@ -63,11 +65,11 @@ public class ShoppingCartGroupVO implements Serializable {
 		this.cartList = cartList;
 	}
 
-	public Seller getSeller() {
+	public SellerDTO getSeller() {
 		return seller;
 	}
 
-	public void setSeller(Seller seller) {
+	public void setSeller(SellerDTO seller) {
 		this.seller = seller;
 	}
 }

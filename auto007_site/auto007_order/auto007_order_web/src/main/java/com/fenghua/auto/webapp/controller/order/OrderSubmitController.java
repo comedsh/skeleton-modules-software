@@ -24,7 +24,7 @@ import com.fenghua.auto.order.backend.dto.OrderMasterResultDTO;
 import com.fenghua.auto.order.backend.dto.OrderMasterSubmitDTO;
 import com.fenghua.auto.order.backend.dto.OrderSubmitDTO;
 import com.fenghua.auto.order.backend.qo.ShoppingCartQO;
-import com.fenghua.auto.order.backend.service.OrderMasterService;
+import com.fenghua.auto.order.backend.service.OrderSubmitService;
 import com.fenghua.auto.order.backend.service.ShoppingCartService;
 import com.fenghua.auto.sku.domain.Sku;
 import com.fenghua.auto.sku.service.SkuService;
@@ -42,7 +42,7 @@ import com.fenghua.auto.sku.service.SkuService;
 public class OrderSubmitController {
 	
 	@Autowired
-	private OrderMasterService orderMasterService;
+	private OrderSubmitService orderSubmitService;
 	@Autowired
 	private SkuService skuService;
 	@Autowired
@@ -87,10 +87,10 @@ public class OrderSubmitController {
 	private String initSubmit(Model model, List<ShoppingCart> shoppingCarts) throws AuthenticationException {
 		if(shoppingCarts == null || shoppingCarts.isEmpty()) {
 			model.addAttribute("errorMsg", MessageHelper.getMessage("order.submit.parameter.error"));
-			return "web.order.submit";
+			return "web.order.submit";	
 		}
 		
-		OrderSubmitDTO dto = orderMasterService.initSubmit(shoppingCarts, UserSecurityUtils.getCurrentUserId());
+		OrderSubmitDTO dto = orderSubmitService.initSubmit(shoppingCarts, UserSecurityUtils.getCurrentUserId());
 		OrderMTO mto = new OrderMTO();
 		mto.setData(dto);
 		String json = JSON.toJSONString(mto);
@@ -108,7 +108,7 @@ public class OrderSubmitController {
 		if(errors != null && !errors.isEmpty()) {
 			mto.addErrors(errors.toArray(new LabelError[errors.size()]));
 		} else {
-			List<OrderMasterResultDTO> resultDTOs = orderMasterService.submit(dto);
+			List<OrderMasterResultDTO> resultDTOs = orderSubmitService.submit(dto);
 			mto.setData(resultDTOs);
 		}
 		return mto;

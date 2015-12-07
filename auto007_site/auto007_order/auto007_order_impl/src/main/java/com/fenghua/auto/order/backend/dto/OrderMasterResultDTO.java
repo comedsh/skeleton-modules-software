@@ -45,6 +45,10 @@ public class OrderMasterResultDTO implements Serializable {
 		super();
 	}
 	
+	public OrderMasterResultDTO(OrderMaster master) {
+		this(master, null);
+	}
+
 	public OrderMasterResultDTO(OrderMaster master, List<String> orderNoList) {
 		this.masterOrderId = master.getId();
 		this.masterOrderNo = master.getMasterOrderNo();
@@ -60,6 +64,13 @@ public class OrderMasterResultDTO implements Serializable {
 			this.orderNoList = new ArrayList<String>(orderNoList);
 		}
 		this.paymentType = master.getPaymentType();
+	}
+	
+	public void addOrderHeaderNo(String orderNo) {
+		if(this.orderNoList == null) {
+			this.orderNoList = new ArrayList<String>();
+		}
+		this.orderNoList.add(orderNo);
 	}
 	
 	public Long getMasterOrderId() {
