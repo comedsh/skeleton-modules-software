@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.fenghua.auto.backend.common.utils.BeanMapper;
+import com.fenghua.auto.sku.backend.service.SkuService;
 import com.fenghua.auto.sku.intf.dto.SkuDTO;
 import com.fenghua.auto.sku.intf.service.ISkuService;
-import com.fenghua.auto.sku.service.SkuService;
 
 /** 
   *<des>
