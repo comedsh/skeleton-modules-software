@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.fenghua.auto.sku.domain.CatalogSku" >
-  <resultMap id="BaseResultMap" type="com.fenghua.auto.sku.domain.CatalogSku" >
+  <resultMap id="BaseResultMap" type="com.fenghua.auto.sku.backend.domain.CatalogSku" >
     <result column="catalog_id" property="catalogId" jdbcType="BIGINT" />
     <result column="sku_id" property="skuId" jdbcType="BIGINT" />
   </resultMap>
@@ -20,12 +20,12 @@
       </if>
     </where>
   </sql>
-  <select id="selectCount" resultType="java.lang.Long" parameterType="com.fenghua.auto.sku.domain.CatalogSku" >
+  <select id="selectCount" resultType="java.lang.Long" parameterType="com.fenghua.auto.sku.backend.domain.CatalogSku" >
     select count( )
      from catalog_sku
     <include refid="Base_Where_Case" />
   </select>
-  <select id="select" resultMap="BaseResultMap" parameterType="com.fenghua.auto.sku.domain.CatalogSku" >
+  <select id="select" resultMap="BaseResultMap" parameterType="com.fenghua.auto.sku.backend.domain.CatalogSku" >
     select 
     <include refid="Base_Column_List" />
      from catalog_sku
@@ -34,11 +34,11 @@
        limit #{offset},#{limit} 
     </if>
   </select>
-  <insert id="insert" parameterType="com.fenghua.auto.sku.domain.CatalogSku" >
+  <insert id="insert" parameterType="com.fenghua.auto.sku.backend.domain.CatalogSku" >
     insert into catalog_sku (catalog_id, sku_id)
     values (#{catalogId,jdbcType=BIGINT}, #{skuId,jdbcType=BIGINT})
   </insert>
-  <insert id="insertSelective" parameterType="com.fenghua.auto.sku.domain.CatalogSku" >
+  <insert id="insertSelective" parameterType="com.fenghua.auto.sku.backend.domain.CatalogSku" >
     insert into catalog_sku
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="catalogId != null" >

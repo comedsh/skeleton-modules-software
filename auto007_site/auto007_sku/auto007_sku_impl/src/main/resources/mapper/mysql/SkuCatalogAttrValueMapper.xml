@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.fenghua.auto.sku.domain.SkuCatalogAttrValue" >
+<mapper namespace="com.fenghua.auto.sku.backend.domain.SkuCatalogAttrValue" >
   <resultMap id="BaseResultMap" type="com.fenghua.auto.sku.domain.SkuCatalogAttrValue" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="catalog_attr_id" property="catalogAttrId" jdbcType="BIGINT" />
@@ -26,12 +26,12 @@
       </if>
     </where>
   </sql>
-  <select id="selectCount" resultType="java.lang.Long" parameterType="com.fenghua.auto.sku.domain.SkuCatalogAttrValue" >
+  <select id="selectCount" resultType="java.lang.Long" parameterType="com.fenghua.auto.sku.backend.domain.SkuCatalogAttrValue" >
     select count( id)
      from sku_catalog_attr_value
     <include refid="Base_Where_Case" />
   </select>
-  <select id="select" resultMap="BaseResultMap" parameterType="com.fenghua.auto.sku.domain.SkuCatalogAttrValue" >
+  <select id="select" resultMap="BaseResultMap" parameterType="com.fenghua.auto.sku.backend.domain.SkuCatalogAttrValue" >
     select 
     <include refid="Base_Column_List" />
      from sku_catalog_attr_value
@@ -50,13 +50,13 @@
     delete from sku_catalog_attr_value
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.fenghua.auto.sku.domain.SkuCatalogAttrValue" >
+  <insert id="insert" parameterType="com.fenghua.auto.sku.backend.domain.SkuCatalogAttrValue" >
     insert into sku_catalog_attr_value (id, catalog_attr_id, sttr_value, 
       sku_id)
     values (#{id,jdbcType=BIGINT}, #{catalogAttrId,jdbcType=BIGINT}, #{sttrValue,jdbcType=VARCHAR}, 
       #{skuId,jdbcType=BIGINT})
   </insert>
-  <insert id="insertSelective" parameterType="com.fenghua.auto.sku.domain.SkuCatalogAttrValue" >
+  <insert id="insertSelective" parameterType="com.fenghua.auto.sku.backend.domain.SkuCatalogAttrValue" >
     insert into sku_catalog_attr_value
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -87,7 +87,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fenghua.auto.sku.domain.SkuCatalogAttrValue" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.fenghua.auto.sku.backend.domain.SkuCatalogAttrValue" >
     update sku_catalog_attr_value
     <set >
       <if test="catalogAttrId != null" >
@@ -102,7 +102,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.sku.domain.SkuCatalogAttrValue" >
+  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.sku.backend.domain.SkuCatalogAttrValue" >
     update sku_catalog_attr_value
     set catalog_attr_id = #{catalogAttrId,jdbcType=BIGINT},
       sttr_value = #{sttrValue,jdbcType=VARCHAR},

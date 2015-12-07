@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.fenghua.auto.sku.domain.VehicleOeSku">
-  <resultMap id="BaseResultMap" type="com.fenghua.auto.sku.domain.VehicleOeSku">
+<mapper namespace="com.fenghua.auto.sku.backend.domain.VehicleOeSku">
+  <resultMap id="BaseResultMap" type="com.fenghua.auto.sku.backend.domain.VehicleOeSku">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="oe_code" jdbcType="VARCHAR" property="oeCode" />
     <result column="vehicle_id" jdbcType="BIGINT" property="vehicleId" />
@@ -46,12 +46,12 @@
       </if>
     </where>
   </sql>
-  <select id="selectCount" parameterType="com.fenghua.auto.sku.domain.VehicleOeSku" resultType="java.lang.Long">
+  <select id="selectCount" parameterType="com.fenghua.auto.sku.backend.domain.VehicleOeSku" resultType="java.lang.Long">
     select count( id)
      from vehicle_oe_sku
     <include refid="Base_Where_Case" />
   </select>
-  <select id="select" parameterType="com.fenghua.auto.sku.domain.VehicleOeSku" resultMap="BaseResultMap">
+  <select id="select" parameterType="com.fenghua.auto.sku.backend.domain.VehicleOeSku" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
      from vehicle_oe_sku
@@ -70,7 +70,7 @@
     delete from vehicle_oe_sku
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.fenghua.auto.sku.domain.VehicleOeSku">
+  <insert id="insert" parameterType="com.fenghua.auto.sku.backend.domain.VehicleOeSku">
     insert into vehicle_oe_sku (id, oe_code, vehicle_id, 
       vehicle_name, brand, engine, 
       period, output_value, sku_id
@@ -80,7 +80,7 @@
       #{period,jdbcType=VARCHAR}, #{outputValue,jdbcType=VARCHAR}, #{skuId,jdbcType=BIGINT}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.fenghua.auto.sku.domain.VehicleOeSku">
+  <insert id="insertSelective" parameterType="com.fenghua.auto.sku.backend.domain.VehicleOeSku">
     insert into vehicle_oe_sku
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -141,7 +141,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fenghua.auto.sku.domain.VehicleOeSku">
+  <update id="updateByPrimaryKeySelective" parameterType="com.fenghua.auto.sku.backend.domain.VehicleOeSku">
     update vehicle_oe_sku
     <set>
       <if test="oeCode != null">
@@ -171,7 +171,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.sku.domain.VehicleOeSku">
+  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.sku.backend.domain.VehicleOeSku">
     update vehicle_oe_sku
     set oe_code = #{oeCode,jdbcType=VARCHAR},
       vehicle_id = #{vehicleId,jdbcType=BIGINT},

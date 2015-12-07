@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.fenghua.auto.sku.domain.Sku" >
-  <resultMap id="BaseResultMap" type="com.fenghua.auto.sku.domain.Sku" >
+<mapper namespace="com.fenghua.auto.sku.backend.domain.Sku" >
+  <resultMap id="BaseResultMap" type="com.fenghua.auto.sku.backend.domain.Sku" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="code" property="code" jdbcType="VARCHAR" />
     <result column="name" property="name" jdbcType="VARCHAR" />
@@ -37,7 +37,7 @@
     sale_price, create_time, update_time,url,introduce
   </sql>
   
-  <select id="select" resultMap="BaseResultMap"  parameterType="com.fenghua.auto.sku.domain.Sku">
+  <select id="select" resultMap="BaseResultMap"  parameterType="com.fenghua.auto.sku.backend.domain.Sku">
    select  
    <include refid="Base_Column_List" />
    from sku
@@ -59,7 +59,7 @@
     delete from sku
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.fenghua.auto.sku.domain.Sku" >
+  <insert id="insert" parameterType="com.fenghua.auto.sku.backend.domain.Sku" >
     insert into sku (id, code, seller_id, 
       name, title, status, type, 
       shelf_time, under_time, produce_time, 
@@ -78,7 +78,7 @@
       #{url,jdbcType=LONGVARCHAR}, #{introduce,jdbcType=LONGVARCHAR})
   </insert>
  
-  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.sku.domain.Sku" >
+  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.sku.backend.domain.Sku" >
     update sku
     <set >
       <if test="code != null" >

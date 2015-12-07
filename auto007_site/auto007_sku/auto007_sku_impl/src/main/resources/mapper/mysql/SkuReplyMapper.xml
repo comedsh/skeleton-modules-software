@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.fenghua.auto.sku.domain.SkuReply" >
-  <resultMap id="BaseResultMap" type="com.fenghua.auto.sku.domain.SkuReply" >
+<mapper namespace="com.fenghua.auto.sku.backend.domain.SkuReply" >
+  <resultMap id="BaseResultMap" type="com.fenghua.auto.sku.backend.domain.SkuReply" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="reply_code" property="replyCode" jdbcType="VARCHAR" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
@@ -39,12 +39,12 @@
       </if>
     </where>
   </sql>
-  <select id="selectCount" resultType="java.lang.Long" parameterType="com.fenghua.auto.sku.domain.SkuReply" >
+  <select id="selectCount" resultType="java.lang.Long" parameterType="com.fenghua.auto.sku.backend.domain.SkuReply" >
     select count( id)
      from sku_reply
     <include refid="Base_Where_Case" />
   </select>
-  <select id="select" resultMap="BaseResultMap" parameterType="com.fenghua.auto.sku.domain.SkuReply" >
+  <select id="select" resultMap="BaseResultMap" parameterType="com.fenghua.auto.sku.backend.domain.SkuReply" >
     select 
     <include refid="Base_Column_List" />
      from sku_reply
@@ -65,7 +65,7 @@
     delete from sku_reply
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.fenghua.auto.sku.domain.SkuReply" >
+  <insert id="insert" parameterType="com.fenghua.auto.sku.backend.domain.SkuReply" >
     insert into sku_reply (id, reply_code, create_time, 
       user_id, sku_comment_id, comtent
       )
@@ -73,7 +73,7 @@
       #{userId,jdbcType=CHAR}, #{skuCommentId,jdbcType=BIGINT}, #{comtent,jdbcType=LONGVARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.fenghua.auto.sku.domain.SkuReply" >
+  <insert id="insertSelective" parameterType="com.fenghua.auto.sku.backend.domain.SkuReply" >
     insert into sku_reply
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -116,7 +116,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fenghua.auto.sku.domain.SkuReply" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.fenghua.auto.sku.backend.domain.SkuReply" >
     update sku_reply
     <set >
       <if test="replyCode != null" >
@@ -137,7 +137,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.fenghua.auto.sku.domain.SkuReply" >
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.fenghua.auto.sku.backend.domain.SkuReply" >
     update sku_reply
     set reply_code = #{replyCode,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
@@ -146,7 +146,7 @@
       comtent = #{comtent,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.sku.domain.SkuReply" >
+  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.sku.backend.domain.SkuReply" >
     update sku_reply
     set reply_code = #{replyCode,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},

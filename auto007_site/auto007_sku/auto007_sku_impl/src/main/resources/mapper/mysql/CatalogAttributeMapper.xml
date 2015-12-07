@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.fenghua.auto.sku.domain.CatalogAttribute" >
-  <resultMap id="BaseResultMap" type="com.fenghua.auto.sku.domain.CatalogAttribute" >
+<mapper namespace="com.fenghua.auto.sku.backend.domain.CatalogAttribute" >
+  <resultMap id="BaseResultMap" type="com.fenghua.auto.sku.backend.domain.CatalogAttribute" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="catalog_id" property="catalogId" jdbcType="BIGINT" />
@@ -30,12 +30,12 @@
       </if>
     </where>
   </sql>
-  <select id="selectCount" resultType="java.lang.Long" parameterType="com.fenghua.auto.sku.domain.CatalogAttribute" >
+  <select id="selectCount" resultType="java.lang.Long" parameterType="com.fenghua.auto.sku.backend.domain.CatalogAttribute" >
     select count( id)
      from catalog_attribute
     <include refid="Base_Where_Case" />
   </select>
-  <select id="select" resultMap="BaseResultMap" parameterType="com.fenghua.auto.sku.domain.CatalogAttribute" >
+  <select id="select" resultMap="BaseResultMap" parameterType="com.fenghua.auto.sku.backend.domain.CatalogAttribute" >
     select 
     <include refid="Base_Column_List" />
      from catalog_attribute
@@ -54,13 +54,13 @@
     delete from catalog_attribute
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.fenghua.auto.sku.domain.CatalogAttribute" >
+  <insert id="insert" parameterType="com.fenghua.auto.sku.backend.domain.CatalogAttribute" >
     insert into catalog_attribute (id, name, catalog_id, 
       s_no, remark)
     values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{catalogId,jdbcType=BIGINT}, 
       #{sNo,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.fenghua.auto.sku.domain.CatalogAttribute" >
+  <insert id="insertSelective" parameterType="com.fenghua.auto.sku.backend.domain.CatalogAttribute" >
     insert into catalog_attribute
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -97,7 +97,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fenghua.auto.sku.domain.CatalogAttribute" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.fenghua.auto.sku.backend.domain.CatalogAttribute" >
     update catalog_attribute
     <set >
       <if test="name != null" >
@@ -115,7 +115,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.sku.domain.CatalogAttribute" >
+  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.sku.backend.domain.CatalogAttribute" >
     update catalog_attribute
     set name = #{name,jdbcType=VARCHAR},
       catalog_id = #{catalogId,jdbcType=BIGINT},
