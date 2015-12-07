@@ -29,8 +29,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.fenghua.auto.backend.core.utils.SpringValidationHelper;
-import com.fenghua.auto.backend.core.utils.UserSecurityUtils;
 import com.fenghua.auto.backend.common.utils.Constants;
 import com.fenghua.auto.backend.common.utils.ValidateTime;
 import com.fenghua.auto.backend.common.utils.uploadPicture;
@@ -38,22 +36,21 @@ import com.fenghua.auto.backend.common.utils.graphValidate.PictureCheckCode;
 import com.fenghua.auto.backend.common.utils.message.SMSMessage;
 import com.fenghua.auto.backend.core.utils.MessageAndErrorUtil;
 import com.fenghua.auto.backend.core.utils.MessageHelper;
-import com.fenghua.auto.backend.domain.group.GroupA;
-import com.fenghua.auto.backend.domain.group.GroupB;
+import com.fenghua.auto.backend.core.utils.SpringValidationHelper;
+import com.fenghua.auto.backend.core.utils.UserSecurityUtils;
 import com.fenghua.auto.backend.domain.mto.CommonMessageTransferObject;
 import com.fenghua.auto.backend.domain.mto.LabelMessage;
 import com.fenghua.auto.backend.domain.mto.MessageTransferObject;
-import com.fenghua.auto.backend.domain.user.Company;
-import com.fenghua.auto.backend.domain.user.PaymentType;
-import com.fenghua.auto.backend.domain.user.ResetPassRequest;
-import com.fenghua.auto.backend.domain.user.User;
-import com.fenghua.auto.backend.service.user.AuthService;
-import com.fenghua.auto.backend.service.user.CompanyService;
-import com.fenghua.auto.backend.service.user.PaymentTypeService;
 import com.fenghua.auto.backend.service.SysConfigService;
-import com.fenghua.auto.backend.service.user.UserForgetPassService;
-import com.fenghua.auto.backend.service.user.UserService;
-import com.fenghua.auto.webapp.controller.user.Result;
+import com.fenghua.auto.user.backend.domain.Company;
+import com.fenghua.auto.user.backend.domain.PaymentType;
+import com.fenghua.auto.user.backend.domain.ResetPassRequest;
+import com.fenghua.auto.user.backend.domain.User;
+import com.fenghua.auto.user.backend.service.AuthService;
+import com.fenghua.auto.user.backend.service.CompanyService;
+import com.fenghua.auto.user.backend.service.PaymentTypeService;
+import com.fenghua.auto.user.backend.service.UserForgetPassService;
+import com.fenghua.auto.user.backend.service.UserService;
 
 /**
  * 用户功能模块
@@ -89,7 +86,7 @@ public class UserController {
 	 * @createTime 2015.11.4
 	 */
 	@RequestMapping(value = "/personalRegister", method = RequestMethod.POST)
-	public @ResponseBody MessageTransferObject personalRegister(@Validated({GroupA.class}) User user, @RequestParam String telcode,
+	public @ResponseBody MessageTransferObject personalRegister(@Validated User user, @RequestParam String telcode,
 			@RequestParam String code, HttpServletRequest request, Locale locale) {
 		CommonMessageTransferObject transferObject = new CommonMessageTransferObject();
 		// 获取session里面的电话验证码
@@ -132,7 +129,7 @@ public class UserController {
 	 * @createTime 2015.11.4
 	 */
 	@RequestMapping(value = "/companyRegister", method = RequestMethod.POST)
-	public @ResponseBody MessageTransferObject companyRegister(@Validated({GroupB.class}) User user, @Valid Company company,
+	public @ResponseBody MessageTransferObject companyRegister(@Validated User user, @Valid Company company,
 			@RequestParam String telcode, @RequestParam String code, @Valid PaymentType paymenttype,
 			HttpServletRequest request, Locale locale) {
 		CommonMessageTransferObject transferObject = new CommonMessageTransferObject();
