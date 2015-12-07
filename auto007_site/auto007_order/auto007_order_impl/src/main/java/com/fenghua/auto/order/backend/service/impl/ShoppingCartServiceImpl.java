@@ -21,8 +21,8 @@ import com.fenghua.auto.order.backend.service.ShoppingCartService;
 import com.fenghua.auto.order.backend.vo.ShoppingCartGroupVO;
 import com.fenghua.auto.order.backend.vo.ShoppingCartVO;
 import com.fenghua.auto.sku.intf.dto.SkuDTO;
-import com.fenghua.auto.sku.intf.service.SkuService;
-import com.fenghua.auto.user.intf.service.SellerService;
+import com.fenghua.auto.sku.intf.service.ISkuService;
+import com.fenghua.auto.user.intf.service.ISellerService;
 
 /**
  * Service实现类
@@ -38,10 +38,10 @@ public class ShoppingCartServiceImpl extends BaseServiceImpl<ShoppingCart> imple
 	private ShoppingCartDao dao;
 	
 	@Autowired
-	private SkuService skuService;
+	private ISkuService skuService;
 	
 	@Autowired
-	private SellerService sellerService;
+	private ISellerService sellerService;
 	
 	@Override
 	protected BaseDao<ShoppingCart> getBaseDao() {

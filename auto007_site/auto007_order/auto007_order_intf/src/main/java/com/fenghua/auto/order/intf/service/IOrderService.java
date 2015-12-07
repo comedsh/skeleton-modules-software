@@ -13,7 +13,7 @@ import com.fenghua.auto.order.intf.dto.OrderMasterDTO;
  *
  */
 
-public interface OrderService {
+public interface IOrderService {
 
 	public OrderMasterDTO loadOrderMasterDTO(Long masterId);
 	public OrderMasterDTO loadOrderMasterDTO(String masterNo);

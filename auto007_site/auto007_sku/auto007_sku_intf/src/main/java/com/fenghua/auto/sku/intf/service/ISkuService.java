@@ -11,7 +11,7 @@ import com.fenghua.auto.sku.intf.dto.SkuDTO;
   * @date 2015年11月24日
   * @version 
   */
-public interface SkuService {
+public interface ISkuService {
 
    /**
     * 根据商品类别查询

@@ -12,10 +12,10 @@ import org.springframework.stereotype.Service;
 import com.fenghua.auto.backend.dao.BaseDao;
 import com.fenghua.auto.backend.service.impl.BaseServiceImpl;
 import com.fenghua.auto.user.backend.dao.UserAddressDao;
-import com.fenghua.auto.user.backend.domain.CityArea;
 import com.fenghua.auto.user.backend.domain.UserAddress;
-import com.fenghua.auto.user.backend.service.CityAreaService;
 import com.fenghua.auto.user.backend.service.UserAddressService;
+import com.fenghua.auto.user.intf.dto.CityAreaDTO;
+import com.fenghua.auto.user.intf.service.ICityAreaService;
 
 /**
  * Service实现类
@@ -31,7 +31,7 @@ public class UserAddressServiceImpl extends BaseServiceImpl<UserAddress> impleme
 	private UserAddressDao dao;
 	
 	@Autowired
-	private CityAreaService cityAreaService;
+	private ICityAreaService cityAreaService;
 	
 	@Override
 	protected BaseDao<UserAddress> getBaseDao() {
@@ -68,19 +68,19 @@ public class UserAddressServiceImpl extends BaseServiceImpl<UserAddress> impleme
 		address.setLastModifiedTs(new Date());
 		address.setDefaultAddr(false);
 		if(address.getProvinceId() != null) {
-			CityArea ca = cityAreaService.loadCityArea(address.getProvinceId());
+			CityAreaDTO ca = cityAreaService.loadCityArea(address.getProvinceId());
 			if(ca != null) {
 				address.setProvinceName(ca.getName());
 			}
 		}
 		if(address.getCityId() != null) {
-			CityArea ca = cityAreaService.loadCityArea(address.getCityId());
+			CityAreaDTO ca = cityAreaService.loadCityArea(address.getCityId());
 			if(ca != null) {
 				address.setCityName(ca.getName());
 			}
 		}
 		if(address.getAreaId() != null) {
-			CityArea ca = cityAreaService.loadCityArea(address.getAreaId());
+			CityAreaDTO ca = cityAreaService.loadCityArea(address.getAreaId());
 			if(ca != null) {
 				address.setAreaName(ca.getName());
 			}
