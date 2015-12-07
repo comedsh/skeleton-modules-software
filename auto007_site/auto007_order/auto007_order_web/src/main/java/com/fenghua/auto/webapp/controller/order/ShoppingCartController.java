@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSON;
 import com.fenghua.auto.backend.core.utils.MessageHelper;
 import com.fenghua.auto.backend.core.utils.UserSecurityUtils;
-import com.fenghua.auto.order.OrderMTO;
-import com.fenghua.auto.order.service.ShoppingCartService;
-import com.fenghua.auto.order.vo.ShoppingCartGroupVO;
+import com.fenghua.auto.order.backend.OrderMTO;
+import com.fenghua.auto.order.backend.service.ShoppingCartService;
+import com.fenghua.auto.order.backend.vo.ShoppingCartGroupVO;
 
 /** 
   *<des> 
@@ -28,7 +28,7 @@ import com.fenghua.auto.order.vo.ShoppingCartGroupVO;
   * @version 1.0
   */
 @Controller
-@RequestMapping("/shoppingCart")
+@RequestMapping("/order/cart")
 public class ShoppingCartController {
 	
 	@Autowired

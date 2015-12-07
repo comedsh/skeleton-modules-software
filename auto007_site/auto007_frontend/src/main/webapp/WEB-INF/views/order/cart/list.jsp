@@ -170,7 +170,7 @@
    				$scope.shopCartGroups[groupIndex].cartList[index].cart.qty = $scope.shopCartGroups[groupIndex].cartList[index].cart.qty - 1;
 	   			$http({
 		   			method:'PUT',
-		   			url:"/shoppingCart/add",
+		   			url:"/order/cart/add",
 		   			params:{pid: $scope.shopCartGroups[groupIndex].cartList[index].cart.skuId, num: $scope.shopCartGroups[groupIndex].cartList[index].cart.qty}
 	   			}).success(function(data){
 	   				if(data.success) {
@@ -189,7 +189,7 @@
     	   $scope.shopCartGroups[groupIndex].cartList[index].cart.qty = $scope.shopCartGroups[groupIndex].cartList[index].cart.qty + 1;
     	   $http({
 	   			method:'PUT',
-	   			url:"/shoppingCart/add",
+	   			url:"/order/cart/add",
 	   			params:{pid: $scope.shopCartGroups[groupIndex].cartList[index].cart.skuId, num: $scope.shopCartGroups[groupIndex].cartList[index].cart.qty}
   			}).success(function(data){
   				$scope.initData(data);
@@ -198,7 +198,7 @@
        $scope.del =function(groupIndex, index){
     	   $http({
 	   			method:'POST',
-	   			url:"/shoppingCart/del",
+	   			url:"/order/cart/del",
 	   			params:{"sids": [$scope.shopCartGroups[groupIndex].cartList[index].cart.id]}
   			}).success(function(data){
   				if(data.success) {
@@ -226,7 +226,7 @@
     	   if(selectIds.length > 0) {
     		   $http({
    	   			method:'POST',
-   	   			url:"/shoppingCart/del",
+   	   			url:"/order/cart/del",
    	   			params:{"sids": selectIds}
      			}).success(function(data){
      				if(data.success) {

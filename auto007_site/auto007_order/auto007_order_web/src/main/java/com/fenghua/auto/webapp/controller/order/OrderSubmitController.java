@@ -18,14 +18,14 @@ import com.alibaba.fastjson.JSON;
 import com.fenghua.auto.backend.core.utils.MessageHelper;
 import com.fenghua.auto.backend.core.utils.UserSecurityUtils;
 import com.fenghua.auto.backend.domain.mto.LabelError;
-import com.fenghua.auto.order.OrderMTO;
-import com.fenghua.auto.order.domain.ShoppingCart;
-import com.fenghua.auto.order.dto.OrderMasterResultDTO;
-import com.fenghua.auto.order.dto.OrderMasterSubmitDTO;
-import com.fenghua.auto.order.dto.OrderSubmitDTO;
-import com.fenghua.auto.order.qo.ShoppingCartQO;
-import com.fenghua.auto.order.service.OrderMasterService;
-import com.fenghua.auto.order.service.ShoppingCartService;
+import com.fenghua.auto.order.backend.OrderMTO;
+import com.fenghua.auto.order.backend.domain.ShoppingCart;
+import com.fenghua.auto.order.backend.dto.OrderMasterResultDTO;
+import com.fenghua.auto.order.backend.dto.OrderMasterSubmitDTO;
+import com.fenghua.auto.order.backend.dto.OrderSubmitDTO;
+import com.fenghua.auto.order.backend.qo.ShoppingCartQO;
+import com.fenghua.auto.order.backend.service.OrderMasterService;
+import com.fenghua.auto.order.backend.service.ShoppingCartService;
 import com.fenghua.auto.sku.domain.Sku;
 import com.fenghua.auto.sku.service.SkuService;
 
@@ -38,7 +38,7 @@ import com.fenghua.auto.sku.service.SkuService;
   * @version 1.0
   */
 @Controller
-@RequestMapping("/shopping/order")
+@RequestMapping("/order")
 public class OrderSubmitController {
 	
 	@Autowired

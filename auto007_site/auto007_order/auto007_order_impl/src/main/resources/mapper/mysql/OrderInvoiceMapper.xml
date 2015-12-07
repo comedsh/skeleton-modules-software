@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.fenghua.auto.order.domain.OrderInvoice" >
-  <resultMap id="BaseResultMap" type="com.fenghua.auto.order.domain.OrderInvoice" >
+<mapper namespace="com.fenghua.auto.order.backend.domain.OrderInvoice" >
+  <resultMap id="BaseResultMap" type="com.fenghua.auto.order.backend.domain.OrderInvoice" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="order_id" property="orderId" jdbcType="BIGINT" />
     <result column="value_add_id" property="valueAddId" jdbcType="BIGINT" />
@@ -76,12 +76,12 @@
       </if>
     </where>
   </sql>
-  <select id="selectCount" resultType="java.lang.Long" parameterType="com.fenghua.auto.order.domain.OrderInvoice" >
+  <select id="selectCount" resultType="java.lang.Long" parameterType="com.fenghua.auto.order.backend.domain.OrderInvoice" >
     select count( id)
      from order_invoice
     <include refid="Base_Where_Case" />
   </select>
-  <select id="select" resultMap="BaseResultMap" parameterType="com.fenghua.auto.order.domain.OrderInvoice" >
+  <select id="select" resultMap="BaseResultMap" parameterType="com.fenghua.auto.order.backend.domain.OrderInvoice" >
     select 
     <include refid="Base_Column_List" />
      from order_invoice
@@ -100,7 +100,7 @@
     delete from order_invoice
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.fenghua.auto.order.domain.OrderInvoice" >
+  <insert id="insert"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.fenghua.auto.order.backend.domain.OrderInvoice" >
     insert into order_invoice (id, order_id, value_add_id, 
       invoice_type, title, content_type, 
       content, rec_contact, rec_contact_phone, 
@@ -114,7 +114,7 @@
       #{entryTime,jdbcType=TIMESTAMP}, #{printerId,jdbcType=BIGINT}, #{printerName,jdbcType=VARCHAR}, 
       #{printTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.fenghua.auto.order.domain.OrderInvoice" >
+  <insert id="insertSelective"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.fenghua.auto.order.backend.domain.OrderInvoice" >
     insert into order_invoice
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -217,7 +217,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fenghua.auto.order.domain.OrderInvoice" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.fenghua.auto.order.backend.domain.OrderInvoice" >
     update order_invoice
     <set >
       <if test="orderId != null" >
@@ -268,7 +268,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.order.domain.OrderInvoice" >
+  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.order.backend.domain.OrderInvoice" >
     update order_invoice
     set order_id = #{orderId,jdbcType=BIGINT},
       value_add_id = #{valueAddId,jdbcType=BIGINT},

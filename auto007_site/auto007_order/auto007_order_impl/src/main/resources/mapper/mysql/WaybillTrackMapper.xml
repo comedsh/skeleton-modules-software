@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.fenghua.auto.order.domain.WaybillTrack" >
-  <resultMap id="BaseResultMap" type="com.fenghua.auto.order.domain.WaybillTrack" >
+<mapper namespace="com.fenghua.auto.order.backend.domain.WaybillTrack" >
+  <resultMap id="BaseResultMap" type="com.fenghua.auto.order.backend.domain.WaybillTrack" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="transport_id" property="transportId" jdbcType="BIGINT" />
     <result column="waybill_no" property="waybillNo" jdbcType="VARCHAR" />
@@ -42,12 +42,12 @@
       </if>
     </where>
   </sql>
-  <select id="selectCount" resultType="java.lang.Long" parameterType="com.fenghua.auto.order.domain.WaybillTrack" >
+  <select id="selectCount" resultType="java.lang.Long" parameterType="com.fenghua.auto.order.backend.domain.WaybillTrack" >
     select count( id)
      from waybill_track
     <include refid="Base_Where_Case" />
   </select>
-  <select id="select" resultMap="BaseResultMap" parameterType="com.fenghua.auto.order.domain.WaybillTrack" >
+  <select id="select" resultMap="BaseResultMap" parameterType="com.fenghua.auto.order.backend.domain.WaybillTrack" >
     select 
     <include refid="Base_Column_List" />
      from waybill_track
@@ -66,7 +66,7 @@
     delete from waybill_track
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.fenghua.auto.order.domain.WaybillTrack" >
+  <insert id="insert"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.fenghua.auto.order.backend.domain.WaybillTrack" >
     insert into waybill_track (id, transport_id, waybill_no, 
       waybill_status, content, track_time, 
       operator_id, operator_name)
@@ -74,7 +74,7 @@
       #{waybillStatus,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{trackTime,jdbcType=TIMESTAMP}, 
       #{operatorId,jdbcType=BIGINT}, #{operatorName,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.fenghua.auto.order.domain.WaybillTrack" >
+  <insert id="insertSelective"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.fenghua.auto.order.backend.domain.WaybillTrack" >
     insert into waybill_track
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -129,7 +129,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fenghua.auto.order.domain.WaybillTrack" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.fenghua.auto.order.backend.domain.WaybillTrack" >
     update waybill_track
     <set >
       <if test="transportId != null" >
@@ -156,7 +156,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.order.domain.WaybillTrack" >
+  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.order.backend.domain.WaybillTrack" >
     update waybill_track
     set transport_id = #{transportId,jdbcType=BIGINT},
       waybill_no = #{waybillNo,jdbcType=VARCHAR},

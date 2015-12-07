@@ -21,7 +21,7 @@ import com.fenghua.auto.backend.core.utils.UserSecurityUtils;
 import com.fenghua.auto.backend.domain.mto.LabelError;
 import com.fenghua.auto.backend.domain.user.UserAddress;
 import com.fenghua.auto.backend.service.user.UserAddressService;
-import com.fenghua.auto.order.OrderMTO;
+import com.fenghua.auto.order.backend.OrderMTO;
 
 /** 
   *<des> 
@@ -32,7 +32,7 @@ import com.fenghua.auto.order.OrderMTO;
   * @version 1.0
   */
 @Controller
-@RequestMapping("/shopping")
+@RequestMapping("/order")
 public class AddressInvoiceController {
 	
 	@Autowired

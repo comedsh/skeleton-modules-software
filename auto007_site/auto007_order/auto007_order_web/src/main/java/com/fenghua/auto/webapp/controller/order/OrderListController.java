@@ -3,22 +3,17 @@ package com.fenghua.auto.webapp.controller.order;
 
 import java.util.List;
 
-import javax.security.sasl.AuthenticationException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSON;
 import com.fenghua.auto.backend.core.utils.MessageHelper;
-import com.fenghua.auto.backend.core.utils.UserSecurityUtils;
-import com.fenghua.auto.order.OrderMTO;
-import com.fenghua.auto.order.service.OrderListService;
-import com.fenghua.auto.order.vo.BuyerOrderHeaderVO;
-import com.fenghua.auto.order.vo.BuyerOrderMasterVO;
+import com.fenghua.auto.order.backend.OrderMTO;
+import com.fenghua.auto.order.backend.service.OrderListService;
+import com.fenghua.auto.order.backend.vo.BuyerOrderMasterVO;
 
 /**
  * 买家订单控制器
@@ -27,7 +22,7 @@ import com.fenghua.auto.order.vo.BuyerOrderMasterVO;
  *
  */
 @Controller
-@RequestMapping("/buyerOrder")
+@RequestMapping("/order")
 public class OrderListController {
 	@Autowired
 	private OrderListService orderListService;
