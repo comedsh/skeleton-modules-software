@@ -45,7 +45,7 @@
     <p class="clearfix">
         <label>已有账号？<a href="/login.jsp">马上登录</a></label>
 <form:errors path="*"/>
-${message.msg }
+${message}
     <!--手机找回密码-->
     <div class="border_div">
     <form id="secondformByPhone" method="post" action="/user/updatePasswordByPhone/">
