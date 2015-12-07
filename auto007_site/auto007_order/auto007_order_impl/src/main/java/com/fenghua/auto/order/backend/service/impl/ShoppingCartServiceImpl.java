@@ -20,6 +20,9 @@ import com.fenghua.auto.order.backend.domain.ShoppingCart;
 import com.fenghua.auto.order.backend.service.ShoppingCartService;
 import com.fenghua.auto.order.backend.vo.ShoppingCartGroupVO;
 import com.fenghua.auto.order.backend.vo.ShoppingCartVO;
+import com.fenghua.auto.sku.intf.dto.SkuDTO;
+import com.fenghua.auto.sku.intf.service.SkuService;
+import com.fenghua.auto.user.intf.service.SellerService;
 
 /**
  * Service实现类
@@ -50,7 +53,7 @@ public class ShoppingCartServiceImpl extends BaseServiceImpl<ShoppingCart> imple
 	public boolean addToCart(Long pid, int qty, Long buyerId) {
 		boolean added = false;
 		try {
-			Sku sku = skuService.selectById(pid);
+			SkuDTO sku = skuService.loadSku(pid);
 			if(sku != null) {
 				ShoppingCart query = new ShoppingCart();
 				query.setBuyerId(buyerId);
@@ -89,7 +92,7 @@ public class ShoppingCartServiceImpl extends BaseServiceImpl<ShoppingCart> imple
 		}
 		boolean added = false;
 		try {
-			Sku sku = skuService.selectById(pid);
+			SkuDTO sku = skuService.loadSku(pid);
 			if(sku != null) {
 				ShoppingCart query = new ShoppingCart();
 				query.setBuyerId(buyerId);
@@ -142,9 +145,9 @@ public class ShoppingCartServiceImpl extends BaseServiceImpl<ShoppingCart> imple
 		Map<Long, ShoppingCartGroupVO> map = new HashMap<Long, ShoppingCartGroupVO>();
 		if(cartDOs != null) {
 			for (ShoppingCart cart : cartDOs) {
-				ShoppingCartVO vo = new ShoppingCartVO(cart, skuService.selectById(cart.getSkuId()));
+				ShoppingCartVO vo = new ShoppingCartVO(cart, skuService.loadSku(cart.getSkuId()));
 				if(!map.containsKey(cart.getSellerId())) {
-					map.put(cart.getSellerId(), new ShoppingCartGroupVO(sellerService.selectById(cart.getSellerId())));
+					map.put(cart.getSellerId(), new ShoppingCartGroupVO(sellerService.getSellerById(cart.getSellerId())));
 				}
 				map.get(cart.getSellerId()).addCart(vo);
 			}

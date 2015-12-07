@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 
 import com.fenghua.auto.backend.core.utils.MessageHelper;
@@ -20,6 +19,11 @@ import com.fenghua.auto.order.backend.service.OrderTransportService;
 import com.fenghua.auto.order.backend.vo.BuyerOrderHeaderVO;
 import com.fenghua.auto.order.backend.vo.BuyerOrderMasterVO;
 import com.fenghua.auto.order.backend.vo.OrderItemVO;
+import com.fenghua.auto.sku.intf.dto.SkuDTO;
+import com.fenghua.auto.sku.intf.service.SkuService;
+import com.fenghua.auto.user.intf.dto.SellerDTO;
+import com.fenghua.auto.user.intf.service.SellerService;
+import com.fenghua.auto.user.intf.service.UserService;
 
 /**
  * 
@@ -32,6 +36,8 @@ public class OrderListServiceImpl implements OrderListService {
 	private OrderHeaderService orderHeaderService;
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private SellerService sellerService;
 	@Autowired
 	private OrderTransportService orderTransportService;
 	@Autowired
@@ -99,7 +105,7 @@ public class OrderListServiceImpl implements OrderListService {
 		List<OrderItemVO> orderItemVOs = new ArrayList<OrderItemVO>();
 		BuyerOrderHeaderVO buyerOrderHeaderVO;
 		OrderItemVO orderItemVO;
-		User seller = userService.getUserById(orderHeader.getSellerId());
+		SellerDTO seller = sellerService.getSellerById(orderHeader.getSellerId());
 		String sellerName=null;
 		if(seller!=null){
 			sellerName = seller.getName();
@@ -109,10 +115,10 @@ public class OrderListServiceImpl implements OrderListService {
 		if (orderItems == null || orderItems.size() == 0) {
 			//throw new RuntimeException("系统异常！");
 		}
-		Sku sku;
+		SkuDTO sku;
 		String img;
 		for (OrderItem orderItem : orderItems) {
-			sku = skuService.selectById(orderItem.getSkuId());
+			sku = skuService.loadSku(orderItem.getSkuId());
 			orderItemVO = new OrderItemVO(orderItem, sku);
 			orderItemVOs.add(orderItemVO);
 		}

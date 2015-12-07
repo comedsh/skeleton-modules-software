@@ -3,6 +3,7 @@ package com.fenghua.auto.order.backend.vo;
 import java.io.Serializable;
 
 import com.fenghua.auto.order.backend.domain.OrderItem;
+import com.fenghua.auto.sku.intf.dto.SkuDTO;
 
 /**
  * 订单明细vo
@@ -10,6 +11,7 @@ import com.fenghua.auto.order.backend.domain.OrderItem;
  *
  */
 public class OrderItemVO implements Serializable {
+	private static final long serialVersionUID = -4070886417887950506L;
 	/**
 	 * 订单明细
 	 */
@@ -17,8 +19,8 @@ public class OrderItemVO implements Serializable {
 	/**
 	 * 商品
 	 */
-	private Sku sku;
-	public OrderItemVO(OrderItem orderItem,Sku sku){
+	private SkuDTO sku;
+	public OrderItemVO(OrderItem orderItem,SkuDTO sku){
 		this.orderItem=orderItem;
 		this.sku=sku;
 	}
@@ -29,10 +31,10 @@ public class OrderItemVO implements Serializable {
 	public void setOrderItem(OrderItem orderItem) {
 		this.orderItem = orderItem;
 	}
-	public Sku getSku() {
+	public SkuDTO getSku() {
 		return sku;
 	}
-	public void setSku(Sku sku) {
+	public void setSku(SkuDTO sku) {
 		this.sku = sku;
 	}
 

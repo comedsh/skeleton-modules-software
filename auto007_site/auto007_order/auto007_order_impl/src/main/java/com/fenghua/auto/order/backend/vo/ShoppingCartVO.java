@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 import com.fenghua.auto.order.backend.domain.ShoppingCart;
+import com.fenghua.auto.sku.intf.dto.SkuDTO;
 
 /**
  * @author zhiyuan.wang@auto007.com
@@ -17,9 +18,9 @@ public class ShoppingCartVO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private ShoppingCart cart;
-	private Sku sku;
+	private SkuDTO sku;
 	
-	public ShoppingCartVO(ShoppingCart cart, Sku sku) {
+	public ShoppingCartVO(ShoppingCart cart, SkuDTO sku) {
 		super();
 		this.cart = cart;
 		this.sku = sku;
@@ -43,10 +44,10 @@ public class ShoppingCartVO implements Serializable {
 	public void setCart(ShoppingCart cart) {
 		this.cart = cart;
 	}
-	public Sku getSku() {
+	public SkuDTO getSku() {
 		return sku;
 	}
-	public void setSku(Sku sku) {
+	public void setSku(SkuDTO sku) {
 		this.sku = sku;
 	}
 }

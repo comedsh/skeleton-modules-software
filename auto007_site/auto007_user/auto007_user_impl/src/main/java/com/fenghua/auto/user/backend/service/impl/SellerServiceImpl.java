@@ -11,6 +11,7 @@ import com.fenghua.auto.backend.service.impl.BaseServiceImpl;
 import com.fenghua.auto.user.backend.dao.SellerDao;
 import com.fenghua.auto.user.backend.domain.Seller;
 import com.fenghua.auto.user.backend.service.SellerService;
+import com.fenghua.auto.user.intf.dto.SellerDTO;
 
 /**
  * Service实现类
@@ -20,7 +21,7 @@ import com.fenghua.auto.user.backend.service.SellerService;
  *
  */
 @Service
-public class SellerServiceImpl extends BaseServiceImpl<Seller> implements SellerService {
+public class SellerServiceImpl extends BaseServiceImpl<Seller> implements SellerService,com.fenghua.auto.user.intf.service.SellerService {
 
 	@Autowired
 	private SellerDao dao;
@@ -28,6 +29,12 @@ public class SellerServiceImpl extends BaseServiceImpl<Seller> implements Seller
 	@Override
 	protected BaseDao<Seller> getBaseDao() {
 		return dao;
+	}
+
+	@Override
+	public SellerDTO getSellerById(Long id) {
+		
+		return null;
 	}
 	
 }

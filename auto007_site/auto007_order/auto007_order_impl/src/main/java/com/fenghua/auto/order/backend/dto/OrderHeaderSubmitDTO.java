@@ -12,6 +12,8 @@ import com.fenghua.auto.backend.domain.mto.LabelError;
 import com.fenghua.auto.order.backend.domain.OrderHeader;
 import com.fenghua.auto.order.backend.domain.OrderMaster;
 import com.fenghua.auto.order.intf.OrderConstants;
+import com.fenghua.auto.user.intf.dto.SellerDTO;
+import com.fenghua.auto.user.intf.dto.UserAddressDTO;
 
 /**
  * 
@@ -25,7 +27,7 @@ public class OrderHeaderSubmitDTO implements Serializable {
 
     private Long buyerId;
 
-    private Seller seller;
+    private SellerDTO seller;
 
     private BigDecimal totalAmount;
 
@@ -57,7 +59,7 @@ public class OrderHeaderSubmitDTO implements Serializable {
     
 	private List<OrderItemSubmitDTO> items;
 	
-	public OrderHeader createHeader(OrderMaster master, UserAddress userAddr) {
+	public OrderHeader createHeader(OrderMaster master, UserAddressDTO userAddr) {
 		OrderHeader header = new OrderHeader();
 		header.setId(null);
 	    header.setOrderNo("O"+DateFormatUtils.format(new Date(), "yyyyMMddHHmmssSSS"));
@@ -130,11 +132,11 @@ public class OrderHeaderSubmitDTO implements Serializable {
 		this.buyerId = buyerId;
 	}
 
-	public Seller getSeller() {
+	public SellerDTO getSeller() {
 		return seller;
 	}
 
-	public void setSeller(Seller seller) {
+	public void setSeller(SellerDTO seller) {
 		this.seller = seller;
 	}
 
