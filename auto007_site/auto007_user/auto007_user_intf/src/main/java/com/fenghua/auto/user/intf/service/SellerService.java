@@ -3,6 +3,8 @@
  */
 package com.fenghua.auto.user.intf.service;
 
+import com.fenghua.auto.user.intf.dto.SellerDTO;
+
 /**
  * Service接口类
  *
@@ -11,5 +13,10 @@ package com.fenghua.auto.user.intf.service;
  *
  */
 public interface SellerService {
-
+	/**
+	 * 通过id获取Serller
+	 * @param id
+	 * @return
+	 */
+	public SellerDTO getSellerById(Long id);
 }
