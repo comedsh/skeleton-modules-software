@@ -64,7 +64,7 @@
                     <label style="color:#2ca63d;font-size: 28px">找回成功</label>
                     <span style="font-size: 16px;color:#666" id="qq">
                         欢迎您，
-                        <a href="###" style="color:#ff8d02">${message.code}</a>
+                        <a href="###" style="color:#ff8d02">${message}</a>
                     </span>
                     <span style="font-size: 12px;color: #989898">立即开始您的汽车零件选购吧！</span>
                 </div>

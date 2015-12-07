@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fenghua.auto.backend.core.utils.MessageHelper;
-import com.fenghua.auto.backend.domain.user.User;
-import com.fenghua.auto.backend.service.user.AuthService;
-import com.fenghua.auto.backend.service.user.UserService;
+import com.fenghua.auto.user.backend.domain.User;
+import com.fenghua.auto.user.backend.service.AuthService;
+import com.fenghua.auto.user.backend.service.UserService;
 import com.qq.connect.QQConnectException;
 import com.qq.connect.oauth.Oauth;
 
@@ -76,30 +76,28 @@ public class AuthController {
 	 * @param request
 	 * @param code
 	 * @param state
-	 * @param openid
 	 * @return
 	 */
 	@RequestMapping("/weixinAafterlogin")
-	public ModelAndView weixinAafterlogin(HttpServletRequest request,String code,String state,String openid ) {
+	public ModelAndView weixinAafterlogin(HttpServletRequest request,String code,String state) {
 		String sessionState=(String)request.getSession().getAttribute(authService.WEIXIN_STATE);
 		ModelAndView mv=new ModelAndView("web.login");
-		if((code==null&&openid==null)||sessionState==null){
+		if(code==null||sessionState==null){
 			mv.addObject("message",MessageHelper.getMessage("login.anth.erro"));
 			logger.debug("(程序错误)微信登陆逻辑异常！");
 			return mv;
-		}else if(openid!=null){
-			logger.debug("第二次请求weixinAafterlogin+22222222222222+");
-			request.getSession().setAttribute("WeChatOpenid", openid);
-			User user=userService.getUserByWeChat(openid);
-			return URL(request,user);
 		}else if(!sessionState.equals(state)){
 			mv.addObject("message",MessageHelper.getMessage("login.anth.erro"));
 			logger.debug("跨站请求伪造攻击!!");
 			return mv;
 		}else{
-			logger.debug("第一次请求weixinAafterlogin+1111111111111+");
-			String WeiXinOpenIDURL =authService.getWeiXinOpenIDURL(code);
-			return new ModelAndView("redirect:"+WeiXinOpenIDURL);
+			String openid =authService.addWeiXinOpenIDToSession(request,code);;
+			if(openid==null){
+				mv.addObject("error",MessageHelper.getMessage("login.anth.erro"));
+				return mv;
+			}
+			User user = userService.getUserByWeChat(openid);
+			return URL(request, user);
 		}
 	}
 	

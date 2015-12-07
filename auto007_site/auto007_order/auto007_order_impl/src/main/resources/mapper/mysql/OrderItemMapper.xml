@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.fenghua.auto.order.domain.OrderItem" >
-  <resultMap id="BaseResultMap" type="com.fenghua.auto.order.domain.OrderItem" >
+<mapper namespace="com.fenghua.auto.order.backend.domain.OrderItem" >
+  <resultMap id="BaseResultMap" type="com.fenghua.auto.order.backend.domain.OrderItem" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="order_id" property="orderId" jdbcType="BIGINT" />
     <result column="seller_id" property="sellerId" jdbcType="BIGINT" />
@@ -96,12 +96,12 @@
       </if>
     </where>
   </sql>
-  <select id="selectCount" resultType="java.lang.Long" parameterType="com.fenghua.auto.order.domain.OrderItem" >
+  <select id="selectCount" resultType="java.lang.Long" parameterType="com.fenghua.auto.order.backend.domain.OrderItem" >
     select count( id)
      from order_item
     <include refid="Base_Where_Case" />
   </select>
-  <select id="select" resultMap="BaseResultMap" parameterType="com.fenghua.auto.order.domain.OrderItem" >
+  <select id="select" resultMap="BaseResultMap" parameterType="com.fenghua.auto.order.backend.domain.OrderItem" >
     select 
     <include refid="Base_Column_List" />
      from order_item
@@ -126,7 +126,7 @@
     delete from order_item
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.fenghua.auto.order.domain.OrderItem" >
+  <insert id="insert"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.fenghua.auto.order.backend.domain.OrderItem" >
     insert into order_item (id, order_id, seller_id, 
       buyer_id, sku_id, sku_code, 
       sku_name, original_price, sale_price, 
@@ -144,7 +144,7 @@
       #{editId,jdbcType=BIGINT}, #{editDate,jdbcType=TIMESTAMP}, #{skuIcon,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.fenghua.auto.order.domain.OrderItem" >
+  <insert id="insertSelective"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.fenghua.auto.order.backend.domain.OrderItem" >
     insert into order_item
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -277,7 +277,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fenghua.auto.order.domain.OrderItem" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.fenghua.auto.order.backend.domain.OrderItem" >
     update order_item
     <set >
       <if test="orderId != null" >
@@ -343,7 +343,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.order.domain.OrderItem" >
+  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.order.backend.domain.OrderItem" >
     update order_item
     set order_id = #{orderId,jdbcType=BIGINT},
       seller_id = #{sellerId,jdbcType=BIGINT},

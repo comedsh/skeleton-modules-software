@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.security.sasl.AuthenticationException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +27,8 @@ import com.fenghua.auto.backend.core.utils.UserSecurityUtils;
 import com.fenghua.auto.backend.domain.mto.CommonMessageTransferObject;
 import com.fenghua.auto.backend.domain.mto.LabelError;
 import com.fenghua.auto.backend.domain.mto.MessageTransferObject;
-import com.fenghua.auto.backend.service.user.AuthService;
-import com.fenghua.auto.user.authentication.AuthenticationCodeException;
+import com.fenghua.auto.user.backend.authentication.AuthenticationCodeException;
+import com.fenghua.auto.user.backend.service.AuthService;
 
 /** 
   *<des>

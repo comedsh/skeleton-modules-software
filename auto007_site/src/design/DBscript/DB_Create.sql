@@ -25,7 +25,7 @@ create table City_Area
    Full_Name            varchar(200) not null,
    Available            boolean not null,
    primary key (ID)
-);
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*==============================================================*/
 /* Index: City_Code_idx                                         */
@@ -58,7 +58,36 @@ create table Company
    Last_Modified_TS     timestamp,
    Last_Modified_By     varchar(30),
    primary key (ID)
-)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8
+;
+
+
+
+/*==============================================================*/
+/* Table: Seller                                               */
+/*==============================================================*/
+create table Seller
+(
+   ID                   bigint not null auto_increment,
+   Name         varchar(200) not null,
+   City_Area_ID         bigint,
+   Detail_Address       varchar(200) not null,
+   Headcount            varchar(20),
+   Business_Licence     varchar(200) not null,
+   Taxpayer_Licence     varchar(200) not null,
+   Taxpayer_Number      varchar(20),
+   Contacts_Name        varchar(20) not null,
+   Contacts_Phone       varchar(15) not null,
+   Contacts_Mobile      varchar(15) not null,
+   Contacts_Dept        varchar(50),
+   Contacts_Email       varchar(100),
+   Support_Settlement_Payment boolean not null default false,	
+   Created_TS           timestamp,
+   Created_by           varchar(30),
+   Last_Modified_TS     timestamp,
+   Last_Modified_By     varchar(30),
+   primary key (ID)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8
 ;
 
 /*==============================================================*/
@@ -91,7 +120,7 @@ create table Payment_Type
    Last_Modified_TS     timestamp,
    Last_Modified_By     varchar(30),
    primary key (ID)
-)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8
 ;
 
 /*==============================================================*/
@@ -107,7 +136,7 @@ create table Role
    Last_Modified_TS     timestamp,
    Last_Modified_By     varchar(30),
    primary key (ID)
-)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8
 ;
 
 /*==============================================================*/
@@ -130,10 +159,9 @@ create table Sys_Config
    Last_Modified_By     varchar(30),
    Last_Modified_TS     timestamp,
    primary key (Config_Name)
-)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8
 ;
 
-INSERT INTO `sys_config` VALUES ('email_effetime', '30', '2015-11-25 13:44:42', null, '', '2015-11-25 13:44:13');
 
 /*==============================================================*/
 /* Table: User                                                  */
@@ -150,6 +178,7 @@ create table User
    Role_ID              bigint,
    User_Level_ID        bigint,
    Company_ID           bigint,
+   Seller_ID			bigint,
    Failed_Login_Times   smallint not null default 0,
    Available            boolean not null,
    Created_TS           timestamp,
@@ -157,7 +186,7 @@ create table User
    Last_Modified_TS     timestamp,
    Last_Modified_By     varchar(30),
    primary key (ID)
-)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8
 ;
 
 /*==============================================================*/
@@ -207,7 +236,12 @@ create table User_Address
 (
    ID                   bigint not null auto_increment,
    User_ID              bigint not null,
-   City_Area_ID         bigint,
+   province_id			bigint(20) NULL ,
+   city_id 				bigint(20) NULL,
+   area_id 				bigint(20) NULL ,
+   province_name 		varchar(100) NULL ,
+   city_name 			varchar(100) NULL ,
+   area_name			varchar(100) NULL ，
    Alias                varchar(20) not null,
    Detail_Addr          varchar(200) not null,
    Receiver_Name        varchar(40) not null,
@@ -218,7 +252,7 @@ create table User_Address
    last_Modified_ts     timestamp,
    last_Modified_by     varchar(30),
    primary key (ID)
-)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8
 ;
 
 /*==============================================================*/
@@ -243,7 +277,7 @@ create table User_Level
    Last_Modified_TS     timestamp,
    Last_Modified_By     varchar(30),
    primary key (ID)
-)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8
 ;
 
 /*==============================================================*/
@@ -261,8 +295,7 @@ create table User_Payment_Type
    Last_Modified_TS     timestamp,
    Last_Modified_By     varchar(30),
    primary key (PaymentType_ID, User_ID)
-)
-;
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*==============================================================*/
 /* Index: UserID_idx                                            */

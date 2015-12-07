@@ -18,14 +18,14 @@ import com.alibaba.fastjson.JSON;
 import com.fenghua.auto.backend.core.utils.MessageHelper;
 import com.fenghua.auto.backend.core.utils.UserSecurityUtils;
 import com.fenghua.auto.backend.domain.mto.LabelError;
-import com.fenghua.auto.order.OrderMTO;
-import com.fenghua.auto.order.domain.ShoppingCart;
-import com.fenghua.auto.order.dto.OrderMasterResultDTO;
-import com.fenghua.auto.order.dto.OrderMasterSubmitDTO;
-import com.fenghua.auto.order.dto.OrderSubmitDTO;
-import com.fenghua.auto.order.qo.ShoppingCartQO;
-import com.fenghua.auto.order.service.OrderMasterService;
-import com.fenghua.auto.order.service.ShoppingCartService;
+import com.fenghua.auto.order.backend.OrderMTO;
+import com.fenghua.auto.order.backend.domain.ShoppingCart;
+import com.fenghua.auto.order.backend.dto.OrderMasterResultDTO;
+import com.fenghua.auto.order.backend.dto.OrderMasterSubmitDTO;
+import com.fenghua.auto.order.backend.dto.OrderSubmitDTO;
+import com.fenghua.auto.order.backend.qo.ShoppingCartQO;
+import com.fenghua.auto.order.backend.service.OrderSubmitService;
+import com.fenghua.auto.order.backend.service.ShoppingCartService;
 import com.fenghua.auto.sku.domain.Sku;
 import com.fenghua.auto.sku.service.SkuService;
 
@@ -38,11 +38,11 @@ import com.fenghua.auto.sku.service.SkuService;
   * @version 1.0
   */
 @Controller
-@RequestMapping("/shopping/order")
+@RequestMapping("/order")
 public class OrderSubmitController {
 	
 	@Autowired
-	private OrderMasterService orderMasterService;
+	private OrderSubmitService orderSubmitService;
 	@Autowired
 	private SkuService skuService;
 	@Autowired
@@ -87,10 +87,10 @@ public class OrderSubmitController {
 	private String initSubmit(Model model, List<ShoppingCart> shoppingCarts) throws AuthenticationException {
 		if(shoppingCarts == null || shoppingCarts.isEmpty()) {
 			model.addAttribute("errorMsg", MessageHelper.getMessage("order.submit.parameter.error"));
-			return "web.order.submit";
+			return "web.order.submit";	
 		}
 		
-		OrderSubmitDTO dto = orderMasterService.initSubmit(shoppingCarts, UserSecurityUtils.getCurrentUserId());
+		OrderSubmitDTO dto = orderSubmitService.initSubmit(shoppingCarts, UserSecurityUtils.getCurrentUserId());
 		OrderMTO mto = new OrderMTO();
 		mto.setData(dto);
 		String json = JSON.toJSONString(mto);
@@ -108,7 +108,7 @@ public class OrderSubmitController {
 		if(errors != null && !errors.isEmpty()) {
 			mto.addErrors(errors.toArray(new LabelError[errors.size()]));
 		} else {
-			List<OrderMasterResultDTO> resultDTOs = orderMasterService.submit(dto);
+			List<OrderMasterResultDTO> resultDTOs = orderSubmitService.submit(dto);
 			mto.setData(resultDTOs);
 		}
 		return mto;

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.fenghua.auto.finance.domain.TransactionFlow" >
-  <resultMap id="BaseResultMap" type="com.fenghua.auto.finance.domain.TransactionFlow" >
+<mapper namespace="com.fenghua.auto.finance.backend.domain.TransactionFlow" >
+  <resultMap id="BaseResultMap" type="com.fenghua.auto.finance.backend.domain.TransactionFlow" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="tran_type" property="tranType" jdbcType="INTEGER" />
     <result column="biz_order_id" property="bizOrderId" jdbcType="BIGINT" />
@@ -84,12 +84,12 @@
       </if>
     </where>
   </sql>
-  <select id="selectCount" resultType="java.lang.Long" parameterType="com.fenghua.auto.finance.domain.TransactionFlow" >
+  <select id="selectCount" resultType="java.lang.Long" parameterType="com.fenghua.auto.finance.backend.domain.TransactionFlow" >
     select count( id)
      from transaction_flow
     <include refid="Base_Where_Case" />
   </select>
-  <select id="select" resultMap="BaseResultMap" parameterType="com.fenghua.auto.finance.domain.TransactionFlow" >
+  <select id="select" resultMap="BaseResultMap" parameterType="com.fenghua.auto.finance.backend.domain.TransactionFlow" >
     select 
     <include refid="Base_Column_List" />
      from transaction_flow
@@ -108,7 +108,7 @@
     delete from transaction_flow
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.fenghua.auto.finance.domain.TransactionFlow" >
+  <insert id="insert"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.fenghua.auto.finance.backend.domain.TransactionFlow" >
     insert into transaction_flow (id, tran_type, biz_order_id, 
       master_order_id, master_order_no, order_id, 
       order_no, buyer_id, seller_id, 
@@ -124,7 +124,7 @@
       #{billId,jdbcType=BIGINT}, #{sumOperatorId,jdbcType=BIGINT}, #{sumTime,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.fenghua.auto.finance.domain.TransactionFlow" >
+  <insert id="insertSelective"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.fenghua.auto.finance.backend.domain.TransactionFlow" >
     insert into transaction_flow
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -239,7 +239,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fenghua.auto.finance.domain.TransactionFlow" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.fenghua.auto.finance.backend.domain.TransactionFlow" >
     update transaction_flow
     <set >
       <if test="tranType != null" >
@@ -296,7 +296,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.finance.domain.TransactionFlow" >
+  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.finance.backend.domain.TransactionFlow" >
     update transaction_flow
     set tran_type = #{tranType,jdbcType=INTEGER},
       biz_order_id = #{bizOrderId,jdbcType=BIGINT},

@@ -9,14 +9,12 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.regex.Pattern;
-
 import javax.security.sasl.AuthenticationException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,9 +26,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.fenghua.auto.backend.core.utils.SpringValidationHelper;
-import com.fenghua.auto.backend.core.utils.UserSecurityUtils;
 import com.fenghua.auto.backend.common.utils.Constants;
 import com.fenghua.auto.backend.common.utils.ValidateTime;
 import com.fenghua.auto.backend.common.utils.uploadPicture;
@@ -38,22 +33,21 @@ import com.fenghua.auto.backend.common.utils.graphValidate.PictureCheckCode;
 import com.fenghua.auto.backend.common.utils.message.SMSMessage;
 import com.fenghua.auto.backend.core.utils.MessageAndErrorUtil;
 import com.fenghua.auto.backend.core.utils.MessageHelper;
-import com.fenghua.auto.backend.domain.group.GroupA;
-import com.fenghua.auto.backend.domain.group.GroupB;
+import com.fenghua.auto.backend.core.utils.SpringValidationHelper;
+import com.fenghua.auto.backend.core.utils.UserSecurityUtils;
 import com.fenghua.auto.backend.domain.mto.CommonMessageTransferObject;
 import com.fenghua.auto.backend.domain.mto.LabelMessage;
 import com.fenghua.auto.backend.domain.mto.MessageTransferObject;
-import com.fenghua.auto.backend.domain.user.Company;
-import com.fenghua.auto.backend.domain.user.PaymentType;
-import com.fenghua.auto.backend.domain.user.ResetPassRequest;
-import com.fenghua.auto.backend.domain.user.User;
-import com.fenghua.auto.backend.service.user.AuthService;
-import com.fenghua.auto.backend.service.user.CompanyService;
-import com.fenghua.auto.backend.service.user.PaymentTypeService;
 import com.fenghua.auto.backend.service.SysConfigService;
-import com.fenghua.auto.backend.service.user.UserForgetPassService;
-import com.fenghua.auto.backend.service.user.UserService;
-import com.fenghua.auto.webapp.controller.user.Result;
+import com.fenghua.auto.user.backend.domain.Company;
+import com.fenghua.auto.user.backend.domain.PaymentType;
+import com.fenghua.auto.user.backend.domain.ResetPassRequest;
+import com.fenghua.auto.user.backend.domain.User;
+import com.fenghua.auto.user.backend.service.AuthService;
+import com.fenghua.auto.user.backend.service.CompanyService;
+import com.fenghua.auto.user.backend.service.PaymentTypeService;
+import com.fenghua.auto.user.backend.service.UserForgetPassService;
+import com.fenghua.auto.user.backend.service.UserService;
 
 /**
  * 用户功能模块
@@ -84,12 +78,13 @@ public class UserController {
 	private SysConfigService configService;
 
 	/**
-	 * @author chengbin 增加一个个人用户注册
+	 * 增加一个个人用户注册
+	 * @author chengbin 
 	 * @return
 	 * @createTime 2015.11.4
 	 */
 	@RequestMapping(value = "/personalRegister", method = RequestMethod.POST)
-	public @ResponseBody MessageTransferObject personalRegister(@Validated({GroupA.class}) User user, @RequestParam String telcode,
+	public @ResponseBody MessageTransferObject personalRegister(@Validated User user, @RequestParam String telcode,
 			@RequestParam String code, HttpServletRequest request, Locale locale) {
 		CommonMessageTransferObject transferObject = new CommonMessageTransferObject();
 		// 获取session里面的电话验证码
@@ -106,6 +101,7 @@ public class UserController {
 			transferObject.addErrors(MessageAndErrorUtil.getError("user.validate.timeout", "telcode"));
 		} else if (validateTel.equals(telcode) && verifyCode.equalsIgnoreCase(code)) {// 如果手机验证码和图片验证码都输入正确
 			String userPwd = user.getPassword();
+			
 			userService.insert(user);
 			transferObject.addMessages(MessageAndErrorUtil.getMessage("user.register.success", "success"));
 			// 把用户名和密码存入安全的session中
@@ -127,12 +123,13 @@ public class UserController {
 	}
 
 	/**
-	 * @author chengbin 增加一个企业用户注册
+	 * 增加一个企业用户注册
+	 * @author chengbin 
 	 * @return
 	 * @createTime 2015.11.4
 	 */
 	@RequestMapping(value = "/companyRegister", method = RequestMethod.POST)
-	public @ResponseBody MessageTransferObject companyRegister(@Validated({GroupB.class}) User user, @Valid Company company,
+	public @ResponseBody MessageTransferObject companyRegister(@Validated User user, @Valid Company company,
 			@RequestParam String telcode, @RequestParam String code, @Valid PaymentType paymenttype,
 			HttpServletRequest request, Locale locale) {
 		CommonMessageTransferObject transferObject = new CommonMessageTransferObject();
@@ -174,8 +171,8 @@ public class UserController {
 	}
 
 	/**
-	 * 校验用户名是否唯一 shang yang
-	 * 
+	 * 校验用户名是否唯一 
+	 * shang yang
 	 * @param name
 	 * @return
 	 */
@@ -186,7 +183,6 @@ public class UserController {
 
 	/**
 	 * 验证邮箱的唯一性 bin.cheng
-	 * 
 	 * @param email
 	 * @return
 	 */
@@ -198,8 +194,8 @@ public class UserController {
 	}
 
 	/**
-	 * 验证电话号码的唯一性 bin.cheng
-	 * 
+	 * 验证电话号码的唯一性
+	 * bin.cheng
 	 * @param email
 	 * @return
 	 */
@@ -212,14 +208,12 @@ public class UserController {
 
 	/**
 	 * 通过用户名获取对应的信息
-	 * 
+	 * bin.cheng
 	 * @param model
-	 * @param request
 	 * @return
 	 */
 	@RequestMapping(value = "/buyerInformation", method = RequestMethod.GET)
-	public ModelAndView getInformation(Map<String, Object> model, HttpServletRequest request,
-			HttpServletResponse response) {
+	public ModelAndView getInformation(Map<String, Object> model) {
 		// 获取当前用户的用户名
 		String name = UserSecurityUtils.getCurrentUserName();
 		User user = userService.getUserByName(name);
@@ -239,8 +233,8 @@ public class UserController {
 	}
 
 	/**
-	 * bin.cheng 通过name判断是否应该显示图形验证码
-	 * 
+	 * 通过name判断是否应该显示图形验证码
+	 * bin.cheng 
 	 * @param name
 	 * @param req
 	 * @param res
@@ -291,8 +285,8 @@ public class UserController {
 	}
 
 	/**
-	 * bin.cheng 获取图片验证码
-	 * 
+	 * 获取图片验证码
+	 * bin.cheng 
 	 * @param req
 	 * @param res
 	 */
@@ -309,7 +303,7 @@ public class UserController {
 
 	/**
 	 * 获取手机验证码
-	 * 
+	 * bin.cheng
 	 * @param mobilephone
 	 * @param req
 	 * @param res
@@ -338,8 +332,8 @@ public class UserController {
 	}
 
 	/**
-	 * 通过用户id查找对应的用户注册信息 bin.cheng
-	 * 
+	 * 通过用户id查找对应的用户注册信息
+	 * bin.cheng
 	 * @param id
 	 * @param model
 	 * @return
@@ -405,28 +399,29 @@ public class UserController {
 	@SuppressWarnings("unused")
 	@RequestMapping(value = "/updatePasswordByPhone", method = RequestMethod.POST)
 	public ModelAndView updatePasswordByPhone(HttpServletRequest request, Model model) {
-		Map<String, Result> model1 = new HashMap<String, Result>();
+		Map<String, String> model1 = new HashMap<String, String>();
 		Long id = null;
 		String path = "";
-		Locale zh_cn = new Locale("zh", "CN");
 		String phone = (String) request.getSession().getAttribute("phone");
 		id = userService.updatePasswordByPhone(request.getParameter("pwd_new"), phone);
-		Result msg = new Result();
+
 		if (request.getParameter("pwd_new_agin").equals(request.getParameter("pwd_new"))) {
 			if (id != null && id != 0) {
-				msg.setCode(phone);
+				//msg.setCode(phone);
+				model1.put("message", phone);
 				path = "forgot.findPassbyphoneLast";
 			} else {
 				String message = MessageHelper.getMessage("user.modify.error");
-				msg.setMsg(message);
+				model1.put("message", message);
+				//msg.setMsg(message);
 				path = "forgot.findPassbyphoneSecond";
 			}
 		} else {
-			msg.setMsg(MessageHelper.getMessage("forgot.passDisagree"));
+			model1.put("message",MessageHelper.getMessage("forgot.passDisagree"));
 			path = "forgot.findPassbyphoneSecond";
 		}
 
-		model1.put("message", msg);
+		//model1.put("message", msg);
 		return new ModelAndView(path, model1);
 	}
 
@@ -439,24 +434,21 @@ public class UserController {
 	 */
 	@RequestMapping(value = "/updatePasswordByUserId", method = RequestMethod.POST)
 	public ModelAndView updatePasswordByUserId(HttpServletRequest request, Model model) {
-		Map<String, Result> model1 = new HashMap<String, Result>();
+		Map<String, String> model1 = new HashMap<String, String>();
 		Long id = null;
 		String path = "";
 		Long userId = (Long) request.getSession().getAttribute("userId");
 		User user = null;
 		user = userService.getUserByuserId(userId);
 		id = userService.updatePasswordByUserId(request.getParameter("email_pwd"), userId);
-		Result msg = new Result();
 		if (id != null && id != 0) {
-			msg.setSuccess(true);
-			msg.setMsg(user.getEmail());
+			model1.put("message", user.getEmail());
 			path = "forgot.findPassbyEmailLast";
 		} else {
 			String message = MessageHelper.getMessage("user.modify.error");
-			msg.setMsg(message);
+			model1.put("message", message);
 			path = "forgot.findPassbyEmailThired";
 		}
-		model1.put("message", msg);
 		return new ModelAndView(path, model1);
 	}
 
@@ -537,8 +529,8 @@ public class UserController {
 	}
 
 	/**
-	 * 营业执照上传 bin.cheng
-	 * 
+	 * 营业执照上传 
+	 * bin.cheng
 	 * @param picture
 	 * @param response
 	 * @param request
@@ -558,8 +550,8 @@ public class UserController {
 	}
 
 	/**
-	 * 纳税人资格证上传 bin.cheng
-	 * 
+	 * 纳税人资格证上传 
+	 * bin.cheng
 	 * @param picture
 	 * @param response
 	 * @param request

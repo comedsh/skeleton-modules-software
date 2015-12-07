@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.fenghua.auto.order.domain.RefundOrderDetail" >
-  <resultMap id="BaseResultMap" type="com.fenghua.auto.order.domain.RefundOrderDetail" >
+<mapper namespace="com.fenghua.auto.order.backend.domain.RefundOrderDetail" >
+  <resultMap id="BaseResultMap" type="com.fenghua.auto.order.backend.domain.RefundOrderDetail" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="refund_id" property="refundId" jdbcType="BIGINT" />
     <result column="order_item_id" property="orderItemId" jdbcType="BIGINT" />
@@ -84,12 +84,12 @@
       </if>
     </where>
   </sql>
-  <select id="selectCount" resultType="java.lang.Long" parameterType="com.fenghua.auto.order.domain.RefundOrderDetail" >
+  <select id="selectCount" resultType="java.lang.Long" parameterType="com.fenghua.auto.order.backend.domain.RefundOrderDetail" >
     select count( id)
      from refund_order_detail
     <include refid="Base_Where_Case" />
   </select>
-  <select id="select" resultMap="BaseResultMap" parameterType="com.fenghua.auto.order.domain.RefundOrderDetail" >
+  <select id="select" resultMap="BaseResultMap" parameterType="com.fenghua.auto.order.backend.domain.RefundOrderDetail" >
     select 
     <include refid="Base_Column_List" />
      from refund_order_detail
@@ -108,7 +108,7 @@
     delete from refund_order_detail
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.fenghua.auto.order.domain.RefundOrderDetail" >
+  <insert id="insert"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.fenghua.auto.order.backend.domain.RefundOrderDetail" >
     insert into refund_order_detail (id, refund_id, order_item_id, 
       sku_id, sku_code, sku_name, 
       sku_qty, reason_codes, reason_desc, 
@@ -124,7 +124,7 @@
       #{auditTime,jdbcType=TIMESTAMP}, #{applicantId,jdbcType=BIGINT}, #{applyTime,jdbcType=BIGINT}
       )
   </insert>
-  <insert id="insertSelective"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.fenghua.auto.order.domain.RefundOrderDetail" >
+  <insert id="insertSelective"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.fenghua.auto.order.backend.domain.RefundOrderDetail" >
     insert into refund_order_detail
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -239,7 +239,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fenghua.auto.order.domain.RefundOrderDetail" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.fenghua.auto.order.backend.domain.RefundOrderDetail" >
     update refund_order_detail
     <set >
       <if test="refundId != null" >
@@ -296,7 +296,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.order.domain.RefundOrderDetail" >
+  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.order.backend.domain.RefundOrderDetail" >
     update refund_order_detail
     set refund_id = #{refundId,jdbcType=BIGINT},
       order_item_id = #{orderItemId,jdbcType=BIGINT},
