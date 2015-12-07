@@ -5,6 +5,7 @@ package com.fenghua.auto.user.backend.service;
 
 import com.fenghua.auto.backend.service.BaseService;
 import com.fenghua.auto.user.backend.domain.Seller;
+import com.fenghua.auto.user.intf.dto.SellerDTO;
 
 /**
  * Service接口类
@@ -14,5 +15,10 @@ import com.fenghua.auto.user.backend.domain.Seller;
  *
  */
 public interface SellerService extends BaseService<Seller> {
-
+	/**
+	 * 通过id获取Serller
+	 * @param id
+	 * @return
+	 */
+	public SellerDTO getSellerById(Long id);
 }

@@ -29,5 +29,5 @@ public class SellerServiceImpl extends BaseServiceImpl<Seller> implements Seller
 	protected BaseDao<Seller> getBaseDao() {
 		return dao;
 	}
-
+	
 }

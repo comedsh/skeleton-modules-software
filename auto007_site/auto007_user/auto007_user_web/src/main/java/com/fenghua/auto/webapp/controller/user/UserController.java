@@ -78,7 +78,8 @@ public class UserController {
 	private SysConfigService configService;
 
 	/**
-	 * @author chengbin 增加一个个人用户注册
+	 * 增加一个个人用户注册
+	 * @author chengbin 
 	 * @return
 	 * @createTime 2015.11.4
 	 */
@@ -121,7 +122,8 @@ public class UserController {
 	}
 
 	/**
-	 * @author chengbin 增加一个企业用户注册
+	 * 增加一个企业用户注册
+	 * @author chengbin 
 	 * @return
 	 * @createTime 2015.11.4
 	 */
@@ -168,7 +170,8 @@ public class UserController {
 	}
 
 	/**
-	 * 校验用户名是否唯一 shang yang
+	 * 校验用户名是否唯一 
+	 * shang yang
 	 * @param name
 	 * @return
 	 */
@@ -190,7 +193,8 @@ public class UserController {
 	}
 
 	/**
-	 * 验证电话号码的唯一性bin.cheng
+	 * 验证电话号码的唯一性
+	 * bin.cheng
 	 * @param email
 	 * @return
 	 */
@@ -203,6 +207,7 @@ public class UserController {
 
 	/**
 	 * 通过用户名获取对应的信息
+	 * bin.cheng
 	 * @param model
 	 * @return
 	 */
@@ -227,8 +232,8 @@ public class UserController {
 	}
 
 	/**
-	 * bin.cheng 通过name判断是否应该显示图形验证码
-	 * 
+	 * 通过name判断是否应该显示图形验证码
+	 * bin.cheng 
 	 * @param name
 	 * @param req
 	 * @param res
@@ -279,8 +284,8 @@ public class UserController {
 	}
 
 	/**
-	 * bin.cheng 获取图片验证码
-	 * 
+	 * 获取图片验证码
+	 * bin.cheng 
 	 * @param req
 	 * @param res
 	 */
@@ -297,7 +302,7 @@ public class UserController {
 
 	/**
 	 * 获取手机验证码
-	 * 
+	 * bin.cheng
 	 * @param mobilephone
 	 * @param req
 	 * @param res
@@ -326,8 +331,8 @@ public class UserController {
 	}
 
 	/**
-	 * 通过用户id查找对应的用户注册信息 bin.cheng
-	 * 
+	 * 通过用户id查找对应的用户注册信息
+	 * bin.cheng
 	 * @param id
 	 * @param model
 	 * @return
@@ -525,8 +530,8 @@ public class UserController {
 	}
 
 	/**
-	 * 营业执照上传 bin.cheng
-	 * 
+	 * 营业执照上传 
+	 * bin.cheng
 	 * @param picture
 	 * @param response
 	 * @param request
@@ -546,8 +551,8 @@ public class UserController {
 	}
 
 	/**
-	 * 纳税人资格证上传 bin.cheng
-	 * 
+	 * 纳税人资格证上传 
+	 * bin.cheng
 	 * @param picture
 	 * @param response
 	 * @param request
