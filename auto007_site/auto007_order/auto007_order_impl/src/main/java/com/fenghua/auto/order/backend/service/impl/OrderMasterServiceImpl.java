@@ -5,6 +5,7 @@ package com.fenghua.auto.order.backend.service.impl;
 
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,5 +37,15 @@ public class OrderMasterServiceImpl extends BaseServiceImpl<OrderMaster> impleme
 	public List<OrderMaster> selectByBuyerID(Long userId) {
 		List<OrderMaster> orderMasters=dao.selectByBuyerID(userId);
 		return orderMasters;
+	}
+
+	@Override
+	public OrderMaster getByOrderMasterNo(String orderMasterNo) {
+		if(StringUtils.isBlank(orderMasterNo)) {
+			return null;
+		}
+		OrderMaster query = new OrderMaster();
+		query.setMasterOrderNo(orderMasterNo);
+		return dao.selectOne(query);
 	}
 }

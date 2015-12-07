@@ -23,4 +23,11 @@ public interface OrderMasterService extends BaseService<OrderMaster> {
 	 * @return
 	 */
 	public List<OrderMaster> selectByBuyerID(Long userId);
+	
+	/**
+	 * 根据主订单号查询其主订单
+	 * @param orderMasterNo
+	 * @return OrderMaster
+	 */
+	public OrderMaster getByOrderMasterNo(String orderMasterNo);
 }

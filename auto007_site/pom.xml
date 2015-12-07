@@ -371,6 +371,12 @@
             <artifactId>xstream</artifactId>
             <version>1.4.7</version>
         </dependency>
+        <!-- javaBean 拷贝 -->
+        <dependency>
+	       <groupId>net.sf.dozer</groupId>
+	       <artifactId>dozer</artifactId>
+	       <version>5.2.1</version>
+	    </dependency>
 	</dependencies>
 
 	<build>
