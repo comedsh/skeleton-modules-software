@@ -101,6 +101,7 @@ public class UserController {
 			transferObject.addErrors(MessageAndErrorUtil.getError("user.validate.timeout", "telcode"));
 		} else if (validateTel.equals(telcode) && verifyCode.equalsIgnoreCase(code)) {// 如果手机验证码和图片验证码都输入正确
 			String userPwd = user.getPassword();
+			
 			userService.insert(user);
 			transferObject.addMessages(MessageAndErrorUtil.getMessage("user.register.success", "success"));
 			// 把用户名和密码存入安全的session中
