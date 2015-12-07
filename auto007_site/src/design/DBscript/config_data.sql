@@ -3932,6 +3932,7 @@ values
 (2, 'company_buyer','企业和公司买家',CURRENT_TIMESTAMP, 'system', CURRENT_TIMESTAMP, 'system'),
 (3, 'seller','卖家',CURRENT_TIMESTAMP, 'system', CURRENT_TIMESTAMP, 'system'),
 (4, 'admin','平台的管理员',CURRENT_TIMESTAMP, 'system', CURRENT_TIMESTAMP, 'system');
+
 insert into sys_config (Config_Name,Config_Value,Created_TS,Created_By,Last_Modified_By,Last_Modified_TS) 
 VALUES 
 ('email_effetime', '30', '2015-11-25 13:44:42', null, '', '2015-11-25 13:44:13'),
