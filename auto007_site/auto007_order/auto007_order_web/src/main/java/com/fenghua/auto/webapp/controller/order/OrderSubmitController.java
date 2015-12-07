@@ -26,8 +26,9 @@ import com.fenghua.auto.order.backend.dto.OrderSubmitDTO;
 import com.fenghua.auto.order.backend.qo.ShoppingCartQO;
 import com.fenghua.auto.order.backend.service.OrderSubmitService;
 import com.fenghua.auto.order.backend.service.ShoppingCartService;
-import com.fenghua.auto.sku.domain.Sku;
-import com.fenghua.auto.sku.service.SkuService;
+import com.fenghua.auto.sku.backend.domain.Sku;
+import com.fenghua.auto.sku.intf.dto.SkuDTO;
+import com.fenghua.auto.sku.intf.service.ISkuService;
 
 /** 
   *<des> 
@@ -44,7 +45,7 @@ public class OrderSubmitController {
 	@Autowired
 	private OrderSubmitService orderSubmitService;
 	@Autowired
-	private SkuService skuService;
+	private ISkuService skuService;
 	@Autowired
 	private ShoppingCartService shoppingCartService;
 	
@@ -55,7 +56,7 @@ public class OrderSubmitController {
 		List<ShoppingCart> shoppingCarts = null;
 		
 		if(skuid != null && skuid > 0 && qty != null && qty > 0) {
-			Sku sku = skuService.selectById(skuid);
+			SkuDTO sku = skuService.loadSku(skuid);
 			if(sku != null) {
 				shoppingCarts = new ArrayList<ShoppingCart>();
 				ShoppingCart cart = new ShoppingCart();
