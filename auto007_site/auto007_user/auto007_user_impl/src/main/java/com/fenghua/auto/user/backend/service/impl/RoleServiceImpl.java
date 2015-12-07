@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fenghua.auto.backend.dao.BaseDao;
+import com.fenghua.auto.backend.service.impl.BaseServiceImpl;
 import com.fenghua.auto.user.backend.dao.RoleDao;
 import com.fenghua.auto.user.backend.domain.Role;
 import com.fenghua.auto.user.backend.service.RoleService;
@@ -16,7 +18,7 @@ import com.fenghua.auto.user.backend.service.RoleService;
  *
  */
 @Service
-public class RoleServiceImpl implements RoleService {
+public class RoleServiceImpl extends BaseServiceImpl<Role> implements RoleService {
 	
 	@Autowired
 	private RoleDao roleDao;
@@ -25,5 +27,9 @@ public class RoleServiceImpl implements RoleService {
 	public List<Role> getRoleById(Long id) {
 		return roleDao.getRoleById(id);
 	}
-	
+
+	@Override
+	protected BaseDao<Role> getBaseDao() {
+		return roleDao;
+	}
 }

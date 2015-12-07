@@ -31,12 +31,12 @@ import com.fenghua.auto.order.backend.service.OrderSubmitService;
 import com.fenghua.auto.order.backend.service.ShoppingCartService;
 import com.fenghua.auto.order.intf.OrderConstants;
 import com.fenghua.auto.sku.intf.dto.SkuDTO;
-import com.fenghua.auto.sku.intf.service.SkuService;
+import com.fenghua.auto.sku.intf.service.ISkuService;
 import com.fenghua.auto.user.intf.dto.SellerDTO;
 import com.fenghua.auto.user.intf.dto.UserAddressDTO;
-import com.fenghua.auto.user.intf.service.PaymentTypeService;
-import com.fenghua.auto.user.intf.service.SellerService;
-import com.fenghua.auto.user.intf.service.UserAddressService;
+import com.fenghua.auto.user.intf.service.IPaymentTypeService;
+import com.fenghua.auto.user.intf.service.ISellerService;
+import com.fenghua.auto.user.intf.service.IUserAddressService;
 
 /**
  * Service实现类
@@ -51,13 +51,13 @@ public class OrderSubmitServiceImpl implements OrderSubmitService {
 	@Autowired
 	private OrderMasterDao dao;
 	@Autowired
-	private SkuService skuService;
+	private ISkuService skuService;
 	@Autowired
-	private UserAddressService userAddressService;
+	private IUserAddressService userAddressService;
 	@Autowired
-	private PaymentTypeService paymentTypeService;
+	private IPaymentTypeService paymentTypeService;
 	@Autowired
-	private SellerService sellerService;
+	private ISellerService sellerService;
 	
 	@Autowired
 	private OrderHeaderDao orderHeaderDao;

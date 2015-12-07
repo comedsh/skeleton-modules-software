@@ -11,12 +11,12 @@ import com.fenghua.auto.user.intf.dto.PaymentTypeDTO;
  * @createTime 2015.11.2
  *
  */
-public interface PaymentTypeService {
+public interface IPaymentTypeService {
 	/**
 	 * 通过id查询PaymentType
 	 * @return
 	 */
-	public List<PaymentTypeDTO> getById(Long id);
+	public List<PaymentTypeDTO> getByUserId(Long userId);
 	
 	public List<PaymentTypeDTO> findByBuyerAndSellerIds(Long buyerIds, Long[] sellerIds);
 }

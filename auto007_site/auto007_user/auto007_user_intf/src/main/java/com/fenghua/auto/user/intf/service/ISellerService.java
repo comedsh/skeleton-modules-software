@@ -12,7 +12,7 @@ import com.fenghua.auto.user.intf.dto.SellerDTO;
  * @createTime 2015-12-02 09:28:13
  *
  */
-public interface SellerService {
+public interface ISellerService {
 	/**
 	 * 通过id获取Serller
 	 * @param id

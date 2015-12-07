@@ -18,7 +18,7 @@ import com.fenghua.auto.finance.backend.domain.OrderPayment;
 import com.fenghua.auto.finance.backend.service.OrderPaymentService;
 import com.fenghua.auto.order.intf.OrderConstants;
 import com.fenghua.auto.order.intf.dto.OrderMasterDTO;
-import com.fenghua.auto.order.intf.service.OrderService;
+import com.fenghua.auto.order.intf.service.IOrderService;
 
 /**
  * Service实现类
@@ -33,7 +33,7 @@ public class OrderPaymentServiceImpl extends BaseServiceImpl<OrderPayment> imple
 	@Autowired
 	private OrderPaymentDao dao;
 	@Autowired
-	private OrderService orderService;
+	private IOrderService orderService;
 	
 	@Override
 	protected BaseDao<OrderPayment> getBaseDao() {

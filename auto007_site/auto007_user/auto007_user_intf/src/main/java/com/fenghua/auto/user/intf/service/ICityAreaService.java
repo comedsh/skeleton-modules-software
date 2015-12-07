@@ -11,7 +11,7 @@ import com.fenghua.auto.user.intf.dto.CityAreaDTO;
  * @createTime 2015.11.2
  *
  */
-public interface CityAreaService {
+public interface ICityAreaService {
 	/**
 	 * 获取省份
 	 * @return
