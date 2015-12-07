@@ -23,4 +23,11 @@ public interface UserAddressService {
 	void defaultAddress(Long buyerId, Long addressId);
 	
 	int deleteAddress(Long buyerId, Long addressId);
+	
+	/**
+	 * 通过id获取Serller
+	 * @param id
+	 * @return
+	 */
+	public UserAddressDTO getUserAddressById(Long id);
 }
