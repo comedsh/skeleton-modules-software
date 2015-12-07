@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.fenghua.auto.backend.domain.user.User" >
+<mapper namespace="com.fenghua.auto.user.backend.domain.User" >
 
   <!-- <cache eviction="LRU" type="com.fenghua.auto.backend.dao.cache.MybatisRedisCache" />  -->
-  <resultMap id="BaseResultMap" type="com.fenghua.auto.backend.domain.vo.user.UserVo" >
+  <resultMap id="BaseResultMap" type="com.fenghua.auto.user.backend.vo.UserVo" >
     <id column="ID" property="id" jdbcType="BIGINT" />
     <result column="Name" property="name" jdbcType="VARCHAR" />
     <result column="Password" property="password" jdbcType="VARCHAR" />
@@ -71,25 +71,25 @@
     from user
     where MobilePhone = #{telephone}
   </select>
-     <update id="updatePasswordByPhone" parameterType="com.fenghua.auto.backend.domain.user.User" >
+     <update id="updatePasswordByPhone" parameterType="com.fenghua.auto.user.backend.domain.User" >
     update user set
       Password = #{password,jdbcType=VARCHAR}
     where MobilePhone = #{mobilephone,jdbcType=VARCHAR}
   </update>
   <!--根据用户id修改密码  -->
-   <update id="updatePasswordByUserId" parameterType="com.fenghua.auto.backend.domain.user.User" >
+   <update id="updatePasswordByUserId" parameterType="com.fenghua.auto.user.backend.domain.User" >
     update user set
       Password = #{password,jdbcType=VARCHAR}
     where ID = #{id,jdbcType=BIGINT}
   </update>
   <!-- 更新qq账号 -->
-  <update id="updateQqNumberByUserId" parameterType="com.fenghua.auto.backend.domain.user.User">
+  <update id="updateQqNumberByUserId" parameterType="com.fenghua.auto.user.backend.domain.User">
   	update user set
       QQ_Number = #{qqNumber,jdbcType=VARCHAR}
     where ID = #{id,jdbcType=BIGINT}
   </update>
   <!-- 更新微信账号 -->
-  <update id="updateWeChatByUserId" parameterType="com.fenghua.auto.backend.domain.user.User">
+  <update id="updateWeChatByUserId" parameterType="com.fenghua.auto.user.backend.domain.User">
   	update user set
       WeChat = #{wechat,jdbcType=VARCHAR}
     where ID = #{id,jdbcType=BIGINT}
@@ -99,7 +99,7 @@
     delete from user
     where ID = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.fenghua.auto.backend.domain.user.User" >
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.fenghua.auto.user.backend.domain.User" >
     insert into user (ID, Name, Password, 
       Email, MobilePhone, QQ_Number, 
       WeChat, Role_ID, User_Level_ID, 
@@ -113,7 +113,7 @@
       #{createdTs,jdbcType=TIMESTAMP}, #{createdBy,jdbcType=VARCHAR}, #{lastModifiedTs,jdbcType=TIMESTAMP}, 
       #{lastModifiedBy,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="id" parameterType="com.fenghua.auto.backend.domain.user.User" >
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="id" parameterType="com.fenghua.auto.user.backend.domain.User" >
     insert into user
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -216,7 +216,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByIdSelective" parameterType="com.fenghua.auto.backend.domain.user.User" >
+  <update id="updateByIdSelective" parameterType="com.fenghua.auto.user.backend.domain.User" >
     update user
     <set >
       <if test="name != null" >
@@ -267,7 +267,7 @@
     </set>
     where ID = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateById" parameterType="com.fenghua.auto.backend.domain.user.User" >
+  <update id="updateById" parameterType="com.fenghua.auto.user.backend.domain.User" >
     update user
     set Name = #{name,jdbcType=VARCHAR},
       Password = #{password,jdbcType=VARCHAR},
@@ -286,7 +286,7 @@
       Last_Modified_By = #{lastModifiedBy,jdbcType=VARCHAR}
     where ID = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateFailtimesByName" parameterType="com.fenghua.auto.backend.domain.user.User" >
+  <update id="updateFailtimesByName" parameterType="com.fenghua.auto.user.backend.domain.User" >
     update user
     set Failed_Login_Times = #{failedLoginTimes,jdbcType=SMALLINT}
     where Name = #{name,jdbcType=VARCHAR}

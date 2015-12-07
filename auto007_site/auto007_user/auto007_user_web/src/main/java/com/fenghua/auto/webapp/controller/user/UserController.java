@@ -9,14 +9,12 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.regex.Pattern;
-
 import javax.security.sasl.AuthenticationException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,7 +26,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.fenghua.auto.backend.common.utils.Constants;
 import com.fenghua.auto.backend.common.utils.ValidateTime;
 import com.fenghua.auto.backend.common.utils.uploadPicture;
@@ -172,7 +169,6 @@ public class UserController {
 
 	/**
 	 * 校验用户名是否唯一 shang yang
-	 * 
 	 * @param name
 	 * @return
 	 */
@@ -183,7 +179,6 @@ public class UserController {
 
 	/**
 	 * 验证邮箱的唯一性 bin.cheng
-	 * 
 	 * @param email
 	 * @return
 	 */
@@ -195,8 +190,7 @@ public class UserController {
 	}
 
 	/**
-	 * 验证电话号码的唯一性 bin.cheng
-	 * 
+	 * 验证电话号码的唯一性bin.cheng
 	 * @param email
 	 * @return
 	 */
@@ -209,14 +203,11 @@ public class UserController {
 
 	/**
 	 * 通过用户名获取对应的信息
-	 * 
 	 * @param model
-	 * @param request
 	 * @return
 	 */
 	@RequestMapping(value = "/buyerInformation", method = RequestMethod.GET)
-	public ModelAndView getInformation(Map<String, Object> model, HttpServletRequest request,
-			HttpServletResponse response) {
+	public ModelAndView getInformation(Map<String, Object> model) {
 		// 获取当前用户的用户名
 		String name = UserSecurityUtils.getCurrentUserName();
 		User user = userService.getUserByName(name);
