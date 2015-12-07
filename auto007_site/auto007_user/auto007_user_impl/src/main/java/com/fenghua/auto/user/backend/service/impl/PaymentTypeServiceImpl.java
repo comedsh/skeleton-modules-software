@@ -21,7 +21,7 @@ import com.fenghua.auto.user.backend.service.UserPaymentTypeService;
  *
  */
 @Service
-public class PaymentTypeServiceImpl extends BaseServiceImpl<PaymentType> implements PaymentTypeService {
+public class PaymentTypeServiceImpl extends BaseServiceImpl<PaymentType> implements PaymentTypeService{
 	
 	@Autowired
 	private PaymentTypeDao paymentTypeDao;

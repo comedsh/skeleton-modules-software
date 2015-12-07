@@ -21,7 +21,7 @@ import com.fenghua.auto.backend.core.utils.UserSecurityUtils;
 import com.fenghua.auto.backend.domain.mto.LabelError;
 import com.fenghua.auto.order.backend.OrderMTO;
 import com.fenghua.auto.user.intf.dto.UserAddressDTO;
-import com.fenghua.auto.user.intf.service.UserAddressService;
+import com.fenghua.auto.user.intf.service.IUserAddressService;
 
 /** 
   *<des> 
@@ -36,7 +36,7 @@ import com.fenghua.auto.user.intf.service.UserAddressService;
 public class AddressInvoiceController {
 	
 	@Autowired
-	private UserAddressService userAddressService;
+	private IUserAddressService userAddressService;
 	
 	@ResponseBody
 	@RequestMapping(value = "/address/{id}", method=RequestMethod.GET)

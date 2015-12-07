@@ -20,10 +20,10 @@ import com.fenghua.auto.order.backend.vo.BuyerOrderHeaderVO;
 import com.fenghua.auto.order.backend.vo.BuyerOrderMasterVO;
 import com.fenghua.auto.order.backend.vo.OrderItemVO;
 import com.fenghua.auto.sku.intf.dto.SkuDTO;
-import com.fenghua.auto.sku.intf.service.SkuService;
+import com.fenghua.auto.sku.intf.service.ISkuService;
 import com.fenghua.auto.user.intf.dto.SellerDTO;
-import com.fenghua.auto.user.intf.service.SellerService;
-import com.fenghua.auto.user.intf.service.UserService;
+import com.fenghua.auto.user.intf.service.ISellerService;
+import com.fenghua.auto.user.intf.service.IUserService;
 
 /**
  * 
@@ -35,15 +35,15 @@ public class OrderListServiceImpl implements OrderListService {
 	@Autowired
 	private OrderHeaderService orderHeaderService;
 	@Autowired
-	private UserService userService;
+	private IUserService userService;
 	@Autowired
-	private SellerService sellerService;
+	private ISellerService sellerService;
 	@Autowired
 	private OrderTransportService orderTransportService;
 	@Autowired
 	private OrderItemService orderItemService;
 	@Autowired
-	private SkuService skuService;
+	private ISkuService skuService;
 	@Autowired
 	private OrderMasterService orderMasterService;
 

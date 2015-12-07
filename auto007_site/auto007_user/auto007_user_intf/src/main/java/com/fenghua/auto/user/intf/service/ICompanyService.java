@@ -9,25 +9,25 @@ import com.fenghua.auto.user.intf.dto.CompanyDTO;
  * @createTime 2015.11.2
  *
  */
-public interface CompanyService {
+public interface ICompanyService {
 	/**
 	 * 通过id查询company
 	 * @return
 	 */
-	public CompanyDTO getById(Long id);
+	public CompanyDTO getCompanyDTOById(Long id);
 	/**
 	 * 通过fixed查询company
 	 * @return
 	 */
-	public CompanyDTO getUserByFixed(String fixed);
+	public CompanyDTO getCompanyDTOByFixed(String fixed);
 	/**
 	 * 通过telephone查询对应的实体
 	 * @return
 	 */
-	public CompanyDTO getContactsTelephone(String telephone);
+	public CompanyDTO getCompanyDTOByContactsTelephone(String telephone);
 	/**
 	 * 通过email查询对应的实体
 	 * @return
 	 */
-	public CompanyDTO getCompanyByEmail(String email);
+	public CompanyDTO getCompanyDTOByEmail(String email);
 }

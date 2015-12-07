@@ -14,7 +14,7 @@ import com.fenghua.auto.user.intf.dto.UserAddressDTO;
  * @createTime 2015-11-30 13:33:25
  *
  */
-public interface UserAddressService {
+public interface IUserAddressService {
 
 	List<UserAddressDTO> findByBuyerId(Long buyerId);
 	

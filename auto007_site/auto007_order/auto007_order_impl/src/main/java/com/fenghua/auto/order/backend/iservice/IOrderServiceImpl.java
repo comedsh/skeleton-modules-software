@@ -1,4 +1,4 @@
-package com.fenghua.auto.order.backend.service.impl;
+package com.fenghua.auto.order.backend.iservice;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -7,7 +7,7 @@ import com.fenghua.auto.backend.common.utils.BeanMapper;
 import com.fenghua.auto.order.backend.domain.OrderMaster;
 import com.fenghua.auto.order.backend.service.OrderMasterService;
 import com.fenghua.auto.order.intf.dto.OrderMasterDTO;
-import com.fenghua.auto.order.intf.service.OrderService;
+import com.fenghua.auto.order.intf.service.IOrderService;
 
 /**
  * 
@@ -15,7 +15,7 @@ import com.fenghua.auto.order.intf.service.OrderService;
  *
  */
 @Service
-public class OrderServiceImpl implements OrderService {
+public class IOrderServiceImpl implements IOrderService {
 
 	@Autowired
 	private OrderMasterService orderMasterService;

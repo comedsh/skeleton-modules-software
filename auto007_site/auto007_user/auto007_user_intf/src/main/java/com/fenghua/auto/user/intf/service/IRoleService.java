@@ -1,7 +1,5 @@
 package com.fenghua.auto.user.intf.service;
 
-import java.util.List;
-
 import com.fenghua.auto.user.intf.dto.RoleDTO;
 
 /**
@@ -11,10 +9,10 @@ import com.fenghua.auto.user.intf.dto.RoleDTO;
  * @createTime 2015.11.2
  *
  */
-public interface RoleService {
+public interface IRoleService {
 	/**
 	 * 通过角色id查询角色
 	 * @return
 	 */
-	public List<RoleDTO> getRoleById(Long id);
+	public RoleDTO getRoleById(Long id);
 }
