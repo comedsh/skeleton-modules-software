@@ -4,17 +4,14 @@ import java.util.Date;
 
 import com.fenghua.auto.backend.domain.DomainObject;
 /**
- * 用户等级
+ * 用户角色
  * @author chengbin
  *
  */
-public class UserLevel implements DomainObject {
+public class RoleDTO implements DomainObject {
 	
 	private static final long serialVersionUID = 1L;
-	
     private Long id;
-
-    private Long previousId;
 
     private String name;
 
@@ -34,14 +31,6 @@ public class UserLevel implements DomainObject {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getPreviousId() {
-        return previousId;
-    }
-
-    public void setPreviousId(Long previousId) {
-        this.previousId = previousId;
     }
 
     public String getName() {

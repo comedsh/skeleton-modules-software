@@ -3,7 +3,7 @@ package com.fenghua.auto.user.intf.dto;
 import com.fenghua.auto.backend.domain.DomainObject;
 import java.util.Date;
 
-public class Seller implements DomainObject {
+public class SellerDTO implements DomainObject {
 	private static final long serialVersionUID = 1L;
     private Long id;
 

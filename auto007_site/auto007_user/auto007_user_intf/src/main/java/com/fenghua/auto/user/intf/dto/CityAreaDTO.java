@@ -8,7 +8,7 @@ import com.fenghua.auto.backend.domain.mto.MessageTransferObject;
  * @author chengbin
  *
  */
-public class CityArea extends AbstractDomainObject implements DomainObject, MessageTransferObject {
+public class CityAreaDTO extends AbstractDomainObject implements DomainObject, MessageTransferObject {
 	
 	private static final long serialVersionUID = 1L;
 

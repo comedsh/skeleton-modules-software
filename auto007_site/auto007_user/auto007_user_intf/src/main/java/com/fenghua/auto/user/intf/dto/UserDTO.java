@@ -18,7 +18,7 @@ import com.fenghua.auto.backend.domain.validation.NotDuplicated;
  * @author chengbin
  * @createTime 2015.11.5
  */
-public class User extends AbstractDomainObject implements DomainObject, MessageTransferObject {
+public class UserDTO extends AbstractDomainObject implements DomainObject, MessageTransferObject {
 	
 	private static final long serialVersionUID = 1L;
 

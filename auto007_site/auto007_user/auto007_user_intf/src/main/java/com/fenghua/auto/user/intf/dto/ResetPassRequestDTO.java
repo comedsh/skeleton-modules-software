@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 import com.fenghua.auto.backend.domain.DomainObject;
 
-public class ResetPassRequest implements DomainObject{
+public class ResetPassRequestDTO implements DomainObject{
 	
 	/**
 	 * 

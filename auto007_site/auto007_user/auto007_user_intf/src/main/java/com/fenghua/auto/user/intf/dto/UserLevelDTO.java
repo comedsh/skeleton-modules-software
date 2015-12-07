@@ -4,20 +4,21 @@ import java.util.Date;
 
 import com.fenghua.auto.backend.domain.DomainObject;
 /**
- * 付款方式
- * @author thinkpad
+ * 用户等级
+ * @author chengbin
  *
  */
-public class PaymentType implements DomainObject {
+public class UserLevelDTO implements DomainObject {
 	
 	private static final long serialVersionUID = 1L;
+	
     private Long id;
 
-    private String typename;
+    private Long previousId;
+
+    private String name;
 
     private String description;
-
-    private String needapprove;
 
     private Date createdTs;
 
@@ -35,12 +36,20 @@ public class PaymentType implements DomainObject {
         this.id = id;
     }
 
-    public String getTypename() {
-        return typename;
+    public Long getPreviousId() {
+        return previousId;
     }
 
-    public void setTypename(String typename) {
-        this.typename = typename == null ? null : typename.trim();
+    public void setPreviousId(Long previousId) {
+        this.previousId = previousId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
     }
 
     public String getDescription() {
@@ -49,14 +58,6 @@ public class PaymentType implements DomainObject {
 
     public void setDescription(String description) {
         this.description = description == null ? null : description.trim();
-    }
-
-    public String getNeedapprove() {
-        return needapprove;
-    }
-
-    public void setNeedapprove(String needapprove) {
-        this.needapprove = needapprove == null ? null : needapprove.trim();
     }
 
     public Date getCreatedTs() {
@@ -90,30 +91,4 @@ public class PaymentType implements DomainObject {
     public void setLastModifiedBy(String lastModifiedBy) {
         this.lastModifiedBy = lastModifiedBy == null ? null : lastModifiedBy.trim();
     }
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		PaymentType other = (PaymentType) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		return true;
-	}
-    
 }

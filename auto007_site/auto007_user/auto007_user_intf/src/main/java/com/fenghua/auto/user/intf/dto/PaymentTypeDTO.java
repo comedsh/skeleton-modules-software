@@ -4,18 +4,20 @@ import java.util.Date;
 
 import com.fenghua.auto.backend.domain.DomainObject;
 /**
- * 用户角色
- * @author chengbin
+ * 付款方式
+ * @author thinkpad
  *
  */
-public class Role implements DomainObject {
+public class PaymentTypeDTO implements DomainObject {
 	
 	private static final long serialVersionUID = 1L;
     private Long id;
 
-    private String name;
+    private String typename;
 
     private String description;
+
+    private String needapprove;
 
     private Date createdTs;
 
@@ -33,12 +35,12 @@ public class Role implements DomainObject {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getTypename() {
+        return typename;
     }
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+    public void setTypename(String typename) {
+        this.typename = typename == null ? null : typename.trim();
     }
 
     public String getDescription() {
@@ -47,6 +49,14 @@ public class Role implements DomainObject {
 
     public void setDescription(String description) {
         this.description = description == null ? null : description.trim();
+    }
+
+    public String getNeedapprove() {
+        return needapprove;
+    }
+
+    public void setNeedapprove(String needapprove) {
+        this.needapprove = needapprove == null ? null : needapprove.trim();
     }
 
     public Date getCreatedTs() {
@@ -80,4 +90,30 @@ public class Role implements DomainObject {
     public void setLastModifiedBy(String lastModifiedBy) {
         this.lastModifiedBy = lastModifiedBy == null ? null : lastModifiedBy.trim();
     }
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		PaymentTypeDTO other = (PaymentTypeDTO) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
+	}
+    
 }

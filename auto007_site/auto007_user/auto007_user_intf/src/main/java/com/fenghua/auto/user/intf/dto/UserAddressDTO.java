@@ -11,7 +11,7 @@ import com.fenghua.auto.backend.domain.DomainObject;
  * @author thinkpad
  *
  */
-public class UserAddress implements DomainObject {
+public class UserAddressDTO implements DomainObject {
 	private static final long serialVersionUID = 1L;
     private Long id;
 
