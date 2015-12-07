@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fenghua.auto.backend.core.utils.MessageHelper;
-import com.fenghua.auto.backend.domain.user.User;
-import com.fenghua.auto.backend.service.user.AuthService;
-import com.fenghua.auto.backend.service.user.UserService;
+import com.fenghua.auto.user.backend.domain.User;
+import com.fenghua.auto.user.backend.service.AuthService;
+import com.fenghua.auto.user.backend.service.UserService;
 import com.qq.connect.QQConnectException;
 import com.qq.connect.oauth.Oauth;
 
