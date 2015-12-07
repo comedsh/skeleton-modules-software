@@ -1,6 +1,6 @@
 package com.fenghua.auto.user.intf.service;
 
-import com.fenghua.auto.user.intf.dto.Company;
+import com.fenghua.auto.user.intf.dto.CompanyDTO;
 
 /**
  * 企业service
@@ -14,20 +14,20 @@ public interface CompanyService {
 	 * 通过id查询company
 	 * @return
 	 */
-	public Company getById(Long id);
+	public CompanyDTO getById(Long id);
 	/**
 	 * 通过fixed查询company
 	 * @return
 	 */
-	public Company getUserByFixed(String fixed);
+	public CompanyDTO getUserByFixed(String fixed);
 	/**
 	 * 通过telephone查询对应的实体
 	 * @return
 	 */
-	public Company getContactsTelephone(String telephone);
+	public CompanyDTO getContactsTelephone(String telephone);
 	/**
 	 * 通过email查询对应的实体
 	 * @return
 	 */
-	public Company getCompanyByEmail(String email);
+	public CompanyDTO getCompanyByEmail(String email);
 }

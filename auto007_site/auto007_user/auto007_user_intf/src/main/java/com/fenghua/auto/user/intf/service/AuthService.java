@@ -3,7 +3,7 @@ package com.fenghua.auto.user.intf.service;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Service;
 import com.fenghua.auto.backend.core.security.UserInfo;
-import com.fenghua.auto.user.intf.dto.User;
+import com.fenghua.auto.user.intf.dto.UserDTO;
 import com.qq.connect.QQConnectException;
 
 /**
@@ -25,7 +25,7 @@ public interface AuthService {
 	 * @param openid 
 	 * @return 返回登陆用户
 	 */
-	User hasUser(HttpServletRequest request) throws QQConnectException;
+	UserDTO hasUser(HttpServletRequest request) throws QQConnectException;
 	/**
 	 * 绑定微信或QQ
 	 */

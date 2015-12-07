@@ -5,8 +5,7 @@ package com.fenghua.auto.user.intf.service;
 
 import java.util.List;
 
-import com.fenghua.auto.backend.service.BaseService;
-import com.fenghua.auto.user.intf.dto.UserAddress;
+import com.fenghua.auto.user.intf.dto.UserAddressDTO;
 
 /**
  * Service接口类
@@ -15,11 +14,11 @@ import com.fenghua.auto.user.intf.dto.UserAddress;
  * @createTime 2015-11-30 13:33:25
  *
  */
-public interface UserAddressService extends BaseService<UserAddress> {
+public interface UserAddressService {
 
-	List<UserAddress> findByBuyerId(Long buyerId);
+	List<UserAddressDTO> findByBuyerId(Long buyerId);
 	
-	Long addAddress(Long buyerId, UserAddress address);
+	Long addAddress(Long buyerId, UserAddressDTO address);
 	
 	void defaultAddress(Long buyerId, Long addressId);
 	

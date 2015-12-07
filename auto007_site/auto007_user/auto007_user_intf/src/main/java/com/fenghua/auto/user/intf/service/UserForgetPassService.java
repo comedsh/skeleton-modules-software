@@ -2,7 +2,7 @@ package com.fenghua.auto.user.intf.service;
 
 import java.util.List;
 
-import com.fenghua.auto.user.intf.dto.ResetPassRequest;
+import com.fenghua.auto.user.intf.dto.ResetPassRequestDTO;
 
 public interface UserForgetPassService {
 	/**
@@ -15,7 +15,7 @@ public interface UserForgetPassService {
 	 * @param certificateCode
 	 * @return
 	 */
-	public List<ResetPassRequest> selectByCodeAndUser(String certificateCode); 
+	public List<ResetPassRequestDTO> selectByCodeAndUser(String certificateCode); 
 	/**
 	 * 根据用户删除找回密码信息
 	 * @param UserId

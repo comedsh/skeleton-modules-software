@@ -4,9 +4,9 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.fenghua.auto.user.intf.dto.Company;
-import com.fenghua.auto.user.intf.dto.PaymentType;
-import com.fenghua.auto.user.intf.dto.User;
+import com.fenghua.auto.user.intf.dto.CompanyDTO;
+import com.fenghua.auto.user.intf.dto.PaymentTypeDTO;
+import com.fenghua.auto.user.intf.dto.UserDTO;
 /**
  * 个人注册service
  * 
@@ -24,7 +24,7 @@ public interface UserService {
 	 * 修改用户
 	 * @param personal
 	 */
-	public void update(User personal);
+	public void update(UserDTO personal);
 	/**
 	 * 更新登录失败次数
 	 * @param name
@@ -34,39 +34,39 @@ public interface UserService {
 	 * 增加个人用户
 	 * @param personal
 	 */
-	public void insert(User personal);
+	public void insert(UserDTO personal);
 	/**
 	 * 增加企业用户
 	 * @param personal
 	 */
-	public void insert(User personal,Company company,PaymentType paymenttype);
+	public void insert(UserDTO personal,CompanyDTO company,PaymentTypeDTO paymenttype);
 	/**
 	 * 通过id获取用户
 	 * @param id
 	 * @return
 	 */
-	public User getUserById(Long id);
+	public UserDTO getUserById(Long id);
 	/**
 	 * 获取所有用户信息
 	 * @return
 	 */
-	public List<User> getAll();
+	public List<UserDTO> getAll();
 	/**
 	 * 通过name查询用户
 	 * @return
 	 */
-	public User getUserByName(String name);
+	public UserDTO getUserByName(String name);
 	/**
 	 * 通过email查询用户
 	 * @return
 	 */
-	public User getUserByEmail(String email);
+	public UserDTO getUserByEmail(String email);
 	/**
 	 * 根据用户id查询用户相信信息
 	 * @param userId
 	 * @return
 	 */
-	public User getUserByuserId(Long userId);
+	public UserDTO getUserByuserId(Long userId);
 	/**
 	 * 根据电话号码更新密码
 	 * @param user
@@ -85,7 +85,7 @@ public interface UserService {
 	 * 通过telephone查询用户
 	 * @return
 	 */
-	public User getUserByTelephone(String telephone);
+	public UserDTO getUserByTelephone(String telephone);
 
 	/**
 	 * 自动登录，把用户名和密码写入security session中
@@ -101,7 +101,7 @@ public interface UserService {
 	 * @param openID
 	 * @return
 	 */
-	public User getUserByQQ(String openID);
+	public UserDTO getUserByQQ(String openID);
 	/**
 	 * 根据用户id更新其qq账号
 	 * @param qqOpenID
@@ -113,7 +113,7 @@ public interface UserService {
 	 * @param openid
 	 * @return
 	 */
-	public User getUserByWeChat(String openid);
+	public UserDTO getUserByWeChat(String openid);
 	/**
 	 * 根据用户id更新其微信账户
 	 * @param weChatOpenid

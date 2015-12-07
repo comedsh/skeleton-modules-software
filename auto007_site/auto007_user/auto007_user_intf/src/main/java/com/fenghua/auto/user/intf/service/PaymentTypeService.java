@@ -2,8 +2,7 @@ package com.fenghua.auto.user.intf.service;
 
 import java.util.List;
 
-import com.fenghua.auto.backend.service.BaseService;
-import com.fenghua.auto.user.intf.dto.PaymentType;
+import com.fenghua.auto.user.intf.dto.PaymentTypeDTO;
 
 /**
  * 企业service
@@ -12,12 +11,12 @@ import com.fenghua.auto.user.intf.dto.PaymentType;
  * @createTime 2015.11.2
  *
  */
-public interface PaymentTypeService extends BaseService<PaymentType>{
+public interface PaymentTypeService {
 	/**
 	 * 通过id查询PaymentType
 	 * @return
 	 */
-	public List<PaymentType> getById(Long id);
+	public List<PaymentTypeDTO> getById(Long id);
 	
-	public List<PaymentType> findByBuyerAndSellerIds(Long buyerIds, Long[] sellerIds);
+	public List<PaymentTypeDTO> findByBuyerAndSellerIds(Long buyerIds, Long[] sellerIds);
 }
