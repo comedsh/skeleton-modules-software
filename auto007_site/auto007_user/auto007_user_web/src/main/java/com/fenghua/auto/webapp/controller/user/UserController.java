@@ -101,6 +101,7 @@ public class UserController {
 			transferObject.addErrors(MessageAndErrorUtil.getError("user.validate.timeout", "telcode"));
 		} else if (validateTel.equals(telcode) && verifyCode.equalsIgnoreCase(code)) {// 如果手机验证码和图片验证码都输入正确
 			String userPwd = user.getPassword();
+			
 			userService.insert(user);
 			transferObject.addMessages(MessageAndErrorUtil.getMessage("user.register.success", "success"));
 			// 把用户名和密码存入安全的session中
@@ -398,28 +399,29 @@ public class UserController {
 	@SuppressWarnings("unused")
 	@RequestMapping(value = "/updatePasswordByPhone", method = RequestMethod.POST)
 	public ModelAndView updatePasswordByPhone(HttpServletRequest request, Model model) {
-		Map<String, Result> model1 = new HashMap<String, Result>();
+		Map<String, String> model1 = new HashMap<String, String>();
 		Long id = null;
 		String path = "";
-		Locale zh_cn = new Locale("zh", "CN");
 		String phone = (String) request.getSession().getAttribute("phone");
 		id = userService.updatePasswordByPhone(request.getParameter("pwd_new"), phone);
-		Result msg = new Result();
+
 		if (request.getParameter("pwd_new_agin").equals(request.getParameter("pwd_new"))) {
 			if (id != null && id != 0) {
-				msg.setCode(phone);
+				//msg.setCode(phone);
+				model1.put("message", phone);
 				path = "forgot.findPassbyphoneLast";
 			} else {
 				String message = MessageHelper.getMessage("user.modify.error");
-				msg.setMsg(message);
+				model1.put("message", message);
+				//msg.setMsg(message);
 				path = "forgot.findPassbyphoneSecond";
 			}
 		} else {
-			msg.setMsg(MessageHelper.getMessage("forgot.passDisagree"));
+			model1.put("message",MessageHelper.getMessage("forgot.passDisagree"));
 			path = "forgot.findPassbyphoneSecond";
 		}
 
-		model1.put("message", msg);
+		//model1.put("message", msg);
 		return new ModelAndView(path, model1);
 	}
 
@@ -432,24 +434,21 @@ public class UserController {
 	 */
 	@RequestMapping(value = "/updatePasswordByUserId", method = RequestMethod.POST)
 	public ModelAndView updatePasswordByUserId(HttpServletRequest request, Model model) {
-		Map<String, Result> model1 = new HashMap<String, Result>();
+		Map<String, String> model1 = new HashMap<String, String>();
 		Long id = null;
 		String path = "";
 		Long userId = (Long) request.getSession().getAttribute("userId");
 		User user = null;
 		user = userService.getUserByuserId(userId);
 		id = userService.updatePasswordByUserId(request.getParameter("email_pwd"), userId);
-		Result msg = new Result();
 		if (id != null && id != 0) {
-			msg.setSuccess(true);
-			msg.setMsg(user.getEmail());
+			model1.put("message", user.getEmail());
 			path = "forgot.findPassbyEmailLast";
 		} else {
 			String message = MessageHelper.getMessage("user.modify.error");
-			msg.setMsg(message);
+			model1.put("message", message);
 			path = "forgot.findPassbyEmailThired";
 		}
-		model1.put("message", msg);
 		return new ModelAndView(path, model1);
 	}
 

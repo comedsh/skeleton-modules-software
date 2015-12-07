@@ -19,5 +19,5 @@ import com.fenghua.auto.user.backend.domain.Seller;
  */
 @Repository
 public class SellerDaoImpl extends BaseDaoImpl<Seller> implements SellerDao {
-
+	
 }
