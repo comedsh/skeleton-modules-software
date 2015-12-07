@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.fenghua.auto.order.domain.QualityOrderDetail" >
-  <resultMap id="BaseResultMap" type="com.fenghua.auto.order.domain.QualityOrderDetail" >
+<mapper namespace="com.fenghua.auto.order.backend.domain.QualityOrderDetail" >
+  <resultMap id="BaseResultMap" type="com.fenghua.auto.order.backend.domain.QualityOrderDetail" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="quality_id" property="qualityId" jdbcType="BIGINT" />
     <result column="quality_no" property="qualityNo" jdbcType="VARCHAR" />
@@ -59,12 +59,12 @@
       </if>
     </where>
   </sql>
-  <select id="selectCount" resultType="java.lang.Long" parameterType="com.fenghua.auto.order.domain.QualityOrderDetail" >
+  <select id="selectCount" resultType="java.lang.Long" parameterType="com.fenghua.auto.order.backend.domain.QualityOrderDetail" >
     select count( id)
      from quality_order_detail
     <include refid="Base_Where_Case" />
   </select>
-  <select id="select" resultMap="BaseResultMap" parameterType="com.fenghua.auto.order.domain.QualityOrderDetail" >
+  <select id="select" resultMap="BaseResultMap" parameterType="com.fenghua.auto.order.backend.domain.QualityOrderDetail" >
     select 
     <include refid="Base_Column_List" />
      from quality_order_detail
@@ -83,7 +83,7 @@
     delete from quality_order_detail
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.fenghua.auto.order.domain.QualityOrderDetail" >
+  <insert id="insert"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.fenghua.auto.order.backend.domain.QualityOrderDetail" >
     insert into quality_order_detail (id, quality_id, quality_no, 
       order_item_id, sku_id, sku_code, 
       sku_name, qty, problem_desc, 
@@ -95,7 +95,7 @@
       #{processDesc,jdbcType=VARCHAR}, #{processorId,jdbcType=BIGINT}, #{processTime,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.fenghua.auto.order.domain.QualityOrderDetail" >
+  <insert id="insertSelective"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.fenghua.auto.order.backend.domain.QualityOrderDetail" >
     insert into quality_order_detail
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -174,7 +174,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fenghua.auto.order.domain.QualityOrderDetail" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.fenghua.auto.order.backend.domain.QualityOrderDetail" >
     update quality_order_detail
     <set >
       <if test="qualityId != null" >
@@ -213,7 +213,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.order.domain.QualityOrderDetail" >
+  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.order.backend.domain.QualityOrderDetail" >
     update quality_order_detail
     set quality_id = #{qualityId,jdbcType=BIGINT},
       quality_no = #{qualityNo,jdbcType=VARCHAR},

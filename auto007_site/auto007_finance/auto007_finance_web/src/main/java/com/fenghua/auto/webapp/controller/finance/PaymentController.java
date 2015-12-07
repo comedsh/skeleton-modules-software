@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.fenghua.auto.backend.core.exception.BizException;
 import com.fenghua.auto.backend.core.utils.UserSecurityUtils;
-import com.fenghua.auto.finance.domain.OrderPayment;
-import com.fenghua.auto.finance.service.OrderPaymentService;
-import com.fenghua.auto.order.OrderConstants;
+import com.fenghua.auto.finance.backend.domain.OrderPayment;
+import com.fenghua.auto.finance.backend.service.OrderPaymentService;
+import com.fenghua.auto.order.intf.OrderConstants;
 
 /** 
   *<des> 
@@ -24,13 +24,13 @@ import com.fenghua.auto.order.OrderConstants;
   * @version 1.0
   */
 @Controller
-@RequestMapping("/payment")
+@RequestMapping("/finance/payment")
 public class PaymentController {
 	
 	@Autowired
 	private OrderPaymentService orderPaymentService;
 	
-	@RequestMapping(value="/order", method=RequestMethod.GET)
+	@RequestMapping(value="/order", method=RequestMethod.PUT)
 	public String prePayment(Model model, @RequestParam(value="orderId", required = true) Long orderId) throws AuthenticationException{
 		try {
 			OrderPayment payment = orderPaymentService.genOrderPayment(UserSecurityUtils.getCurrentUserId(), orderId);

@@ -218,7 +218,7 @@
     	   console.log("submitOrder "+$scope.orderSubmitObj);
     	   $http({
 	   			method:'POST',
-	   			url:"/shopping/order/submit",
+	   			url:"/order/submit",
 	   			data: $scope.orderSubmitObj,
 	   			headers: {'Content-Type': 'application/json'}
   			}).success(function(data){
@@ -288,7 +288,7 @@
         	$scope.address = {};
         	$http({
 	   			method:'GET',
-	   			url:"/shopping/address/"+addressId,
+	   			url:"/order/address/"+addressId,
 	   			headers: {'Content-Type': 'application/json'}
 			}).success(function(data){
 				if(data.success) {
@@ -308,7 +308,7 @@
 		$scope.deleteAddress = function(addressId) {
 			$http({
 	   			method:'GET',
-	   			url:"/shopping/address/delete/"+addressId,
+	   			url:"/order/address/delete/"+addressId,
 	   			headers: {'Content-Type': 'application/json'}
 			}).success(function(data){
 				if(data.success) {
@@ -321,7 +321,7 @@
 		$scope.defaultAddress = function(addressId) {
 			$http({
 	   			method:'GET',
-	   			url:"/shopping/address/default/"+addressId,
+	   			url:"/order/address/default/"+addressId,
 	   			headers: {'Content-Type': 'application/json'}
 			}).success(function(data){
 				if(data.success) {
@@ -334,7 +334,7 @@
 		$scope.saveAddress = function() {
 			$http({
 	   			method:'POST',
-	   			url:"/shopping/address",
+	   			url:"/order/address",
 	   			data:$scope.address,
 	   			headers: {'Content-Type': 'application/json'}
 			}).success(function(data){

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.fenghua.auto.backend.domain.user.UserAddress" >
-  <resultMap id="BaseResultMap" type="com.fenghua.auto.backend.domain.user.UserAddress" >
+<mapper namespace="com.fenghua.auto.user.backend.domain.UserAddress" >
+  <resultMap id="BaseResultMap" type="com.fenghua.auto.user.backend.vo.UserAddressVo" >
     <id column="ID" property="id" jdbcType="BIGINT" />
     <result column="User_ID" property="userId" jdbcType="BIGINT" />
     <result column="Alias" property="alias" jdbcType="VARCHAR" />
@@ -80,12 +80,12 @@
       </if>
     </where>
   </sql>
-  <select id="selectCount" resultType="java.lang.Long" parameterType="com.fenghua.auto.backend.domain.user.UserAddress" >
+  <select id="selectCount" resultType="java.lang.Long" parameterType="com.fenghua.auto.user.backend.domain.UserAddress" >
     select count( ID)
      from user_address
     <include refid="Base_Where_Case" />
   </select>
-  <select id="select" resultMap="BaseResultMap" parameterType="com.fenghua.auto.backend.domain.user.UserAddress" >
+  <select id="select" resultMap="BaseResultMap" parameterType="com.fenghua.auto.user.backend.domain.UserAddress" >
     select 
     <include refid="Base_Column_List" />
      from user_address
@@ -104,7 +104,7 @@
     delete from user_address
     where ID = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.fenghua.auto.backend.domain.user.UserAddress" >
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.fenghua.auto.user.backend.domain.UserAddress" >
     insert into user_address (ID, User_ID, Alias, 
       Detail_Addr, Receiver_Name, Receiver_Mobile, 
       Default_Addr, created_ts, created_by, 
@@ -118,7 +118,7 @@
       #{cityId,jdbcType=BIGINT}, #{areaId,jdbcType=BIGINT}, #{provinceName,jdbcType=VARCHAR}, 
       #{cityName,jdbcType=VARCHAR}, #{areaName,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="id" parameterType="com.fenghua.auto.backend.domain.user.UserAddress" >
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="id" parameterType="com.fenghua.auto.user.backend.domain.UserAddress" >
     insert into user_address
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -227,7 +227,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fenghua.auto.backend.domain.user.UserAddress" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.fenghua.auto.user.backend.domain.UserAddress" >
     update user_address
     <set >
       <if test="userId != null" >
@@ -281,7 +281,7 @@
     </set>
     where ID = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.backend.domain.user.UserAddress" >
+  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.user.backend.domain.UserAddress" >
     update user_address
     set User_ID = #{userId,jdbcType=BIGINT},
       Alias = #{alias,jdbcType=VARCHAR},

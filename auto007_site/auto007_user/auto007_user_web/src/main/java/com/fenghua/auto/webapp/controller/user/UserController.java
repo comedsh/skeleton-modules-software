@@ -9,14 +9,12 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.regex.Pattern;
-
 import javax.security.sasl.AuthenticationException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,7 +26,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.fenghua.auto.backend.common.utils.Constants;
 import com.fenghua.auto.backend.common.utils.ValidateTime;
 import com.fenghua.auto.backend.common.utils.uploadPicture;
@@ -81,7 +78,8 @@ public class UserController {
 	private SysConfigService configService;
 
 	/**
-	 * @author chengbin 增加一个个人用户注册
+	 * 增加一个个人用户注册
+	 * @author chengbin 
 	 * @return
 	 * @createTime 2015.11.4
 	 */
@@ -103,6 +101,7 @@ public class UserController {
 			transferObject.addErrors(MessageAndErrorUtil.getError("user.validate.timeout", "telcode"));
 		} else if (validateTel.equals(telcode) && verifyCode.equalsIgnoreCase(code)) {// 如果手机验证码和图片验证码都输入正确
 			String userPwd = user.getPassword();
+			
 			userService.insert(user);
 			transferObject.addMessages(MessageAndErrorUtil.getMessage("user.register.success", "success"));
 			// 把用户名和密码存入安全的session中
@@ -124,7 +123,8 @@ public class UserController {
 	}
 
 	/**
-	 * @author chengbin 增加一个企业用户注册
+	 * 增加一个企业用户注册
+	 * @author chengbin 
 	 * @return
 	 * @createTime 2015.11.4
 	 */
@@ -171,8 +171,8 @@ public class UserController {
 	}
 
 	/**
-	 * 校验用户名是否唯一 shang yang
-	 * 
+	 * 校验用户名是否唯一 
+	 * shang yang
 	 * @param name
 	 * @return
 	 */
@@ -183,7 +183,6 @@ public class UserController {
 
 	/**
 	 * 验证邮箱的唯一性 bin.cheng
-	 * 
 	 * @param email
 	 * @return
 	 */
@@ -195,8 +194,8 @@ public class UserController {
 	}
 
 	/**
-	 * 验证电话号码的唯一性 bin.cheng
-	 * 
+	 * 验证电话号码的唯一性
+	 * bin.cheng
 	 * @param email
 	 * @return
 	 */
@@ -209,14 +208,12 @@ public class UserController {
 
 	/**
 	 * 通过用户名获取对应的信息
-	 * 
+	 * bin.cheng
 	 * @param model
-	 * @param request
 	 * @return
 	 */
 	@RequestMapping(value = "/buyerInformation", method = RequestMethod.GET)
-	public ModelAndView getInformation(Map<String, Object> model, HttpServletRequest request,
-			HttpServletResponse response) {
+	public ModelAndView getInformation(Map<String, Object> model) {
 		// 获取当前用户的用户名
 		String name = UserSecurityUtils.getCurrentUserName();
 		User user = userService.getUserByName(name);
@@ -236,8 +233,8 @@ public class UserController {
 	}
 
 	/**
-	 * bin.cheng 通过name判断是否应该显示图形验证码
-	 * 
+	 * 通过name判断是否应该显示图形验证码
+	 * bin.cheng 
 	 * @param name
 	 * @param req
 	 * @param res
@@ -288,8 +285,8 @@ public class UserController {
 	}
 
 	/**
-	 * bin.cheng 获取图片验证码
-	 * 
+	 * 获取图片验证码
+	 * bin.cheng 
 	 * @param req
 	 * @param res
 	 */
@@ -306,7 +303,7 @@ public class UserController {
 
 	/**
 	 * 获取手机验证码
-	 * 
+	 * bin.cheng
 	 * @param mobilephone
 	 * @param req
 	 * @param res
@@ -335,8 +332,8 @@ public class UserController {
 	}
 
 	/**
-	 * 通过用户id查找对应的用户注册信息 bin.cheng
-	 * 
+	 * 通过用户id查找对应的用户注册信息
+	 * bin.cheng
 	 * @param id
 	 * @param model
 	 * @return
@@ -532,8 +529,8 @@ public class UserController {
 	}
 
 	/**
-	 * 营业执照上传 bin.cheng
-	 * 
+	 * 营业执照上传 
+	 * bin.cheng
 	 * @param picture
 	 * @param response
 	 * @param request
@@ -553,8 +550,8 @@ public class UserController {
 	}
 
 	/**
-	 * 纳税人资格证上传 bin.cheng
-	 * 
+	 * 纳税人资格证上传 
+	 * bin.cheng
 	 * @param picture
 	 * @param response
 	 * @param request

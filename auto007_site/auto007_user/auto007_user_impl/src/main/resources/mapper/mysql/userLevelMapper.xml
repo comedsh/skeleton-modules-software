@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.fenghua.auto.backend.domain.user.UserLevel" >
-  <resultMap id="BaseResultMap" type="com.fenghua.auto.backend.domain.vo.user.UserLevelVo" >
+<mapper namespace="com.fenghua.auto.user.backend.domain.UserLevel" >
+  <resultMap id="BaseResultMap" type="com.fenghua.auto.user.backend.vo.UserLevelVo" >
     <id column="ID" property="id" jdbcType="BIGINT" />
     <result column="Previous_ID" property="previousId" jdbcType="BIGINT" />
     <result column="Name" property="name" jdbcType="VARCHAR" />
@@ -24,7 +24,7 @@
     delete from user_level
     where ID = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.fenghua.auto.backend.domain.user.UserLevel" >
+  <insert id="insert" parameterType="com.fenghua.auto.user.backend.domain.UserLevel" >
     insert into user_level (ID, Previous_ID, Name, 
       Description, Created_TS, Created_By, 
       Last_Modified_TS, Last_Modified_By)
@@ -32,7 +32,7 @@
       #{description,jdbcType=VARCHAR}, #{createdTs,jdbcType=TIMESTAMP}, #{createdBy,jdbcType=VARCHAR}, 
       #{lastModifiedTs,jdbcType=TIMESTAMP}, #{lastModifiedBy,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.fenghua.auto.backend.domain.user.UserLevel" >
+  <insert id="insertSelective" parameterType="com.fenghua.auto.user.backend.domain.UserLevel" >
     insert into user_level
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -87,7 +87,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fenghua.auto.backend.domain.user.UserLevel" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.fenghua.auto.user.backend.domain.UserLevel" >
     update user_level
     <set >
       <if test="previousId != null" >
@@ -114,7 +114,7 @@
     </set>
     where ID = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.backend.domain.user.UserLevel" >
+  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.user.backend.domain.UserLevel" >
     update user_level
     set Previous_ID = #{previousId,jdbcType=BIGINT},
       Name = #{name,jdbcType=VARCHAR},

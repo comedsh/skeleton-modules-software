@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.fenghua.auto.finance.domain.RefundBill" >
-  <resultMap id="BaseResultMap" type="com.fenghua.auto.finance.domain.RefundBill" >
+<mapper namespace="com.fenghua.auto.finance.backend.domain.RefundBill" >
+  <resultMap id="BaseResultMap" type="com.fenghua.auto.finance.backend.domain.RefundBill" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="rebill_no" property="rebillNo" jdbcType="VARCHAR" />
     <result column="retrade_no" property="retradeNo" jdbcType="VARCHAR" />
@@ -121,12 +121,12 @@
       </if>
     </where>
   </sql>
-  <select id="selectCount" resultType="java.lang.Long" parameterType="com.fenghua.auto.finance.domain.RefundBill" >
+  <select id="selectCount" resultType="java.lang.Long" parameterType="com.fenghua.auto.finance.backend.domain.RefundBill" >
     select count( id)
      from refund_bill
     <include refid="Base_Where_Case" />
   </select>
-  <select id="select" resultMap="BaseResultMap" parameterType="com.fenghua.auto.finance.domain.RefundBill" >
+  <select id="select" resultMap="BaseResultMap" parameterType="com.fenghua.auto.finance.backend.domain.RefundBill" >
     select 
     <include refid="Base_Column_List" />
      from refund_bill
@@ -145,7 +145,7 @@
     delete from refund_bill
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.fenghua.auto.finance.domain.RefundBill" >
+  <insert id="insert"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.fenghua.auto.finance.backend.domain.RefundBill" >
     insert into refund_bill (id, rebill_no, retrade_no, 
       refund_id, refund_no, order_id, 
       order_no, buyer_id, seller_id, 
@@ -167,7 +167,7 @@
       #{remark,jdbcType=VARCHAR}, #{tradeNo,jdbcType=VARCHAR}, #{refundTime,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.fenghua.auto.finance.domain.RefundBill" >
+  <insert id="insertSelective"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.fenghua.auto.finance.backend.domain.RefundBill" >
     insert into refund_bill
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -336,7 +336,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fenghua.auto.finance.domain.RefundBill" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.fenghua.auto.finance.backend.domain.RefundBill" >
     update refund_bill
     <set >
       <if test="rebillNo != null" >
@@ -420,7 +420,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.finance.domain.RefundBill" >
+  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.finance.backend.domain.RefundBill" >
     update refund_bill
     set rebill_no = #{rebillNo,jdbcType=VARCHAR},
       retrade_no = #{retradeNo,jdbcType=VARCHAR},

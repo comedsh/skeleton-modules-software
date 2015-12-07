@@ -19,9 +19,9 @@ import com.fenghua.auto.backend.core.utils.LabelErrorTranslator;
 import com.fenghua.auto.backend.core.utils.MessageHelper;
 import com.fenghua.auto.backend.core.utils.UserSecurityUtils;
 import com.fenghua.auto.backend.domain.mto.LabelError;
-import com.fenghua.auto.backend.domain.user.UserAddress;
-import com.fenghua.auto.backend.service.user.UserAddressService;
-import com.fenghua.auto.order.OrderMTO;
+import com.fenghua.auto.order.backend.OrderMTO;
+import com.fenghua.auto.user.intf.dto.UserAddressDTO;
+import com.fenghua.auto.user.intf.service.UserAddressService;
 
 /** 
   *<des> 
@@ -32,7 +32,7 @@ import com.fenghua.auto.order.OrderMTO;
   * @version 1.0
   */
 @Controller
-@RequestMapping("/shopping")
+@RequestMapping("/order")
 public class AddressInvoiceController {
 	
 	@Autowired
@@ -43,7 +43,7 @@ public class AddressInvoiceController {
 	public OrderMTO loadAddress(Model model, @PathVariable("id") Long id) throws AuthenticationException{
 		
 		OrderMTO mto = new OrderMTO();
-		UserAddress address = userAddressService.selectById(id);
+		UserAddressDTO address = userAddressService.getUserAddressById(id);
 		if(address == null) {
 			mto.addErrorMessage(MessageHelper.getMessage("order.address.notfound.error"));
 		} else {
@@ -55,7 +55,7 @@ public class AddressInvoiceController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/address", method=RequestMethod.POST)
-	public OrderMTO saveAddress(Model model, @Valid @RequestBody UserAddress address, BindingResult result) throws AuthenticationException{
+	public OrderMTO saveAddress(Model model, @Valid @RequestBody UserAddressDTO address, BindingResult result) throws AuthenticationException{
 		OrderMTO mto = new OrderMTO();
 		
 		if(result.hasErrors()) {
@@ -69,7 +69,7 @@ public class AddressInvoiceController {
 		if(id == null || id == 0) {
 			mto.addErrorMessage(MessageHelper.getMessage("order.address.delete.error"));
 		} else {
-			List<UserAddress> addressList = userAddressService.findByBuyerId(UserSecurityUtils.getCurrentUserId());
+			List<UserAddressDTO> addressList = userAddressService.findByBuyerId(UserSecurityUtils.getCurrentUserId());
 			mto.setData(addressList);
 		}
 		
@@ -85,7 +85,7 @@ public class AddressInvoiceController {
 		if(row == 0) {
 			mto.addErrorMessage(MessageHelper.getMessage("order.address.delete.error"));
 		} else {
-			List<UserAddress> addressList = userAddressService.findByBuyerId(UserSecurityUtils.getCurrentUserId());
+			List<UserAddressDTO> addressList = userAddressService.findByBuyerId(UserSecurityUtils.getCurrentUserId());
 			mto.setData(addressList);
 		}
 		
@@ -97,7 +97,7 @@ public class AddressInvoiceController {
 		OrderMTO mto = new OrderMTO();
 		
 		userAddressService.defaultAddress(UserSecurityUtils.getCurrentUserId(), id);
-		List<UserAddress> addressList = userAddressService.findByBuyerId(UserSecurityUtils.getCurrentUserId());
+		List<UserAddressDTO> addressList = userAddressService.findByBuyerId(UserSecurityUtils.getCurrentUserId());
 		mto.setData(addressList);
 		
 		return mto;

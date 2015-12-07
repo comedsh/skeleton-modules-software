@@ -22,7 +22,7 @@ public interface AuthService {
 	String WEIXIN_STATE = "state";
 	/**
 	 * 验证
-	 * 返回用户代表此qq账号已经绑定了用户 ，否则返回null
+	 * 返回用户代表此qq或微信账号已经绑定了用户 ，否则返回null
 	 * @param request
 	 * @param openid 
 	 * @return 返回登陆用户
@@ -39,9 +39,8 @@ public interface AuthService {
 	 */
 	String getWeiXinURL(HttpServletRequest request);
 	/**
-	 * 获取微信openID的请求地址
+	 * 获取并添加微信OpenID到session中
 	 * @param code
-	 * @return
 	 */
-	String getWeiXinOpenIDURL(String code);
+	String addWeiXinOpenIDToSession(HttpServletRequest request,String code);
 }

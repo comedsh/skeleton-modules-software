@@ -14,5 +14,5 @@ import com.fenghua.auto.user.backend.domain.Seller;
  *
  */
 public interface SellerService extends BaseService<Seller> {
-
+	
 }
