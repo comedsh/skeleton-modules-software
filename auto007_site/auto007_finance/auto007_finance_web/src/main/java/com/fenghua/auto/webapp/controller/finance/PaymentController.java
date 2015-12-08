@@ -30,7 +30,7 @@ public class PaymentController {
 	@Autowired
 	private OrderPaymentService orderPaymentService;
 	
-	@RequestMapping(value="/order", method=RequestMethod.PUT)
+	@RequestMapping(value="/gen", method=RequestMethod.GET)
 	public String prePayment(Model model, @RequestParam(value="orderId", required = true) Long orderId) throws AuthenticationException{
 		try {
 			OrderPayment payment = orderPaymentService.genOrderPayment(UserSecurityUtils.getCurrentUserId(), orderId);
