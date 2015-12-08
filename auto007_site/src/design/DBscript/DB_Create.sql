@@ -12,6 +12,8 @@ drop table if exists User_Address;
 drop table if exists User_Level;
 drop table if exists User_Payment_Type;
 drop table if exists sys_config;
+drop table if exists Plain_Invoice_Title;
+drop table if exists VAT_Invoice_Certificate_Info;
 /*==============================================================*/
 /* Table: City_Area                                             */
 /*==============================================================*/
@@ -305,3 +307,41 @@ create index UserID_idx on User_Payment_Type
    User_ID
 );
 
+
+/*==============================================================*/
+/* Table: Plain_Invoice_Title                                   */
+/*==============================================================*/
+create table Plain_Invoice_Title
+(
+   ID                   bigint not null auto_increment,
+   User_ID              bigint not null,
+   Title                varchar(200) not null,
+   created_ts           timestamp,
+   created_by           varchar(50),
+   modified_ts          timestamp,
+   modified_by          varchar(50),
+   primary key (ID)
+);
+
+/*==============================================================*/
+/* Table: VAT_Invoice_Certificate_Info                          */
+/*==============================================================*/
+create table VAT_Invoice_Certificate_Info
+(
+   ID                   bigint not null auto_increment comment '主键，自增长',
+   User_ID              bigint not null comment '这个增票资质是关联到哪个用户的',
+   Company_Name         varchar(200) not null comment '公司的名称',
+   TaxPayer_Number      varchar(20) not null comment '纳税人识别码',
+   Bank_Name            varchar(100) not null comment '开户行名称',
+   Bank_Account         varchar(30) not null comment '开户账户',
+   Register_Address     varchar(200) not null comment '公司注册地址',
+   Register_Phone       varchar(20) not null comment '公司注册电话',
+   Tax_Registration_Certificate varchar(200) not null comment '税务登记证图片保存地址',
+   Taxpayer_Certificate varchar(200) not null comment '一般纳税人资格证图片保存地址',
+   Reviewed             boolean not null default false comment '是否通过了review',
+   Created_By           varchar(30),
+   Created_ts           timestamp,
+   Modified_By          varchar(30),
+   Modified_TS          timestamp,
+   primary key (ID)
+);
