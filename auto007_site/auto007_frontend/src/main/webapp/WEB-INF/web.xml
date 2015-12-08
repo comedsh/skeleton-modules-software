@@ -9,9 +9,9 @@
 		<param-name>contextConfigLocation</param-name>
 		<!-- 想法是，尽量将各自独立的配置文件分开来，然后测试的时候，想用哪些用哪些 -->
 		<param-value>
-			classpath:spring-context.xml
-			classpath:spring-mybatis.xml
-			classpath:spring-security.xml
+			classpath*:spring-context.xml
+			classpath*:spring-mybatis.xml
+			classpath*:spring-security.xml
 		</param-value>
 	</context-param>
 	  <!-- 全局Request封装监听器 -->
