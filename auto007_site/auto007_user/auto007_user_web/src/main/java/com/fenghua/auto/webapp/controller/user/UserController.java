@@ -16,6 +16,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
@@ -33,6 +37,7 @@ import com.fenghua.auto.backend.common.utils.graphValidate.PictureCheckCode;
 import com.fenghua.auto.backend.common.utils.message.SMSMessage;
 import com.fenghua.auto.backend.core.utils.MessageAndErrorUtil;
 import com.fenghua.auto.backend.core.utils.MessageHelper;
+import com.fenghua.auto.backend.core.utils.PageTag;
 import com.fenghua.auto.backend.core.utils.SpringValidationHelper;
 import com.fenghua.auto.backend.core.utils.UserSecurityUtils;
 import com.fenghua.auto.backend.domain.mto.CommonMessageTransferObject;
@@ -168,6 +173,18 @@ public class UserController {
 			transferObject.addErrors(MessageAndErrorUtil.getError("user.pictureUpload.error", "pictureUpload"));
 		}
 		return transferObject;
+	}
+	/**
+	 * 获取所有的用户
+	 * @return
+	 */
+	@RequestMapping(value = "/allUser", method = RequestMethod.GET)
+	public ModelAndView getAllUser(HttpServletRequest req, Map<String, Object> model) {
+		PageRequest pageRequest = new PageRequest(0, 10);
+		Page<User> pages = userService.getAll(new User(), pageRequest);
+		req.setAttribute("param", pages);
+		
+		return new ModelAndView("/NewFile", model);
 	}
 
 	/**
@@ -396,7 +413,6 @@ public class UserController {
 	 * @param model
 	 * @return
 	 */
-	@SuppressWarnings("unused")
 	@RequestMapping(value = "/updatePasswordByPhone", method = RequestMethod.POST)
 	public ModelAndView updatePasswordByPhone(HttpServletRequest request, Model model) {
 		Map<String, String> model1 = new HashMap<String, String>();
