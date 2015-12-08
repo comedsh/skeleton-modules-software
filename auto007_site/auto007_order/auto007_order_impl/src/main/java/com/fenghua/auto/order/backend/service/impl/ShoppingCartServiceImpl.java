@@ -17,6 +17,7 @@ import com.fenghua.auto.backend.dao.BaseDao;
 import com.fenghua.auto.backend.service.impl.BaseServiceImpl;
 import com.fenghua.auto.order.backend.dao.ShoppingCartDao;
 import com.fenghua.auto.order.backend.domain.ShoppingCart;
+import com.fenghua.auto.order.backend.qo.ShoppingCartQO;
 import com.fenghua.auto.order.backend.service.ShoppingCartService;
 import com.fenghua.auto.order.backend.vo.ShoppingCartGroupVO;
 import com.fenghua.auto.order.backend.vo.ShoppingCartVO;
@@ -135,7 +136,7 @@ public class ShoppingCartServiceImpl extends BaseServiceImpl<ShoppingCart> imple
 
 	@Override
 	public List<ShoppingCartGroupVO> loadByBuyerId(Long buyerId) {
-		ShoppingCart query = new ShoppingCart();
+		ShoppingCartQO query = new ShoppingCartQO();
 		if(buyerId == null) {
 			return new ArrayList<ShoppingCartGroupVO>(0);
 		}

@@ -25,7 +25,7 @@ import com.fenghua.auto.user.intf.service.IUserAddressService;
 
 /** 
   *<des> 
-  * 下单控制器，次控制器将完成 1、购物车下单；2、产品列表和详情的立即购买下单
+  * 下单控制器，此控制器将完成 1、下单的地址维护
   *</des>
   * @author  zhiyuan.wang@auto007.com
   * @date 2015年11月26日
@@ -33,7 +33,7 @@ import com.fenghua.auto.user.intf.service.IUserAddressService;
   */
 @Controller
 @RequestMapping("/order")
-public class AddressInvoiceController {
+public class AddressController {
 	
 	@Autowired
 	private IUserAddressService userAddressService;

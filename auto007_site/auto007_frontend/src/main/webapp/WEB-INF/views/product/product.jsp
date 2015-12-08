@@ -172,8 +172,8 @@ li {
 				</div>
 				<div>库存：{{stock.stockAvailability}}</div>
 				<div>				
-					<a href="/shopping/order?pid=${product.id}&num={{nums}}">立即购买</a>&nbsp;&nbsp;&nbsp;&nbsp;
-						<a href="/shoppingCart/add?pid=${product.id}&num={{nums}}">加入购物车</a>
+					<a href="/order?pid=${product.id}&num={{nums}}">立即购买</a>&nbsp;&nbsp;&nbsp;&nbsp;
+						<a href="/order/cart/add?pid=${product.id}&num={{nums}}">加入购物车</a>
 				</div>
 			</td>
 			<tr>

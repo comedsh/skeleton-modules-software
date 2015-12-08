@@ -8,7 +8,7 @@
 <div align="center" id="div_shopping_cart" style="min-height: 200px;padding-top: 50px; padding-left: 50px; min-width: 400px;max-width: 990px; display: none"
 	ng-app="shoppingCartApp" ng-controller="shoppingCartListController">
 	
-	<form action="/shopping/order" method="POST" id="submitOrderForm">
+	<form action="/order" method="POST" id="submitOrderForm">
 	<table width="100%">
 		  <thead style="background-color: gray;color: white;">
 	  		<th align="left"></th>

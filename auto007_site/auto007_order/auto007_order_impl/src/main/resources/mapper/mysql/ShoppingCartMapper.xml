@@ -61,12 +61,12 @@
       </if>
     </where>
   </sql>
-  <select id="selectCount" resultType="java.lang.Long" parameterType="com.fenghua.auto.order.qo.ShoppingCartQO" >
+  <select id="selectCount" resultType="java.lang.Long" parameterType="com.fenghua.auto.order.backend.qo.ShoppingCartQO" >
     select count( ID)
      from shopping_cart
     <include refid="Base_Where_Case" />
   </select>
-  <select id="select" resultMap="BaseResultMap" parameterType="com.fenghua.auto.order.qo.ShoppingCartQO" >
+  <select id="select" resultMap="BaseResultMap" parameterType="com.fenghua.auto.order.backend.qo.ShoppingCartQO" >
     select 
     <include refid="Base_Column_List" />
      from shopping_cart
