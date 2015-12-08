@@ -84,9 +84,107 @@
 			<strong>{{orderSubmitObj.orderInvoice.invoiceType == 1 ? '普通发票（纸质）': '增值税发票'}}</strong>  
 			{{orderSubmitObj.orderInvoice.title}}  {{orderSubmitObj.orderInvoice.content}}  <a ng-href="" ng-click="editInvoice()">修改</a>
 		</div>
-		<div style="display: {{!!orderSubmitObj.isEditingInvoice ? 'block':'none'}}">
-			<strong>{{orderSubmitObj.orderInvoice.invoiceType == 1 ? '普通发票（纸质）': '增值税发票'}}</strong>  
-			{{orderSubmitObj.orderInvoice.title}}  {{orderSubmitObj.orderInvoice.content}}  <a href="#">修改</a>
+		<div style="display: {{isEditingInvoice ? 'block':'none'}}">
+			<ul>
+				<li>
+					<label>
+						<input type="radio" ng-change="invoiceTypeChange(1)" value="1" name="orderSubmitObj.orderInvoice.invoiceType" ng-model="orderSubmitObj.orderInvoice.invoiceType">
+						<strong>普通发票</strong>
+					</label>
+				</li>
+				<li>
+					<label>
+						<input type="radio" value="2" ng-change="invoiceTypeChange(2)" name="orderSubmitObj.orderInvoice.invoiceType" ng-model="orderSubmitObj.orderInvoice.invoiceType">
+						<strong>增值税发票</strong>
+					</label>
+				</li>
+			</ul>
+			<div style="display: {{ orderSubmitObj.orderInvoice.invoiceType == 1 ? 'block':'none'}}">
+				<ul>
+					<li ng-repeat="invTitle in invoiceTitleList">
+						<table>
+							<tr>
+								<td>
+									<label ng-click="selectInvoiceTitle(invTitle)" 
+										style="{{orderSubmitObj.orderInvoice.title == invTitle.title ? 'background-color: blue;color: white;' : ''}};display: {{ invTitle.editing ? 'none':'block'}}">
+										<strong>{{invTitle.title}}</strong>
+									</label>
+									<input style="display: {{ !!invTitle.editing ? 'block':'none'}}" ng-model="invTitle.title" type="text">
+								</td>
+								<td nowrap="nowrap">
+									<a style="display: {{ invTitle.title == '个人' ? 'none':'block'}}"
+										ng-href="" ng-click="deleteInvoiceTitle(invTitle,$index)">删除</a>
+									<a style="display: {{ invTitle.editing || invTitle.title == '个人' ? 'none':'block'}}"
+										ng-href="" ng-click="editInvoiceTitle(invTitle)">编辑</a>
+									<a style="display: {{ invTitle.title == '个人' ? 'none':'block'}}"
+										ng-href="" ng-click="saveInvoiceTitle(invTitle)">保存</a>
+								</td>
+							</tr>
+						</table>
+					</li>
+				</ul>
+				<a ng-href="" ng-click="newInvoiceTitle()">新增发票抬头</a>
+			</div>
+			<div style="display: {{ orderSubmitObj.orderInvoice.invoiceType == 2 ? 'block':'none'}}">
+				<label style="display: {{!!vatInvoiceObj ? 'none':'block'}}">您没有审核通过的增值税发票信息</label>
+				<table style="display: {{!!vatInvoiceObj ? 'block':'none'}}">
+					<tr>
+						<th align="right">所在部门：</th>
+						<td align="left">{{vatInvoiceObj.companyName}}</td>
+					</tr>
+					<tr>
+						<th align="right">纳税人识别码：</th>
+						<td align="left">{{vatInvoiceObj.taxpayerNumber}}</td>
+					</tr>
+					<tr>
+						<th align="right">注册地址：</th>
+						<td align="left">{{vatInvoiceObj.registerAddress}}</td>
+					</tr>
+					<tr>
+						<th align="right">注册电话：</th>
+						<td align="left">{{vatInvoiceObj.registerPhone}}</td>
+					</tr>
+					<tr>
+						<th align="right">开户银行：</th>	
+						<td align="left">{{vatInvoiceObj.bankName}}</td>
+					</tr>
+					<tr>
+						<th align="right">银行账户：</th>
+						<td align="left">{{vatInvoiceObj.bankAccount}}</td>
+					</tr>
+					<tr>
+						<th align="right">收票联系人：</th>
+						<td align="left"><input ng-model="orderSubmitObj.orderInvoice.recContact"></td>
+					</tr>
+					<tr>
+						<th align="right">收票联系电话：</th>
+						<td align="left"><input ng-model="orderSubmitObj.orderInvoice.recContactPhone"></td>
+					</tr>
+					<tr>
+						<th align="right">地址：</th>
+						<td align="left"><input ng-model="orderSubmitObj.orderInvoice.recAddress"></td>
+					</tr>
+					<tr>
+						<th align="right">邮编：</th>
+						<td align="left"><input ng-model="orderSubmitObj.orderInvoice.recZipcode"></td>
+					</tr>
+				</table>
+			</div>
+			<ul>
+				<li>
+					<label>
+						<input type="radio" value="1" ng-change="changeContent('明细')" name="orderSubmitObj.orderInvoice.contentType" ng-model="orderSubmitObj.orderInvoice.contentType">
+						<strong>明细</strong>
+					</label>
+				</li>
+				<li>
+					<label>
+						<input type="radio" value="2" ng-change="changeContent('汽车配件')" name="orderSubmitObj.orderInvoice.contentType" ng-model="orderSubmitObj.orderInvoice.contentType">
+						<strong>汽车配件</strong>
+					</label>
+				</li>
+			</ul>
+			<button ng-click="saveInvoice()">保存</button>
 		</div>
 	</div>
 	<div>
@@ -255,10 +353,113 @@
     	   }
        }
        
-       $scope.editInvoice = function() {
-    	   
+       $scope.findPtInvoice = function() {
+    	   $scope.orderSubmitObj.orderInvoice.valueAddId = null;
+    	   $scope.invoiceTitleList = [];
+    	   $http({
+	   			method:'GET',
+	   			url:"/order/invoice/title",
+	   			headers: {'Content-Type': 'application/json'}
+			}).success(function(data){
+				if(data.success) {
+					$scope.invoiceTitleList = data.data;
+  				} else {
+  					alert(data.errorMsg);
+  				}
+			});
        };
-	   
+       
+       $scope.findVatInvoice = function() {
+    	   $scope.vatInvoiceObj = null;
+    	   $http({
+	   			method:'GET',
+	   			url:"/order/invoice/vat",
+	   			headers: {'Content-Type': 'application/json'}
+			}).success(function(data){
+				if(data.success) {
+					$scope.vatInvoiceObj = data.data;
+					if(!!data.data) {
+						$scope.orderSubmitObj.orderInvoice.valueAddId = $scope.vatInvoiceObj.id;
+						$scope.orderSubmitObj.orderInvoice.title = $scope.vatInvoiceObj.companyName;
+					}
+  				} else {
+  					alert(data.errorMsg);
+  				}
+			});
+       };
+       
+       $scope.invoiceTypeChange = function(invType) {
+    	   $scope.orderSubmitObj.orderInvoice.invoiceType = invType;
+    	   if($scope.orderSubmitObj.orderInvoice.invoiceType == 1) {
+    		   $scope.findPtInvoice();
+    	   } else {
+    		   $scope.findVatInvoice();
+    	   }
+       };
+       $scope.editInvoice = function() {
+    	   $scope.isEditingInvoice = true;
+    	   $scope.invoiceTypeChange($scope.orderSubmitObj.orderInvoice.invoiceType);
+       };
+       
+       $scope.selectInvoiceTitle = function(invTitle) {
+    	   $scope.orderSubmitObj.orderInvoice.title = invTitle.title;
+       };
+       $scope.changeContent = function(content) {
+    	   $scope.orderSubmitObj.orderInvoice.content = content;
+       };
+       $scope.saveInvoice = function() {
+    	   $scope.isEditingInvoice = false;
+       };
+       $scope.deleteInvoiceTitle = function(invTitle, index) {
+    	   if(!!!invTitle.id) {
+    		   $scope.invoiceTitleList.splice(index,1);
+    	   } else {
+    		   $http({
+   	   			method:'DELETE',
+   	   			url:"/order/invoice/title?titleId="+invTitle.id,
+   	   			headers: {'Content-Type': 'application/json'}
+	   			}).success(function(data){
+	   				if(data.success) {
+	   					$scope.invoiceTitleList.splice(index,1);
+	   				} else {
+	   					alert(data.errorMsg);
+	   				}
+	   			});
+    	   }
+       };
+       $scope.editInvoiceTitle = function(invTitle) {
+    	   invTitle.editing = true;
+       };
+       $scope.saveInvoiceTitle = function(invTitle) {
+    	   if(!!invTitle.title) {
+    		   $http({
+      	   			method:'POST',
+      	   			url:"/order/invoice/title",
+      	   			data:invTitle,
+      	   			headers: {'Content-Type': 'application/json'}
+   	   			}).success(function(data){
+   	   				if(data.success) {
+   	   					if(!!data.data.id && data.data.id > 0) {
+   	   						invTitle.id = data.data.id;
+   	   						invTitle.editing = false;
+   	   						$scope.orderSubmitObj.orderInvoice.title =invTitle.title;
+   	   					}
+   	   				} else {
+   	   					alert(data.errorMsg);
+   	   				}
+   	   			});
+    	   }
+       };
+       $scope.newInvoiceTitle = function() {
+    	   if(!!!$scope.invoiceTitleList) {
+    		   $scope.invoiceTitleList = [];
+    	   }
+    	   if($scope.invoiceTitleList.length >= 10) {
+    		   alert("超出了发票抬头数量上线 10 条，不能新增发票抬头！");
+    	   } else {
+    		   $scope.invoiceTitleList.push({title:"",editing:true});
+    	   }
+       };
        $scope.findProvince = function() {
     	   $http({
 	   			method:'GET',

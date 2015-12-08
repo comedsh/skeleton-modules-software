@@ -35,7 +35,7 @@ public class PaymentController {
 		try {
 			OrderPayment payment = orderPaymentService.genOrderPayment(UserSecurityUtils.getCurrentUserId(), orderId);
 			model.addAttribute("payment", payment);
-			model.addAttribute("paymentMethodList", OrderConstants.OnlinePaymentMethod.values());
+			model.addAttribute("paymentMethodList", OrderConstants.PaymentMethod.values());
 		} catch (BizException e) {
 			model.addAttribute("errorMsg", e.getI18nMessage());
 		}
