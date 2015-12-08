@@ -18,4 +18,19 @@
    <definition name="web.seller_manage" extends="web.default_template">
       <put-attribute name="body" value="/WEB-INF/views/product/productSellerManage.jsp" />        
   </definition>
+  
+   <!-- 商品发布页面 -->
+  <definition name="web.product_publish" extends="web.default_template">
+      <put-attribute name="body" value="/WEB-INF/views/product/product_publish.jsp" />  
+  </definition>
+  <!-- 商品预览 -->
+   <definition name="web.product_publishReview" extends="web.default_template">
+         <put-attribute name="body" value="/WEB-INF/views/product/public_publishpReview.jsp" />
+   
+  </definition>
+  <!-- 商品发布成功页面 -->
+
+    <definition name="web.product_publishSuccess" extends="web.default_template">
+      <put-attribute name="body" value="/WEB-INF/views/product/product_pubSucess.jsp" />  
+  </definition>
 </tiles-definitions>

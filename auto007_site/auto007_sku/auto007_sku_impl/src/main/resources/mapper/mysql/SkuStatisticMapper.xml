@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fenghua.auto.sku.backend.domain.SkuStatistic" >
+  <resultMap id="BaseResultMap" type="com.fenghua.auto.sku.backend.domain.SkuStatistic" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="sale_count" property="saleCount" jdbcType="BIGINT" />
+    <result column="buyer_count" property="buyerCount" jdbcType="BIGINT" />
+    <result column="high_praise" property="highPraise" jdbcType="VARCHAR" />
+    <result column="comment_count" property="commentCount" jdbcType="BIGINT" />
+    <result column="high_comment_count" property="highCommentCount" jdbcType="BIGINT" />
+    <result column="sku_id" property="skuId" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, sale_count, buyer_count, high_praise, comment_count, high_comment_count, sku_id
+  </sql>
+  <sql id="Base_Where_Case" >
+    <where >
+      <if test="id != null" >
+         AND id = #{id,jdbcType=BIGINT}
+      </if>
+      <if test="saleCount != null" >
+         AND sale_count = #{saleCount,jdbcType=BIGINT}
+      </if>
+      <if test="buyerCount != null" >
+         AND buyer_count = #{buyerCount,jdbcType=BIGINT}
+      </if>
+      <if test="highPraise != null" >
+         AND high_praise = #{highPraise,jdbcType=VARCHAR}
+      </if>
+      <if test="commentCount != null" >
+         AND comment_count = #{commentCount,jdbcType=BIGINT}
+      </if>
+      <if test="highCommentCount != null" >
+         AND high_comment_count = #{highCommentCount,jdbcType=BIGINT}
+      </if>
+      <if test="skuId != null" >
+         AND sku_id = #{skuId,jdbcType=BIGINT}
+      </if>
+    </where>
+  </sql>
+  <select id="selectCount" resultType="java.lang.Long" parameterType="com.fenghua.auto.sku.backend.domain.SkuStatistic" >
+    select count( id)
+     from sku_statistic
+    <include refid="Base_Where_Case" />
+  </select>
+  <select id="select" resultMap="BaseResultMap" parameterType="com.fenghua.auto.sku.backend.domain.SkuStatistic" >
+    select 
+    <include refid="Base_Column_List" />
+     from sku_statistic
+    <include refid="Base_Where_Case" />
+    <if test="limit > 0" >
+       limit #{offset},#{limit} 
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from sku_statistic
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from sku_statistic
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.fenghua.auto.sku.backend.domain.SkuStatistic" >
+    insert into sku_statistic (id, sale_count, buyer_count, 
+      high_praise, comment_count, high_comment_count, 
+      sku_id)
+    values (#{id,jdbcType=BIGINT}, #{saleCount,jdbcType=BIGINT}, #{buyerCount,jdbcType=BIGINT}, 
+      #{highPraise,jdbcType=VARCHAR}, #{commentCount,jdbcType=BIGINT}, #{highCommentCount,jdbcType=BIGINT}, 
+      #{skuId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fenghua.auto.sku.backend.domain.SkuStatistic" >
+    insert into sku_statistic
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="saleCount != null" >
+        sale_count,
+      </if>
+      <if test="buyerCount != null" >
+        buyer_count,
+      </if>
+      <if test="highPraise != null" >
+        high_praise,
+      </if>
+      <if test="commentCount != null" >
+        comment_count,
+      </if>
+      <if test="highCommentCount != null" >
+        high_comment_count,
+      </if>
+      <if test="skuId != null" >
+        sku_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="saleCount != null" >
+        #{saleCount,jdbcType=BIGINT},
+      </if>
+      <if test="buyerCount != null" >
+        #{buyerCount,jdbcType=BIGINT},
+      </if>
+      <if test="highPraise != null" >
+        #{highPraise,jdbcType=VARCHAR},
+      </if>
+      <if test="commentCount != null" >
+        #{commentCount,jdbcType=BIGINT},
+      </if>
+      <if test="highCommentCount != null" >
+        #{highCommentCount,jdbcType=BIGINT},
+      </if>
+      <if test="skuId != null" >
+        #{skuId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fenghua.auto.sku.backend.domain.SkuStatistic" >
+    update sku_statistic
+    <set >
+      <if test="saleCount != null" >
+        sale_count = #{saleCount,jdbcType=BIGINT},
+      </if>
+      <if test="buyerCount != null" >
+        buyer_count = #{buyerCount,jdbcType=BIGINT},
+      </if>
+      <if test="highPraise != null" >
+        high_praise = #{highPraise,jdbcType=VARCHAR},
+      </if>
+      <if test="commentCount != null" >
+        comment_count = #{commentCount,jdbcType=BIGINT},
+      </if>
+      <if test="highCommentCount != null" >
+        high_comment_count = #{highCommentCount,jdbcType=BIGINT},
+      </if>
+      <if test="skuId != null" >
+        sku_id = #{skuId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.sku.backend.domain.SkuStatistic" >
+    update sku_statistic
+    set sale_count = #{saleCount,jdbcType=BIGINT},
+      buyer_count = #{buyerCount,jdbcType=BIGINT},
+      high_praise = #{highPraise,jdbcType=VARCHAR},
+      comment_count = #{commentCount,jdbcType=BIGINT},
+      high_comment_count = #{highCommentCount,jdbcType=BIGINT},
+      sku_id = #{skuId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

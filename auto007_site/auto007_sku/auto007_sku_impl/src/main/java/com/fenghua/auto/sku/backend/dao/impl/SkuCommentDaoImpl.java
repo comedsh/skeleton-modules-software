@@ -1,12 +1,12 @@
 package com.fenghua.auto.sku.backend.dao.impl;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
 import com.fenghua.auto.backend.dao.impl.BaseDaoImpl;
 import com.fenghua.auto.sku.backend.dao.SkuCommentDao;
+import com.fenghua.auto.sku.backend.dao.constants.SqlId;
 import com.fenghua.auto.sku.backend.domain.SkuComment;
 import com.fenghua.auto.sku.backend.vo.SkuCommentVo;
 
@@ -22,7 +22,7 @@ public class SkuCommentDaoImpl extends BaseDaoImpl<SkuComment> implements SkuCom
 
 	@Override
 	public List<SkuCommentVo> querySkuComments(Long skuId) {
-		return sqlSessionTemplate.selectList(getSqlName("selectConments"), skuId);
+		return sqlSessionTemplate.selectList(getSqlName(SqlId.COMMENT_SELECT), skuId);
 	}
 
 }

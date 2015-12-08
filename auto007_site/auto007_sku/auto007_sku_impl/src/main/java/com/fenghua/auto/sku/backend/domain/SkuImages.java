@@ -19,6 +19,15 @@ public class SkuImages implements DomainObject{
     
     private String url;
 
+	private String smallUrl;
+
+    public String getSmallUrl() {
+		return smallUrl;
+	}
+
+	public void setSmallUrl(String smallUrl) {
+		this.smallUrl = smallUrl == null ? null : smallUrl.trim();
+	}
 
 
     public Long getId() {

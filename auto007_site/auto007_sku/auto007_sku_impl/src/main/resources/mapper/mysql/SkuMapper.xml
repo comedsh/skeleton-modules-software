@@ -13,8 +13,6 @@
     <result column="produce_time" property="produceTime" jdbcType="DATE" />
     <result column="down_time" property="downTime" jdbcType="DATE" />
     <result column="min_quantity" property="minQuantity" jdbcType="INTEGER" />
-    <result column="gross_weight" property="grossWeight" jdbcType="DOUBLE" />
-    <result column="weight" property="weight" jdbcType="DOUBLE" />
     <result column="unit" property="unit" jdbcType="VARCHAR" />
     <result column="brand" property="brand" jdbcType="VARCHAR" />
     <result column="score" property="score" jdbcType="INTEGER" />
@@ -33,7 +31,7 @@
   
   <sql id="Base_Column_List" >
     id, code, seller_id, name, title, status, type, shelf_time, under_time, produce_time, 
-    down_time, min_quantity, gross_weight, weight, unit, brand, score, supplier_id, price, 
+    down_time, min_quantity,  unit, brand, score, supplier_id, price, 
     sale_price, create_time, update_time,url,introduce
   </sql>
   
@@ -63,16 +61,14 @@
     insert into sku (id, code, seller_id, 
       name, title, status, type, 
       shelf_time, under_time, produce_time, 
-      down_time, min_quantity, gross_weight, 
-      weight, unit, brand, 
+      down_time, min_quantity,unit, brand, 
       score, supplier_id, price, 
       sale_price, create_time, update_time, 
       url, introduce)
     values (#{id,jdbcType=BIGINT}, #{code,jdbcType=VARCHAR}, #{sellerId,jdbcType=BIGINT}, 
       #{name,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, 
       #{shelfTime,jdbcType=TIMESTAMP}, #{underTime,jdbcType=TIMESTAMP}, #{produceTime,jdbcType=DATE}, 
-      #{downTime,jdbcType=DATE}, #{minQuantity,jdbcType=INTEGER}, #{grossWeight,jdbcType=DOUBLE}, 
-      #{weight,jdbcType=DOUBLE}, #{unit,jdbcType=VARCHAR}, #{brand,jdbcType=VARCHAR}, 
+      #{downTime,jdbcType=DATE}, #{minQuantity,jdbcType=INTEGER},  #{unit,jdbcType=VARCHAR}, #{brand,jdbcType=VARCHAR}, 
       #{score,jdbcType=INTEGER}, #{supplierId,jdbcType=BIGINT}, #{price,jdbcType=DECIMAL}, 
       #{salePrice,jdbcType=DECIMAL}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
       #{url,jdbcType=LONGVARCHAR}, #{introduce,jdbcType=LONGVARCHAR})
@@ -114,12 +110,7 @@
       <if test="minQuantity != null" >
         min_quantity = #{minQuantity,jdbcType=INTEGER},
       </if>
-      <if test="grossWeight != null" >
-        gross_weight = #{grossWeight,jdbcType=DOUBLE},
-      </if>
-      <if test="weight != null" >
-        weight = #{weight,jdbcType=DOUBLE},
-      </if>
+     
       <if test="unit != null" >
         unit = #{unit,jdbcType=VARCHAR},
       </if>
