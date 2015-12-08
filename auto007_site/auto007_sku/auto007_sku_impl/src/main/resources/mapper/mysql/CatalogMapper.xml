@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.fenghua.auto.sku.domain.Catalog" >
-  <resultMap id="BaseResultMap" type="com.fenghua.auto.sku.domain.Catalog" >
+<mapper namespace="com.fenghua.auto.sku.backend.domain.Catalog" >
+  <resultMap id="BaseResultMap" type="com.fenghua.auto.sku.backend.domain.Catalog" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="code" property="code" jdbcType="VARCHAR" />
     <result column="name" property="name" jdbcType="VARCHAR" />
@@ -34,12 +34,12 @@
       </if>
     </where>
   </sql>
-  <select id="selectCount" resultType="java.lang.Long" parameterType="com.fenghua.auto.sku.domain.Catalog" >
+  <select id="selectCount" resultType="java.lang.Long" parameterType="com.fenghua.auto.sku.backend.domain.Catalog" >
     select count( id)
      from catalog
     <include refid="Base_Where_Case" />
   </select>
-  <select id="select" resultMap="BaseResultMap" parameterType="com.fenghua.auto.sku.domain.Catalog" >
+  <select id="select" resultMap="BaseResultMap" parameterType="com.fenghua.auto.sku.backend.domain.Catalog" >
     select 
     <include refid="Base_Column_List" />
      from catalog
@@ -58,7 +58,7 @@
     delete from catalog
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.fenghua.auto.sku.domain.Catalog" >
+  <insert id="insert" parameterType="com.fenghua.auto.sku.backend.domain.Catalog" >
     insert into catalog (id, code, name, 
       parent_id, sort_no, remark
       )
@@ -66,7 +66,7 @@
       #{parentId,jdbcType=BIGINT}, #{sortNo,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.fenghua.auto.sku.domain.Catalog" >
+  <insert id="insertSelective" parameterType="com.fenghua.auto.sku.backend.domain.Catalog" >
     insert into catalog
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -109,7 +109,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fenghua.auto.sku.domain.Catalog" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.fenghua.auto.sku.backend.domain.Catalog" >
     update catalog
     <set >
       <if test="code != null" >
@@ -130,7 +130,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.sku.domain.Catalog" >
+  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.sku.backend.domain.Catalog" >
     update catalog
     set code = #{code,jdbcType=VARCHAR},
       name = #{name,jdbcType=VARCHAR},
@@ -142,7 +142,7 @@
   
   
    <!-- 根据SKUID 查询 -->
-  <resultMap type="com.fenghua.auto.sku.vo.CatalogSkuVo" id="CatalogSkuVoMap">
+  <resultMap type="com.fenghua.auto.sku.backend.vo.CatalogSkuVo" id="CatalogSkuVoMap">
       <id column="id" property="id" jdbcType="BIGINT" />
       <result column="code" property="code" jdbcType="VARCHAR" />
       <result column="name" property="name" jdbcType="VARCHAR" />

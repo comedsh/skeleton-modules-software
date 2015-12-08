@@ -9,9 +9,10 @@
   <artifactId>auto007_finance</artifactId>
   <packaging>pom</packaging>
   <modules>
-	<module>007_finance_intf</module>
+	
     <module>auto007_finance_impl</module>
     <module>auto007_finance_web</module>
+    <module>auto007_finance_intf</module>
   </modules>
   <dependencies></dependencies>
 </project>

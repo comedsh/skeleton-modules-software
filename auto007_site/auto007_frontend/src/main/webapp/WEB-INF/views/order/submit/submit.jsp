@@ -60,7 +60,7 @@
 						<td width="15%">{{addressItem.receiverName}}</td>
 						<td width="50%">{{addressItem.address}}  {{addressItem.receiverMobile}}</td>
 						<td width="20%">
-							<a href="#" ng-click="defaultAddress(addressItem.id)" style="display: {{orderSubmitObj.userAddressId != addressItem.id ? 'block':'none' }}">设为默认</a>
+							<a href="#" ng-click="defaultAddress(addressItem.id)" style="display: {{!!addressItem.defaultAddr ? 'none':'block' }}">设为默认</a>
 							<a href="#" ng-click="editAddress(addressItem.id)">编辑</a>
 							<a href="#" ng-click="deleteAddress(addressItem.id)">删除</a>
 						</td>
@@ -218,7 +218,7 @@
     	   console.log("submitOrder "+$scope.orderSubmitObj);
     	   $http({
 	   			method:'POST',
-	   			url:"/shopping/order/submit",
+	   			url:"/order/submit",
 	   			data: $scope.orderSubmitObj,
 	   			headers: {'Content-Type': 'application/json'}
   			}).success(function(data){
@@ -255,6 +255,7 @@
 	   			headers: {'Content-Type': 'application/json'}
  			}).success(function(data){
  				$scope.provinceList = data;
+ 				$scope.cityList= [];
  			});
        }
        $scope.findCity = function() {
@@ -277,7 +278,31 @@
 		        $scope.areaList =data;
 			});
         }
-       
+		$scope.findCityArea = function() {
+    	   $http({
+	   			method:'GET',
+	   			url:"/cityArea/selectProvince",
+	   			headers: {'Content-Type': 'application/json'}
+ 			}).success(function(data){
+ 				$scope.provinceList = data;
+ 				$scope.cityList= [];
+ 				$http({
+ 		   			method:'GET',
+ 		   			url:"/cityArea/selectCity?parentId="+$scope.address.provinceId,
+ 		   			headers: {'Content-Type': 'application/json'}
+ 				}).success(function(data){
+ 			        $scope.cityList = data;
+ 			        $scope.areaList = [];
+ 			       $http({
+ 			   			method:'GET',
+ 			   			url:"/cityArea/selectArea?parentId="+$scope.address.cityId,
+ 			   			headers: {'Content-Type': 'application/json'}
+ 					}).success(function(data){
+ 				        $scope.areaList =data;
+ 					});
+ 				});
+ 			});
+       }
         $scope.addAddress = function() {
         	$scope.findProvince();
         	$scope.address = {};
@@ -288,15 +313,13 @@
         	$scope.address = {};
         	$http({
 	   			method:'GET',
-	   			url:"/shopping/address/"+addressId,
+	   			url:"/order/address/"+addressId,
 	   			headers: {'Content-Type': 'application/json'}
 			}).success(function(data){
 				if(data.success) {
 					$scope.address = data.data;
 					$scope.editUserAddress = true;  
-					$scope.findProvince();
-					$scope.findCity($scope.address.provinceId);
-					$scope.findArea($scope.address.cityId);
+					$scope.findCityArea();
 				} else {
 					$scope.address = {};
 					$scope.editUserAddress = false;  
@@ -308,7 +331,7 @@
 		$scope.deleteAddress = function(addressId) {
 			$http({
 	   			method:'GET',
-	   			url:"/shopping/address/delete/"+addressId,
+	   			url:"/order/address/delete/"+addressId,
 	   			headers: {'Content-Type': 'application/json'}
 			}).success(function(data){
 				if(data.success) {
@@ -321,7 +344,7 @@
 		$scope.defaultAddress = function(addressId) {
 			$http({
 	   			method:'GET',
-	   			url:"/shopping/address/default/"+addressId,
+	   			url:"/order/address/default/"+addressId,
 	   			headers: {'Content-Type': 'application/json'}
 			}).success(function(data){
 				if(data.success) {
@@ -334,7 +357,7 @@
 		$scope.saveAddress = function() {
 			$http({
 	   			method:'POST',
-	   			url:"/shopping/address",
+	   			url:"/order/address",
 	   			data:$scope.address,
 	   			headers: {'Content-Type': 'application/json'}
 			}).success(function(data){

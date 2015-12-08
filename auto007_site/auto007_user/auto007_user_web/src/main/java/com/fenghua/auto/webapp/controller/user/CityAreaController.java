@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.fenghua.auto.backend.domain.user.CityArea;
-import com.fenghua.auto.backend.service.user.CityAreaService;
+import com.fenghua.auto.user.intf.dto.CityAreaDTO;
+import com.fenghua.auto.user.intf.service.ICityAreaService;
 /**
  * 城市
  * @author chengbin
@@ -24,14 +24,14 @@ import com.fenghua.auto.backend.service.user.CityAreaService;
 public class CityAreaController {
 	
 	@Autowired
-	private CityAreaService cityAreaService;
+	private ICityAreaService cityAreaService;
 	/**
 	 * 获取省份
 	 * @param req
 	 * @param res
 	 */
 	@RequestMapping(value = "/selectProvince", method = RequestMethod.GET)
-	public @ResponseBody List<CityArea> selectProvince(HttpServletRequest req, HttpServletResponse res) {
+	public @ResponseBody List<CityAreaDTO> selectProvince(HttpServletRequest req, HttpServletResponse res) {
 		return cityAreaService.selectProvince();
 	}
 	/**
@@ -40,7 +40,7 @@ public class CityAreaController {
 	 * @param res
 	 */
 	@RequestMapping(value = "/selectCity", method = RequestMethod.GET)
-	public @ResponseBody List<CityArea> selectCity(@RequestParam Long parentId, HttpServletRequest req, HttpServletResponse res) {
+	public @ResponseBody List<CityAreaDTO> selectCity(@RequestParam Long parentId, HttpServletRequest req, HttpServletResponse res) {
 		return cityAreaService.selectCity(parentId);
 	}
 	/**
@@ -49,7 +49,7 @@ public class CityAreaController {
 	 * @param res
 	 */
 	@RequestMapping(value = "/selectArea", method = RequestMethod.GET)
-	public @ResponseBody List<CityArea> selectArea(@RequestParam Long parentId, HttpServletRequest req, HttpServletResponse res) {
+	public @ResponseBody List<CityAreaDTO> selectArea(@RequestParam Long parentId, HttpServletRequest req, HttpServletResponse res) {
 		return cityAreaService.selectArea(parentId);
 	}
 }

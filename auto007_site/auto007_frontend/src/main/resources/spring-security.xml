@@ -43,12 +43,12 @@
   </authentication-manager>
 
     <beans:bean id="loginAuthenticationProvider" 
-       class="com.fenghua.auto.user.authentication.LoginAuthenticationProvider">
+       class="com.fenghua.auto.user.backend.authentication.LoginAuthenticationProvider">
          <beans:property name="userDetailsService" ref="userDetailService"/>
          <beans:property name="passwordEncoder" ref="encoder"></beans:property>
        </beans:bean>
 	<beans:bean id="userDetailService"
-		class="com.fenghua.auto.user.authentication.CustomUserDetailService"></beans:bean>
+		class="com.fenghua.auto.user.backend.authentication.CustomUserDetailService"></beans:bean>
 
 
 
@@ -58,7 +58,7 @@
   </beans:bean>
   
   <!-- 登录表单Filter -->
-  <beans:bean id="customUsernamePasswordAuthenticationFilter" class="com.fenghua.auto.user.authentication.CustomUsernamePasswordAuthenticationFilter">
+  <beans:bean id="customUsernamePasswordAuthenticationFilter" class="com.fenghua.auto.user.backend.authentication.CustomUsernamePasswordAuthenticationFilter">
 		<beans:property name="authenticationManager" ref="authenticationManager" />
 		<beans:property name="authenticationFailureHandler" ref="simpleUrlAuthenticationFailureHandler" />
 		<beans:property name="authenticationSuccessHandler" ref="loginAuthenticationSuccessHandler" />

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.fenghua.auto.sku.domain.SkuImageHtml" >
-  <resultMap id="BaseResultMap" type="com.fenghua.auto.sku.domain.SkuImageHtml" >
+<mapper namespace="com.fenghua.auto.sku.backend.domain.SkuImageHtml" >
+  <resultMap id="BaseResultMap" type="com.fenghua.auto.sku.backend.domain.SkuImageHtml" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="sku_id" property="skuId" jdbcType="BIGINT" />
   </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.fenghua.auto.sku.domain.SkuImageHtml" extends="BaseResultMap" >
+  <resultMap id="ResultMapWithBLOBs" type="com.fenghua.auto.sku.backend.domain.SkuImageHtml" extends="BaseResultMap" >
     <result column="contents_html" property="contentsHtml" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
@@ -27,12 +27,12 @@
       </if>
     </where>
   </sql>
-  <select id="selectCount" resultType="java.lang.Long" parameterType="com.fenghua.auto.sku.domain.SkuImageHtml" >
+  <select id="selectCount" resultType="java.lang.Long" parameterType="com.fenghua.auto.sku.backend.domain.SkuImageHtml" >
     select count( id)
      from sku_image_html
     <include refid="Base_Where_Case" />
   </select>
-  <select id="select" resultMap="BaseResultMap" parameterType="com.fenghua.auto.sku.domain.SkuImageHtml" >
+  <select id="select" resultMap="BaseResultMap" parameterType="com.fenghua.auto.sku.backend.domain.SkuImageHtml" >
     select 
     <include refid="Base_Column_List" />
      from sku_image_html
@@ -53,13 +53,13 @@
     delete from sku_image_html
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.fenghua.auto.sku.domain.SkuImageHtml" >
+  <insert id="insert" parameterType="com.fenghua.auto.sku.backend.domain.SkuImageHtml" >
     insert into sku_image_html (id, sku_id, contents_html
       )
     values (#{id,jdbcType=BIGINT}, #{skuId,jdbcType=BIGINT}, #{contentsHtml,jdbcType=LONGVARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.fenghua.auto.sku.domain.SkuImageHtml" >
+  <insert id="insertSelective" parameterType="com.fenghua.auto.sku.backend.domain.SkuImageHtml" >
     insert into sku_image_html
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -84,7 +84,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fenghua.auto.sku.domain.SkuImageHtml" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.fenghua.auto.sku.backend.domain.SkuImageHtml" >
     update sku_image_html
     <set >
       <if test="skuId != null" >
@@ -96,13 +96,13 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.fenghua.auto.sku.domain.SkuImageHtml" >
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.fenghua.auto.sku.backend.domain.SkuImageHtml" >
     update sku_image_html
     set sku_id = #{skuId,jdbcType=BIGINT},
       contents_html = #{contentsHtml,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.sku.domain.SkuImageHtml" >
+  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.sku.backend.domain.SkuImageHtml" >
     update sku_image_html
     set sku_id = #{skuId,jdbcType=BIGINT}
     where id = #{id,jdbcType=BIGINT}

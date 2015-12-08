@@ -47,7 +47,7 @@
         <label>已有账号？<a href="/login.jsp">马上登录</a></label>
     </p>
     <!--手机找回密码-->
-    ${message.msg }
+    ${message}
     <!--邮箱找回密码-->
     <div  ng-controller="email_ctr">
         

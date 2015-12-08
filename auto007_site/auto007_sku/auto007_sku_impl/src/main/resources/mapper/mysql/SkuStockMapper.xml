@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.fenghua.auto.sku.domain.SkuStock" >
-  <resultMap id="BaseResultMap" type="com.fenghua.auto.sku.domain.SkuStock" >
+<mapper namespace="com.fenghua.auto.sku.backend.domain.SkuStock" >
+  <resultMap id="BaseResultMap" type="com.fenghua.auto.sku.backend.domain.SkuStock" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="stock_count" property="stockCount" jdbcType="INTEGER" />
     <result column="stock_availability" property="stockAvailability" jdbcType="INTEGER" />
@@ -12,7 +12,7 @@
     id, stock_count, stock_availability, repertory_id, sku_id
   </sql>
   
-  <select id="select" resultMap="BaseResultMap" parameterType="com.fenghua.auto.sku.domain.SkuStock" >
+  <select id="select" resultMap="BaseResultMap" parameterType="com.fenghua.auto.sku.backend.domain.SkuStock" >
     select 
     <include refid="Base_Column_List" />
     from sku_stock

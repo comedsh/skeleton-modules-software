@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.fenghua.auto.finance.domain.OrderPayment" >
-  <resultMap id="BaseResultMap" type="com.fenghua.auto.finance.domain.OrderPayment" >
+<mapper namespace="com.fenghua.auto.finance.backend.domain.OrderPayment" >
+  <resultMap id="BaseResultMap" type="com.fenghua.auto.finance.backend.domain.OrderPayment" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="pay_no" property="payNo" jdbcType="VARCHAR" />
     <result column="master_order_id" property="masterOrderId" jdbcType="BIGINT" />
@@ -97,12 +97,12 @@
       </if>
     </where>
   </sql>
-  <select id="selectCount" resultType="java.lang.Long" parameterType="com.fenghua.auto.finance.domain.OrderPayment" >
+  <select id="selectCount" resultType="java.lang.Long" parameterType="com.fenghua.auto.finance.backend.domain.OrderPayment" >
     select count( id)
      from order_payment
     <include refid="Base_Where_Case" />
   </select>
-  <select id="select" resultMap="BaseResultMap" parameterType="com.fenghua.auto.finance.domain.OrderPayment" >
+  <select id="select" resultMap="BaseResultMap" parameterType="com.fenghua.auto.finance.backend.domain.OrderPayment" >
     select 
     <include refid="Base_Column_List" />
      from order_payment
@@ -121,7 +121,7 @@
     delete from order_payment
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.fenghua.auto.finance.domain.OrderPayment" >
+  <insert id="insert"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.fenghua.auto.finance.backend.domain.OrderPayment" >
     insert into order_payment (id, pay_no, master_order_id, 
       master_order_no, trade_no, need_pay_amount, 
       payed_amount, refund_amount, pay_status, 
@@ -139,7 +139,7 @@
       #{payeeName,jdbcType=VARCHAR}, #{payeeTime,jdbcType=TIMESTAMP}, #{buyerId,jdbcType=BIGINT}
       )
   </insert>
-  <insert id="insertSelective"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.fenghua.auto.finance.domain.OrderPayment" >
+  <insert id="insertSelective"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.fenghua.auto.finance.backend.domain.OrderPayment" >
     insert into order_payment
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -272,7 +272,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fenghua.auto.finance.domain.OrderPayment" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.fenghua.auto.finance.backend.domain.OrderPayment" >
     update order_payment
     <set >
       <if test="payNo != null" >
@@ -338,7 +338,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.finance.domain.OrderPayment" >
+  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.finance.backend.domain.OrderPayment" >
     update order_payment
     set pay_no = #{payNo,jdbcType=VARCHAR},
       master_order_id = #{masterOrderId,jdbcType=BIGINT},

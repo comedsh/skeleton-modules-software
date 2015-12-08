@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fenghua.auto.backend.core.utils.SpringValidationHelper;
 import com.fenghua.auto.backend.domain.mto.MessageTransferObject;
-import com.fenghua.auto.backend.domain.user.Company;
+import com.fenghua.auto.user.backend.domain.Company;
 /**
  * 企业
  * @author chengbin
