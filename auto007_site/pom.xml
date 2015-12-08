@@ -55,6 +55,8 @@
 
 		<lucene-version>5.3.1</lucene-version>
 		<jedis-version>2.7.3</jedis-version>
+		
+		<dbunit-version>2.4.8</dbunit-version>
 	</properties>
 
 	<dependencies>
@@ -377,6 +379,13 @@
 	       <artifactId>dozer</artifactId>
 	       <version>5.2.1</version>
 	    </dependency>
+	    
+	    <!-- dbunit -->
+        <dependency>
+		  <groupId>org.dbunit</groupId>
+		  <artifactId>dbunit</artifactId>
+		  <version>${dbunit-version}</version>
+		</dependency>
 	</dependencies>
 
 	<build>

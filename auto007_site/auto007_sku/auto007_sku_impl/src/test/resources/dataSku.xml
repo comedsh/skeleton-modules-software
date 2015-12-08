@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <sku id="1" code="Test_SKU_001" name="上架商品" status="2" url="" type="1" sale_price="100" price="100" seller_id="1001"/>
+    <sku id="2" code="Test_SKU_002" name="下架商品" status="3" url="" type="1" sale_price="100" price="100" seller_id="1001"/>
+    <sku id="3" code="Test_SKU_003" name="草稿商品" status="1" url="" type="1" sale_price="100" price="100" seller_id="1001"/>
+    <sku id="4" code="Test_SKU_004" name="已删除商品" status="4" url="" type="1" sale_price="100" price="100" seller_id="1001"/>
+  
+</dataset>
