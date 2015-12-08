@@ -82,6 +82,10 @@
 		<label><input type="checkbox" name="invoiceFlag" ng-model="orderSubmitObj.invoiceFlag" ng-change="clickInvoice()">需要发票信息</label>
 		<div style="display: {{!!orderSubmitObj.orderInvoice ? 'block':'none'}}">
 			<strong>{{orderSubmitObj.orderInvoice.invoiceType == 1 ? '普通发票（纸质）': '增值税发票'}}</strong>  
+			{{orderSubmitObj.orderInvoice.title}}  {{orderSubmitObj.orderInvoice.content}}  <a ng-href="" ng-click="editInvoice()">修改</a>
+		</div>
+		<div style="display: {{!!orderSubmitObj.isEditingInvoice ? 'block':'none'}}">
+			<strong>{{orderSubmitObj.orderInvoice.invoiceType == 1 ? '普通发票（纸质）': '增值税发票'}}</strong>  
 			{{orderSubmitObj.orderInvoice.title}}  {{orderSubmitObj.orderInvoice.content}}  <a href="#">修改</a>
 		</div>
 	</div>
@@ -201,6 +205,7 @@
        $scope.addressList = [];
        $scope.address = {};
        $scope.paymentTypeList = [];
+       $scope.isEditingInvoice = false;
    	   $scope.init = function() {
            var orderMTO = ${orderSubmitDTOJson};
            $scope.errorMessages = orderMTO.errorMessages;
@@ -230,8 +235,10 @@
   					alert("提交成功，主订单号："+masterNo);
   					console.log("submitOrder "+data.data.length +" "+data.data[0].paymentType);
   					if(data.data.length == 1 && data.data[0].paymentType == 1) {
-  						console.log( "/payment/order?orderId="+data.data[0].masterOrderId);
-  						window.location = "/payment/order?orderId="+data.data[0].masterOrderId;
+  						console.log( "/finance/payment/gen?orderId="+data.data[0].masterOrderId);
+  						window.location = "/finance/payment/gen?orderId="+data.data[0].masterOrderId;
+  					} else {
+  						window.location = "/order/list";
   					}
   				} else {
   					alert("提交失败！");
@@ -247,6 +254,10 @@
     		   $scope.orderSubmitObj.orderInvoice = null;
     	   }
        }
+       
+       $scope.editInvoice = function() {
+    	   
+       };
 	   
        $scope.findProvince = function() {
     	   $http({

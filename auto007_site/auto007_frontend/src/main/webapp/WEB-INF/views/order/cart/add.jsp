@@ -14,7 +14,7 @@
 		<a class="btn-1" href="//cart.jd.com/cart?r=0.5488165151327848" id="GotoShoppingCart">去购物车结算</a>
 		<span class="ml10">您还可以 
 			<a class="ftx-05" href="javascript:history.back();">继续购物</a>
-			<a class="ftx-05" href="/shoppingCart/list">我的购物车</a>
+			<a class="ftx-05" href="/order/cart/list">我的购物车</a>
 		</span>
 	</span>
 </div>

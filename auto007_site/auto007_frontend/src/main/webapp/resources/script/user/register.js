@@ -278,10 +278,10 @@ app.directive('text',function(){
 
 //Jquery代码
 $(function(){
-　　$(".js-protocol").click(function(){
-　　　　$(".js-protocol-layer").fadeIn(200);
-        return false;
-　　});
+	$(".js-protocol").click(function(){
+		$(".js-protocol-layer").fadeIn(200);
+	        return false;
+		});
     $(".js-close-protocol-btn").click(function(){
         $(".js-protocol-layer").fadeOut(200);
         return false;
