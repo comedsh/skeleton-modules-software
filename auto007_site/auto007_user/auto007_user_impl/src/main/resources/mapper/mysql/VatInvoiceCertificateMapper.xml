@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fenghua.auto.user.backend.domain.VatInvoiceCertificate" >
+  <resultMap id="BaseResultMap" type="com.fenghua.auto.user.backend.domain.VatInvoiceCertificate" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="User_ID" property="userId" jdbcType="BIGINT" />
+    <result column="Company_Name" property="companyName" jdbcType="VARCHAR" />
+    <result column="TaxPayer_Number" property="taxpayerNumber" jdbcType="VARCHAR" />
+    <result column="Bank_Name" property="bankName" jdbcType="VARCHAR" />
+    <result column="Bank_Account" property="bankAccount" jdbcType="VARCHAR" />
+    <result column="Register_Address" property="registerAddress" jdbcType="VARCHAR" />
+    <result column="Register_Phone" property="registerPhone" jdbcType="VARCHAR" />
+    <result column="Tax_Reg_Certificate" property="taxRegCertificate" jdbcType="VARCHAR" />
+    <result column="Taxpayer_Certificate" property="taxpayerCertificate" jdbcType="VARCHAR" />
+    <result column="Reviewed" property="reviewed" jdbcType="BIT" />
+    <result column="Created_By" property="createdBy" jdbcType="VARCHAR" />
+    <result column="Created_ts" property="createdTs" jdbcType="TIMESTAMP" />
+    <result column="Modified_By" property="modifiedBy" jdbcType="VARCHAR" />
+    <result column="Modified_TS" property="modifiedTs" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, User_ID, Company_Name, TaxPayer_Number, Bank_Name, Bank_Account, Register_Address, 
+    Register_Phone, Tax_Reg_Certificate, Taxpayer_Certificate, Reviewed, Created_By, 
+    Created_ts, Modified_By, Modified_TS
+  </sql>
+  <sql id="Base_Where_Case" >
+    <where >
+      <if test="id != null" >
+         AND ID = #{id,jdbcType=BIGINT}
+      </if>
+      <if test="userId != null" >
+         AND User_ID = #{userId,jdbcType=BIGINT}
+      </if>
+      <if test="companyName != null" >
+         AND Company_Name = #{companyName,jdbcType=VARCHAR}
+      </if>
+      <if test="taxpayerNumber != null" >
+         AND TaxPayer_Number = #{taxpayerNumber,jdbcType=VARCHAR}
+      </if>
+      <if test="bankName != null" >
+         AND Bank_Name = #{bankName,jdbcType=VARCHAR}
+      </if>
+      <if test="bankAccount != null" >
+         AND Bank_Account = #{bankAccount,jdbcType=VARCHAR}
+      </if>
+      <if test="registerAddress != null" >
+         AND Register_Address = #{registerAddress,jdbcType=VARCHAR}
+      </if>
+      <if test="registerPhone != null" >
+         AND Register_Phone = #{registerPhone,jdbcType=VARCHAR}
+      </if>
+      <if test="taxRegCertificate != null" >
+         AND Tax_Reg_Certificate = #{taxRegCertificate,jdbcType=VARCHAR}
+      </if>
+      <if test="taxpayerCertificate != null" >
+         AND Taxpayer_Certificate = #{taxpayerCertificate,jdbcType=VARCHAR}
+      </if>
+      <if test="reviewed != null" >
+         AND Reviewed = #{reviewed,jdbcType=BIT}
+      </if>
+      <if test="createdBy != null" >
+         AND Created_By = #{createdBy,jdbcType=VARCHAR}
+      </if>
+      <if test="createdTs != null" >
+         AND Created_ts = #{createdTs,jdbcType=TIMESTAMP}
+      </if>
+      <if test="modifiedBy != null" >
+         AND Modified_By = #{modifiedBy,jdbcType=VARCHAR}
+      </if>
+      <if test="modifiedTs != null" >
+         AND Modified_TS = #{modifiedTs,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </sql>
+  <select id="selectCount" resultType="java.lang.Long" parameterType="com.fenghua.auto.user.backend.domain.VatInvoiceCertificate" >
+    select count( ID)
+     from VAT_Invoice_Certificate_Info
+    <include refid="Base_Where_Case" />
+  </select>
+  <select id="select" resultMap="BaseResultMap" parameterType="com.fenghua.auto.user.backend.domain.VatInvoiceCertificate" >
+    select 
+    <include refid="Base_Column_List" />
+     from VAT_Invoice_Certificate_Info
+    <include refid="Base_Where_Case" />
+    <if test="limit > 0" >
+       limit #{offset},#{limit} 
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from VAT_Invoice_Certificate_Info
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from VAT_Invoice_Certificate_Info
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.fenghua.auto.user.backend.domain.VatInvoiceCertificate" >
+    insert into VAT_Invoice_Certificate_Info (ID, User_ID, Company_Name, 
+      TaxPayer_Number, Bank_Name, Bank_Account, 
+      Register_Address, Register_Phone, Tax_Reg_Certificate, 
+      Taxpayer_Certificate, Reviewed, Created_By, 
+      Created_ts, Modified_By, Modified_TS
+      )
+    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{companyName,jdbcType=VARCHAR}, 
+      #{taxpayerNumber,jdbcType=VARCHAR}, #{bankName,jdbcType=VARCHAR}, #{bankAccount,jdbcType=VARCHAR}, 
+      #{registerAddress,jdbcType=VARCHAR}, #{registerPhone,jdbcType=VARCHAR}, #{taxRegCertificate,jdbcType=VARCHAR}, 
+      #{taxpayerCertificate,jdbcType=VARCHAR}, #{reviewed,jdbcType=BIT}, #{createdBy,jdbcType=VARCHAR}, 
+      #{createdTs,jdbcType=TIMESTAMP}, #{modifiedBy,jdbcType=VARCHAR}, #{modifiedTs,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="id" parameterType="com.fenghua.auto.user.backend.domain.VatInvoiceCertificate" >
+    insert into VAT_Invoice_Certificate_Info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="userId != null" >
+        User_ID,
+      </if>
+      <if test="companyName != null" >
+        Company_Name,
+      </if>
+      <if test="taxpayerNumber != null" >
+        TaxPayer_Number,
+      </if>
+      <if test="bankName != null" >
+        Bank_Name,
+      </if>
+      <if test="bankAccount != null" >
+        Bank_Account,
+      </if>
+      <if test="registerAddress != null" >
+        Register_Address,
+      </if>
+      <if test="registerPhone != null" >
+        Register_Phone,
+      </if>
+      <if test="taxRegCertificate != null" >
+        Tax_Reg_Certificate,
+      </if>
+      <if test="taxpayerCertificate != null" >
+        Taxpayer_Certificate,
+      </if>
+      <if test="reviewed != null" >
+        Reviewed,
+      </if>
+      <if test="createdBy != null" >
+        Created_By,
+      </if>
+      <if test="createdTs != null" >
+        Created_ts,
+      </if>
+      <if test="modifiedBy != null" >
+        Modified_By,
+      </if>
+      <if test="modifiedTs != null" >
+        Modified_TS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="companyName != null" >
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="taxpayerNumber != null" >
+        #{taxpayerNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="bankName != null" >
+        #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccount != null" >
+        #{bankAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="registerAddress != null" >
+        #{registerAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="registerPhone != null" >
+        #{registerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="taxRegCertificate != null" >
+        #{taxRegCertificate,jdbcType=VARCHAR},
+      </if>
+      <if test="taxpayerCertificate != null" >
+        #{taxpayerCertificate,jdbcType=VARCHAR},
+      </if>
+      <if test="reviewed != null" >
+        #{reviewed,jdbcType=BIT},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTs != null" >
+        #{createdTs,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedBy != null" >
+        #{modifiedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="modifiedTs != null" >
+        #{modifiedTs,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fenghua.auto.user.backend.domain.VatInvoiceCertificate" >
+    update VAT_Invoice_Certificate_Info
+    <set >
+      <if test="userId != null" >
+        User_ID = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="companyName != null" >
+        Company_Name = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="taxpayerNumber != null" >
+        TaxPayer_Number = #{taxpayerNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="bankName != null" >
+        Bank_Name = #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccount != null" >
+        Bank_Account = #{bankAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="registerAddress != null" >
+        Register_Address = #{registerAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="registerPhone != null" >
+        Register_Phone = #{registerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="taxRegCertificate != null" >
+        Tax_Reg_Certificate = #{taxRegCertificate,jdbcType=VARCHAR},
+      </if>
+      <if test="taxpayerCertificate != null" >
+        Taxpayer_Certificate = #{taxpayerCertificate,jdbcType=VARCHAR},
+      </if>
+      <if test="reviewed != null" >
+        Reviewed = #{reviewed,jdbcType=BIT},
+      </if>
+      <if test="createdBy != null" >
+        Created_By = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTs != null" >
+        Created_ts = #{createdTs,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedBy != null" >
+        Modified_By = #{modifiedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="modifiedTs != null" >
+        Modified_TS = #{modifiedTs,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.user.backend.domain.VatInvoiceCertificate" >
+    update VAT_Invoice_Certificate_Info
+    set User_ID = #{userId,jdbcType=BIGINT},
+      Company_Name = #{companyName,jdbcType=VARCHAR},
+      TaxPayer_Number = #{taxpayerNumber,jdbcType=VARCHAR},
+      Bank_Name = #{bankName,jdbcType=VARCHAR},
+      Bank_Account = #{bankAccount,jdbcType=VARCHAR},
+      Register_Address = #{registerAddress,jdbcType=VARCHAR},
+      Register_Phone = #{registerPhone,jdbcType=VARCHAR},
+      Tax_Reg_Certificate = #{taxRegCertificate,jdbcType=VARCHAR},
+      Taxpayer_Certificate = #{taxpayerCertificate,jdbcType=VARCHAR},
+      Reviewed = #{reviewed,jdbcType=BIT},
+      Created_By = #{createdBy,jdbcType=VARCHAR},
+      Created_ts = #{createdTs,jdbcType=TIMESTAMP},
+      Modified_By = #{modifiedBy,jdbcType=VARCHAR},
+      Modified_TS = #{modifiedTs,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

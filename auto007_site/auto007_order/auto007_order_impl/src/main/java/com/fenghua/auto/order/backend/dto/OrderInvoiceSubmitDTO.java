@@ -72,7 +72,10 @@ public class OrderInvoiceSubmitDTO implements Serializable {
     	
     	invoice.setId(null);
         invoice.setOrderId(header.getId());
-        invoice.setValueAddId(this.valueAddId);
+        if(this.invoiceType.intValue() == OrderConstants.InvoiceType.VAT.getValue()) {
+        	invoice.setValueAddId(this.valueAddId);
+        }
+        
         invoice.setInvoiceType(this.invoiceType);
         invoice.setTitle(this.title);
         invoice.setContentType(this.contentType);
