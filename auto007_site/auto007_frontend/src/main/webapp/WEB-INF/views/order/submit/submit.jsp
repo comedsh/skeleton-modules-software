@@ -60,7 +60,7 @@
 						<td width="15%">{{addressItem.receiverName}}</td>
 						<td width="50%">{{addressItem.address}}  {{addressItem.receiverMobile}}</td>
 						<td width="20%">
-							<a href="#" ng-click="defaultAddress(addressItem.id)" style="display: {{orderSubmitObj.userAddressId != addressItem.id ? 'block':'none' }}">设为默认</a>
+							<a href="#" ng-click="defaultAddress(addressItem.id)" style="display: {{!!addressItem.defaultAddr ? 'none':'block' }}">设为默认</a>
 							<a href="#" ng-click="editAddress(addressItem.id)">编辑</a>
 							<a href="#" ng-click="deleteAddress(addressItem.id)">删除</a>
 						</td>
@@ -81,6 +81,10 @@
 		<h2>发票信息：</h2>
 		<label><input type="checkbox" name="invoiceFlag" ng-model="orderSubmitObj.invoiceFlag" ng-change="clickInvoice()">需要发票信息</label>
 		<div style="display: {{!!orderSubmitObj.orderInvoice ? 'block':'none'}}">
+			<strong>{{orderSubmitObj.orderInvoice.invoiceType == 1 ? '普通发票（纸质）': '增值税发票'}}</strong>  
+			{{orderSubmitObj.orderInvoice.title}}  {{orderSubmitObj.orderInvoice.content}}  <a ng-href="" ng-click="editInvoice()">修改</a>
+		</div>
+		<div style="display: {{!!orderSubmitObj.isEditingInvoice ? 'block':'none'}}">
 			<strong>{{orderSubmitObj.orderInvoice.invoiceType == 1 ? '普通发票（纸质）': '增值税发票'}}</strong>  
 			{{orderSubmitObj.orderInvoice.title}}  {{orderSubmitObj.orderInvoice.content}}  <a href="#">修改</a>
 		</div>
@@ -201,6 +205,7 @@
        $scope.addressList = [];
        $scope.address = {};
        $scope.paymentTypeList = [];
+       $scope.isEditingInvoice = false;
    	   $scope.init = function() {
            var orderMTO = ${orderSubmitDTOJson};
            $scope.errorMessages = orderMTO.errorMessages;
@@ -230,8 +235,10 @@
   					alert("提交成功，主订单号："+masterNo);
   					console.log("submitOrder "+data.data.length +" "+data.data[0].paymentType);
   					if(data.data.length == 1 && data.data[0].paymentType == 1) {
-  						console.log( "/payment/order?orderId="+data.data[0].masterOrderId);
-  						window.location = "/payment/order?orderId="+data.data[0].masterOrderId;
+  						console.log( "/finance/payment/gen?orderId="+data.data[0].masterOrderId);
+  						window.location = "/finance/payment/gen?orderId="+data.data[0].masterOrderId;
+  					} else {
+  						window.location = "/order/list";
   					}
   				} else {
   					alert("提交失败！");
@@ -247,6 +254,10 @@
     		   $scope.orderSubmitObj.orderInvoice = null;
     	   }
        }
+       
+       $scope.editInvoice = function() {
+    	   
+       };
 	   
        $scope.findProvince = function() {
     	   $http({
@@ -255,6 +266,7 @@
 	   			headers: {'Content-Type': 'application/json'}
  			}).success(function(data){
  				$scope.provinceList = data;
+ 				$scope.cityList= [];
  			});
        }
        $scope.findCity = function() {
@@ -277,7 +289,31 @@
 		        $scope.areaList =data;
 			});
         }
-       
+		$scope.findCityArea = function() {
+    	   $http({
+	   			method:'GET',
+	   			url:"/cityArea/selectProvince",
+	   			headers: {'Content-Type': 'application/json'}
+ 			}).success(function(data){
+ 				$scope.provinceList = data;
+ 				$scope.cityList= [];
+ 				$http({
+ 		   			method:'GET',
+ 		   			url:"/cityArea/selectCity?parentId="+$scope.address.provinceId,
+ 		   			headers: {'Content-Type': 'application/json'}
+ 				}).success(function(data){
+ 			        $scope.cityList = data;
+ 			        $scope.areaList = [];
+ 			       $http({
+ 			   			method:'GET',
+ 			   			url:"/cityArea/selectArea?parentId="+$scope.address.cityId,
+ 			   			headers: {'Content-Type': 'application/json'}
+ 					}).success(function(data){
+ 				        $scope.areaList =data;
+ 					});
+ 				});
+ 			});
+       }
         $scope.addAddress = function() {
         	$scope.findProvince();
         	$scope.address = {};
@@ -294,9 +330,7 @@
 				if(data.success) {
 					$scope.address = data.data;
 					$scope.editUserAddress = true;  
-					$scope.findProvince();
-					$scope.findCity($scope.address.provinceId);
-					$scope.findArea($scope.address.cityId);
+					$scope.findCityArea();
 				} else {
 					$scope.address = {};
 					$scope.editUserAddress = false;  
