@@ -336,7 +336,7 @@ create table VAT_Invoice_Certificate_Info
    Bank_Account         varchar(30) not null comment '开户账户',
    Register_Address     varchar(200) not null comment '公司注册地址',
    Register_Phone       varchar(20) not null comment '公司注册电话',
-   Tax_Registration_Certificate varchar(200) not null comment '税务登记证图片保存地址',
+   Tax_Reg_Certificate varchar(200) not null comment '税务登记证图片保存地址',
    Taxpayer_Certificate varchar(200) not null comment '一般纳税人资格证图片保存地址',
    Reviewed             boolean not null default false comment '是否通过了review',
    Created_By           varchar(30),
