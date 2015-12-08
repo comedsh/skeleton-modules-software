@@ -63,13 +63,13 @@
          <td>{{item.statusName}}</td>
           <td>
           <!-- 上架状态不能编辑 -->
-          <a href="#" ng-show="{{item.status != 2 && item.status !=4}}">编辑</a><br/>    
+          <a href="#" ng-show="{{item.edit}}">编辑</a><br/>    
           <!-- 删除商品不能上架 -->     
-          <a href="#" ng-show="{{item.status != 4 && item.status !=2}}" ng-click="upShelf(item)">上架</a><br/>
+          <a href="#" ng-show="{{item.delete}}" ng-click="upShelf(item)">上架</a><br/>
           <!-- 上架商品 能下架 -->
-          <a href="#" ng-show="{{item.status == 2 && item.status !=4}}" ng-click="downShelf(item)">下架</a><br/>
+          <a href="#" ng-show="{{item.shelfUp}}" ng-click="downShelf(item)">下架</a><br/>
           <!-- 上架商品不能删除 -->
-          <a href="#"  ng-show="{{item.status != 2 && item.status !=4}}" ng-click="deleteItem(item)">删除</a></td>
+          <a href="#"  ng-show="{{item.shelfDown}}" ng-click="deleteItem(item)">删除</a></td>
  </tr>
   </table>
   
@@ -178,7 +178,7 @@
 	   $scope.deleteItem=function(item){
 		   var ids=[];
 		   ids.push(item.id);
-		   $http.post('/product/delete/',
+		   $http.post('/product/softDelete/',
    				{
    					'ids' : ids
    				},

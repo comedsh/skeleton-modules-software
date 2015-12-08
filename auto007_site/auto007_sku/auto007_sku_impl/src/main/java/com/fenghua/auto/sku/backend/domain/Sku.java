@@ -32,10 +32,6 @@ public class Sku implements DomainObject{
 
     private Integer minQuantity;
 
-    private Double grossWeight;
-
-    private Double weight;
-
     private String unit;
 
     private String brand;
@@ -153,21 +149,6 @@ public class Sku implements DomainObject{
         this.minQuantity = minQuantity;
     }
 
-    public Double getGrossWeight() {
-        return grossWeight;
-    }
-
-    public void setGrossWeight(Double grossWeight) {
-        this.grossWeight = grossWeight;
-    }
-
-    public Double getWeight() {
-        return weight;
-    }
-
-    public void setWeight(Double weight) {
-        this.weight = weight;
-    }
 
     public String getUnit() {
         return unit;

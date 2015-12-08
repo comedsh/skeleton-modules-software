@@ -3,6 +3,9 @@ package com.fenghua.auto.sku.backend;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.jaxb.SpringDataJaxb.PageRequestDto;
+
 import com.fenghua.auto.backend.core.utils.MessageHelper;
 
 /**

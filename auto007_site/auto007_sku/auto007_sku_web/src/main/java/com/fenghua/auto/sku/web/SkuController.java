@@ -1,32 +1,46 @@
 package com.fenghua.auto.sku.web;
 
 import java.io.UnsupportedEncodingException;
+import java.net.BindException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fenghua.auto.backend.common.utils.DateUtil;
+import com.fenghua.auto.backend.core.utils.LabelErrorTranslator;
 import com.fenghua.auto.backend.core.utils.MessageAndErrorUtil;
 import com.fenghua.auto.backend.core.utils.MessageHelper;
 import com.fenghua.auto.backend.domain.mto.CommonMessageTransferObject;
+import com.fenghua.auto.backend.domain.mto.LabelError;
 import com.fenghua.auto.backend.domain.mto.MessageTransferObject;
 import com.fenghua.auto.sku.backend.SkuConstants;
 import com.fenghua.auto.sku.backend.domain.Sku;
+import com.fenghua.auto.sku.backend.domain.SkuImageHtml;
+import com.fenghua.auto.sku.backend.domain.SkuMessage;
+import com.fenghua.auto.sku.backend.domain.SkuStock;
 import com.fenghua.auto.sku.backend.service.CatalogService;
 import com.fenghua.auto.sku.backend.service.SkuService;
 import com.fenghua.auto.sku.backend.vo.DropMenuItem;
 import com.fenghua.auto.sku.backend.vo.SkuManageQueryParams;
 import com.fenghua.auto.sku.backend.vo.SkuVo;
+
 
 /** 
   *<des>
@@ -73,6 +87,99 @@ public class SkuController {
 		return "web.product";
 	}
 	
+	/**
+	 * 商品发布页面显示
+	 * @return
+	 */
+	@RequestMapping("/publish")
+	public String publish(Model model){	
+		//model.addAttribute("sku", new Sku());
+		return "web.product_publish";
+	}
+	/**
+	 * 商品手动发布
+	 * @return
+	 */
+	@RequestMapping(value="/publishUp",method=RequestMethod.POST)
+	public String publishUp( @RequestParam Long skuId){
+		Sku sku=new Sku();
+		sku.setId(skuId);
+		sku.setStatus(2);
+		int result=skuService.updateById(sku);
+		if(result>0){
+			return "web.product_publishSuccess";
+		}else{
+			return "web.product_publishReview";
+		}
+		
+	}
+	/**
+	 * 检查错误信息，获取信息，拦截方法
+	 * @param sku
+	 * @param result
+	 * @return
+	 */
+	@RequestMapping(value="/checkError",method=RequestMethod.POST, headers="Content-Type=application/json")
+	public @ResponseBody SkuMessage checkError(@Valid @RequestBody SkuMessage skuMessage,BindingResult  result) throws BindException{
+		if(result.hasErrors()){
+			LabelError[] errors = {};
+			skuMessage.addErrors( LabelErrorTranslator.translate2LabelError( result.getFieldErrors() ).toArray(errors) );
+			return skuMessage;
+		}
+		return skuMessage;
+	}
+	/**
+	 * 商品立即发布
+	 * @return
+	 */
+	@RequestMapping(value="/publishImediat",method=RequestMethod.POST)
+	public String publishImediat(@Valid Sku sku,@Valid SkuStock skuStock,@Valid SkuImageHtml skuImageHtml,
+			@RequestParam String oeCodes,@RequestParam String oebrands,
+			@RequestParam String imageBigs,@RequestParam String imageSmalls,
+			@RequestParam String attrNames,@RequestParam String attrContents,
+			HttpServletRequest request,HttpServletResponse response,Model model) throws Exception{
+			//是否存在该条sku信息
+		    if(sku.getId()!=null && sku.getId()!=0){
+		    	skuService.deleteSkumessage(sku.getId());
+		    }
+			sku.setStatus(2);
+			Long idLong=skuService.saveProduct(sku,skuStock,skuImageHtml,oeCodes,oebrands,imageBigs,imageSmalls,attrNames,attrContents);
+			if(idLong>0){
+				return "web.product_publishSuccess";
+			}else{
+				return "web.product_publish";
+			}	
+	}
+	/**
+	 * 商品发布信息保存
+	 * @param sku
+	 * @param skuImageHtml
+	 * @param oeCodes
+	 * @param brands
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value="/saveProduct",method=RequestMethod.POST)
+	public String saveProduct(@Valid Sku sku,@Valid SkuStock skuStock,@Valid SkuImageHtml skuImageHtml,
+			@RequestParam String oeCodes,@RequestParam String oebrands,
+			@RequestParam String imageBigs,@RequestParam String imageSmalls,
+			@RequestParam String attrNames,@RequestParam String attrContents,
+			HttpServletRequest request,HttpServletResponse response,Model model) throws Exception{		
+			//是否存在该条sku信息
+		    if(sku.getId()!=null && sku.getId()!=0){
+		    	skuService.deleteSkumessage(sku.getId());
+		    }
+			sku.setStatus(1);
+			Long idLong=skuService.saveProduct(sku,skuStock,skuImageHtml,oeCodes,oebrands,imageBigs,imageSmalls,attrNames,attrContents);
+			Map<String, Object> listMap=this.getList(oeCodes, oebrands, attrNames, attrContents);			
+			model.addAttribute("sku", sku);
+			model.addAttribute("skuImageHtml", skuImageHtml);
+			model.addAttribute("skuStock", skuStock);
+			model.addAttribute("oeList", listMap.get("oeList"));//OE-SKU集合参数
+			model.addAttribute("aTttrList", listMap.get("aTttrList"));//商品扩展参数
+			model.addAttribute("imageSmalls", imageSmalls.split(";"));
+			return "web.product_publishReview";
+	}
 	
 	/**
 	 * 卖家管理SKU界面
@@ -117,7 +224,7 @@ public class SkuController {
 			params.setStatus(Integer.valueOf(status));
 		}
 
-		List<SkuVo>  datas = skuService.querySkuList(params);
+		List<SkuVo>  datas = skuService.querySkuListForSeller(params);
 		
 		
 		
@@ -156,7 +263,7 @@ public class SkuController {
     	return catalogService.getDropMenu();
     }
 	
-	@RequestMapping(value="/delete",method=RequestMethod.POST)
+	@RequestMapping(value="/softDelete",method=RequestMethod.POST)
 	@ResponseBody
 	public MessageTransferObject softDeleteSku(@RequestParam("ids[]") Long[] ids){
 		List<Sku> result = skuService.updateSkuStatus(ids, SkuConstants.SkuStatusEnum.DELETE.getValue());
@@ -217,5 +324,49 @@ public class SkuController {
 			builder.delete(builder.length()-1, builder.length());
 		}
 		return builder.toString();
+	}
+	
+	/**
+	 * 获取商品参数和商品属性集合
+	 * @param oeCodes
+	 * @param oebrands
+	 * @param attrNames
+	 * @param attrContents
+	 * @return
+	 */
+	private Map<String, Object> getList(String oeCodes ,String oebrands,String attrNames,String attrContents){
+		Map<String,Object> listMap = new HashMap<String,Object>();
+		List<Map<String, Object>> oeList=new ArrayList<Map<String, Object>>();
+		List<Map<String, Object>> aTttrList=new ArrayList<Map<String, Object>>();
+		//获取集合
+		String[] oeCode=oeCodes.split(";");
+		String[] oebrand=oebrands.split(";");
+		String[] attrName=attrNames.split(";");
+		String[] attrContent=attrContents.split(";");
+		for(int i = 0 ; i<oeCode.length;i++){
+			Map<String,Object> modelOe = new HashMap<String,Object>();
+			if("0".equals(oeCode[i]) && "0".equals(oebrand[i])){
+				continue;
+			}else{
+				modelOe.put("oeCode", oeCode[i]);
+				modelOe.put("oebrand", oebrand[i]);
+			}
+			oeList.add(modelOe);
+		}
+		
+		//商品扩展参数
+		for(int i = 0 ; i<attrName.length;i++){
+			Map<String,Object> modelAttr = new HashMap<String,Object>();
+			if("0".equals(attrName[i]) && "0".equals(attrContent[i])){
+				continue;
+			}else{
+				modelAttr.put("attrName", attrName[i]);
+				modelAttr.put("attrContent", attrContent[i]);
+			}
+			aTttrList.add(modelAttr);
+		}
+		listMap.put("oeList", oeList);
+		listMap.put("aTttrList", aTttrList);
+		return listMap;
 	}
 }

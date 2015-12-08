@@ -16,6 +16,8 @@ import com.fenghua.auto.sku.backend.vo.SkuVo;
   * @version 
   */
 public interface SkuDao extends BaseDao<Sku>{
+	
+	public Long saveProduct(Sku sku);
 
 	public List<SkuVo> querySkuList(SkuVo skuVo);
 	

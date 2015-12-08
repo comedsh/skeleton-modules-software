@@ -25,6 +25,12 @@ public class SkuVo {
 	private String statusName; //商品状态名称
 	private String defaultOe; //oe号
 	private Integer oeSize; //oe列表大小
+	
+	private boolean edit; //编辑
+	private boolean delete; //删除
+	private boolean shelfUp; //上架
+	private boolean shelfDown; //下架
+	
 		
 	public String getCreateTime() {
 		return createTime;
@@ -103,7 +109,30 @@ public class SkuVo {
 	public void setOeSize(Integer oeSize) {
 		this.oeSize = oeSize;
 	}
-
+	public boolean isEdit() {
+		return edit;
+	}
+	public void setEdit(boolean edit) {
+		this.edit = edit;
+	}
+	public boolean isDelete() {
+		return delete;
+	}
+	public void setDelete(boolean delete) {
+		this.delete = delete;
+	}
+	public boolean isShelfUp() {
+		return shelfUp;
+	}
+	public void setShelfUp(boolean shelfUp) {
+		this.shelfUp = shelfUp;
+	}
+	public boolean isShelfDown() {
+		return shelfDown;
+	}
+	public void setShelfDown(boolean shelfDown) {
+		this.shelfDown = shelfDown;
+	}
 	
 
 }
