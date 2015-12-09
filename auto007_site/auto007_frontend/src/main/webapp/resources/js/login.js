@@ -79,11 +79,11 @@
 						autoLogin:data.userInfo.isRememberPwd?1:0
 					},
 					success:function(response){
-						if(!response.errors||!response.length){
+						if(response.messages!=null&&!response.message[0].field=="success"){
 							alert('登录成功');
-							//跳转到首页
-							//location.href='/';
-						}else{
+							//跳转到首页、
+							location.href='/secure/main';
+						}else if(response.errors!=null){
 							logic.stopLogin();
 							logic.showError(response.errors[0].msg);
 							if(true){

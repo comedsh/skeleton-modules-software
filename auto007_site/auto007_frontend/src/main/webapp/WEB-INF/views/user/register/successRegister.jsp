@@ -16,7 +16,7 @@
     <!--<meta http-equiv="X-UA-Compatible" content="IE=7"/>-->
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/common/Common_top_tail.css"/>
     <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/user/Forgotpwd_style.css"/>
-    <script type="text/javascript" src="<%=request.getContextPath() %>/resources/javaScript/jQuery/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="/resources/js/lib/fenghua.lib.min.js"></script>
     <script type="text/javascript" src="<%=request.getContextPath() %>/resources/script/user/timer.js"></script>
     <link rel="icon" href=""/>
     <!--<link rel="icon" href="http://www.jd.com/favicon.ico" mce_href="http://www.jd.com/favicon.ico" type="image/x-icon">-->

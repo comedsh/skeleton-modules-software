@@ -132,8 +132,7 @@ a {
     background: #004098 none repeat scroll 0% 0%;
 }
 </style>
-<script type="text/javascript" src="/resources/javaScript/angular/angular.js"></script>
-<script type="text/javascript" src="/resources/javaScript/jQuery/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="/resources/js/lib/fenghua.lib.min.js"></script>
 </head>
 <body>
 	

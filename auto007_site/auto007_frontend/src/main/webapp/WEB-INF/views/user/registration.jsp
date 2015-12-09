@@ -873,8 +873,8 @@
    </div>
 </div>
 <script type="text/javascript" src="<%=request.getContextPath() %>/resources/script/user/tools.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/resources/javaScript/jQuery/jquery-1.8.3.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/resources/javaScript/angular/angular.min.js"></script>
+<script type="text/javascript" src="/resources/js/lib/fenghua.lib.min.js"></script>
+
 <script type="text/javascript" src="<%=request.getContextPath() %>/resources/javaScript/jQuery/json2.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath() %>/resources/script/user/placeholder.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath() %>/resources/script/user/register.js"></script>

@@ -3,3 +3,4 @@
 /.gitignore
 /dome-workspace/node_modules
 /dome-workspace/js/lib
+/.classpath

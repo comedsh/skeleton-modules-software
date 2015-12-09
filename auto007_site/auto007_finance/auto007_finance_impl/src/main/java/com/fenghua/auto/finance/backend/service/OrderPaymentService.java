@@ -5,6 +5,7 @@ package com.fenghua.auto.finance.backend.service;
 
 import com.fenghua.auto.backend.service.BaseService;
 import com.fenghua.auto.finance.backend.domain.OrderPayment;
+import com.fenghua.auto.finance.wxpay.service.WXPrepayOrder;
 
 /**
  * Service接口类
@@ -16,4 +17,6 @@ import com.fenghua.auto.finance.backend.domain.OrderPayment;
 public interface OrderPaymentService extends BaseService<OrderPayment> {
 
 	public OrderPayment genOrderPayment(Long buyerId, Long masterOrderId);
+	
+	public WXPrepayOrder genWxPrepayOrder(Long orderPaymentId);
 }

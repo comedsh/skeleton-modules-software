@@ -39,7 +39,7 @@ public class WXPayService {
 		WXPay.initSDKConfiguration(key, appid, mchid, "", certPath, mchid, callbackUrl);
 	}
 
-	public WXPrepayOrder genJSAPIPrepayOrder(WXPrepayOrderParam param) {
+	public WXPrepayOrder genPrepayOrder(WXPrepayOrderParam param) {
 		WXPrepayOrder prepayOrder = null;
 		
 		ScanPayReqData data = new ScanPayReqData(param.getDeviceInfo(), 

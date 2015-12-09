@@ -4,8 +4,6 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="sf" %>
-<script type="text/javascript"src="/resources/javaScript/jQuery/jquery-1.8.3.min.js"></script>
-	<script type="text/javascript"src="/resources/javaScript/angular/angular.min.js"></script>
 <c:choose>
    <c:when test="${errorMsg == null}">  
 <div align="center" id="div_order_submit"
@@ -339,7 +337,7 @@
   						window.location = "/order/list";
   					}
   				} else {
-  					alert("提交失败！");
+  					alert("提交失败！"+data.errorMessage);
   				}
   			});
        }
