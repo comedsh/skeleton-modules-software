@@ -174,18 +174,7 @@ public class UserController {
 		}
 		return transferObject;
 	}
-	/**
-	 * 获取所有的用户
-	 * @return
-	 */
-	@RequestMapping(value = "/allUser", method = RequestMethod.GET)
-	public ModelAndView getAllUser(HttpServletRequest req, Map<String, Object> model) {
-		PageRequest pageRequest = new PageRequest(0, 10);
-		Page<User> pages = userService.getAll(new User(), pageRequest);
-		req.setAttribute("param", pages);
-		
-		return new ModelAndView("/NewFile", model);
-	}
+
 
 	/**
 	 * 校验用户名是否唯一 

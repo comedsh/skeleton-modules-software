@@ -122,11 +122,6 @@ public class UserServiceImpl implements UserService {
 	
 
 	@Override
-	public Page<User> getAll(User user, PageRequest pageRequest) {
-		return userDao.selectPageList(user, pageRequest);
-	}
-
-	@Override
 	public User getUserByName(String name) {
 		List<User> user = userDao.selectByName(name);
 		if (user.size() > 0) {

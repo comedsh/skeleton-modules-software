@@ -7,8 +7,6 @@ import java.util.Map;
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
@@ -17,6 +15,8 @@ import com.fenghua.auto.backend.common.utils.BeanUtils;
 import com.fenghua.auto.backend.common.utils.UUIDUtils;
 import com.fenghua.auto.backend.dao.BaseDao;
 import com.fenghua.auto.backend.dao.DaoException;
+import com.fenghua.auto.backend.dao.PageHelper;
+import com.fenghua.auto.backend.dao.PageInfo;
 import com.fenghua.auto.backend.dao.constants.SqlId;
 import com.fenghua.auto.backend.domain.DomainObject;
 
@@ -163,15 +163,27 @@ public abstract class BaseDaoImpl<T extends DomainObject> implements BaseDao<T> 
 		}
 	}
 
+//	@Override
+//	public <V extends T> Page<V> selectPageList(T query, Pageable pageable) {
+//		try {
+//			List<V> contentList = sqlSessionTemplate.selectList(getSqlName(SqlId.SQL_SELECT),
+//					getParams(query, pageable));
+//			return new PageImpl<V>(contentList, pageable, this.selectCount(query));
+//		} catch (Exception e) {
+//			throw new DaoException(String.format("根据分页对象查询列表出错！语句:%s", getSqlName(SqlId.SQL_SELECT)), e);
+//		}
+//	}
+	
 	@Override
-	public <V extends T> Page<V> selectPageList(T query, Pageable pageable) {
+	public <V extends T> PageInfo<V> selectListByPage(T query, String sqlName, PageInfo<V> pageInfo){
 		try {
-			List<V> contentList = sqlSessionTemplate.selectList(getSqlName(SqlId.SQL_SELECT),
-					getParams(query, pageable));
-			return new PageImpl<V>(contentList, pageable, this.selectCount(query));
+			PageHelper.startPage(pageInfo);
+			sqlSessionTemplate.selectList(getSqlName(sqlName), BeanUtils.toMap(query));
+			return PageHelper.endPage();
+			//return new PageImpl<V>(contentList, pageable, this.selectCount(query));
 		} catch (Exception e) {
 			throw new DaoException(String.format("根据分页对象查询列表出错！语句:%s", getSqlName(SqlId.SQL_SELECT)), e);
-		}
+		}		
 	}
 
 	@Override

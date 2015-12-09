@@ -47,11 +47,7 @@ public interface UserService {
 	 * @return
 	 */
 	public User getUserById(Long id);
-	/**
-	 * 获取所有用户信息
-	 * @return
-	 */
-	public Page<User> getAll(User user, PageRequest pageRequest);
+
 	/**
 	 * 通过name查询用户
 	 * @return

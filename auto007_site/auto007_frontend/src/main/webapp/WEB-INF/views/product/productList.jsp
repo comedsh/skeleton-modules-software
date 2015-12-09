@@ -4,7 +4,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="sf" %>
-
+<%@ taglib uri="/WEB-INF/taglib/fenghua.tld" prefix="fh"%>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -20,11 +20,8 @@
     <td><img src=${item.url}>${item.name}</td>
     <td><a href="/product/${item.id}">查看商品详情</a></td>
     </tr>
-   
-    
   </c:forEach>
-  
   </table>
- 
+	<fh:page url="/product" totalPages="${pageInfo.pages}"  curpage="${pageInfo.pageNum}" /> 
 </body>
 </html>

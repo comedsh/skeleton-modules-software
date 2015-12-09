@@ -4,11 +4,11 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.fenghua.auto.backend.dao.BaseDao;
+import com.fenghua.auto.backend.dao.PageInfo;
 import com.fenghua.auto.backend.domain.DomainObject;
 import com.fenghua.auto.backend.service.BaseService;
 
@@ -35,6 +35,10 @@ public abstract class BaseServiceImpl<T extends DomainObject> implements BaseSer
 		public  <V extends T> List<V> selectList(T query) {
 			return getBaseDao().selectList(query);
 		}
+		
+		public <V extends T> PageInfo<V> selectListByPage(T query, String sqlName, PageInfo pageInfo){
+			return getBaseDao().selectListByPage(query, sqlName, pageInfo);
+		};
 
 		public <V extends T> V selectById(Serializable id){
 			return getBaseDao().selectById(id);
@@ -55,12 +59,6 @@ public abstract class BaseServiceImpl<T extends DomainObject> implements BaseSer
 		public <V extends T> List<V> selectList(T query, Pageable pageable) {
 			return getBaseDao().selectList(query, pageable);
 		}
-
-
-		public <V extends T> Page<V> selectPageList(T query, Pageable pageable) {
-		    return getBaseDao().selectPageList(query, pageable);
-		}
-
 
 		public <K, V extends T> Map<K, V> selectMap(T query, String mapKey, Pageable pageable) {
 		   return getBaseDao().selectMap(query, mapKey, pageable);
