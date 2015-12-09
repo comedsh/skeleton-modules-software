@@ -1,14 +1,13 @@
 package com.fenghua.auto.webapp.controller.catalogs;
 
-import com.fenghua.auto.ocatalogs.backend.dao.OcatalogsDao;
-import com.fenghua.auto.ocatalogs.backend.service.OcatalogsService;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
-import net.sf.json.JSONObject;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,15 +15,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fenghua.auto.ocatalogs.backend.dao.OcatalogsDao;
+
+import net.sf.json.JSONObject;
+
 @Controller
 @RequestMapping({ "/ocatalogs" })
 public class CatalogsController {
 
 	@Autowired
 	protected OcatalogsDao ocatalogsDao;
-
-	@Autowired
-	protected OcatalogsService ocatalogsService;
 
 	@RequestMapping(method = { org.springframework.web.bind.annotation.RequestMethod.GET })
 	public String ocatalogs(Model model) {
