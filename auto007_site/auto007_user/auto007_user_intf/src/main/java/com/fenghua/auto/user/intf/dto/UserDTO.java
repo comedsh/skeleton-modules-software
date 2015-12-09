@@ -51,6 +51,8 @@ public class UserDTO extends AbstractDomainObject implements DomainObject, Messa
 	private String wechat;
 
 	private Long roleId;
+	
+	private Long sellerId;
 
 	private Long userLevelId;
 
@@ -130,6 +132,14 @@ public class UserDTO extends AbstractDomainObject implements DomainObject, Messa
 
 	public void setRoleId(Long roleId) {
 		this.roleId = roleId;
+	}
+	
+	public Long getSellerId() {
+		return sellerId;
+	}
+
+	public void setSellerId(Long sellerId) {
+		this.sellerId = sellerId;
 	}
 
 	public Long getUserLevelId() {
