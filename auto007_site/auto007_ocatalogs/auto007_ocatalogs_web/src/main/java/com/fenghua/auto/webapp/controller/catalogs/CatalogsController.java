@@ -15,14 +15,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fenghua.auto.ocatalogs.backend.dao.OcatalogsDao;
+
 @Controller
 @RequestMapping("/ocatalogs")
 public class CatalogsController {
 
-	private static final Log LOG = LogFactory.getLog("");
+//	private static final Log LOG = LogFactory.getLog("");
 
 	@Autowired
-	protected JdbcTemplate catalogJdbcTemplate;
+	protected OcatalogsDao ocatalogsDao;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String ocatalogs(Model model) {
@@ -30,18 +32,14 @@ public class CatalogsController {
 		/**
 		 * @TODO 原厂目录初始化页面， 需要获取品牌名和图片（cat_brand）
 		 */
-		model.addAttribute("brandList", catalogJdbcTemplate.queryForList("select * from cat_brand"));
+		model.addAttribute("brandList", ocatalogsDao.allBrands());
 
 		return "web.ocatalogs_view";
 	}
 
-	@RequestMapping(value = "/brand/{brand}", method = RequestMethod.GET, headers = { "application/json" })
-	public @ResponseBody Map<String, List<Map<String, Object>>> brand(@PathVariable("brand") String brand,
+	@RequestMapping(value = "/brand/{brand}/layer-{layerId}", method = RequestMethod.GET, headers = { "application/json" })
+	public @ResponseBody Map<String, List<Map<String, Object>>> brand(@PathVariable("brand") String brand,@PathVariable("layerId") int layerId,
 			Model model) {
-
-		/**
-		 * @TOTO 根据品牌名获取其配置的节点以及第一节节点数据 cat_config，cat_model
-		 */
 
 		List<Map<String, Object>> configList = catalogJdbcTemplate
 				.queryForList("select * from cat_config order by cat_seq ");
