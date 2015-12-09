@@ -451,8 +451,8 @@ a.vice-btn:hover {
 }
 
 .footer {
-  margin-top: 84px;
   text-align: center;
+  padding-bottom: 50px;
 }
 
 .footer .about-us a {
