@@ -178,24 +178,6 @@ public class UserController {
 	}
 
 	/**
-	 * 获取所有的用户
-	 * 
-	 * @return
-	 */
-	@RequestMapping(value = "/allUser", method = RequestMethod.GET)
-	public ModelAndView getPageList(HttpServletRequest req, Map<String, Object> model) {
-		Integer curpage = 0;
-		String str = req.getParameter("pageNumber");
-		if (str != null) {
-			curpage = Integer.parseInt(str) > 1 ? Integer.parseInt(str) - 1 : 0;
-		}
-		PageRequest pageRequest = new PageRequest(curpage, Constants.PAGESIZE);
-		Page<User> pages = userService.getPageList(new User(), pageRequest);
-		model.put("param", pages);
-		return new ModelAndView("/NewFile", model);
-	}
-
-	/**
 	 * 校验用户名是否唯一 shang yang
 	 * 
 	 * @param name

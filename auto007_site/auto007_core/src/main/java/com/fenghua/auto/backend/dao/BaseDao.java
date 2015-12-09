@@ -4,10 +4,10 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import com.fenghua.auto.backend.domain.DomainObject;
+import com.fenghua.auto.backend.dao.PageInfo;
 
 /**
  * 基础Dao接口
@@ -59,14 +59,15 @@ public interface BaseDao<T extends DomainObject> {
 	 */
 	public <V extends T> List<V> selectList(T query, Pageable pageable);
 
+	
 	/**
 	 *<pre>查询对象列表，注意：在给定非null的分页对象时该方法自动设置分页总记录数,如果query和pageable同时为null则查询所有</pre>
 	 * @param query 查询参数
+	 * @param sqlName 查询语句的名字
 	 * @param pageInfo 分页对象
 	 * @return Page 信息方便前台显示
 	 */
-	public <V extends T> Page<V> selectPageList(T query, Pageable pageable);
-
+	public <V extends T> PageInfo<V> selectListByPage(T query, String sqlName, PageInfo<V> pageInfo);
 	/**
 	 * 根据结果集中的一列作为key，将结果集转换成Map
 	 * @param <K> 返回Map的key类型
@@ -149,5 +150,7 @@ public interface BaseDao<T extends DomainObject> {
 	 * @param entityList 批量更新的实体对象列表
 	 */
 	public void updateInBatch(List<T> entityList);
+	
+
 
 }

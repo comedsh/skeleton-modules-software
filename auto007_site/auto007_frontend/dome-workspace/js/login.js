@@ -73,10 +73,10 @@
 					type:'POST',
 					dataType:'json',
 					data:{
-						name:data.userInfo.userName,
-						pwd:data.userInfo.passWord,
-						code:data.userInfo.code,
-						isrememberpwd:data.userInfo.isRememberPwd?1:0
+						username:data.userInfo.userName,
+						password:data.userInfo.passWord,
+						vCode:data.userInfo.code,
+						autoLogin:data.userInfo.isRememberPwd?1:0
 					},
 					success:function(response){
 						if(!response.errors||!response.length){
