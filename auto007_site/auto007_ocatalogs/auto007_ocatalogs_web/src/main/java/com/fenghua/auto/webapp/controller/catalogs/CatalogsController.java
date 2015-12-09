@@ -37,6 +37,28 @@ public class CatalogsController {
 		return "web.ocatalogs_view";
 	}
 
+	@RequestMapping(value = "/brand/{brand}", method = RequestMethod.GET, headers = { "application/json" })
+	public @ResponseBody Map<String, List<Map<String, Object>>> brand(@PathVariable("brand") String brand) {
+
+		List<Map<String, Object>> configList = catalogJdbcTemplate
+				.queryForList("select * from cat_config order by cat_seq ");
+		String lstNodeValue = String.valueOf(configList.get(0).get("cat_name"));
+
+		StringBuilder sql = new StringBuilder();
+		sql.append("select distinct ");
+		sql.append(lstNodeValue);
+		sql.append(" market from cat_model where brand = ? ");
+
+		List<Map<String, Object>> catDataList = catalogJdbcTemplate.queryForList(sql.toString(), brand);
+
+		Map<String, List<Map<String, Object>>> dataMap = new HashMap<String, List<Map<String, Object>>>();
+
+		dataMap.put("configList", configList);
+		dataMap.put("catDataList", catDataList);
+
+		return dataMap;
+	}
+	
 	@RequestMapping(value = "/brand/{brand}/layer-{layerId}", method = RequestMethod.GET, headers = { "application/json" })
 	public @ResponseBody Map<String, List<Map<String, Object>>> brand(@PathVariable("brand") String brand,@PathVariable("layerId") int layerId,
 			Model model) {
