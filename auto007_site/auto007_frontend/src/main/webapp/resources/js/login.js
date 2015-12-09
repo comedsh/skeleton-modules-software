@@ -85,9 +85,8 @@
 							location.href='/secure/main';
 						}else if(response.errors!=null){
 							logic.stopLogin();
-							logic.showError(response.errors[0].msg);
-							if(true){
-							// if(response.faultThrice){
+							logic.showError(response.errors[0].error);
+							if(response.errors[0]){
 								logic.showCodeImage();
 							}
 							logic.changeImageCode();

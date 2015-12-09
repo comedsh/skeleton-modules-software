@@ -5,14 +5,37 @@
 	"../common/usercenter.scss",
 	"../common/footer.scss";
 .my-info{
-	height:100px;
 	padding:6px 6px 6px 0 ;
 	margin-bottom:36px;
 	background-color:#fff;
 	.my-info-box{
+		height:100px;
 		position: relative;
 	}
 }
+
+.my-order{
+	margin-left:347px;
+	width:480px;
+	ul{
+		margin:5px 0;
+		border-left:1px solid #eaeaea;
+		padding-left:70px;
+		li{
+			float: left;
+			width: 130px;
+			height: 45px;
+			line-height: 45px;
+			span{
+				margin-right: .5em;
+			}
+			.num{
+				color:$siteBtnViceColor;
+			}
+		}
+	}
+}
+
 .account-security{
 	position: absolute;
 	top:0;
@@ -47,9 +70,10 @@
 			}
 			a{
 				position: absolute;
-				left: 105px;
+				left: 115px;
 				font-size: 12px;
 				color:#6d7174;
+				z-index: 2;
 			}
 		}
 	}
@@ -59,3 +83,6 @@
 		bottom:0;
 	}
 }
+
+
+

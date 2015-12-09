@@ -525,14 +525,40 @@ body {
 }
 
 .my-info {
-  height: 100px;
   padding: 6px 6px 6px 0;
   margin-bottom: 36px;
   background-color: #fff;
 }
 
 .my-info .my-info-box {
+  height: 100px;
   position: relative;
+}
+
+.my-order {
+  margin-left: 347px;
+  width: 480px;
+}
+
+.my-order ul {
+  margin: 5px 0;
+  border-left: 1px solid #eaeaea;
+  padding-left: 70px;
+}
+
+.my-order ul li {
+  float: left;
+  width: 130px;
+  height: 45px;
+  line-height: 45px;
+}
+
+.my-order ul li span {
+  margin-right: .5em;
+}
+
+.my-order ul li .num {
+  color: #fd9500;
 }
 
 .account-security {
@@ -578,9 +604,10 @@ body {
 
 .account-security ul li a {
   position: absolute;
-  left: 105px;
+  left: 115px;
   font-size: 12px;
   color: #6d7174;
+  z-index: 2;
 }
 
 .account-security .icon-white_lock {
