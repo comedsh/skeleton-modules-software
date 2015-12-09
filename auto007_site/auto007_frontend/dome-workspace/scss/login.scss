@@ -7,6 +7,127 @@
 .content{
 	width:$siteWidth;
 	height:438px;
-	margin:45px auto 0;
+	margin:45px auto $footerMarginTop;
+	position: relative;
 	background:url('../img/login_banner.png') no-repeat;
+}
+.login-box{
+	position:absolute;
+	top:0;
+	right:76px;
+	width:360px;
+	height:430px;
+	border:1px solid #e1e1e1;
+	border-top:2px solid $siteBtnMainColor;
+	.login-panel{
+		margin: 15px 40px 0;
+		h1{
+			float: left;
+			font-size: 24px;
+			color: #989898;
+			font-weight:normal;
+		}
+
+		.main-tip{
+			margin-top: 12px;
+			font-size: 12px;
+			float: right;
+			a{
+				color:$siteBtnViceColor;
+
+			}
+		}
+
+		.prompt-box{
+			height: 38px;
+			padding: 10px 0 0;
+			.prompt-text{
+				position:relative;
+				height: 36px;
+				line-height: 36px;
+				padding-left:3em;
+				border:1px solid $sitePromptBoxBorderColor;
+				background-color:$sitePromptBoxBackGroundColor;
+				color:$sitePromptFontColor;
+				border-radius:3px;
+			}
+			.icon-error{
+				position:absolute;
+				left: 1em;
+				top: 8px;
+			}
+		}
+
+		.text-box{
+			position: relative;
+			height: 40px;
+			padding:12px 0;
+			font-size: 12px;
+			.text-icon{
+				position:absolute;
+				top: 26px;
+				left: 1em;
+			}
+			.icon-lock{
+				top:22px;
+			}
+			input[type=text],input[type=password]{
+				width: 228px;
+				padding-left:50px;
+				line-height: 38px;
+				height: 38px;
+				border-radius:2px;
+			}
+			.submit-btn{
+				width: 100%;
+			}
+		}
+		.remember-box{
+			position: relative;
+			height: 16px;
+			line-height: 16px;
+			font-size: 12px;
+			padding:6px 0;
+			.forget-pwd{
+				position: absolute;
+				right: 0;
+			}
+			.checkbox{
+				em{
+					position: absolute;
+					left: 25px;
+					top: 6px;
+					width: 50px;
+				}
+			}
+		}
+		.code-box{
+			padding-bottom:0;
+			input[type=text]{
+				width: 110px;
+				padding-left:10px;
+			}
+			img{
+				height: 40px;
+				width: 80px;
+				margin-left: .3em;
+				margin-right: .8em;
+			}
+			a{
+				color: $siteBtnMainColor;
+			}
+		}
+		.other-login{
+			font-size: 14px;
+			p{
+				color: $UnImportantFontColor;
+				font-size: 12px;
+				margin-bottom: .5em;
+			}
+			.split-line{
+				margin: 0 1em;
+			}
+
+		}
+	}
 }

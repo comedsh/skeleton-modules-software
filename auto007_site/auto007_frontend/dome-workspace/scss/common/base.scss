@@ -24,12 +24,21 @@ input {
     text-decoration: none;
     outline: none;
 }
+input{
+    border:1px solid $textBoxBorderColor;
+}
+input:focus{
+    border-color:$siteBtnMainColor!important;
+}
+input.error{
+    border-color:$sitePromptFontColor;
+}
 a{
     color: #646464;
     cursor: pointer;
 }
 a:hover{
-    text-decoration: none;
+    text-decoration: underline;
 }
 li {
     list-style: none;
@@ -99,29 +108,53 @@ img {
 /*链接下划线*/
 
 /*form checkbox*/
-input[type="checkbox"] {
-    width: 18px;
-    height: 18px;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    -ms-appearance: none;
-    appearance:none;
-    border: 1px solid #969696;
-    background-color: #fff;
-    border: none\9;
-    width: 20px\9 !important;
-    height: 20px\9 !important;
-    vertical-align: middle; 
+a.checkbox{
+    display: inline-block;
+    border:1px solid $textBoxBorderColor;
+    width: 14px;
+    height: 14px;
 }
-input[type="checkbox"]:checked{
-    background: url(../../images/form_icon.png) no-repeat -1px -1px;
+a.checkbox.checked{
+    background-image: url(../img/sprite.png);
+    background-position: -129px 0px;
+    width: 16px;
+    height: 16px;
+    border:none;
 }
-input[type="checkbox"]:checked:disabled{
-    background-color: #dcdcdc;
-    background: url(../../images/form_icon.png) no-repeat -20px 0;
-    width: 16px\9 !important;
-    height: 16px\9 !important;
-    width: 20px;
-    height: 20px;
-    border: none;
+
+
+a.main-btn,a.vice-btn{
+    display: inline-block;
+    height: $siteBtnHeight;
+    line-height: $siteBtnHeight;
+    text-align: center;
+    color: #fff;
+    font-size: 16px;
+}
+a.main-btn{
+    background-color:$siteBtnMainColor;
+}
+a.main-btn:hover,a.vice-btn:hover{
+    text-decoration: none;
+    transition: all 200ms;
+}
+a.main-btn:hover{
+    background-color:$siteBtnMainHoverColor;
+}
+a.vice-btn{
+    background-color:$siteBtnViceColor;
+}
+a.vice-btn:hover{
+    background-color:$siteBtnViceHoverColor;
+}
+
+/*清除IE10+ input的默认样式(右边的叉叉和眼睛)*/
+::-ms-clear, ::-ms-reveal{display: none;}
+
+/*进度条*/
+.progress2{
+    background-position: 0 -60px!important;
+}
+.progress3{
+    background-position: 0 -118px!important;
 }

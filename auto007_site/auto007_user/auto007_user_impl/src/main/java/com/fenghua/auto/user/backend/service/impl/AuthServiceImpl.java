@@ -1,10 +1,14 @@
 package com.fenghua.auto.user.backend.service.impl;
 
 import java.util.Map;
+import java.util.Properties;
 import java.util.UUID;
 
+import javax.management.RuntimeErrorException;
+import javax.security.sasl.AuthenticationException;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.ibatis.logging.LogException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +18,12 @@ import com.fenghua.auto.backend.common.utils.HTTPTools;
 import com.fenghua.auto.backend.common.utils.JsonTools;
 import com.fenghua.auto.backend.common.utils.QQtokenUtils;
 import com.fenghua.auto.backend.core.security.UserInfo;
+import com.fenghua.auto.backend.core.utils.MessageHelper;
 import com.fenghua.auto.backend.core.utils.UserSecurityUtils;
 import com.fenghua.auto.user.backend.domain.User;
 import com.fenghua.auto.user.backend.service.AuthService;
 import com.fenghua.auto.user.backend.service.UserService;
+import com.fenghua.auto.user.intf.service.IRoleService;
 import com.qq.connect.QQConnectException;
 
 /**
@@ -50,11 +56,20 @@ public class AuthServiceImpl implements AuthService {
 	}
 
 	@Override
-	public void binding(UserInfo userInfo) {
+	public void binding(UserInfo userInfo) throws Exception{
 		String QQopenID = (String) UserSecurityUtils.getSession().getAttribute(
 				"QQopenID");
 		String WeChatOpenid = (String) UserSecurityUtils.getSession()
 				.getAttribute("WeChatOpenid");
+		Long roleId = null ;
+		try {
+			roleId = userService.getUserById(UserSecurityUtils.getCurrentUserId()).getRoleId();
+		} catch (AuthenticationException e) {
+			throw new AuthenticationException(MessageHelper.getMessage("system.erro"));
+		}
+		if (roleId==3) {
+			throw new Exception(MessageHelper.getMessage("login.auth.seller"));
+		}
 		if (QQopenID != null) {
 			logger.debug("开始绑定qq账户----start");
 			userService.updateQQNumberByUserID(QQopenID, userInfo.getUserId());
@@ -67,15 +82,15 @@ public class AuthServiceImpl implements AuthService {
 			logger.debug("成功绑定WeChat账户----end");
 		}
 	}
-
+	private Properties p=new Properties();
 	/**
 	 * 微信AppID
 	 */
-	private String weixinAppID = "wxd5dd582f1865247e";
+	private String weixinAppID = p.getProperty("auto007.weChat.appId");
 	/**
 	 * 微信AppSecret
 	 */
-	private String weinxinAppSecret = "782aad0425146a81516c297ce87e8217";
+	private String weinxinAppSecret = p.getProperty("auto007.weChat.weinxinAppSecret");
 	/**
 	 * 微信回掉地址
 	 */
