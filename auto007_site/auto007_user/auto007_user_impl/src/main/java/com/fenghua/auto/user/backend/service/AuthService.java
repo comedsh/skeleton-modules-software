@@ -31,7 +31,7 @@ public interface AuthService {
 	/**
 	 * 绑定微信或QQ
 	 */
-	void binding(UserInfo userInfo);
+	void binding(UserInfo userInfo) throws Exception;
 	/**
 	 * 获取微信登陆url并传入state到session中（用于回掉时对比state防止攻击）
 	 * @param request
