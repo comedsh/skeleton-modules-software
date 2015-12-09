@@ -40,9 +40,9 @@
 		lock:false,
 		isNeedCode:false,
 		//验证码图片的url地址(须后端填写)
-		codeImageUrl:'',
+		codeImageUrl:'/user/pictureCode',
 		//登录提交的地址(须后端填写)
-		loginPostUrl:''
+		loginPostUrl:'/login'
 	};
 	var logic={
 		eventBind:function(){
