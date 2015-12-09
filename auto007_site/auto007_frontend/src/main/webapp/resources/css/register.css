@@ -469,146 +469,268 @@ a.vice-btn:hover {
   font-size: 12px;
 }
 
+body {
+  background-color: #f0f2f5;
+}
+
 .content {
   width: 1200px;
-  height: 438px;
-  margin: 45px auto 84px;
-  position: relative;
-  background: url("../img/login_banner.png") no-repeat;
+  margin: auto;
 }
 
-.login-box {
-  position: absolute;
-  top: 0;
-  right: 76px;
-  width: 360px;
-  height: 430px;
-  border: 1px solid #e1e1e1;
-  border-top: 2px solid #0380d8;
+.content .header-item-box {
+  width: 988px;
+  height: 47px;
+  margin: auto;
+  margin-top: 30px;
 }
 
-.login-box .login-panel {
-  margin: 15px 40px 0;
+.content .header-item-box .item, .content .header-item-box .personal, .content .header-item-box .enterprise, .content .header-item-box .business {
+  height: 47px;
+  width: 158px;
+  text-align: center;
+  border: 1px solid #eaeaea;
+  border-bottom: 0;
+  background-color: #eaeaea;
+  font-size: 18px;
+  color: black;
+  line-height: 47px;
+  display: inline-block;
+  cursor: pointer;
 }
 
-.login-box .login-panel h1 {
-  float: left;
-  font-size: 24px;
-  color: #989898;
-  font-weight: normal;
+.content .header-item-box .select-item {
+  background-color: white;
+  border-top: 2px solid #fd9500;
 }
 
-.login-box .login-panel .main-tip {
-  margin-top: 12px;
-  font-size: 12px;
+.content .header-item-box .personal {
+  margin-left: 44px;
+}
+
+.content .header-item-box .enterprise {
+  margin-left: 20px;
+}
+
+.content .header-item-box .business {
+  margin-left: 20px;
+}
+
+.content .header-item-box .login-text {
   float: right;
+  font-size: 12px;
+  margin-top: 20px;
+  margin-right: 10px;
 }
 
-.login-box .login-panel .main-tip a {
+.content .header-item-box .login-text span {
+  color: #a7a7a7;
+}
+
+.content .header-item-box .login-text a {
   color: #fd9500;
 }
 
-.login-box .login-panel .prompt-box {
-  height: 38px;
-  padding: 10px 0 0;
+.content .personal-info {
+  width: 988px;
+  background-color: white;
+  padding: 15px 0 15px 0;
+  margin: auto;
+  margin-top: 2px;
+  overflow: hidden;
 }
 
-.login-box .login-panel .prompt-box .prompt-text {
-  position: relative;
+.content .personal-info .row {
+  padding: 15px 0 15px 0;
+  overflow: hidden;
+}
+
+.content .personal-info .row .field-col {
+  width: 220px;
   height: 36px;
+  float: left;
+  text-align: right;
   line-height: 36px;
-  padding-left: 3em;
-  border: 1px solid #f7d0d4;
-  background-color: #fbf0f1;
-  color: #ed5565;
-  border-radius: 3px;
+  color: #8c8c8c;
 }
 
-.login-box .login-panel .prompt-box .icon-error {
-  position: absolute;
-  left: 1em;
-  top: 8px;
+.content .personal-info .row .field-col span {
+  color: red;
 }
 
-.login-box .login-panel .text-box {
-  position: relative;
-  height: 40px;
-  padding: 12px 0;
-  font-size: 12px;
-}
-
-.login-box .login-panel .text-box .text-icon {
-  position: absolute;
-  top: 26px;
-  left: 1em;
-}
-
-.login-box .login-panel .text-box .icon-lock {
-  top: 22px;
-}
-
-.login-box .login-panel .text-box input[type=text], .login-box .login-panel .text-box input[type=password] {
-  width: 228px;
-  padding-left: 50px;
-  line-height: 38px;
-  height: 38px;
-  border-radius: 2px;
-}
-
-.login-box .login-panel .text-box .submit-btn {
-  width: 100%;
-}
-
-.login-box .login-panel .remember-box {
-  position: relative;
-  height: 16px;
-  line-height: 16px;
-  font-size: 12px;
-  padding: 6px 0;
-}
-
-.login-box .login-panel .remember-box .forget-pwd {
-  position: absolute;
-  right: 0;
-}
-
-.login-box .login-panel .remember-box .checkbox em {
-  position: absolute;
-  left: 25px;
-  top: 6px;
-  width: 50px;
-}
-
-.login-box .login-panel .code-box {
-  padding-bottom: 0;
-}
-
-.login-box .login-panel .code-box input[type=text] {
-  width: 110px;
-  padding-left: 10px;
-}
-
-.login-box .login-panel .code-box img {
-  height: 40px;
-  width: 80px;
-  margin-left: .3em;
-  margin-right: .8em;
-}
-
-.login-box .login-panel .code-box a {
-  color: #0380d8;
-}
-
-.login-box .login-panel .other-login {
+.content .personal-info .row .input-col {
+  width: 280px;
+  height: 36px;
+  float: left;
+  margin-left: 18px;
   font-size: 14px;
 }
 
-.login-box .login-panel .other-login p {
-  color: #989898;
+.content .personal-info .row .input-col .alert-info {
   font-size: 12px;
-  margin-bottom: .5em;
 }
 
-.login-box .login-panel .other-login .split-line {
-  margin: 0 1em;
+.content .personal-info .row .input-col .normal-alert-info {
+  color: #989898;
+}
+
+.content .personal-info .row .input-col .error-alert-info {
+  color: #ed5565;
+}
+
+.content .personal-info .row .input-col .success-alert-info {
+  color: #2ca63d;
+}
+
+.content .personal-info .row .input-col .base-input, .content .personal-info .row .input-col .normal-input, .content .personal-info .row .input-col .foucs-input, .content .personal-info .row .input-col .success-input, .content .personal-info .row .input-col .error-input, .content .personal-info .row .input-col .check-code-input {
+  border-radius: 2px;
+  height: 36px;
+  width: 280px;
+}
+
+.content .personal-info .row .input-col .normal-input {
+  border: 1px solid #d6d3d3;
+}
+
+.content .personal-info .row .input-col .foucs-input {
+  border: 1px solid #0380d8;
+}
+
+.content .personal-info .row .input-col .success-input {
+  border: 1px solid #2ca63d;
+}
+
+.content .personal-info .row .input-col .error-input {
+  border: 1px solid #ed5565;
+}
+
+.content .personal-info .row .input-col .check-code-input {
+  width: 130px;
+}
+
+.content .personal-info .row .input-col img {
+  height: 28px;
+  width: 80px;
+  vertical-align: -10px;
+  margin-left: 10px;
+}
+
+.content .personal-info .row .input-col-min {
+  width: auto;
+}
+
+.content .personal-info .row .msg-col {
+  width: auto;
+  height: 36px;
+  margin-left: 10px;
+  float: left;
+}
+
+.content .personal-info .row .msg-col a {
+  color: #447fcc;
+  font-size: 12px;
+  vertical-align: -8px;
+}
+
+.content .personal-info .row .msg-col .show-error-msg {
+  height: 100%;
+  width: auto;
+  border-radius: 5px;
+  border: 1px solid #f7d0d4;
+  background-color: #fbf0f1;
+  padding: 0 10px 0 10px;
+}
+
+.content .personal-info .row .msg-col .show-error-msg .icon, .content .personal-info .row .msg-col .show-error-msg .icon-btn {
+  margin-left: 20px;
+  display: inline-block;
+  vertical-align: -10px;
+}
+
+.content .personal-info .row .msg-col .show-error-msg .icon-btn {
+  margin-left: -45px;
+  cursor: pointer;
+}
+
+.content .personal-info .row .msg-col .show-error-msg span {
+  color: #ed5565;
+  font-size: 12px;
+  vertical-align: -6px;
+}
+
+.content .personal-info .row .msg-col .show-normal-msg {
+  padding: 0 10px 0 0;
+  height: 100%;
+  line-height: 36px;
+}
+
+.content .personal-info .row .msg-col .show-success-msg {
+  height: 100%;
+}
+
+.content .personal-info .row .msg-col .show-success-msg .icon, .content .personal-info .row .msg-col .show-success-msg .show-error-msg .icon-btn, .content .personal-info .row .msg-col .show-error-msg .show-success-msg .icon-btn {
+  vertical-align: -10px;
+  display: inline-block;
+}
+
+.content .personal-info .row .msg-col .show-success-msg span {
+  color: #2ca63d;
+  font-size: 12px;
+  vertical-align: -6px;
+}
+
+.content .personal-info .row .msg-col .phone-number-btn, .content .personal-info .row .msg-col .normal-phone-number-btn, .content .personal-info .row .msg-col .disable-phone-number-btn {
+  padding: 0 12px 0 12px;
+  height: 37px;
+  border: 0;
+  border-radius: 3px;
+}
+
+.content .personal-info .row .msg-col .normal-phone-number-btn {
+  color: white;
+  background-color: #0380d8;
+}
+
+.content .personal-info .row .msg-col .disable-phone-number-btn {
+  color: #e6e6e6;
+  background-color: #a3a3a3;
+}
+
+.content .personal-info .row-max-height {
+  height: 50px;
+}
+
+.content .personal-info .agreement {
+  margin-top: 20px;
+  margin-left: 238px;
+}
+
+.content .personal-info .agreement .checkbox {
+  cursor: pointer;
+  display: inline-block;
+}
+
+.content .personal-info .agreement span {
+  color: #747474;
+  vertical-align: 2px;
+}
+
+.content .personal-info .agreement a {
+  vertical-align: 2px;
+  color: #0380d8;
+}
+
+.content .personal-info .register-button {
+  margin-top: 64px;
+  margin-left: 238px;
+  height: 120px;
+}
+
+.content .personal-info .register-button input {
+  width: 140px;
+  height: 40px;
+  border: 0;
+  background-color: #fd9500;
+  color: white;
+  border-radius: 3px;
 }

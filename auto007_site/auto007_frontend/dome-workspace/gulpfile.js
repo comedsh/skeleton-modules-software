@@ -15,12 +15,12 @@ var del = require('del');
 //最终生产环境根路径
 var ROOT_PATH="../src/main/webapp";
 //最终生产环境js,css根路径
-var RESOURCE_ROOT_PATH="../src/main/webapp/resources-old";
+var RESOURCE_ROOT_PATH="../src/main/webapp/resources";
 
 //清楚root目录下面bulid后的文件
 gulp.task('clear', function() {
-	return del(['../src/main/webapp/demo-old-html/**'
-		, '../src/main/webapp/resources-old/**'], {force: true});
+	return del(['../src/main/webapp/dhtml/**'
+		, '../src/main/webapp/resources/**'], {force: true});
 });
 
 
@@ -71,7 +71,7 @@ gulp.task('commonJS', function() {
 //copy html file to target source
 gulp.task('copyHTML', function() {
 	return gulp.src('./html/**')
-	.pipe(gulp.dest(ROOT_PATH+'/demo-old-html/'));
+	.pipe(gulp.dest(ROOT_PATH+'/html/'));
 });
 
 //copy img file to target source
