@@ -9,5 +9,6 @@
 </head>
 <body>
 <a href="/user/allUser">分页demo</a>
+<a href="/secure/login">登录</a>
 </body>
 </html>

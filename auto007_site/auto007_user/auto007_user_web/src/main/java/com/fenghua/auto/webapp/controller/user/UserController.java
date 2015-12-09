@@ -259,7 +259,7 @@ public class UserController {
 	}
 
 	/**
-	 * 通过name判断是否应该显示图形验证码 bin.cheng
+	 * 判断是否应该显示图形验证码 bin.cheng
 	 * 
 	 * @param name
 	 * @param req
