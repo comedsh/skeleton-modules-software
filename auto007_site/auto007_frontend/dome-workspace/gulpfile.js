@@ -24,11 +24,12 @@ gulp.task('clear', function() {
 });
 
 
-//打包发布index相关联的sass文件
+//打包发布sass文件
 gulp.task('sass', function () {
 	console.log('开始执行sass...');
   return gulp.src('scss/*.scss')
     .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
+    //.pipe(minifyCss())//压缩css
     .pipe(gulp.dest(RESOURCE_ROOT_PATH+'/css/'));
 });
 
@@ -45,6 +46,20 @@ gulp.task('sprite', function () {
   //上面用到的路径依赖的根目录，为空则以gulpfile.js为准
   return spriteData.pipe(gulp.dest(''));
 });
+
+//合并找回密码所需js
+gulp.task('FindPwdJS', function () {
+	return gulp.src(['./js/common/header.js','./js/findpassword.js'])
+	.pipe(concat('findpassword.js'))//合并后的文件名
+    .pipe(gulp.dest(RESOURCE_ROOT_PATH+'/js'));
+});
+
+//合并登录页面所需js
+// gulp.task('loginJS', function () {
+// 	return gulp.src(['./js/common/header.js','./js/login.js'])
+// 	.pipe(concat('login.js'))//合并后的文件名
+//     .pipe(gulp.dest(RESOURCE_ROOT_PATH+'/js'));
+// });
 
 //合并js库(jquery, angular, underscore)
 gulp.task('libJS', function () {
@@ -83,7 +98,7 @@ gulp.task('copyIMG', function() {
 
 //index/////////////////////////////////////////////////////////////////////////////////////
 
-//打包发布index相关联的js文件
+//打包发布login相关联的js文件
 gulp.task('build:index:js', function() {
 	return gulp.src('./js/index/**')
 	.pipe(concat('index.js'))
@@ -109,13 +124,13 @@ gulp.task('start', function() {
 	});
 	watch('./js/**', function() {
 		gulp.run([
-			'libJS', 
+			'FindPwdJS', 
 			'commonJS'
 		]);
 	});
 
 	return gulp.run([
-		'libJS', 
+		'FindPwdJS', 
 		'commonJS', 
 		'copyHTML', 
 		'copyIMG',
