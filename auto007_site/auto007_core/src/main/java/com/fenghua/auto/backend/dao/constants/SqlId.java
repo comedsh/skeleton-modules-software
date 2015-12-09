@@ -7,6 +7,7 @@ public interface SqlId {
 	//基本键
 	public String SQL_SELECT_COUNT = "selectCount";
 	public String SQL_SELECT = "select";
+	public String SQL_SELECT_PAGE = "selectPage";
 	public String SQL_SELECT_PRIMARY_KEY = "selectByPrimaryKey";
 	public String SQL_UPDATE_PRIMARY_KEY = "updateByPrimaryKey";
 	public String SQL_UPDATE_PRIMARY_KEY_SELECTIVE = "updateByPrimaryKeySelective";

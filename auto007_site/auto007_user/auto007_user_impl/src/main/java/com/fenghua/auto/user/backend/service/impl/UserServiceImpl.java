@@ -122,7 +122,7 @@ public class UserServiceImpl implements UserService {
 	
 
 	@Override
-	public Page<User> getAll(User user, PageRequest pageRequest) {
+	public Page<User> getPageList(User user, PageRequest pageRequest) {
 		return userDao.selectPageList(user, pageRequest);
 	}
 

@@ -46,6 +46,7 @@ public class PageTag extends TagSupport {
         JspWriter out = this.pageContext.getOut();
         
         //{0}:url, {1}:curpage, {2}:pagesize, {3}:第一页 上一页 下一页 最后一页
+        curpage = curpage + 1;
         String link = "<a href=''{0}?pageNumber={1}''>{2}</a>";
         if(curpage == 0) {
         	curpage = 1;

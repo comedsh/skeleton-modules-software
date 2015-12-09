@@ -9,17 +9,17 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.regex.Pattern;
+
 import javax.security.sasl.AuthenticationException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
@@ -30,6 +30,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+
 import com.fenghua.auto.backend.common.utils.Constants;
 import com.fenghua.auto.backend.common.utils.ValidateTime;
 import com.fenghua.auto.backend.common.utils.uploadPicture;
@@ -37,7 +38,6 @@ import com.fenghua.auto.backend.common.utils.graphValidate.PictureCheckCode;
 import com.fenghua.auto.backend.common.utils.message.SMSMessage;
 import com.fenghua.auto.backend.core.utils.MessageAndErrorUtil;
 import com.fenghua.auto.backend.core.utils.MessageHelper;
-import com.fenghua.auto.backend.core.utils.PageTag;
 import com.fenghua.auto.backend.core.utils.SpringValidationHelper;
 import com.fenghua.auto.backend.core.utils.UserSecurityUtils;
 import com.fenghua.auto.backend.domain.mto.CommonMessageTransferObject;
@@ -179,12 +179,16 @@ public class UserController {
 	 * @return
 	 */
 	@RequestMapping(value = "/allUser", method = RequestMethod.GET)
-	public ModelAndView getAllUser(HttpServletRequest req, Map<String, Object> model) {
-		PageRequest pageRequest = new PageRequest(0, 10);
-		Page<User> pages = userService.getAll(new User(), pageRequest);
-		req.setAttribute("param", pages);
-		
-		return new ModelAndView("/NewFile", model);
+	public ModelAndView getPageList(HttpServletRequest req, Map<String, Object> model) {
+		Integer curpage = 0;
+		String str = req.getParameter("pageNumber");
+		if(str != null) {
+			curpage = Integer.parseInt(str)>1 ? Integer.parseInt(str)-1 : 0;
+		}
+		PageRequest pageRequest = new PageRequest(curpage, Constants.PAGESIZE);
+		Page<User> pages = userService.getPageList(new User(), pageRequest);
+		model.put("param", pages);
+		return new ModelAndView("/NewFile",model);
 	}
 
 	/**

@@ -11,9 +11,19 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Insert title here</title>
+<title>分页demo</title>
 </head>
 <body>
+<table>
+   <c:forEach items="${requestScope.param.content}" var="item">
+    <tr>
+    <td>${item.id}</td>
+    <td>${item.name}"</td>
+    <td>${item.email}"</td>
+    <td>${item.mobilephone}"</td>
+    </tr>
+  </c:forEach>
+  </table>
 <page:page url="/user/allUser" totalPages="${requestScope.param.totalPages}"  curpage="${requestScope.param.number}" /> 
 </body>
 </html>

@@ -166,11 +166,11 @@ public abstract class BaseDaoImpl<T extends DomainObject> implements BaseDao<T> 
 	@Override
 	public <V extends T> Page<V> selectPageList(T query, Pageable pageable) {
 		try {
-			List<V> contentList = sqlSessionTemplate.selectList(getSqlName(SqlId.SQL_SELECT),
+			List<V> contentList = sqlSessionTemplate.selectList(getSqlName(SqlId.SQL_SELECT_PAGE),
 					getParams(query, pageable));
 			return new PageImpl<V>(contentList, pageable, this.selectCount(query));
 		} catch (Exception e) {
-			throw new DaoException(String.format("根据分页对象查询列表出错！语句:%s", getSqlName(SqlId.SQL_SELECT)), e);
+			throw new DaoException(String.format("根据分页对象查询列表出错！语句:%s", getSqlName(SqlId.SQL_SELECT_PAGE)), e);
 		}
 	}
 
