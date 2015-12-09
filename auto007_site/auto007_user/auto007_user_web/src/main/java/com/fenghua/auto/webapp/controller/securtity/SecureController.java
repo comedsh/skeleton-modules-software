@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fenghua.auto.backend.core.utils.MessageAndErrorUtil;
 import com.fenghua.auto.backend.core.utils.MessageHelper;
 import com.fenghua.auto.backend.core.utils.UserSecurityUtils;
 import com.fenghua.auto.backend.domain.mto.CommonMessageTransferObject;
@@ -110,6 +111,10 @@ public class SecureController {
 		try {
 			authService.binding(UserSecurityUtils.getCurrentUser());
 		} catch (AuthenticationException e) {
+			transferObject.addErrors(MessageAndErrorUtil.getError("user.auto.error","autoSuccess"));
+			e.printStackTrace();
+		} catch (Exception e) {
+			transferObject.addErrors(MessageAndErrorUtil.getError("user.auto.error","sellerError"));
 			e.printStackTrace();
 		}
 		return transferObject;

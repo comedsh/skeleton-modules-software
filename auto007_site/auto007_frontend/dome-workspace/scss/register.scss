@@ -1,0 +1,286 @@
+@import
+  "common/configuration.scss",
+  "common/base.scss",
+  "common/header.scss",
+  "common/footer.scss";
+
+  body {
+    background-color: #f0f2f5;
+  }
+  .content {
+    width: $siteWidth;
+    margin: auto;
+
+    .header-item-box {
+      width: 988px;
+      height: 47px;
+      margin: auto;
+      margin-top: 30px;
+
+      .item {
+        height: 47px;
+        width: 158px;
+        text-align: center;
+
+        border: 1px solid #eaeaea;
+        border-bottom: 0;
+        background-color:#eaeaea;
+        font-size: 18px;
+        color: black;
+        line-height:47px;
+        display: inline-block;
+        cursor: pointer;
+      }
+
+      .select-item {
+        background-color: white;
+        border-top: 2px solid $siteBtnViceColor;
+      }
+
+      .personal {
+        @extend .item;
+        margin-left: 44px;
+      }
+
+      .enterprise {
+        @extend .item;
+        margin-left: 20px;
+      }
+
+      .business {
+        @extend .item;
+        margin-left: 20px;
+      }
+
+      .login-text {
+        float: right;
+        font-size: 12px;
+        margin-top: 20px;
+        margin-right: 10px;
+
+        span {
+          color: #a7a7a7;
+        }
+
+        a {
+          color: $siteBtnViceColor;
+        }
+      }
+    }
+
+    .personal-info {
+      width: 988px;
+      background-color: white;
+      padding: 15px 0 15px 0;
+      margin: auto;
+      margin-top: 2px;
+      overflow: hidden;
+
+      .row {
+        padding: 15px 0 15px 0;
+        overflow: hidden;
+
+
+        .field-col {
+          width: 220px;
+          height: 36px;
+          float: left;
+          text-align: right;
+          line-height: 36px;
+          color: #8c8c8c;
+
+          span {
+            color: red;
+          }
+        }
+
+        .input-col {
+          width: 280px;
+          height: 36px;
+          float: left;
+          margin-left: 18px;
+          font-size: 14px;
+
+          .alert-info {
+            font-size: 12px;
+          }
+
+          .normal-alert-info {
+            color: #989898;
+          }
+
+          .error-alert-info {
+            color: $sitePromptFontColor;
+          }
+
+          .success-alert-info {
+            color: #2ca63d;
+          }
+
+          .base-input {
+            border-radius: 2px;
+            height: 36px;
+            width: 280px;
+          }
+
+          .normal-input {
+            @extend .base-input;
+            border: 1px solid #d6d3d3;
+          }
+
+          .foucs-input {
+            @extend .base-input;
+            border: 1px solid #0380d8;
+          }
+
+          .success-input {
+            @extend .base-input;
+            border: 1px solid #2ca63d;
+          }
+
+          .error-input {
+            @extend .base-input;
+            border: 1px solid $sitePromptFontColor;
+          }
+
+          .check-code-input {
+            @extend .base-input;
+            width: 130px;
+          }
+
+          img {
+            height: 28px;
+            width: 80px;
+            vertical-align: -10px;
+            margin-left: 10px;
+          }
+        }
+
+        .input-col-min {
+          width: auto;
+        }
+
+        .msg-col {
+          width: auto;
+          height: 36px;
+          margin-left: 10px;
+          float: left;
+
+          a {
+            color: #447fcc;
+            font-size: 12px;
+            vertical-align: -8px;
+          }
+
+          .show-error-msg {
+            height: 100%;
+            width: auto;
+            border-radius: 5px;
+            border: 1px solid $sitePromptBoxBorderColor;
+            background-color: $sitePromptBoxBackGroundColor;
+            padding: 0 10px 0 10px;
+
+            .icon {
+              margin-left: 20px;
+              display: inline-block;
+              vertical-align: -10px;
+            }
+
+            .icon-btn {
+              @extend .icon;
+              margin-left: -45px;
+              cursor: pointer;
+            }
+
+            span {
+              color: $sitePromptFontColor;
+              font-size: 12px;
+              vertical-align: -6px;
+            }
+          }
+
+          .show-normal-msg {
+            padding: 0 10px 0 0;
+            height: 100%;
+            line-height: 36px;
+          }
+
+          .show-success-msg {
+            height: 100%;
+
+            .icon {
+              vertical-align: -10px;
+              display: inline-block;
+            }
+
+            span {
+              color: #2ca63d;
+              font-size: 12px;
+              vertical-align: -6px;
+            }
+          }
+
+          .phone-number-btn {
+            padding: 0 12px 0 12px;
+            height: 37px;
+            border: 0;
+            border-radius: 3px;
+          }
+
+          .normal-phone-number-btn {
+            @extend .phone-number-btn;
+            color: white;
+            background-color: #0380d8;
+          }
+
+          .disable-phone-number-btn {
+            @extend .phone-number-btn;
+            color: #e6e6e6;
+            background-color: #a3a3a3;
+          }
+        }
+      }
+
+      .row-max-height {
+        height: 50px;
+      }
+
+      .agreement {
+        margin-top: 20px;
+        margin-left: 238px;
+
+        .checkbox {
+          cursor: pointer;
+          display: inline-block;
+        }
+
+        span {
+          color: #747474;
+          vertical-align: 2px;
+        }
+
+        a {
+          vertical-align: 2px;
+          color: #0380d8;
+        }
+      }
+
+      .register-button {
+        margin-top: 64px;
+        margin-left: 238px;
+        height: 120px;
+
+        input {
+          width: 140px;
+          height: 40px;
+          border: 0;
+          background-color: #fd9500;
+          color: white;
+          border-radius: 3px;
+        }
+      }
+
+    }
+  }
+
+

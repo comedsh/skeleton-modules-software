@@ -180,9 +180,8 @@ public abstract class BaseDaoImpl<T extends DomainObject> implements BaseDao<T> 
 			PageHelper.startPage(pageInfo);
 			sqlSessionTemplate.selectList(getSqlName(sqlName), BeanUtils.toMap(query));
 			return PageHelper.endPage();
-			//return new PageImpl<V>(contentList, pageable, this.selectCount(query));
 		} catch (Exception e) {
-			throw new DaoException(String.format("根据分页对象查询列表出错！语句:%s", getSqlName(SqlId.SQL_SELECT)), e);
+			throw new DaoException(String.format("根据分页对象查询列表出错！语句:%s", getSqlName(sqlName)), e);
 		}		
 	}
 

@@ -25,13 +25,25 @@ input {
   outline: none;
 }
 
+input {
+  border: 1px solid #d6d3d3;
+}
+
+input:focus {
+  border-color: #0380d8 !important;
+}
+
+input.error {
+  border-color: #ed5565;
+}
+
 a {
   color: #646464;
   cursor: pointer;
 }
 
 a:hover {
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 li {
@@ -58,7 +70,7 @@ label {
 
 /*w:2.默认光标为手型，暗示此处可点击*/
 /**
-	r 考虑相应式
+    r 考虑相应式
  * 1. 去除 IE6-9 和 Firefox 3 中 a 内部 img 元素默认的边框
  * 2. 修正 IE8 图片消失bug
  * 3. 防止 img 指定「height」时图片高度不能按照宽度等比缩放，导致图片变形
@@ -100,33 +112,63 @@ img {
 
 /*链接下划线*/
 /*form checkbox*/
-input[type="checkbox"] {
-  width: 18px;
-  height: 18px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  -ms-appearance: none;
-  appearance: none;
-  border: 1px solid #969696;
-  background-color: #fff;
-  border: none\9;
-  width: 20px\9  !important;
-  height: 20px\9  !important;
-  vertical-align: middle;
+a.checkbox {
+  display: inline-block;
+  border: 1px solid #d6d3d3;
+  width: 14px;
+  height: 14px;
 }
 
-input[type="checkbox"]:checked {
-  background: url(../../images/form_icon.png) no-repeat -1px -1px;
-}
-
-input[type="checkbox"]:checked:disabled {
-  background-color: #dcdcdc;
-  background: url(../../images/form_icon.png) no-repeat -20px 0;
-  width: 16px\9  !important;
-  height: 16px\9  !important;
-  width: 20px;
-  height: 20px;
+a.checkbox.checked {
+  background-image: url(../img/sprite.png);
+  background-position: -129px 0px;
+  width: 16px;
+  height: 16px;
   border: none;
+}
+
+a.main-btn, a.vice-btn {
+  display: inline-block;
+  height: 38px;
+  line-height: 38px;
+  text-align: center;
+  color: #fff;
+  font-size: 16px;
+}
+
+a.main-btn {
+  background-color: #0380d8;
+}
+
+a.main-btn:hover, a.vice-btn:hover {
+  text-decoration: none;
+  transition: all 200ms;
+}
+
+a.main-btn:hover {
+  background-color: #0b95ed;
+}
+
+a.vice-btn {
+  background-color: #fd9500;
+}
+
+a.vice-btn:hover {
+  background-color: #fdb300;
+}
+
+/*清除IE10+ input的默认样式(右边的叉叉和眼睛)*/
+::-ms-clear, ::-ms-reveal {
+  display: none;
+}
+
+/*进度条*/
+.progress2 {
+  background-position: 0 -60px !important;
+}
+
+.progress3 {
+  background-position: 0 -118px !important;
 }
 
 .header {
@@ -148,10 +190,14 @@ input[type="checkbox"]:checked:disabled {
   color: #7d7d7d;
 }
 
+.header .header-top a.header-city {
+  text-decoration: none;
+}
+
 .header .header-top .header-phone {
   position: absolute;
   top: 0;
-  left: 114px;
+  left: 130px;
   font-weight: bold;
   font-size: 18px;
 }
@@ -167,6 +213,18 @@ input[type="checkbox"]:checked:disabled {
   margin-left: 20px;
 }
 
+.header .header-top .header-top-left {
+  position: absolute;
+  padding: 0 1em;
+  border-left: 1px solid transparent;
+  border-right: 1px solid transparent;
+}
+
+.header .header-top .header-top-left:hover {
+  background-color: #fff;
+  border-color: #d6d3d3;
+}
+
 .header .header-top .all-city-panel {
   position: absolute;
   top: 30px;
@@ -178,22 +236,30 @@ input[type="checkbox"]:checked:disabled {
   background-color: #fff;
   overflow: hidden;
   z-index: 9;
+  border: 1px solid #d6d3d3;
+  border-top: none;
 }
 
 .header .header-top .all-city-panel li {
   display: inline-block;
   float: left;
   white-space: nowrap;
-  padding: 0 10px;
+  margin: 0 10px;
   color: #808080;
 }
 
+.header .header-top .all-city-panel li a {
+  padding: 3px 5px;
+}
+
 .header .header-top .all-city-panel li.current a {
-  color: #f00;
+  background-color: #b11b1c !important;
+  color: #fff !important;
 }
 
 .header .header-top .all-city-panel li a:hover {
-  color: #f00;
+  text-decoration: none;
+  background-color: #eee;
 }
 
 .header .header-top .user-name {
@@ -241,13 +307,7 @@ input[type="checkbox"]:checked:disabled {
   position: absolute;
   top: 0;
   right: -90px;
-  height: 38px;
   width: 90px;
-  line-height: 38px;
-  background-color: #fd9500;
-  color: #fff;
-  font-size: 16px;
-  text-align: center;
   border-radius: 0 3px 3px 0;
 }
 
@@ -277,14 +337,22 @@ input[type="checkbox"]:checked:disabled {
   right: .5em;
 }
 
-.header .header-content-wrap .header-content .cart-box .icon-numbackground {
+.header .header-content-wrap .header-content .cart-box .cart-num {
   position: absolute;
   top: -8px;
   right: 1.2em;
+  width: 30px;
+  height: 17px;
   text-align: center;
   line-height: 17px;
   color: #fff;
+  background-color: #fd9500;
+  border-radius: 8px;
   font-size: 10px;
+}
+
+.header .header-content-wrap .header-content .cart-box:hover + .cart-list-box, .header .header-content-wrap .header-content .cart-list-box:hover {
+  display: block;
 }
 
 .header .header-content-wrap .header-content .cart-list-box {
@@ -297,6 +365,7 @@ input[type="checkbox"]:checked:disabled {
   font-size: 14px;
   padding-top: 1em;
   box-shadow: 0px 0px 15px;
+  display: none;
 }
 
 .header .header-content-wrap .header-content .cart-list-box .cart-list {
@@ -381,13 +450,9 @@ input[type="checkbox"]:checked:disabled {
   margin-right: .5em;
 }
 
-.icon-numbackground {
-  display: inline-block;
-}
-
 .footer {
-  margin-top: 84px;
   text-align: center;
+  padding-bottom: 50px;
 }
 
 .footer .about-us a {
@@ -407,6 +472,143 @@ input[type="checkbox"]:checked:disabled {
 .content {
   width: 1200px;
   height: 438px;
-  margin: 45px auto 0;
+  margin: 45px auto 84px;
+  position: relative;
   background: url("../img/login_banner.png") no-repeat;
+}
+
+.login-box {
+  position: absolute;
+  top: 0;
+  right: 76px;
+  width: 360px;
+  height: 430px;
+  border: 1px solid #e1e1e1;
+  border-top: 2px solid #0380d8;
+}
+
+.login-box .login-panel {
+  margin: 15px 40px 0;
+}
+
+.login-box .login-panel h1 {
+  float: left;
+  font-size: 24px;
+  color: #989898;
+  font-weight: normal;
+}
+
+.login-box .login-panel .main-tip {
+  margin-top: 12px;
+  font-size: 12px;
+  float: right;
+}
+
+.login-box .login-panel .main-tip a {
+  color: #fd9500;
+}
+
+.login-box .login-panel .prompt-box {
+  height: 38px;
+  padding: 10px 0 0;
+}
+
+.login-box .login-panel .prompt-box .prompt-text {
+  position: relative;
+  height: 36px;
+  line-height: 36px;
+  padding-left: 3em;
+  border: 1px solid #f7d0d4;
+  background-color: #fbf0f1;
+  color: #ed5565;
+  border-radius: 3px;
+}
+
+.login-box .login-panel .prompt-box .icon-error {
+  position: absolute;
+  left: 1em;
+  top: 8px;
+}
+
+.login-box .login-panel .text-box {
+  position: relative;
+  height: 40px;
+  padding: 12px 0;
+  font-size: 12px;
+}
+
+.login-box .login-panel .text-box .text-icon {
+  position: absolute;
+  top: 26px;
+  left: 1em;
+}
+
+.login-box .login-panel .text-box .icon-lock {
+  top: 22px;
+}
+
+.login-box .login-panel .text-box input[type=text], .login-box .login-panel .text-box input[type=password] {
+  width: 228px;
+  padding-left: 50px;
+  line-height: 38px;
+  height: 38px;
+  border-radius: 2px;
+}
+
+.login-box .login-panel .text-box .submit-btn {
+  width: 100%;
+}
+
+.login-box .login-panel .remember-box {
+  position: relative;
+  height: 16px;
+  line-height: 16px;
+  font-size: 12px;
+  padding: 6px 0;
+}
+
+.login-box .login-panel .remember-box .forget-pwd {
+  position: absolute;
+  right: 0;
+}
+
+.login-box .login-panel .remember-box .checkbox em {
+  position: absolute;
+  left: 25px;
+  top: 6px;
+  width: 50px;
+}
+
+.login-box .login-panel .code-box {
+  padding-bottom: 0;
+}
+
+.login-box .login-panel .code-box input[type=text] {
+  width: 110px;
+  padding-left: 10px;
+}
+
+.login-box .login-panel .code-box img {
+  height: 40px;
+  width: 80px;
+  margin-left: .3em;
+  margin-right: .8em;
+}
+
+.login-box .login-panel .code-box a {
+  color: #0380d8;
+}
+
+.login-box .login-panel .other-login {
+  font-size: 14px;
+}
+
+.login-box .login-panel .other-login p {
+  color: #989898;
+  font-size: 12px;
+  margin-bottom: .5em;
+}
+
+.login-box .login-panel .other-login .split-line {
+  margin: 0 1em;
 }

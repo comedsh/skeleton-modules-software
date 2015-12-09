@@ -51,6 +51,8 @@ public class User extends AbstractDomainObject implements DomainObject, MessageT
 	private String wechat;
 
 	private Long roleId;
+	
+	private Long sellerId;
 
 	private Long userLevelId;
 
@@ -130,6 +132,14 @@ public class User extends AbstractDomainObject implements DomainObject, MessageT
 
 	public void setRoleId(Long roleId) {
 		this.roleId = roleId;
+	}
+	
+	public Long getSellerId() {
+		return sellerId;
+	}
+
+	public void setSellerId(Long sellerId) {
+		this.sellerId = sellerId;
 	}
 
 	public Long getUserLevelId() {

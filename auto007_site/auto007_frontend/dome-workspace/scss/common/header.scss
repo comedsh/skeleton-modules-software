@@ -12,22 +12,39 @@
 		a{
 			color: $siteMainFontColor;
 		}
+		a.header-city{
+			text-decoration:none;
+		}
 		.header-phone{
 			position: absolute;
 			top: 0;
-			left: 114px;
+			left: 130px;
 			font-weight: bold;
 			font-size:18px;
 		}
+
 		.quick-menu{
 			position: absolute;
 			top: 0;
 			right: .5em;
+
 			li{
 				float: left;
 				margin-left: 20px;
 			}
 		}
+		
+		.header-top-left{
+			position: absolute;
+			padding:0 1em;
+			border-left:1px solid transparent;
+			border-right:1px solid transparent;
+			&:hover{
+				background-color:#fff;
+				border-color:$textBoxBorderColor;
+			}
+		}
+
 		.all-city-panel{
 			position: absolute;
 			top:30px;
@@ -39,29 +56,37 @@
 			background-color:#fff;
 			overflow: hidden;
 			z-index: 9;
+			border:1px solid $textBoxBorderColor;
+			border-top:none;
 			li{
 				display: inline-block;
 			    float: left;
 			    white-space: nowrap;
-			    padding: 0 10px;
+			    margin: 0 10px;
 			    color: #808080;
+				a{
+					padding:3px 5px;
+				}
 			    &.current{
 			    	a{
-			    		color: #f00;
+			    		background-color:#b11b1c!important;
+			    		color: #fff!important;
 			    	}
 			    	
 			    }
-			    a{
-			    	&:hover{
-			    		color:#f00;
-			    	}
-			    }
+				a:hover{
+					text-decoration: none;
+					background-color:#eee;
+				}
+			    
 			}
 		}
+
 		.user-name{
 			color: $siteBtnMainColor;
 		}
 	}
+
 	.header-content-wrap{
 		background-color:$siteBtnMainColor;
 		.header-content{
@@ -69,10 +94,13 @@
 			width: 1200px;
 			margin: 0 auto;
 			position: relative;
+
 			h1{
 				margin-left:17px;
 			}
+
 			.search-box{
+
 				position: absolute;
 				top: 21px;
 				right: 294px;
@@ -84,26 +112,23 @@
 					line-height: $siteBtnHeight;
 					border-radius:3px 0 0 3px;
 					background-color:#fff;
+
 					.search-text{
 						font-size: 12px;
 						border:none;
 						width: 100%;
 					}
 				}
+
 				.search-btn{
 					position:absolute;
 					top: 0;
 					right: -90px;
-					height: $siteBtnHeight;
 					width: 90px;
-					line-height: $siteBtnHeight;
-					background-color:$siteBtnViceColor;
-					color: #fff;
-					font-size: 16px;
-					text-align:center;
 					border-radius:0 3px 3px 0;
 				}
 			}
+
 			.cart-box{
 				position: absolute;
 				top: 21px;
@@ -116,16 +141,19 @@
 				font-size: 12px;
 				cursor: pointer;
 				z-index: 99;
+
 				.icon-cart{
 					position:absolute;
 					top: 10px;
 					left: 1em;
 				}
+
 				.icon-arrow_right{
 					position: absolute;
 					top: 12px;
 					right: .5em;
 				}
+
 				.cart-num{
 					position: absolute;
 					top: -8px;
@@ -140,6 +168,9 @@
 					font-size: 10px;
 				}
 			}
+			.cart-box:hover+.cart-list-box,.cart-list-box:hover{
+				display: block;
+			}
 			.cart-list-box{
 				position: absolute;
 				top:58px;
@@ -150,16 +181,19 @@
 				font-size: 14px;
 				padding-top:1em;
 				box-shadow: 0px 0px 15px;
+				display: none;
 				.cart-list{
 					overflow-y: auto;
 					overflow-x: hidden;
 					max-height: 350px;
 					height: auto!important;
 					padding:0 .5em 0 10px;
+
 					li{
 						padding:15px 90px 16px 0;
 						border-bottom:1px solid #c2c8cc;
 						position: relative;
+
 						.product-title{
 							display: block;
 							width: 165px;
@@ -168,15 +202,18 @@
 						    color: #505050;
 						    line-height: 1.4;
 						}
+
 						.product-para{
 							margin-top: .4em;
 							height: 16px;
 							line-height: 1em;
 						}
+
 						.product-price{
 							margin-top: .4em;
 							text-align: left;
 						}
+
 						.delete-btn{
 							position:absolute;
 							top: 15px;
@@ -184,11 +221,13 @@
 							font-size: 12px;
 							color: $siteMainFontColor;
 						}
+
 						.num{
 							color: #ed5565;
 						}
 					}
 				}
+
 				.cart-total{
 					height: 40px;
 					line-height: 40px;
@@ -197,9 +236,11 @@
 					font-size: 12px;
 					background-color:#e8e8e8;
 					padding-left:1em;
+
 					.product-num{
 						color: #000;
 					}
+					
 					.go-cart-btn{
 						position: absolute;
 						top: 5px;

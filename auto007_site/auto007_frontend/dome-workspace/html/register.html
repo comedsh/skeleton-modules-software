@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>注册</title>
+	<link rel="stylesheet" href="../resources-old/css/sprite.css">
+	<link rel="stylesheet" href="../resources-old/css/register.css">
+
+</head>
+<body>
+<!--页面头部-->
+<div class="header">
+	<div class="header-top">
+		<p class="header-top-left">
+			<em>所在地：</em>
+			<a href="#" class="header-city">成都<i class="icon-arrow_down"></i></a>
+		<div class="header-phone"><i class="icon-phone"></i>400-616-6666</div>
+		</p>
+		<!--顶部右边菜单，如不需某个菜单项，直接删除dom即可-->
+		<ul class="quick-menu">
+			<li><a href="#">首页</a></li>
+			<li>|</li>
+			<li><a href="#">原厂目录</a></li>
+			<li>|</li>
+			<li><a href="#">品牌件</a></li>
+			<li>|</li>
+			<li>欢迎您，<span class="user-name">杨志</span>&nbsp;&nbsp;&nbsp;<a href="#">退出</a></li>
+			<li>|</li>
+			<li><a href="#">订单记录</a></li>
+			<li>|</li>
+			<li><i class="icon-circle"></i><a href="#">个人中心</a><i class="icon-arrow_down"></i></li>
+			<li>|</li>
+			<li><a href="#">帮助中心</a></li>
+			<li>|</li>
+		</ul>
+		<ul class="all-city-panel" style="display:none;">
+			<li><a href="#">成都555</a></li>
+			<li class="current"><a href="#">成都</a></li>
+			<li><a href="#">成都</a></li>
+			<li><a href="#">成都</a></li>
+			<li><a href="#">成都</a></li>
+			<li><a href="#">成都</a></li>
+		</ul>
+	</div>
+	<div class="header-content-wrap">
+		<div class="header-content">
+			<h1 class="logo-wraper">
+				<img src="../resources-old/img/logo.png" alt="logo">
+			</h1>
+			<div class="search-box">
+				<div class="search-text-box">
+					<input type="text" placeholder="商品名称/VIN编号/OE编号/品牌" class="search-text">
+				</div><a href="#" class="search-btn">搜 索</a>
+			</div>
+			<div class="cart-box">
+				我的购物车
+				<i class="icon-cart"></i>
+				<i class="icon-arrow_right"></i>
+				<i class="icon-numbackground cart-num">100</i>
+			</div>
+			<div class="cart-list-box" style="display:none;">
+				<ul class="cart-list">
+					<li>
+						<a class="product-title" href="#">雷贝斯/RAYBESTOS众EA211专用金火花塞雷贝斯/RAYBESTOS众EA211专用金火花塞</a>
+						<p class="product-para">MD01931870302983409</p>
+						<p class="product-price"><em class="num">￥1760</em> X 1</p>
+						<a href="#" class="delete-btn">删除</a>
+					</li>
+					<li>
+						<a class="product-title" href="#">雷贝斯/RAYBESTOS众EA211专用金火花塞雷贝斯/RAYBESTOS众EA211专用金火花塞</a>
+						<p class="product-para">MD01931870302983409</p>
+						<p class="product-price"><em class="num">￥1760</em> X 1</p>
+						<a href="#" class="delete-btn">删除</a>
+					</li>
+					<li>
+						<a class="product-title" href="#">雷贝斯/RAYBESTOS众EA211专用金火花塞雷贝斯/RAYBESTOS众EA211专用金火花塞</a>
+						<p class="product-para">MD01931870302983409</p>
+						<p class="product-price"><em class="num">￥1760</em> X 1</p>
+						<a href="#" class="delete-btn">删除</a>
+					</li>
+					<li>
+						<a class="product-title" href="#">雷贝斯/RAYBESTOS众EA211专用金火花塞雷贝斯/RAYBESTOS众EA211专用金火花塞</a>
+						<p class="product-para">MD01931870302983409</p>
+						<p class="product-price"><em class="num">￥1760</em> X 1</p>
+						<a href="#" class="delete-btn">删除</a>
+					</li>
+					<li>
+						<a class="product-title" href="#">雷贝斯/RAYBESTOS众EA211专用金火花塞雷贝斯/RAYBESTOS众EA211专用金火花塞</a>
+						<p class="product-para">MD01931870302983409</p>
+						<p class="product-price"><em class="num">￥1760</em> X 1</p>
+						<a href="#" class="delete-btn">删除</a>
+					</li>
+
+				</ul>
+				<div class="cart-total">
+					<span>共<em class="product-num">5</em>件商品</span>
+					<span>共计 <em class="product-num">￥2450.00</em></span>
+					<a href="#" class="go-cart-btn">去购物车</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--页面内容-->
+<div class="content">
+	<div class="header-item-box">
+		<div class="personal">个人注册</div>
+		<div class="enterprise">企业注册</div>
+		<div class="business">商家注册</div>
+		<div class="login-text">
+			<span>已有账号？</span>
+			<a href="#">马上登陆</a>
+		</div>
+	</div>
+
+	<div class="personal-info">
+		<div class="row">
+			<div class="field-col">
+				<span>*</span>
+				用户名：
+			</div>
+			<div class="input-col">
+				<input id="p_userName" class="normal-input" type="text"/>
+			</div>
+			<div class="msg-col">
+				<div class="show-normal-msg">
+					20位字符，支持字母、汉字、数字
+				</div>
+				<div class="show-error-msg" style="display: none">
+					<div class="icon-btn icon-dark_grey_circle_fail"></div>
+					<div class="icon icon-error"></div>
+					<span>输入的用户名格式不符合规范，请重新输入</span>
+				</div>
+				<div class="show-success-msg" style="display: none">
+					<div class="icon icon-sucess"></div>
+					<span>输入正确</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="field-col">
+				<span>*</span>
+				设置密码：
+			</div>
+			<div class="input-col">
+				<input id="p_password" class="normal-input" type="password" value="">
+			</div>
+			<div class="msg-col">
+				<div class="show-normal-msg">
+					6-20位字符，建议字母、数字、特殊符号两种以上组合
+				</div>
+				<div class="show-error-msg" style="display: none">
+					<div class="icon-btn icon-dark_grey_circle_fail"></div>
+					<div class="icon icon-error"></div>
+					<span>输入的密码格式不符合规范，请重新输入</span>
+				</div>
+				<div class="show-success-msg" style="display: none">
+					<div class="icon icon-sucess"></div>
+					<span>输入正确</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="field-col">
+				<span>*</span>
+				确认密码：
+			</div>
+			<div class="input-col">
+				<input id="p_repeat_password" class="normal-input" type="text" value="">
+			</div>
+			<div class="msg-col">
+				<div class="show-normal-msg">
+					请再次输入相同的密码
+				</div>
+				<div class="show-error-msg" style="display: none">
+					<div class="icon-btn icon-dark_grey_circle_fail"></div>
+					<div class="icon icon-error"></div>
+					<span>两次输入的密码不一致，请重新输入</span>
+				</div>
+				<div class="show-success-msg" style="display: none">
+					<div class="icon icon-sucess"></div>
+					<span>输入正确</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="field-col">
+				邮箱地址：
+			</div>
+			<div class="input-col">
+				<input id="p_email" class="normal-input" type="text" value="">
+			</div>
+			<div class="msg-col">
+				<div class="show-normal-msg"></div>
+				<div class="show-error-msg" style="display: none">
+					<div class="icon-btn icon-dark_grey_circle_fail"></div>
+					<div class="icon icon-error"></div>
+					<span>邮箱地址格式不正确，请重新输入</span>
+				</div>
+				<div class="show-success-msg" style="display: none">
+					<div class="icon icon-sucess"></div>
+					<span>输入正确</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="row row-max-height">
+			<div class="field-col">
+				<span>*</span>
+				手机号：
+			</div>
+			<div class="input-col">
+				<input id="p_phone" class="normal-input" type="text" value="">
+				<div class="normal-alert-info">请输入11位手机号码</div>
+			</div>
+			<div class="msg-col">
+				<input id="p_get_phone_number" class="normal-phone-number-btn" type="button" value="获取手机验证码"/>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="field-col">
+				<span>*</span>
+				短信验证码：
+			</div>
+			<div class="input-col">
+				<input id="p_msg_code" class="normal-input" type="text" value="">
+			</div>
+			<div class="msg-col">
+				<div class="show-normal-msg">请输入4位验证码</div>
+				<div class="show-error-msg" style="display: none">
+					<div class="icon-btn icon-dark_grey_circle_fail"></div>
+					<div class="icon icon-error"></div>
+					<span>短信验证码位数不对，请重新输入</span>
+				</div>
+				<div class="show-success-msg" style="display: none">
+					<div class="icon icon-sucess"></div>
+					<span>输入正确</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="row row-max-height">
+			<div class="field-col">
+				<span>*</span>
+				验证码：
+			</div>
+			<div class="input-col input-col-min">
+				<input id="p_pic_code" class="check-code-input" type="text" value="">
+				<img src="" />
+				<div class="normal-alert-info">请输入4位的验证码</div>
+			</div>
+			<div class="msg-col">
+				<a href="#">换一张</a>
+			</div>
+		</div>
+
+		<div class="agreement">
+			<div class="checkbox"
+				 ng-click="register.selectAgreement()"
+				 ng-class="{'icon-seleted_radio':register.p_isAgreement, 'icon-unseleted_radio':!register.p_isAgreement,}"></div>
+			<span>我已阅读并同意</span>
+			<a href="#">《Auto007用户协议》</a>
+		</div>
+
+		<div class="register-button">
+			<input type="button" value="立即注册">
+		</div>
+	</div>
+</div>
+
+<!--页面底部-->
+<div class="footer">
+	<p class="about-us">
+		<a href="#">关于我们</a>
+		<em>|</em>
+		<a href="#">联系我们</a>
+		<em>|</em>
+		<a href="#">人才招聘</a>
+	</p>
+	<p class="copyright">备案号：新ICP备12057998号-1 新疆丰华神州汽车配件有限公司版权所有</p>
+</div>
+
+<script src="../resources-old/js/lib/fenghua.lib.min.js"></script>
+<script src="../resources-old/js/register.js"></script>
+</body>
+</html>

@@ -47,7 +47,6 @@ public interface UserService {
 	 * @return
 	 */
 	public User getUserById(Long id);
-
 	/**
 	 * 通过name查询用户
 	 * @return

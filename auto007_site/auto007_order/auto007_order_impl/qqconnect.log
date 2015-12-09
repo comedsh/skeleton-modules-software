@@ -1,0 +1,229 @@
+0    DEBUG [2015-12-08 10:47:35]  SpringJUnit4ClassRunner constructor called with [class com.fenghua.auto.order.service.OrderQueryTest]
+7    DEBUG [2015-12-08 10:47:35]  Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+13   DEBUG [2015-12-08 10:47:35]  Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+27   DEBUG [2015-12-08 10:47:35]  Instantiating TestContextBootstrapper for test class [com.fenghua.auto.order.service.OrderQueryTest] from class [org.springframework.test.context.support.DefaultTestContextBootstrapper]
+70   DEBUG [2015-12-08 10:47:35]  Delegating to GenericXmlContextLoader to process context configuration [ContextConfigurationAttributes@2afe6d5f declaringClass = 'com.fenghua.auto.order.service.OrderQueryTest', classes = '{}', locations = '{/spring-context.xml, /spring-mybatis.xml, /spring-security.xml}', inheritLocations = true, initializers = '{}', inheritInitializers = true, name = [null], contextLoaderClass = 'org.springframework.test.context.ContextLoader'].
+74   DEBUG [2015-12-08 10:47:35]  Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.fenghua.auto.order.service.OrderQueryTest]
+82   DEBUG [2015-12-08 10:47:35]  @TestExecutionListeners is not present for class [com.fenghua.auto.order.service.OrderQueryTest]: using defaults.
+92   INFO  [2015-12-08 10:47:35]  Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener]
+132  INFO  [2015-12-08 10:47:35]  Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@7a2b25e6, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@26c55db3, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@678aa6a7, org.springframework.test.context.support.DirtiesContextTestExecutionListener@3fc3530c, org.springframework.test.context.transaction.TransactionalTestExecutionListener@30815988, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@7c1d0898, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@561f72d0]
+134  DEBUG [2015-12-08 10:47:35]  Retrieved @ProfileValueSourceConfiguration [null] for test class [com.fenghua.auto.order.service.OrderQueryTest]
+135  DEBUG [2015-12-08 10:47:35]  Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.fenghua.auto.order.service.OrderQueryTest]
+137  DEBUG [2015-12-08 10:47:35]  Retrieved @ProfileValueSourceConfiguration [null] for test class [com.fenghua.auto.order.service.OrderQueryTest]
+137  DEBUG [2015-12-08 10:47:35]  Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.fenghua.auto.order.service.OrderQueryTest]
+166  DEBUG [2015-12-08 10:47:35]  Retrieved @ProfileValueSourceConfiguration [null] for test class [com.fenghua.auto.order.service.OrderQueryTest]
+166  DEBUG [2015-12-08 10:47:35]  Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.fenghua.auto.order.service.OrderQueryTest]
+168  DEBUG [2015-12-08 10:47:35]  Retrieved @ProfileValueSourceConfiguration [null] for test class [com.fenghua.auto.order.service.OrderQueryTest]
+168  DEBUG [2015-12-08 10:47:35]  Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.fenghua.auto.order.service.OrderQueryTest]
+169  DEBUG [2015-12-08 10:47:35]  Retrieved @ProfileValueSourceConfiguration [null] for test class [com.fenghua.auto.order.service.OrderQueryTest]
+169  DEBUG [2015-12-08 10:47:35]  Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.fenghua.auto.order.service.OrderQueryTest]
+173  DEBUG [2015-12-08 10:47:35]  Before test class: context [DefaultTestContext@4fe05236 testClass = OrderQueryTest, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@10358032 testClass = OrderQueryTest, locations = '{classpath:/spring-context.xml, classpath:/spring-mybatis.xml, classpath:/spring-security.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]], class annotated with @DirtiesContext [false] with mode [null].
+174  DEBUG [2015-12-08 10:47:35]  Retrieved @ProfileValueSourceConfiguration [null] for test class [com.fenghua.auto.order.service.OrderQueryTest]
+174  DEBUG [2015-12-08 10:47:35]  Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.fenghua.auto.order.service.OrderQueryTest]
+178  DEBUG [2015-12-08 10:47:35]  Performing dependency injection for test context [[DefaultTestContext@4fe05236 testClass = OrderQueryTest, testInstance = com.fenghua.auto.order.service.OrderQueryTest@12b3519c, testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@10358032 testClass = OrderQueryTest, locations = '{classpath:/spring-context.xml, classpath:/spring-mybatis.xml, classpath:/spring-security.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]]].
+179  DEBUG [2015-12-08 10:47:35]  Delegating to GenericXmlContextLoader to load context from [MergedContextConfiguration@10358032 testClass = OrderQueryTest, locations = '{classpath:/spring-context.xml, classpath:/spring-mybatis.xml, classpath:/spring-security.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]].
+179  DEBUG [2015-12-08 10:47:35]  Loading ApplicationContext for merged context configuration [[MergedContextConfiguration@10358032 testClass = OrderQueryTest, locations = '{classpath:/spring-context.xml, classpath:/spring-mybatis.xml, classpath:/spring-security.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]].
+330  DEBUG [2015-12-08 10:47:35]  Adding [systemProperties] PropertySource with lowest search precedence
+333  DEBUG [2015-12-08 10:47:35]  Adding [systemEnvironment] PropertySource with lowest search precedence
+333  DEBUG [2015-12-08 10:47:35]  Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+349  INFO  [2015-12-08 10:47:35]  Loading XML bean definitions from class path resource [spring-context.xml]
+353  ERROR [2015-12-08 10:47:35]  Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@678aa6a7] to prepare test instance [com.fenghua.auto.order.service.OrderQueryTest@12b3519c]
+java.lang.IllegalStateException: Failed to load ApplicationContext
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:124)
+	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:83)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:117)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:83)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:228)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:217)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:276)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:278)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:236)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:87)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:180)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)
+Caused by: org.springframework.beans.factory.BeanDefinitionStoreException: IOException parsing XML document from class path resource [spring-context.xml]; nested exception is java.io.FileNotFoundException: class path resource [spring-context.xml] cannot be opened because it does not exist
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:344)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:304)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:181)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:217)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:188)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:252)
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadBeanDefinitions(AbstractGenericContextLoader.java:253)
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:122)
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:60)
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.delegateLoading(AbstractDelegatingSmartContextLoader.java:109)
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.loadContext(AbstractDelegatingSmartContextLoader.java:261)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:98)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:116)
+	... 25 more
+Caused by: java.io.FileNotFoundException: class path resource [spring-context.xml] cannot be opened because it does not exist
+	at org.springframework.core.io.ClassPathResource.getInputStream(ClassPathResource.java:172)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:330)
+	... 37 more
+370  DEBUG [2015-12-08 10:47:35]  After test class: context [DefaultTestContext@4fe05236 testClass = OrderQueryTest, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@10358032 testClass = OrderQueryTest, locations = '{classpath:/spring-context.xml, classpath:/spring-mybatis.xml, classpath:/spring-security.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]], class annotated with @DirtiesContext [false] with mode [null].
+0    DEBUG [2015-12-08 10:48:02]  SpringJUnit4ClassRunner constructor called with [class com.fenghua.auto.order.service.OrderQueryTest]
+7    DEBUG [2015-12-08 10:48:02]  Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+14   DEBUG [2015-12-08 10:48:02]  Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+26   DEBUG [2015-12-08 10:48:02]  Instantiating TestContextBootstrapper for test class [com.fenghua.auto.order.service.OrderQueryTest] from class [org.springframework.test.context.support.DefaultTestContextBootstrapper]
+68   DEBUG [2015-12-08 10:48:02]  Delegating to GenericXmlContextLoader to process context configuration [ContextConfigurationAttributes@2afe6d5f declaringClass = 'com.fenghua.auto.order.service.OrderQueryTest', classes = '{}', locations = '{/spring-context.xml, /spring-mybatis.xml, /spring-security.xml}', inheritLocations = true, initializers = '{}', inheritInitializers = true, name = [null], contextLoaderClass = 'org.springframework.test.context.ContextLoader'].
+71   DEBUG [2015-12-08 10:48:02]  Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.fenghua.auto.order.service.OrderQueryTest]
+79   DEBUG [2015-12-08 10:48:02]  @TestExecutionListeners is not present for class [com.fenghua.auto.order.service.OrderQueryTest]: using defaults.
+89   INFO  [2015-12-08 10:48:02]  Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener]
+132  INFO  [2015-12-08 10:48:02]  Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@561f72d0, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@2aaae1dc, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@38d24866, org.springframework.test.context.support.DirtiesContextTestExecutionListener@758f3dae, org.springframework.test.context.transaction.TransactionalTestExecutionListener@f1aa6ce, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@1ebd2621, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@1412504b]
+135  DEBUG [2015-12-08 10:48:02]  Retrieved @ProfileValueSourceConfiguration [null] for test class [com.fenghua.auto.order.service.OrderQueryTest]
+135  DEBUG [2015-12-08 10:48:02]  Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.fenghua.auto.order.service.OrderQueryTest]
+137  DEBUG [2015-12-08 10:48:02]  Retrieved @ProfileValueSourceConfiguration [null] for test class [com.fenghua.auto.order.service.OrderQueryTest]
+137  DEBUG [2015-12-08 10:48:02]  Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.fenghua.auto.order.service.OrderQueryTest]
+153  DEBUG [2015-12-08 10:48:03]  Retrieved @ProfileValueSourceConfiguration [null] for test class [com.fenghua.auto.order.service.OrderQueryTest]
+153  DEBUG [2015-12-08 10:48:03]  Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.fenghua.auto.order.service.OrderQueryTest]
+154  DEBUG [2015-12-08 10:48:03]  Retrieved @ProfileValueSourceConfiguration [null] for test class [com.fenghua.auto.order.service.OrderQueryTest]
+155  DEBUG [2015-12-08 10:48:03]  Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.fenghua.auto.order.service.OrderQueryTest]
+156  DEBUG [2015-12-08 10:48:03]  Retrieved @ProfileValueSourceConfiguration [null] for test class [com.fenghua.auto.order.service.OrderQueryTest]
+156  DEBUG [2015-12-08 10:48:03]  Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.fenghua.auto.order.service.OrderQueryTest]
+159  DEBUG [2015-12-08 10:48:03]  Before test class: context [DefaultTestContext@54038f36 testClass = OrderQueryTest, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@35af4d51 testClass = OrderQueryTest, locations = '{classpath:/spring-context.xml, classpath:/spring-mybatis.xml, classpath:/spring-security.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]], class annotated with @DirtiesContext [false] with mode [null].
+160  DEBUG [2015-12-08 10:48:03]  Retrieved @ProfileValueSourceConfiguration [null] for test class [com.fenghua.auto.order.service.OrderQueryTest]
+161  DEBUG [2015-12-08 10:48:03]  Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.fenghua.auto.order.service.OrderQueryTest]
+164  DEBUG [2015-12-08 10:48:03]  Performing dependency injection for test context [[DefaultTestContext@54038f36 testClass = OrderQueryTest, testInstance = com.fenghua.auto.order.service.OrderQueryTest@4d56d418, testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@35af4d51 testClass = OrderQueryTest, locations = '{classpath:/spring-context.xml, classpath:/spring-mybatis.xml, classpath:/spring-security.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]]].
+164  DEBUG [2015-12-08 10:48:03]  Delegating to GenericXmlContextLoader to load context from [MergedContextConfiguration@35af4d51 testClass = OrderQueryTest, locations = '{classpath:/spring-context.xml, classpath:/spring-mybatis.xml, classpath:/spring-security.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]].
+165  DEBUG [2015-12-08 10:48:03]  Loading ApplicationContext for merged context configuration [[MergedContextConfiguration@35af4d51 testClass = OrderQueryTest, locations = '{classpath:/spring-context.xml, classpath:/spring-mybatis.xml, classpath:/spring-security.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]].
+315  DEBUG [2015-12-08 10:48:03]  Adding [systemProperties] PropertySource with lowest search precedence
+317  DEBUG [2015-12-08 10:48:03]  Adding [systemEnvironment] PropertySource with lowest search precedence
+318  DEBUG [2015-12-08 10:48:03]  Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+337  INFO  [2015-12-08 10:48:03]  Loading XML bean definitions from class path resource [spring-context.xml]
+341  ERROR [2015-12-08 10:48:03]  Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@38d24866] to prepare test instance [com.fenghua.auto.order.service.OrderQueryTest@4d56d418]
+java.lang.IllegalStateException: Failed to load ApplicationContext
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:124)
+	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:83)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:117)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:83)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:228)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:217)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:276)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:278)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:236)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:87)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:180)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)
+Caused by: org.springframework.beans.factory.BeanDefinitionStoreException: IOException parsing XML document from class path resource [spring-context.xml]; nested exception is java.io.FileNotFoundException: class path resource [spring-context.xml] cannot be opened because it does not exist
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:344)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:304)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:181)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:217)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:188)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:252)
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadBeanDefinitions(AbstractGenericContextLoader.java:253)
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:122)
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:60)
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.delegateLoading(AbstractDelegatingSmartContextLoader.java:109)
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.loadContext(AbstractDelegatingSmartContextLoader.java:261)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:98)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:116)
+	... 25 more
+Caused by: java.io.FileNotFoundException: class path resource [spring-context.xml] cannot be opened because it does not exist
+	at org.springframework.core.io.ClassPathResource.getInputStream(ClassPathResource.java:172)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:330)
+	... 37 more
+355  DEBUG [2015-12-08 10:48:03]  After test class: context [DefaultTestContext@54038f36 testClass = OrderQueryTest, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@35af4d51 testClass = OrderQueryTest, locations = '{classpath:/spring-context.xml, classpath:/spring-mybatis.xml, classpath:/spring-security.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]], class annotated with @DirtiesContext [false] with mode [null].
+0    DEBUG [2015-12-08 10:49:22]  SpringJUnit4ClassRunner constructor called with [class com.fenghua.auto.order.service.OrderQueryTest]
+9    DEBUG [2015-12-08 10:49:22]  Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+16   DEBUG [2015-12-08 10:49:22]  Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+28   DEBUG [2015-12-08 10:49:22]  Instantiating TestContextBootstrapper for test class [com.fenghua.auto.order.service.OrderQueryTest] from class [org.springframework.test.context.support.DefaultTestContextBootstrapper]
+71   DEBUG [2015-12-08 10:49:22]  Delegating to GenericXmlContextLoader to process context configuration [ContextConfigurationAttributes@33d02ffb declaringClass = 'com.fenghua.auto.order.service.OrderQueryTest', classes = '{}', locations = '{/spring-context.xml, /spring-mybatis.xml, /spring-security.xml}', inheritLocations = true, initializers = '{}', inheritInitializers = true, name = [null], contextLoaderClass = 'org.springframework.test.context.ContextLoader'].
+74   DEBUG [2015-12-08 10:49:22]  Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.fenghua.auto.order.service.OrderQueryTest]
+81   DEBUG [2015-12-08 10:49:22]  @TestExecutionListeners is not present for class [com.fenghua.auto.order.service.OrderQueryTest]: using defaults.
+93   INFO  [2015-12-08 10:49:22]  Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener]
+135  INFO  [2015-12-08 10:49:22]  Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@2d1bee74, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@4c418cf, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@6638c07a, org.springframework.test.context.support.DirtiesContextTestExecutionListener@17e4be04, org.springframework.test.context.transaction.TransactionalTestExecutionListener@2a7704dd, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@6be05ef2, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@57799932]
+138  DEBUG [2015-12-08 10:49:22]  Retrieved @ProfileValueSourceConfiguration [null] for test class [com.fenghua.auto.order.service.OrderQueryTest]
+139  DEBUG [2015-12-08 10:49:22]  Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.fenghua.auto.order.service.OrderQueryTest]
+168  DEBUG [2015-12-08 10:49:22]  Retrieved @ProfileValueSourceConfiguration [null] for test class [com.fenghua.auto.order.service.OrderQueryTest]
+168  DEBUG [2015-12-08 10:49:22]  Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.fenghua.auto.order.service.OrderQueryTest]
+170  DEBUG [2015-12-08 10:49:22]  Retrieved @ProfileValueSourceConfiguration [null] for test class [com.fenghua.auto.order.service.OrderQueryTest]
+170  DEBUG [2015-12-08 10:49:22]  Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.fenghua.auto.order.service.OrderQueryTest]
+171  DEBUG [2015-12-08 10:49:22]  Retrieved @ProfileValueSourceConfiguration [null] for test class [com.fenghua.auto.order.service.OrderQueryTest]
+171  DEBUG [2015-12-08 10:49:22]  Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.fenghua.auto.order.service.OrderQueryTest]
+174  DEBUG [2015-12-08 10:49:22]  Before test class: context [DefaultTestContext@51bc1897 testClass = OrderQueryTest, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@13f28b6d testClass = OrderQueryTest, locations = '{classpath:/spring-context.xml, classpath:/spring-mybatis.xml, classpath:/spring-security.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]], class annotated with @DirtiesContext [false] with mode [null].
+176  DEBUG [2015-12-08 10:49:22]  Retrieved @ProfileValueSourceConfiguration [null] for test class [com.fenghua.auto.order.service.OrderQueryTest]
+176  DEBUG [2015-12-08 10:49:22]  Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.fenghua.auto.order.service.OrderQueryTest]
+179  DEBUG [2015-12-08 10:49:22]  Performing dependency injection for test context [[DefaultTestContext@51bc1897 testClass = OrderQueryTest, testInstance = com.fenghua.auto.order.service.OrderQueryTest@3a9300bf, testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@13f28b6d testClass = OrderQueryTest, locations = '{classpath:/spring-context.xml, classpath:/spring-mybatis.xml, classpath:/spring-security.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]]].
+179  DEBUG [2015-12-08 10:49:22]  Delegating to GenericXmlContextLoader to load context from [MergedContextConfiguration@13f28b6d testClass = OrderQueryTest, locations = '{classpath:/spring-context.xml, classpath:/spring-mybatis.xml, classpath:/spring-security.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]].
+180  DEBUG [2015-12-08 10:49:22]  Loading ApplicationContext for merged context configuration [[MergedContextConfiguration@13f28b6d testClass = OrderQueryTest, locations = '{classpath:/spring-context.xml, classpath:/spring-mybatis.xml, classpath:/spring-security.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]].
+329  DEBUG [2015-12-08 10:49:22]  Adding [systemProperties] PropertySource with lowest search precedence
+333  DEBUG [2015-12-08 10:49:22]  Adding [systemEnvironment] PropertySource with lowest search precedence
+334  DEBUG [2015-12-08 10:49:22]  Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+351  INFO  [2015-12-08 10:49:22]  Loading XML bean definitions from class path resource [spring-context.xml]
+353  ERROR [2015-12-08 10:49:22]  Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@6638c07a] to prepare test instance [com.fenghua.auto.order.service.OrderQueryTest@3a9300bf]
+java.lang.IllegalStateException: Failed to load ApplicationContext
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:124)
+	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:83)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:117)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:83)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:228)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:217)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:276)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:278)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:236)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:87)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:180)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)
+Caused by: org.springframework.beans.factory.BeanDefinitionStoreException: IOException parsing XML document from class path resource [spring-context.xml]; nested exception is java.io.FileNotFoundException: class path resource [spring-context.xml] cannot be opened because it does not exist
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:344)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:304)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:181)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:217)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:188)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:252)
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadBeanDefinitions(AbstractGenericContextLoader.java:253)
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:122)
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:60)
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.delegateLoading(AbstractDelegatingSmartContextLoader.java:109)
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.loadContext(AbstractDelegatingSmartContextLoader.java:261)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:98)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:116)
+	... 25 more
+Caused by: java.io.FileNotFoundException: class path resource [spring-context.xml] cannot be opened because it does not exist
+	at org.springframework.core.io.ClassPathResource.getInputStream(ClassPathResource.java:172)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:330)
+	... 37 more
+369  DEBUG [2015-12-08 10:49:22]  After test class: context [DefaultTestContext@51bc1897 testClass = OrderQueryTest, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@13f28b6d testClass = OrderQueryTest, locations = '{classpath:/spring-context.xml, classpath:/spring-mybatis.xml, classpath:/spring-security.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]], class annotated with @DirtiesContext [false] with mode [null].
