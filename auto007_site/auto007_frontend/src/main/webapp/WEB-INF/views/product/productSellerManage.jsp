@@ -86,8 +86,7 @@
   </table>
   
   </div>
-<script type="text/javascript"src="/resources/javaScript/angular/angular.min.js"></script>
-<script type="text/javascript"src="/resources/javaScript/jQuery/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/resources/js/lib/fenghua.lib.min.js"></script>
  <script type="text/javascript">
  angular.module('seller-app', [])
  .controller('sellerController', function($scope,$http) {      	
