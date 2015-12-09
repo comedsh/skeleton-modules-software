@@ -48,11 +48,6 @@ public interface UserService {
 	 */
 	public User getUserById(Long id);
 	/**
-	 * 获取所有用户信息
-	 * @return
-	 */
-	public Page<User> getPageList(User user, PageRequest pageRequest);
-	/**
 	 * 通过name查询用户
 	 * @return
 	 */

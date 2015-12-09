@@ -26,7 +26,6 @@ import com.fenghua.auto.order.backend.dto.OrderSubmitDTO;
 import com.fenghua.auto.order.backend.qo.ShoppingCartQO;
 import com.fenghua.auto.order.backend.service.OrderSubmitService;
 import com.fenghua.auto.order.backend.service.ShoppingCartService;
-import com.fenghua.auto.sku.backend.domain.Sku;
 import com.fenghua.auto.sku.intf.dto.SkuDTO;
 import com.fenghua.auto.sku.intf.service.ISkuService;
 

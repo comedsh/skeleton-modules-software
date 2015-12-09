@@ -20,9 +20,9 @@
 		lock:false,
 		isNeedCode:false,
 		//验证码图片的url地址(须后端填写)
-		codeImageUrl:'',
+		codeImageUrl:'/user/pictureCode',
 		//登录提交的地址(须后端填写)
-		loginPostUrl:''
+		loginPostUrl:'/login'
 	};
 	var logic={
 		eventBind:function(){
@@ -73,17 +73,17 @@
 					type:'POST',
 					dataType:'json',
 					data:{
-						name:data.userInfo.userName,
-						pwd:data.userInfo.passWord,
-						code:data.userInfo.code,
-						isrememberpwd:data.userInfo.isRememberPwd?1:0
+						username:data.userInfo.userName,
+						password:data.userInfo.passWord,
+						vCode:data.userInfo.code,
+						autoLogin:data.userInfo.isRememberPwd?1:0
 					},
 					success:function(response){
-						if(!response.errors||!response.length){
+						if(response.messages!=null&&!response.message[0].field=="success"){
 							alert('登录成功');
-							//跳转到首页
-							//location.href='/';
-						}else{
+							//跳转到首页、
+							location.href='/secure/main';
+						}else if(response.errors!=null){
 							logic.stopLogin();
 							logic.showError(response.errors[0].msg);
 							if(true){

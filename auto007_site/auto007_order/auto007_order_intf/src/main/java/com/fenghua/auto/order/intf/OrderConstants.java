@@ -573,4 +573,48 @@ public final class OrderConstants {
 			return map;
 		}
 	}
+	
+	
+	public static enum DeliveryMethod {
+		DOORTODOOR(1, "送货上门");
+	
+		private final int value;
+		private final String name;
+
+		private DeliveryMethod(int value, String name) {
+			this.value = value;
+			this.name = name;
+		}
+
+		public int getValue() {
+			return value;
+		}
+
+		public String getName() {
+			return name;
+		}
+		public static boolean has(int value) {
+			for (DeliveryMethod item : DeliveryMethod.values()) {
+				if(item.getValue() == value) {
+					return true;
+				}
+			}
+			return false;
+		}
+		public static String findName(int value) {
+			for (DeliveryMethod item : DeliveryMethod.values()) {
+				if(item.getValue() == value) {
+					return item.getName();
+				}
+			}
+			return "";
+		}
+		public static Map<Integer, String> toMap() {
+			Map<Integer, String> map = new HashMap<Integer, String>();
+			for (DeliveryMethod item : DeliveryMethod.values()) {
+				map.put(item.getValue(), item.getName());
+			}
+			return map;
+		}
+	}
 }

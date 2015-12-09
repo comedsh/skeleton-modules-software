@@ -41,13 +41,20 @@ public class PageTag extends TagSupport {
         this.curpage = curpage;
     }
 
+    private String getLink(String url){
+    	boolean hasParam = url.contains("?");
+    	if (hasParam){
+    		return "<a href=''{0}&pageNumber={1}''>{2}</a>";
+    	} else {
+    		return "<a href=''{0}?pageNumber={1}''>{2}</a>";
+    	}
+    }
     @Override
     public int doStartTag() throws JspException {
         JspWriter out = this.pageContext.getOut();
         
         //{0}:url, {1}:curpage, {2}:pagesize, {3}:第一页 上一页 下一页 最后一页
-        curpage = curpage + 1;
-        String link = "<a href=''{0}?pageNumber={1}''>{2}</a>";
+        String link = getLink(url);
         if(curpage == 0) {
         	curpage = 1;
         } 

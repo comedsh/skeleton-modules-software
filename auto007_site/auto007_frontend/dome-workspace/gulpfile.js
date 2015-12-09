@@ -23,13 +23,18 @@ gulp.task('clear', function() {
 		, '../src/main/webapp/resources/**'], {force: true});
 });
 
+//用户中心css
+gulp.task('userCenterSass', function () {
+  return gulp.src('scss/usercenter/*.scss')
+    .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
+    .pipe(gulp.dest(RESOURCE_ROOT_PATH+'/css/usercenter/'));
+});
+
 
 //打包发布index相关联的sass文件
 gulp.task('sass', function () {
 	console.log('开始执行sass...');
-  return gulp.src('scss/*.scss')
-    .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
-    .pipe(gulp.dest(RESOURCE_ROOT_PATH+'/css/'));
+  	return gulp.run(['userCenterSass']);
 });
 
 //生成图片精灵
@@ -44,6 +49,14 @@ gulp.task('sprite', function () {
   }));
   //上面用到的路径依赖的根目录，为空则以gulpfile.js为准
   return spriteData.pipe(gulp.dest(''));
+});
+
+//合并login页面js
+gulp.task('LoginJS', function () {
+	return gulp.src(['./js/login.js'
+		, './js/common/header.js'])
+	.pipe(concat('login.js'))
+    .pipe(gulp.dest(RESOURCE_ROOT_PATH+'/js/'));
 });
 
 //合并js库(jquery, angular, underscore)

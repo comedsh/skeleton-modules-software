@@ -27,6 +27,8 @@ import com.fenghua.auto.backend.common.utils.DateUtil;
 import com.fenghua.auto.backend.core.utils.LabelErrorTranslator;
 import com.fenghua.auto.backend.core.utils.MessageAndErrorUtil;
 import com.fenghua.auto.backend.core.utils.MessageHelper;
+import com.fenghua.auto.backend.dao.PageInfo;
+import com.fenghua.auto.backend.dao.constants.SqlId;
 import com.fenghua.auto.backend.domain.mto.CommonMessageTransferObject;
 import com.fenghua.auto.backend.domain.mto.LabelError;
 import com.fenghua.auto.backend.domain.mto.MessageTransferObject;
@@ -61,10 +63,12 @@ public class SkuController {
 	
 	
 	@RequestMapping(method=RequestMethod.GET)
-	public String queryAll( Model model){
+	public String queryAll( @RequestParam(value="pageNumber",required=true, defaultValue="1") int pageNumber, Model model){
 		//查询上架商品
-		List<Sku> list = skuService.selectList(new Sku());
-		model.addAttribute("items",list);
+		PageInfo<Sku> pageInfo = new PageInfo<Sku>(pageNumber, 2);
+		PageInfo<Sku> list = skuService.selectListByPage(new Sku(), SqlId.SQL_SELECT, pageInfo);//skuService.selectList(new Sku());
+		model.addAttribute("items",pageInfo.getResult());
+		model.addAttribute("pageInfo", pageInfo);
 		return "web.product_list";
 	}
 	

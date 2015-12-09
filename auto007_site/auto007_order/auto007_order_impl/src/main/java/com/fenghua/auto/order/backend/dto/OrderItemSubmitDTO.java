@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.fenghua.auto.backend.core.utils.MessageHelper;
 import com.fenghua.auto.backend.domain.mto.LabelError;
 import com.fenghua.auto.order.backend.domain.OrderHeader;
 import com.fenghua.auto.order.backend.domain.OrderItem;
@@ -74,7 +75,12 @@ public class OrderItemSubmitDTO implements Serializable {
     
     public List<LabelError> valid() {
 		List<LabelError> errors = new ArrayList<LabelError>();
-		
+		if(this.skuId == null || this.skuId <= 0) {
+			errors.add(new LabelError("orderHeader.item.skuId", MessageHelper.getMessage("order.submit.orderHeader.item.skuId.invalid")));
+		}
+		if(this.qty == null || this.qty <= 0) {
+			errors.add(new LabelError("orderHeader.item.qty", MessageHelper.getMessage("order.submit.orderHeader.item.qty.invalid")));
+		}
 		return errors;
 	}
     

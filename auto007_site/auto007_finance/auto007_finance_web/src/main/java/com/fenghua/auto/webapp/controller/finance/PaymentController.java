@@ -42,4 +42,17 @@ public class PaymentController {
 		
 		return "web.finance.order.pay";
 	}
+	
+	@RequestMapping(value="/wxprepay", method=RequestMethod.GET)
+	public String wxPayment(Model model, @RequestParam(value="orderId", required = true) Long orderId) throws AuthenticationException{
+		try {
+			OrderPayment payment = orderPaymentService.genOrderPayment(UserSecurityUtils.getCurrentUserId(), orderId);
+			model.addAttribute("payment", payment);
+			model.addAttribute("paymentMethodList", OrderConstants.PaymentMethod.values());
+		} catch (BizException e) {
+			model.addAttribute("errorMsg", e.getI18nMessage());
+		}
+		
+		return "web.finance.order.pay";
+	}
 }
