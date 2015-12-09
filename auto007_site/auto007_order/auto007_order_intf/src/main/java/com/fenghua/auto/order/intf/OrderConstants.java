@@ -353,50 +353,6 @@ public final class OrderConstants {
 		}
 	}
 	
-	public static enum OnlinePaymentMethod {
-		WEIXIN_PAY(1, "微信支付"), 
-		ALI_PAY(2, "支付宝");
-	
-		private final int value;
-		private final String name;
-
-		private OnlinePaymentMethod(int value, String name) {
-			this.value = value;
-			this.name = name;
-		}
-
-		public int getValue() {
-			return value;
-		}
-
-		public String getName() {
-			return name;
-		}
-		public static boolean has(int value) {
-			for (OnlinePaymentMethod item : OnlinePaymentMethod.values()) {
-				if(item.getValue() == value) {
-					return true;
-				}
-			}
-			return false;
-		}
-		public static String findName(int value) {
-			for (OnlinePaymentMethod item : OnlinePaymentMethod.values()) {
-				if(item.getValue() == value) {
-					return item.getName();
-				}
-			}
-			return "";
-		}
-		public static Map<Integer, String> toMap() {
-			Map<Integer, String> map = new HashMap<Integer, String>();
-			for (OnlinePaymentMethod item : OnlinePaymentMethod.values()) {
-				map.put(item.getValue(), item.getName());
-			}
-			return map;
-		}
-	}
-	
 	public static enum PaymentStatus {
 		WAITING_PAY(0, "待支付"), 
 		PAYED(1, "已支付"); 

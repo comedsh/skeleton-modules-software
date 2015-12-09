@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+ <sku_statistic id="1" sale_count="100" buyer_count="50" high_praise="90%" comment_count="30" high_comment_count="10" sku_id="1"/>
+</dataset>

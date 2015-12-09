@@ -1,13 +1,40 @@
 package com.fenghua.auto.user.backend.domain;
 
-import com.fenghua.auto.backend.domain.DomainObject;
 import java.util.Date;
 
+import com.fenghua.auto.backend.domain.DomainObject;
+
 public class Seller implements DomainObject {
+	
 	private static final long serialVersionUID = 1L;
-    private Long id;
+
+	private Long id;
 
     private String name;
+
+    private Long cityAreaId;
+
+    private String detailAddress;
+
+    private String headcount;
+
+    private String businessLicence;
+
+    private String taxpayerLicence;
+
+    private String taxpayerNumber;
+
+    private String contactsName;
+
+    private String contactsPhone;
+
+    private String contactsMobile;
+
+    private String contactsDept;
+
+    private String contactsEmail;
+
+    private Boolean supportSettlementPayment;
 
     private Date createdTs;
 
@@ -31,6 +58,102 @@ public class Seller implements DomainObject {
 
     public void setName(String name) {
         this.name = name == null ? null : name.trim();
+    }
+
+    public Long getCityAreaId() {
+        return cityAreaId;
+    }
+
+    public void setCityAreaId(Long cityAreaId) {
+        this.cityAreaId = cityAreaId;
+    }
+
+    public String getDetailAddress() {
+        return detailAddress;
+    }
+
+    public void setDetailAddress(String detailAddress) {
+        this.detailAddress = detailAddress == null ? null : detailAddress.trim();
+    }
+
+    public String getHeadcount() {
+        return headcount;
+    }
+
+    public void setHeadcount(String headcount) {
+        this.headcount = headcount == null ? null : headcount.trim();
+    }
+
+    public String getBusinessLicence() {
+        return businessLicence;
+    }
+
+    public void setBusinessLicence(String businessLicence) {
+        this.businessLicence = businessLicence == null ? null : businessLicence.trim();
+    }
+
+    public String getTaxpayerLicence() {
+        return taxpayerLicence;
+    }
+
+    public void setTaxpayerLicence(String taxpayerLicence) {
+        this.taxpayerLicence = taxpayerLicence == null ? null : taxpayerLicence.trim();
+    }
+
+    public String getTaxpayerNumber() {
+        return taxpayerNumber;
+    }
+
+    public void setTaxpayerNumber(String taxpayerNumber) {
+        this.taxpayerNumber = taxpayerNumber == null ? null : taxpayerNumber.trim();
+    }
+
+    public String getContactsName() {
+        return contactsName;
+    }
+
+    public void setContactsName(String contactsName) {
+        this.contactsName = contactsName == null ? null : contactsName.trim();
+    }
+
+    public String getContactsPhone() {
+        return contactsPhone;
+    }
+
+    public void setContactsPhone(String contactsPhone) {
+        this.contactsPhone = contactsPhone == null ? null : contactsPhone.trim();
+    }
+
+    public String getContactsMobile() {
+        return contactsMobile;
+    }
+
+    public void setContactsMobile(String contactsMobile) {
+        this.contactsMobile = contactsMobile == null ? null : contactsMobile.trim();
+    }
+
+    public String getContactsDept() {
+        return contactsDept;
+    }
+
+    public void setContactsDept(String contactsDept) {
+        this.contactsDept = contactsDept == null ? null : contactsDept.trim();
+    }
+
+    public String getContactsEmail() {
+        return contactsEmail;
+    }
+
+    public void setContactsEmail(String contactsEmail) {
+        this.contactsEmail = contactsEmail == null ? null : contactsEmail.trim();
+    }
+
+    public Boolean getSupportSettlementPayment() {
+        return supportSettlementPayment;
+    }
+
+    public void setSupportSettlementPayment(Boolean supportSettlementPayment) {
+        this.supportSettlementPayment = supportSettlementPayment;
     }
 
     public Date getCreatedTs() {

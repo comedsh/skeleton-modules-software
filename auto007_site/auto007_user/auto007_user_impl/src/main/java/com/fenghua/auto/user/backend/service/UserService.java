@@ -1,8 +1,9 @@
 package com.fenghua.auto.user.backend.service;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 
 import com.fenghua.auto.user.backend.domain.Company;
 import com.fenghua.auto.user.backend.domain.PaymentType;
@@ -50,7 +51,7 @@ public interface UserService {
 	 * 获取所有用户信息
 	 * @return
 	 */
-	public List<User> getAll();
+	public Page<User> getPageList(User user, PageRequest pageRequest);
 	/**
 	 * 通过name查询用户
 	 * @return

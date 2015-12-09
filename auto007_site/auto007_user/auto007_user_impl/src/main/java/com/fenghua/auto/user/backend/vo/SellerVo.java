@@ -7,6 +7,6 @@ public class SellerVo extends Seller {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -1008425297333796712L;
+	private static final long serialVersionUID = 1L;
 
 }

@@ -17,8 +17,17 @@ import com.fenghua.auto.backend.dao.BaseDao;
 import com.fenghua.auto.backend.service.impl.BaseServiceImpl;
 import com.fenghua.auto.sku.backend.SkuConstants;
 import com.fenghua.auto.sku.backend.dao.SkuDao;
+import com.fenghua.auto.sku.backend.dao.SkuExtendAttrsDao;
+import com.fenghua.auto.sku.backend.dao.SkuImageDao;
+import com.fenghua.auto.sku.backend.dao.SkuImageHtmlDao;
+import com.fenghua.auto.sku.backend.dao.SkuStockDao;
+import com.fenghua.auto.sku.backend.dao.VehicleOeSkuDao;
 import com.fenghua.auto.sku.backend.domain.CatalogSku;
 import com.fenghua.auto.sku.backend.domain.Sku;
+import com.fenghua.auto.sku.backend.domain.SkuExtendAttrs;
+import com.fenghua.auto.sku.backend.domain.SkuImageHtml;
+import com.fenghua.auto.sku.backend.domain.SkuImages;
+import com.fenghua.auto.sku.backend.domain.SkuStock;
 import com.fenghua.auto.sku.backend.domain.VehicleOeSku;
 import com.fenghua.auto.sku.backend.service.CatalogService;
 import com.fenghua.auto.sku.backend.service.CatalogSkuService;
@@ -27,6 +36,7 @@ import com.fenghua.auto.sku.backend.service.VehicleOeSkuService;
 import com.fenghua.auto.sku.backend.vo.CatalogSkuVo;
 import com.fenghua.auto.sku.backend.vo.SkuManageQueryParams;
 import com.fenghua.auto.sku.backend.vo.SkuVo;
+
 
 /** 
   *<des>
@@ -49,6 +59,17 @@ public class SkuServiceImpl extends BaseServiceImpl<Sku> implements SkuService{
 	
 	@Autowired
 	private CatalogSkuService catalogSkuService;
+	
+	@Autowired
+	private VehicleOeSkuDao OeSkuDao;
+	@Autowired
+	private SkuImageHtmlDao skuImageHtmlDao;
+	@Autowired
+	private SkuImageDao skuImageDao;
+	@Autowired
+	private SkuExtendAttrsDao skuExtendAttrsDao;
+	@Autowired
+	private SkuStockDao skuStockDao;
 
 	@Override
 	protected BaseDao<Sku> getBaseDao() {
@@ -62,10 +83,119 @@ public class SkuServiceImpl extends BaseServiceImpl<Sku> implements SkuService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	@Override
+	public Long saveProduct(Sku sku,SkuStock skuStock,SkuImageHtml skuImageHtml, String oeCodes,
+			String oebrands,String imageBigs,String imageSmalls,String attrNames,String attrContents) {
+		String[] imageSmall=imageSmalls.split(";");
+		sku.setUrl(imageSmall[0]);
+		Long idLong=skuDao.saveProduct(sku);
+		if(idLong>0){
+			skuStock.setSkuId(idLong);
+			skuStockDao.insert(skuStock);
+			String[] oeCode=oeCodes.split(";");
+			String[] oebrand=oebrands.split(";");
+			String[] imageBig=imageBigs.split(";");
+			
+			String[] attrName=attrNames.split(";");
+			String[] attrContent=attrContents.split(";");
+			VehicleOeSku vehicleOeSku=new VehicleOeSku();
+			SkuImages image=new SkuImages();
+			SkuExtendAttrs extendAttr=new SkuExtendAttrs();
+			for(int i=0;i<oeCode.length;i++){
+				if("0".equals(oeCode[i]) && "0".equals(oebrand[i])){
+					continue;
+				}else{
+					vehicleOeSku.setBrand(oebrand[i]);
+					vehicleOeSku.setSkuId(idLong);
+					vehicleOeSku.setOeCode(oeCode[i]);
+					OeSkuDao.insert(vehicleOeSku);
+				}
+			}
+			//添加图片信息
+			for(int i=0;i<imageBig.length;i++){
+				if("0".equals(imageBig[i]) && "0".equals(imageSmall[i])){
+					continue;
+				}else{
+					image.setUrl(imageBig[i]);
+					image.setSmallUrl(imageSmall[i]);
+					image.setSkuId(idLong);
+					image.setSortNo(i+1);
+					image.setTitle("第"+(i+1)+"张图片上传");
+					skuImageDao.insert(image);
+				}
+			}
+			//添加商品扩展参数
+			for(int i=0;i<attrName.length;i++){
+				if("0".equals(attrName[i]) && "0".equals(attrContent[i])){
+					continue;
+				}else{
+					extendAttr.setName(attrName[i]);
+					extendAttr.setContents(attrContent[i]);
+					extendAttr.setSortNo(i+1);
+					extendAttr.setSkuId(idLong);
+					skuExtendAttrsDao.insert(extendAttr);
+				}
+			}
+			skuImageHtml.setSkuId(idLong);
+			skuImageHtmlDao.insert(skuImageHtml);
+		}
+		
+		return idLong;
+	}
 
 
 	@Override
-	public List<SkuVo> querySkuList(SkuManageQueryParams params) {
+	public Long deleteSkumessage(Long skuId) throws Exception{
+			VehicleOeSku vehicleOeSku=new VehicleOeSku();
+			vehicleOeSku.setSkuId(skuId);
+			SkuImages image=new SkuImages();
+			image.setSkuId(skuId);
+			SkuExtendAttrs extendAttr=new SkuExtendAttrs();
+			extendAttr.setSkuId(skuId);
+			SkuImageHtml skuImageHtml=new SkuImageHtml();
+			
+			skuImageHtml.setSkuId(skuId);
+			Sku sku=new Sku();
+			sku.setId(skuId);
+			SkuStock skuStock =new SkuStock();
+			skuStock.setSkuId(skuId);
+			skuImageDao.delete(image);
+			skuExtendAttrsDao.delete(extendAttr);
+	      
+			OeSkuDao.delete(vehicleOeSku);
+			skuImageHtmlDao.delete(skuImageHtml);
+			skuStockDao.delete(skuStock);
+			skuDao.delete(sku);
+		return skuId;
+	}
+
+
+	@Override
+	public List<SkuVo> querySkuListForSeller(SkuManageQueryParams params) {
+		List<Map<String,Object>> datas = querySkuList(params);
+		List<SkuVo> list = changeMaptoSkuVoList(datas);
+		   
+		VehicleOeSku oeSku = new VehicleOeSku();
+		
+		 for(SkuVo skuVo : list){		
+			 //获取SKU_OE
+			 oeSku.setSkuId(skuVo.getId());
+					 
+			 //设置Oe值
+			 initOe(oeSku, skuVo);
+ 
+			 //设置SKU_类目
+		     initCatalogList(oeSku, skuVo);
+			
+		 }
+		return list;
+	}
+
+	
+
+	@Override
+	public List<Map<String,Object>> querySkuList(SkuManageQueryParams params) {
 
 		Map<String,Object> queryParamMap = new HashMap<String,Object>();
 		//Long userId = UserSecurityUtils.getCurrentUserId();
@@ -122,24 +252,8 @@ public class SkuServiceImpl extends BaseServiceImpl<Sku> implements SkuService{
 			}
 		}
 		//查询SKU
-		List<Map<String,Object>> datas = skuDao.querySkuInfo(queryParamMap);
-		 List<SkuVo> list = changeMaptoSkuVoList(datas);
-	   
-		 VehicleOeSku oeSku = new VehicleOeSku();
-		
-		 for(SkuVo skuVo : list){		
-			 //获取SKU_OE
-			 oeSku.setSkuId(skuVo.getId());
-					 
-			 //设置Oe值
-			 initOe(oeSku, skuVo);
- 
-			//设置SKU_类目
-		    initCatalogList(oeSku, skuVo);
-			
-		 }
-
-		return list;
+		List<Map<String,Object>> datas = skuDao.querySkuInfo(queryParamMap);	
+		return datas;
 	}
 
     private void initOe(VehicleOeSku oeSku,SkuVo skuVo){
@@ -173,12 +287,35 @@ public class SkuServiceImpl extends BaseServiceImpl<Sku> implements SkuService{
 				skuVo.setUrl(map.get("url") == null? "":map.get("url").toString());
 				skuVo.setSkuNo(map.get("code") == null? "":map.get("code").toString());
 				skuVo.setPrice(map.get("sale_price") == null? "":map.get("sale_price").toString());
-				skuVo.setStatus(map.get("status") == null? null:Integer.valueOf(map.get("status").toString()));
+				skuVo.setStatus(Integer.valueOf(map.get("status").toString()));
 				skuVo.setStatusName(SkuConstants.SkuStatusEnum.findName(skuVo.getStatus()));
+				//设置sku 编辑 上架 下架  删除状态
+				setSkuOperSataus(skuVo);
 				list.add(skuVo);
 			}
 		}
 		return list;
+	}
+	
+	private void setSkuOperSataus(SkuVo skuVo){
+		int status = skuVo.getStatus();
+		//草稿
+		boolean isSaveStatus = status == SkuConstants.SkuStatusEnum.SAVE.getValue() ;
+		//上架
+		boolean isShelfUpStatus = status == SkuConstants.SkuStatusEnum.UP_SHELF.getValue() ;
+		//下架
+		boolean isShelfDownstatus = status == SkuConstants.SkuStatusEnum.DOWN_SHELF.getValue() ;
+		
+		//下架或 草稿状态能编辑
+		skuVo.setEdit(isSaveStatus || isShelfDownstatus);
+		//下架或草稿状态能删除
+		skuVo.setDelete(isSaveStatus || isShelfDownstatus);
+		
+		//上架状态能下架
+		skuVo.setShelfDown(isShelfUpStatus);
+		//草稿或下架状态能上架
+		skuVo.setShelfUp(isSaveStatus || isShelfDownstatus);
+		
 	}
 	
 	private void convertObjToSet(Set<Long> skuIdSets , List list){
@@ -256,5 +393,6 @@ public class SkuServiceImpl extends BaseServiceImpl<Sku> implements SkuService{
 		params.put("ids", ids);
 		return skuDao.selectSkuByIds(params);
 	}
+
 
 }

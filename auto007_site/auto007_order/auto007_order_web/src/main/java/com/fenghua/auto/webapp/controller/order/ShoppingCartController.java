@@ -77,6 +77,22 @@ public class ShoppingCartController {
 	}
 	
 	@ResponseBody
+	@RequestMapping(value="/add", method=RequestMethod.POST)
+	public OrderMTO addPost(Model model,
+			@RequestParam(value="pid", required=true) Long pid,
+			@RequestParam(value="num", required=true) int num) throws AuthenticationException{
+		OrderMTO mto = new OrderMTO();
+		boolean putOk = false;
+		if(pid != null && pid > 0) {
+			putOk = shoppingCartService.putToCart(pid, num, UserSecurityUtils.getCurrentUserId());
+		}
+		if(!putOk) {
+			mto.addErrorMessage(MessageHelper.getMessage("order.addToCart.error"));
+		}
+		return mto;
+	}
+	
+	@ResponseBody
 	@RequestMapping(value="/del", method=RequestMethod.POST)
 	public OrderMTO delete(Model model,
 			@RequestParam(value="sids", required=true) Long[] sids) throws AuthenticationException{

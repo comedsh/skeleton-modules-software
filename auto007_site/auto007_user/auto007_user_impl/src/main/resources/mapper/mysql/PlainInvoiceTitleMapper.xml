@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fenghua.auto.user.backend.domain.PlainInvoiceTitle" >
+  <resultMap id="BaseResultMap" type="com.fenghua.auto.user.backend.domain.PlainInvoiceTitle" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="User_ID" property="userId" jdbcType="BIGINT" />
+    <result column="Title" property="title" jdbcType="VARCHAR" />
+    <result column="created_ts" property="createdTs" jdbcType="TIMESTAMP" />
+    <result column="created_by" property="createdBy" jdbcType="VARCHAR" />
+    <result column="modified_ts" property="modifiedTs" jdbcType="TIMESTAMP" />
+    <result column="modified_by" property="modifiedBy" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, User_ID, Title, created_ts, created_by, modified_ts, modified_by
+  </sql>
+  <sql id="Base_Where_Case" >
+    <where >
+      <if test="id != null" >
+         AND ID = #{id,jdbcType=BIGINT}
+      </if>
+      <if test="userId != null" >
+         AND User_ID = #{userId,jdbcType=BIGINT}
+      </if>
+      <if test="title != null" >
+         AND Title = #{title,jdbcType=VARCHAR}
+      </if>
+      <if test="createdTs != null" >
+         AND created_ts = #{createdTs,jdbcType=TIMESTAMP}
+      </if>
+      <if test="createdBy != null" >
+         AND created_by = #{createdBy,jdbcType=VARCHAR}
+      </if>
+      <if test="modifiedTs != null" >
+         AND modified_ts = #{modifiedTs,jdbcType=TIMESTAMP}
+      </if>
+      <if test="modifiedBy != null" >
+         AND modified_by = #{modifiedBy,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </sql>
+  <select id="selectCount" resultType="java.lang.Long" parameterType="com.fenghua.auto.user.backend.domain.PlainInvoiceTitle" >
+    select count( ID)
+     from Plain_Invoice_Title
+    <include refid="Base_Where_Case" />
+  </select>
+  <select id="select" resultMap="BaseResultMap" parameterType="com.fenghua.auto.user.backend.domain.PlainInvoiceTitle" >
+    select 
+    <include refid="Base_Column_List" />
+     from Plain_Invoice_Title
+    <include refid="Base_Where_Case" />
+    <if test="limit > 0" >
+       limit #{offset},#{limit} 
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from Plain_Invoice_Title
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from Plain_Invoice_Title
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.fenghua.auto.user.backend.domain.PlainInvoiceTitle" >
+    insert into Plain_Invoice_Title (ID, User_ID, Title, 
+      created_ts, created_by, modified_ts, 
+      modified_by)
+    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, 
+      #{createdTs,jdbcType=TIMESTAMP}, #{createdBy,jdbcType=VARCHAR}, #{modifiedTs,jdbcType=TIMESTAMP}, 
+      #{modifiedBy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="id" parameterType="com.fenghua.auto.user.backend.domain.PlainInvoiceTitle" >
+    insert into Plain_Invoice_Title
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="userId != null" >
+        User_ID,
+      </if>
+      <if test="title != null" >
+        Title,
+      </if>
+      <if test="createdTs != null" >
+        created_ts,
+      </if>
+      <if test="createdBy != null" >
+        created_by,
+      </if>
+      <if test="modifiedTs != null" >
+        modified_ts,
+      </if>
+      <if test="modifiedBy != null" >
+        modified_by,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTs != null" >
+        #{createdTs,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="modifiedTs != null" >
+        #{modifiedTs,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedBy != null" >
+        #{modifiedBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fenghua.auto.user.backend.domain.PlainInvoiceTitle" >
+    update Plain_Invoice_Title
+    <set >
+      <if test="userId != null" >
+        User_ID = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="title != null" >
+        Title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTs != null" >
+        created_ts = #{createdTs,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        created_by = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="modifiedTs != null" >
+        modified_ts = #{modifiedTs,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedBy != null" >
+        modified_by = #{modifiedBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fenghua.auto.user.backend.domain.PlainInvoiceTitle" >
+    update Plain_Invoice_Title
+    set User_ID = #{userId,jdbcType=BIGINT},
+      Title = #{title,jdbcType=VARCHAR},
+      created_ts = #{createdTs,jdbcType=TIMESTAMP},
+      created_by = #{createdBy,jdbcType=VARCHAR},
+      modified_ts = #{modifiedTs,jdbcType=TIMESTAMP},
+      modified_by = #{modifiedBy,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

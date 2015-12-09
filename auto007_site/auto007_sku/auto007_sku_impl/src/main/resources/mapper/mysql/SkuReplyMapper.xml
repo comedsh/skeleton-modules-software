@@ -8,7 +8,7 @@
     <result column="user_id" property="userId" jdbcType="CHAR" />
     <result column="sku_comment_id" property="skuCommentId" jdbcType="BIGINT" />
   </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.fenghua.auto.sku.domain.SkuReply" extends="BaseResultMap" >
+  <resultMap id="ResultMapWithBLOBs" type="com.fenghua.auto.sku.backend.domain.SkuReply" extends="BaseResultMap" >
     <result column="comtent" property="comtent" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
