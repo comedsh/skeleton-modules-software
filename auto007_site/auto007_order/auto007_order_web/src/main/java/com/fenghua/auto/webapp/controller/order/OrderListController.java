@@ -7,16 +7,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
-import com.alibaba.fastjson.JSON;
 import com.fenghua.auto.backend.core.utils.MessageHelper;
+import com.fenghua.auto.backend.core.utils.UserSecurityUtils;
 import com.fenghua.auto.order.backend.OrderMTO;
+import com.fenghua.auto.order.backend.domain.OrderHeader;
 import com.fenghua.auto.order.backend.service.OrderListService;
-import com.fenghua.auto.order.backend.vo.BuyerOrderMasterVO;
+import com.fenghua.auto.order.backend.vo.OrderMasterVO;
 
 /**
- * 买家订单控制器
+ * 订单列表控制器
  * 
  * @author zhangfr
  *
@@ -40,19 +40,19 @@ public class OrderListController {
 	 */
 	@RequestMapping("/listData")
 	@ResponseBody
-	public OrderMTO listData() {
+	public OrderMTO listData(OrderHeader orderHeader) {
 		OrderMTO oderMTO=new OrderMTO();
-		List<BuyerOrderMasterVO> list=null;
 		try {
-			//测试
-			list = orderListService.loadByBuyerId(7L);
-//			list = orderListService.loadByBuyerId(UserSecurityUtils.getCurrentUserId());
+			orderHeader.setBuyerId(UserSecurityUtils.getCurrentUserId());
+			List<OrderMasterVO> list=null;
+			list = orderListService.queryOrderMasterVO(orderHeader);
 			oderMTO.setData(list);
 		} catch (Exception e) {
 			oderMTO.addErrorMessage(MessageHelper.getMessage("loadDataError"));
 		}
 		return oderMTO;
 	}
+	
 	/**
 	 * 买家订单明细页面
 	 * 访问此控制器需要前台传入如下两个参数
@@ -61,7 +61,7 @@ public class OrderListController {
 	 * 			参数由前台传入：约定参数
 	 * @param orderId 订单id
 	 * @return
-	 */
+	 *//*
 	@RequestMapping("/item")
 	public ModelAndView item(Integer orderType,Long orderId) {
 		ModelAndView mv=new ModelAndView("web.order.buyerOrder_item");
@@ -72,5 +72,5 @@ public class OrderListController {
 		} catch (Exception e) {
 		}
 		return mv;
-	}
+	}*/
 }
