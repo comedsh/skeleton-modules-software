@@ -57,8 +57,9 @@ public class AuthController {
 			User user=authService.hasUser(request);
 			return URL(request,user);
 		} catch (QQConnectException e) {
-			e.printStackTrace();
-			return new ModelAndView("web.login");
+			ModelAndView mv =new ModelAndView("web.login");
+			mv.addObject("message", MessageHelper.getMessage("login.auth.erro"));
+			return mv;
 		}
 	}
 	/**
@@ -83,17 +84,17 @@ public class AuthController {
 		String sessionState=(String)request.getSession().getAttribute(authService.WEIXIN_STATE);
 		ModelAndView mv=new ModelAndView("web.login");
 		if(code==null||sessionState==null){
-			mv.addObject("message",MessageHelper.getMessage("login.anth.erro"));
+			mv.addObject("message",MessageHelper.getMessage("login.auth.erro"));
 			logger.debug("(程序错误)微信登陆逻辑异常！");
 			return mv;
 		}else if(!sessionState.equals(state)){
-			mv.addObject("message",MessageHelper.getMessage("login.anth.erro"));
+			mv.addObject("message",MessageHelper.getMessage("login.auth.erro"));
 			logger.debug("跨站请求伪造攻击!!");
 			return mv;
 		}else{
-			String openid =authService.addWeiXinOpenIDToSession(request,code);;
+			String openid =authService.addWeiXinOpenIDToSession(request,code);
 			if(openid==null){
-				mv.addObject("error",MessageHelper.getMessage("login.anth.erro"));
+				mv.addObject("error",MessageHelper.getMessage("login.auth.erro"));
 				return mv;
 			}
 			User user = userService.getUserByWeChat(openid);

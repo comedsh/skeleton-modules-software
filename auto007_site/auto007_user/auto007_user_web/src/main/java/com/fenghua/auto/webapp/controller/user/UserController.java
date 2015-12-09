@@ -109,8 +109,8 @@ public class UserController {
 			// 尝试绑定(微信或qq)（如果存在）
 			try {
 				authService.binding(UserSecurityUtils.getCurrentUser());
-			} catch (AuthenticationException e) {
-				e.printStackTrace();
+			}catch (Exception e) {
+				transferObject.addErrors(MessageAndErrorUtil.getError("user.auto.error","autoSuccess"));
 			}
 		} else {
 			if (!validateTel.equals(telcode)) {
@@ -168,6 +168,22 @@ public class UserController {
 			transferObject.addErrors(MessageAndErrorUtil.getError("user.pictureUpload.error", "pictureUpload"));
 		}
 		return transferObject;
+	}
+	/**
+	 * 获取所有的用户
+	 * @return
+	 */
+	@RequestMapping(value = "/allUser", method = RequestMethod.GET)
+	public ModelAndView getPageList(HttpServletRequest req, Map<String, Object> model) {
+		Integer curpage = 0;
+		String str = req.getParameter("pageNumber");
+		if(str != null) {
+			curpage = Integer.parseInt(str)>1 ? Integer.parseInt(str)-1 : 0;
+		}
+		PageRequest pageRequest = new PageRequest(curpage, Constants.PAGESIZE);
+		Page<User> pages = userService.getPageList(new User(), pageRequest);
+		model.put("param", pages);
+		return new ModelAndView("/NewFile",model);
 	}
 
 	/**
@@ -396,7 +412,6 @@ public class UserController {
 	 * @param model
 	 * @return
 	 */
-	@SuppressWarnings("unused")
 	@RequestMapping(value = "/updatePasswordByPhone", method = RequestMethod.POST)
 	public ModelAndView updatePasswordByPhone(HttpServletRequest request, Model model) {
 		Map<String, String> model1 = new HashMap<String, String>();
