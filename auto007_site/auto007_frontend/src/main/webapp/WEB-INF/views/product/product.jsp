@@ -132,8 +132,8 @@ li {
     color: #000;
 }
 </style>
-	<script type="text/javascript"src="/resources/javaScript/jQuery/jquery-1.8.3.min.js"></script>
-	<script type="text/javascript"src="/resources/javaScript/angular/angular.min.js"></script>
+	<script type="text/javascript" src="/resources/js/lib/fenghua.lib.min.js"></script>
+
 	<script type="text/javascript"src="/resources/javaScript/JQuery/jquery.imagezoom.js"></script>
 </head>
 <body ng-app="productApp"  ng-controller="productController">

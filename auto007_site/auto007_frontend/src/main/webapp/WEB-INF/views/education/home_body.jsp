@@ -5,7 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="sf" %>
 
-<script src="/resources/javaScript/angular/angular.js"></script>
+<script type="text/javascript" src="/resources/js/lib/fenghua.lib.min.js"></script>
 
 <script>
 angular.module("spittle-ng-app", [])
