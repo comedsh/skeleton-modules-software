@@ -1,24 +1,4 @@
 /*
-*页面顶部js
-*created by yangzhi on 2015.12.7
-*/
-(function(window,$){
-	//显示所有备选城市
-	$('.js-header-city').hover(function(){
-		$(this).find('.icon-arrow_down').toggleClass('icon-arrow_up');
-		$('.js-all-city-panel').fadeToggle(200);
-	});
-	//选择城市
-	$('.js-all-city-panel a').click(function(){
-		$(this).parent().addClass('current').siblings().removeClass('current');
-		var currentCityId=$(this).attr('data-id');
-		var currentCityName=$(this).html();
-		$('.js-header-current-city').attr('data-id',currentCityId);
-		$('.js-header-current-city').html(currentCityName);
-		return false;
-	});
-})(window,$);
-/*
 *登录页面js
 *created by yangzhi on 2015.12.7
 */
@@ -93,17 +73,17 @@
 					type:'POST',
 					dataType:'json',
 					data:{
-						name:data.userInfo.userName,
-						pwd:data.userInfo.passWord,
-						code:data.userInfo.code,
-						isrememberpwd:data.userInfo.isRememberPwd?1:0
+						username:data.userInfo.userName,
+						password:data.userInfo.passWord,
+						vCode:data.userInfo.code,
+						autoLogin:data.userInfo.isRememberPwd?1:0
 					},
 					success:function(response){
-						if(!response.errors||!response.length){
+						if(response.messages!=null&&!response.message[0].field=="success"){
 							alert('登录成功');
-							//跳转到首页
-							//location.href='/';
-						}else{
+							//跳转到首页、
+							location.href='/secure/main';
+						}else if(response.errors!=null){
 							logic.stopLogin();
 							logic.showError(response.errors[0].msg);
 							if(true){
@@ -150,3 +130,23 @@
 	};
 	logic.init();
 })(window,$));
+/*
+*页面顶部js
+*created by yangzhi on 2015.12.7
+*/
+(function(window,$){
+	//显示所有备选城市
+	$('.js-header-city').hover(function(){
+		$(this).find('.icon-arrow_down').toggleClass('icon-arrow_up');
+		$('.js-all-city-panel').fadeToggle(200);
+	});
+	//选择城市
+	$('.js-all-city-panel a').click(function(){
+		$(this).parent().addClass('current').siblings().removeClass('current');
+		var currentCityId=$(this).attr('data-id');
+		var currentCityName=$(this).html();
+		$('.js-header-current-city').attr('data-id',currentCityId);
+		$('.js-header-current-city').html(currentCityName);
+		return false;
+	});
+})(window,$);

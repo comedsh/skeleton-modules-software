@@ -1,0 +1,61 @@
+@import 
+	"../common/configuration.scss", 
+	"../common/base.scss",
+	"../common/header.scss",
+	"../common/usercenter.scss",
+	"../common/footer.scss";
+.my-info{
+	height:100px;
+	padding:6px 6px 6px 0 ;
+	margin-bottom:36px;
+	background-color:#fff;
+	.my-info-box{
+		position: relative;
+	}
+}
+.account-security{
+	position: absolute;
+	top:0;
+	right:0;
+	height:100px;
+	width:249px;
+	background:#bae2fe;
+	color:#333;
+	p{
+		margin-left: 11px;
+		margin-top: 4px;
+	}
+	ul{
+		padding-left:54px;
+		li{
+			position: relative;
+			margin-top: 6px;
+			line-height: 25px;
+			span{
+				display: inline-block;
+				width: 99px;
+				height:21px;
+				line-height: 21px;
+				border:2px solid $siteMainFontColor;
+				color:$siteMainFontColor;
+				background-color:#fff;
+				text-align: center;
+				&.selected{
+					border-color:$siteBtnMainColor;
+					color:$siteBtnMainColor;
+				}
+			}
+			a{
+				position: absolute;
+				left: 105px;
+				font-size: 12px;
+				color:#6d7174;
+			}
+		}
+	}
+	.icon-white_lock{
+		position:absolute;
+		right: 0;
+		bottom:0;
+	}
+}
