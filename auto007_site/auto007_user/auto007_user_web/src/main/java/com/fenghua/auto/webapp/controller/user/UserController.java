@@ -239,59 +239,6 @@ public class UserController {
 		}
 		return new ModelAndView("personal.information", model);
 	}
-
-	/**
-	 * 判断是否应该显示图形验证码 bin.cheng
-	 * 
-	 * @param name
-	 * @param req
-	 * @param res
-	 */
-	@RequestMapping(value = "/showPictureCode/{name}", method = RequestMethod.GET)
-	public @ResponseBody CommonMessageTransferObject getValidatePic(@PathVariable("name") String name,
-			HttpServletRequest req, HttpServletResponse res) {
-		CommonMessageTransferObject transferObject = new CommonMessageTransferObject();
-		LabelMessage message = new LabelMessage();
-		message.setMessage("true");
-		if (name == null || name.equals("")) {
-			// 获取是否失败三次的session
-			Object limitCounts = req.getSession().getAttribute("-t");
-			if (limitCounts != null) {
-				if ((int) limitCounts >= Constants.LIMITCOUNTS) {
-					// 显示图形验证码
-					message.setMessage("false");
-				}
-			}
-		} else {
-			String regex_tel = "^((13[0-9])|(15[^4,\\D])|(18[0-9]))\\d{8}$";
-			String regex_email = "^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$";
-			String regex_name = "^[a-zA-Z\\u4e00-\\u9fa5][a-zA-Z0-9\\u4e00-\\u9fa5]{3,19}$";
-			User user = null;
-			// 电话
-			if (Pattern.compile(regex_tel).matcher(name).matches()) {
-				user = userService.getUserByTelephone(name);
-			}
-			// 邮箱
-			if (Pattern.compile(regex_email).matcher(name).matches()) {
-				user = userService.getUserByEmail(name);
-			}
-			// 用户名
-			if (Pattern.compile(regex_name).matcher(name).matches()) {
-				user = userService.getUserByName(name);
-			}
-			if (user != null) {
-				if (user.getFailedLoginTimes() != null) {
-					if (user.getFailedLoginTimes() >= Constants.LIMITCOUNTS) {
-						// 显示图形验证码
-						message.setMessage("false");
-					}
-				}
-			}
-		}
-		transferObject.addMessages(message);
-		return transferObject;
-	}
-
 	/**
 	 * 获取图片验证码 bin.cheng
 	 * 

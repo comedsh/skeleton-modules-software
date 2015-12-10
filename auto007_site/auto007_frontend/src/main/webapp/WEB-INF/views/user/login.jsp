@@ -75,7 +75,7 @@
 		 			<h1>欢迎登录</h1>
 		 			<p class="main-tip">
 		 				还没有账号？
-		 				<a href="register.html">免费注册</a>
+		 				<a href="/secure/register">免费注册</a>
 		 			</p>
 		 		</div>
 		 		<div class="prompt-box">

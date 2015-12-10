@@ -107,6 +107,8 @@
 
 		<!-- 指定参数 -->
 		<beans:property name="parameter" value="autoLogin"></beans:property>
+		<!-- 失效时间  两周（毫秒） -->
+		<beans:property name="tokenValiditySeconds" value="1209600"></beans:property>
 
    </beans:bean>
    

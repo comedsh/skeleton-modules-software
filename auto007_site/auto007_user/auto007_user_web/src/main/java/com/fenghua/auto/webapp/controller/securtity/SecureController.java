@@ -2,6 +2,7 @@ package com.fenghua.auto.webapp.controller.securtity;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import javax.security.sasl.AuthenticationException;
 import javax.servlet.http.HttpServletRequest;
@@ -19,17 +20,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fenghua.auto.backend.common.utils.Constants;
 import com.fenghua.auto.backend.core.utils.MessageAndErrorUtil;
-import com.fenghua.auto.backend.core.utils.MessageHelper;
 import com.fenghua.auto.backend.core.utils.UserSecurityUtils;
 import com.fenghua.auto.backend.domain.mto.CommonMessageTransferObject;
-import com.fenghua.auto.backend.domain.mto.LabelError;
+import com.fenghua.auto.backend.domain.mto.LabelMessage;
 import com.fenghua.auto.backend.domain.mto.MessageTransferObject;
 import com.fenghua.auto.user.backend.authentication.AuthenticationCodeException;
+import com.fenghua.auto.user.backend.domain.User;
 import com.fenghua.auto.user.backend.service.AuthService;
+import com.fenghua.auto.user.backend.service.UserService;
 
 /** 
   *<des>
@@ -45,8 +49,10 @@ import com.fenghua.auto.user.backend.service.AuthService;
 @RequestMapping("/secure")
 public class SecureController {
 	private static final Logger logger = LoggerFactory.getLogger(SecureController.class);
-	@Autowired
+	 @Autowired
 	 private AuthService authService;
+	 @Autowired
+	 private UserService userService;
 	 @Autowired
      @Qualifier("org.springframework.security.authenticationManager")//编辑软件会提示错误
      private static AuthenticationManager authenticationManager;
@@ -100,24 +106,15 @@ public class SecureController {
 	 */
 	@RequestMapping(value = "/userCenter")
 	@ResponseBody
-	public MessageTransferObject userCenter(HttpServletRequest request) {
-		CommonMessageTransferObject transferObject = new CommonMessageTransferObject();
-		LabelError error = new LabelError();
-		String message = MessageHelper.getMessage("user.register.success");
-		error.setError(message);
-		error.setField("success");
-		transferObject.addErrors(error);
-		//尝试绑定账号（微信或qq）（如果存在）
+	public void userCenter(HttpServletRequest request) {
+		//尝试绑定账号(微信或qq)(如果存在)
 		try {
 			authService.binding(UserSecurityUtils.getCurrentUser());
 		} catch (AuthenticationException e) {
-			transferObject.addErrors(MessageAndErrorUtil.getError("user.auto.error","autoSuccess"));
 			e.printStackTrace();
 		} catch (Exception e) {
-			transferObject.addErrors(MessageAndErrorUtil.getError("user.auto.error","sellerError"));
 			e.printStackTrace();
 		}
-		return transferObject;
 	}
 	
 	/**
@@ -153,7 +150,7 @@ public class SecureController {
 	@ResponseBody
 	public  MessageTransferObject failure(HttpServletRequest request, HttpServletResponse response) {
 		CommonMessageTransferObject transferObject = new CommonMessageTransferObject();
-		LabelError error = new LabelError();
+		LabelMessage message = new LabelMessage();
 		//forward 从requet取
 		Exception e =  (Exception)request.getAttribute(WebAttributes.AUTHENTICATION_EXCEPTION);
 		if(e == null){
@@ -163,33 +160,21 @@ public class SecureController {
 	
 		//用户不存在
 	    if(e instanceof UsernameNotFoundException){
-	    	String message = MessageHelper.getMessage("user.name.exist");
-			error.setError(message);
-			error.setField("userName");
-			transferObject.addErrors(error);
-	    	
+			transferObject.addErrors(MessageAndErrorUtil.getError("user.nameOrPassword.error", "username"));
 		}
 	    //用户名或密码错误
         if(e instanceof BadCredentialsException){
-        	String message = MessageHelper.getMessage("user.nameOrPassword.error");
-			error.setError(message);
-			error.setField("nameOrPassword");
-			transferObject.addErrors(error);
+			transferObject.addErrors(MessageAndErrorUtil.getError("user.nameOrPassword.error", "password"));
 		}
 	    //输入验证码错误
         if(e instanceof AuthenticationCodeException){
-        	String message = MessageHelper.getMessage("user.pictureCode.error");
-			error.setError(message);
-			error.setField("pictureCode");
-			transferObject.addErrors(error);
+			transferObject.addErrors(MessageAndErrorUtil.getError("user.pictureCode.error", "vCode"));
 		}  
         Object showVCode =  request.getAttribute("showVCode");
         boolean isShow = showVCode == null? false:(Boolean)showVCode;
         if(isShow){
-        	String message = MessageHelper.getMessage("user.showPicCode.error");
-			error.setError(message);
-			error.setField("pictureCode");
-			transferObject.addErrors(error);
+        	message.setField("showPictureCode");
+			transferObject.addMessages(message);
         }  
         return transferObject;
 	}
@@ -202,5 +187,56 @@ public class SecureController {
 	@RequestMapping(value="/403",method=RequestMethod.GET)
 	public ModelAndView forbidden() {
 		return new ModelAndView("",null);
+	}
+	/**
+	 * 判断是否应该显示图形验证码 bin.cheng
+	 * 
+	 * @param name
+	 * @param req
+	 * @param res
+	 */
+	@RequestMapping(value = "/showPictureCode", method = RequestMethod.GET)
+	public @ResponseBody CommonMessageTransferObject getValidatePic(@RequestParam String username,
+			HttpServletRequest req, HttpServletResponse res) {
+		CommonMessageTransferObject transferObject = new CommonMessageTransferObject();
+		LabelMessage message = new LabelMessage();
+		message.setMessage("true");
+		if (username == null || username.equals("")) {
+			// 获取是否失败三次的session
+			Object limitCounts = req.getSession().getAttribute("-t");
+			if (limitCounts != null) {
+				if ((int) limitCounts >= Constants.LIMITCOUNTS) {
+					// 显示图形验证码
+					message.setMessage("false");
+				}
+			}
+		} else {
+			String regex_tel = "^((13[0-9])|(15[^4,\\D])|(18[0-9]))\\d{8}$";
+			String regex_email = "^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$";
+			String regex_name = "^[a-zA-Z\\u4e00-\\u9fa5][a-zA-Z0-9\\u4e00-\\u9fa5]{3,19}$";
+			User user = null;
+			// 电话
+			if (Pattern.compile(regex_tel).matcher(username).matches()) {
+				user = userService.getUserByTelephone(username);
+			}
+			// 邮箱
+			if (Pattern.compile(regex_email).matcher(username).matches()) {
+				user = userService.getUserByEmail(username);
+			}
+			// 用户名
+			if (Pattern.compile(regex_name).matcher(username).matches()) {
+				user = userService.getUserByName(username);
+			}
+			if (user != null) {
+				if (user.getFailedLoginTimes() != null) {
+					if (user.getFailedLoginTimes() >= Constants.LIMITCOUNTS) {
+						// 显示图形验证码
+						message.setMessage("false");
+					}
+				}
+			}
+		}
+		transferObject.addMessages(message);
+		return transferObject;
 	}
 }
