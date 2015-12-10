@@ -62,7 +62,7 @@
 			function($scope, $http) {
 				$http({
 					method : 'POST',
-					url : "/buyerOrder/listData",
+					url : "buyerOrder/listData",
 				}).success(function(data) {
 					if (data.success) {
 						$scope.initData(data.data);

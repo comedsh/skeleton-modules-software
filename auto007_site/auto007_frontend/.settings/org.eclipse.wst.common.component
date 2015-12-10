@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
     <wb-module deploy-name="auto007_frontend">
-    	<wb-resource deploy-path="/" source-path="/src/main/webapp"/>
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
         <dependent-module archiveName="auto007_admin_impl-0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/auto007_admin_impl/auto007_admin_impl">
             <dependency-type>uses</dependency-type>
         </dependent-module>
@@ -72,6 +72,15 @@
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="auto007_stock_web-0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/auto007_stock_web/auto007_stock_web">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="auto007_ocatalogs_web-0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/auto007_ocatalogs_web/auto007_ocatalogs_web">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="auto007_ocatalogs_impl-0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/auto007_ocatalogs_impl/auto007_ocatalogs_impl">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="auto007_ocatalogs_intf-0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/auto007_ocatalogs_intf/auto007_ocatalogs_intf">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <property name="context-root" value="auto007_frontend"/>
