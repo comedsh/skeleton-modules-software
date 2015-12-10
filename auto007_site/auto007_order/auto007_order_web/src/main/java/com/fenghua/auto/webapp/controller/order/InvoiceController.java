@@ -20,7 +20,6 @@ import com.fenghua.auto.backend.core.utils.UserSecurityUtils;
 import com.fenghua.auto.backend.domain.mto.LabelError;
 import com.fenghua.auto.order.backend.OrderMTO;
 import com.fenghua.auto.user.intf.dto.PlainInvoiceTitleDTO;
-import com.fenghua.auto.user.intf.dto.UserAddressDTO;
 import com.fenghua.auto.user.intf.dto.VatInvoiceCertificateDTO;
 import com.fenghua.auto.user.intf.service.IPlainInvoiceTitleService;
 import com.fenghua.auto.user.intf.service.IVatInvoiceCertificateService;
@@ -82,53 +81,4 @@ public class InvoiceController {
 		mto.setData(vat);
 		return mto;
 	}
-//	@ResponseBody
-//	@RequestMapping(value = "/address", method=RequestMethod.POST)
-//	public OrderMTO saveAddress(Model model, @Valid @RequestBody UserAddressDTO address, BindingResult result) throws AuthenticationException{
-//		OrderMTO mto = new OrderMTO();
-//		
-//		if(result.hasErrors()) {
-//			LabelError[] errors = {};
-//			mto.addErrors( LabelErrorTranslator.translate2LabelError( result.getFieldErrors() ).toArray(errors) );
-//			return mto;
-//		}
-//		
-//		address.setUserId(UserSecurityUtils.getCurrentUserId());
-//		Long id = userAddressService.addAddress(UserSecurityUtils.getCurrentUserId(), address);
-//		if(id == null || id == 0) {
-//			mto.addErrorMessage(MessageHelper.getMessage("order.address.delete.error"));
-//		} else {
-//			List<UserAddressDTO> addressList = userAddressService.findByBuyerId(UserSecurityUtils.getCurrentUserId());
-//			mto.setData(addressList);
-//		}
-//		
-//		return mto;
-//	}
-//	
-//	@ResponseBody
-//	@RequestMapping(value = "/address/delete/{id}", method=RequestMethod.GET)
-//	public OrderMTO deleteAddress(Model model, @PathVariable("id") Long id) throws AuthenticationException{
-//		OrderMTO mto = new OrderMTO();
-//		
-//		int row = userAddressService.deleteAddress(UserSecurityUtils.getCurrentUserId(), id);
-//		if(row == 0) {
-//			mto.addErrorMessage(MessageHelper.getMessage("order.address.delete.error"));
-//		} else {
-//			List<UserAddressDTO> addressList = userAddressService.findByBuyerId(UserSecurityUtils.getCurrentUserId());
-//			mto.setData(addressList);
-//		}
-//		
-//		return mto;
-//	}
-//	@ResponseBody
-//	@RequestMapping(value = "/address/default/{id}", method=RequestMethod.GET)
-//	public OrderMTO defaultAddress(Model model, @PathVariable("id") Long id) throws AuthenticationException{
-//		OrderMTO mto = new OrderMTO();
-//		
-//		userAddressService.defaultAddress(UserSecurityUtils.getCurrentUserId(), id);
-//		List<UserAddressDTO> addressList = userAddressService.findByBuyerId(UserSecurityUtils.getCurrentUserId());
-//		mto.setData(addressList);
-//		
-//		return mto;
-//	}
 }

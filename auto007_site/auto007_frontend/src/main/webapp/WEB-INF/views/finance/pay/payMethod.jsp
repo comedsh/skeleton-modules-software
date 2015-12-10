@@ -27,5 +27,6 @@
 <script type="text/javascript">
 	function openPayPage(payMethod, name) {
 		alert("您选择的支付方式："+name);
+		
 	}
 </script>

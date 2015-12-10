@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import com.fenghua.auto.order.backend.domain.OrderHeader;
+import com.fenghua.auto.order.backend.domain.OrderItem;
 import com.fenghua.auto.order.backend.domain.OrderTransport;
 import com.fenghua.auto.user.intf.dto.SellerDTO;
 /**
@@ -27,9 +28,9 @@ public class OrderHeaderVO extends OrderHeader implements Serializable {
 	 */
 	private OrderTransport orderTransport;
 	/**
-	 * 订单明细VO
+	 * 订单明细
 	 */
-	private List<OrderItemVO> orderItemVOs;
+	private List<OrderItem> orderItems;
 	public UserDTO getBuyer() {
 		return buyer;
 	}
@@ -48,14 +49,14 @@ public class OrderHeaderVO extends OrderHeader implements Serializable {
 	public void setOrderTransport(OrderTransport orderTransport) {
 		this.orderTransport = orderTransport;
 	}
-	public List<OrderItemVO> getOrderItemVOs() {
-		return orderItemVOs;
+	
+	public List<OrderItem> getOrderItems() {
+		return orderItems;
 	}
-	public void setOrderItemVOs(List<OrderItemVO> orderItemVOs) {
-		this.orderItemVOs = orderItemVOs;
+	public void setOrderItems(List<OrderItem> orderItems) {
+		this.orderItems = orderItems;
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
 }

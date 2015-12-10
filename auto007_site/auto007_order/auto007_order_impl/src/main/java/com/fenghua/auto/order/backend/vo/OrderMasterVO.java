@@ -19,6 +19,7 @@ public class OrderMasterVO extends OrderMaster implements Serializable {
 	 * 子单VO
 	 */
 	private List<OrderHeaderVO> orderHeaders;
+	
 	public List<OrderHeaderVO> getOrderHeaders() {
 		return orderHeaders;
 	}

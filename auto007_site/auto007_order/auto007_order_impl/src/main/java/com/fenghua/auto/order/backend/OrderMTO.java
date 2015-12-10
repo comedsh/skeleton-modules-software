@@ -31,6 +31,12 @@ public class OrderMTO extends AbstractDomainObject implements MessageTransferObj
 		this.success = success;
 	}
 	
+	@Override
+	public void addErrors(LabelError... errors) {
+		this.success = false;
+		super.addErrors(errors);
+	}
+
 	public void addErrorMessage(String... errorMsgs) {
 		this.success = false;
 		if(this.errorMessages == null) {
