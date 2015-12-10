@@ -88,15 +88,5 @@
   		<artifactId>auto007_stock_web</artifactId>
   		<version>0.1</version>
   	</dependency>
-  	<dependency>
-  		<groupId>com.fenghua</groupId>
-  		<artifactId>auto007_ocatalog_web</artifactId>
-  		<version>0.1</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>com.fenghua</groupId>
-  		<artifactId>auto007_ocatalog_impl</artifactId>
-  		<version>0.1</version>
-  	</dependency>
   </dependencies>
 </project>
