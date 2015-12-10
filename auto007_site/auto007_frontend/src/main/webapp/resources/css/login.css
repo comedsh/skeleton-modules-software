@@ -471,7 +471,7 @@ a.vice-btn:hover {
 
 .content {
   width: 1200px;
-  height: 438px;
+  /* height: 438px; */
   margin: 45px auto 84px;
   position: relative;
   background: url("../img/login_banner.png") no-repeat;
