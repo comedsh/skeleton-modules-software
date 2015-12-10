@@ -145,6 +145,7 @@
 		},
 		init:function(){
 			logic.eventBind();
+			logic.validate();
 		}
 	};
 	logic.init();
