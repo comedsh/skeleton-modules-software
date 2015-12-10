@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>登录</title>
+	<title>auto007-个人中心</title>
 	<link rel="stylesheet" href="../../resources/css/sprite.css">
 	<link rel="stylesheet" href="../../resources/css/usercenter/buyercenter.css">
 </head>
@@ -58,7 +58,7 @@
 				
 				<div class="search-box">
 					<div class="search-text-box">
-						<input type="text" placeholder="商品名称/VIN编号/OE编号/品牌" class="search-text">
+						<input type="text" placeholder="商品名称/VIN编号/OE编号" class="search-text">
 					</div><a href="#" class="vice-btn search-btn">搜 索</a>
 				</div> 
 				
@@ -126,8 +126,32 @@
 
 
 		 	<div class="main-wrap">
+
+		 		<!--顶部-->
 		 		<div class="my-info">
 		 			<div class="my-info-box">
+						
+						<div class="my-username">
+							<div class="head-box">
+								<img src="../../resources/img/test_head.jpg" alt="用户头像" onerror="this.src='../../resources/img/user_big.png'">
+							</div>
+							<div class="username-box">
+								<p class="username"><a href="#">王二麻子王二麻子</a></p>
+								<p class="user-type">普通注册会员</p>
+							</div>
+						</div>
+
+						<!--订单信息-->
+						<div class="my-order">
+							<ul class="clear">
+								<li><span>待付款</span><em class="num">1</em></li>
+								<li><span>待收货</span><em>0</em></li>
+								<li><span>待评价</span><em class="num">5</em></li>
+								<li><span>待退换货</span><em>0</em></li>
+								<li><span>待质保</span><em class="num">1</em></li>
+							</ul>
+						</div>
+
 		 				<!--账户安全-->
 			 			<div class="account-security">
 			 				<p>账户安全</p>
@@ -138,15 +162,66 @@
 			 					</li>
 			 					<li>
 			 						<span>未绑定邮箱</span>
-			 						<a href="#">未绑定邮箱</a>
+			 						<a href="#">绑定邮箱</a>
 			 					</li>
 			 				</ul>
 			 				<div class="icon-white_lock"></div>
 			 			</div>
-		 			</div>
-		 			
-		 		</div>
 
+
+		 			</div>	
+		 		</div>
+				
+				<!--未处理的订单-->
+				<div class="pending-orders">
+					<div class="order-title">
+						<p>
+							<a href="#">查看全部订单</a>
+						</p>
+						<h2>我的最近订单</h2>
+					</div>
+					<div class="order-content">
+						<div class="order-wrap">
+							<ul class="row-name">
+								<li class="product">商品详情</li>
+								<li class="cancel-operation">商品操作</li>
+								<li class="price">实付款(元)</li>
+								<li class="consignee">收货人</li>
+								<li class="status">商品状态</li>
+								<li class="operation">交易操作</li>
+							</ul>
+							<div class="tbody">
+								<div class="tbody-head">
+									<span>2015-12-09 23:12:20</span>
+									<span>订单号：<em class="order-num">20150220124</em></span>
+									<span>卖家：丰华神州</span>
+								</div>
+								<ul class="tbody-content">
+									<li class="product clear">
+										<div class="product-img-box">
+											<img src="../../resources/img/test_head.jpg" alt="商品">
+										</div>
+										<div class="product-name-box">
+											<p class="product-name">雷贝斯/RAYBESTOS 众E211专用铂金火花塞 新桑塔纳捷达朗逸POLO高尔夫辉腾</p>
+											<p class="adaptive">
+												适配所有OE码
+												<i class="icon-arrow_down"></i>
+											</p>
+										</div>
+										
+									</li>
+									<li class="cancel-operation">
+										<a href="#">申请退款</a>
+									</li>
+									<li class="price">价格</li>
+									<li class="consignee">收货人</li>
+									<li class="status">状态</li>
+									<li class="operation">操作</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
 
 		 	</div>
 		 </div>
