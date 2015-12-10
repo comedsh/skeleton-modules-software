@@ -1,5 +1,6 @@
 package com.fenghua.auto.webapp.controller.securtity;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
@@ -26,6 +27,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.fenghua.auto.backend.common.utils.Constants;
 import com.fenghua.auto.backend.core.utils.MessageAndErrorUtil;
+import com.fenghua.auto.backend.core.utils.MessageHelper;
 import com.fenghua.auto.backend.core.utils.UserSecurityUtils;
 import com.fenghua.auto.backend.domain.mto.CommonMessageTransferObject;
 import com.fenghua.auto.backend.domain.mto.LabelMessage;
@@ -33,6 +35,7 @@ import com.fenghua.auto.backend.domain.mto.MessageTransferObject;
 import com.fenghua.auto.user.backend.authentication.AuthenticationCodeException;
 import com.fenghua.auto.user.backend.domain.User;
 import com.fenghua.auto.user.backend.service.AuthService;
+import com.fenghua.auto.user.backend.service.UserForgetPassService;
 import com.fenghua.auto.user.backend.service.UserService;
 
 /** 
@@ -48,11 +51,18 @@ import com.fenghua.auto.user.backend.service.UserService;
 @Controller
 @RequestMapping("/secure")
 public class SecureController {
+	
 	private static final Logger logger = LoggerFactory.getLogger(SecureController.class);
+	
 	 @Autowired
 	 private AuthService authService;
+	 
 	 @Autowired
 	 private UserService userService;
+	 
+	 @Autowired
+	 private UserForgetPassService userForgetPassService;
+	 
 	 @Autowired
      @Qualifier("org.springframework.security.authenticationManager")//编辑软件会提示错误
      private static AuthenticationManager authenticationManager;
@@ -124,19 +134,17 @@ public class SecureController {
 	 * @return
 	 */
 	@RequestMapping(value = "/main")
-	public String main(Model model,HttpServletRequest request) {
+	public String main() {
 		return "user.center";
 	}
 	
 	/**
 	 * 跳转到登录页面
-	 * @param user
-	 * @param model
-	 * @param request
+	 * @param req
 	 * @return
 	 */
 	@RequestMapping(value = "/fowardLogin")
-	public ModelAndView showLoginPage(HttpServletRequest req, HttpServletResponse res, Model model) {
+	public ModelAndView showLoginPage(HttpServletRequest req) {
 		Map<String,String> map = new HashMap<String, String>();
 		map.put("userName", req.getParameter("userName"));
 		return new ModelAndView("register.success",map);
@@ -178,22 +186,12 @@ public class SecureController {
         }  
         return transferObject;
 	}
-	
-
-	/**
-	 * 403
-	 * @return
-	 */
-	@RequestMapping(value="/403",method=RequestMethod.GET)
-	public ModelAndView forbidden() {
-		return new ModelAndView("",null);
-	}
 	/**
 	 * 判断是否应该显示图形验证码 bin.cheng
-	 * 
-	 * @param name
+	 * @param username
 	 * @param req
 	 * @param res
+	 * @return
 	 */
 	@RequestMapping(value = "/showPictureCode", method = RequestMethod.GET)
 	public @ResponseBody CommonMessageTransferObject getValidatePic(@RequestParam String username,
@@ -238,5 +236,73 @@ public class SecureController {
 		}
 		transferObject.addMessages(message);
 		return transferObject;
+	}
+	/**
+	 * 找回密码跳转页面
+	 * @param request
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "/findPassWord", method = RequestMethod.GET)
+	public String findPassbyphoneOrEmail(HttpServletRequest request, Model model) {
+		return "forgot.findPassWord";
+	}
+
+	/**
+	 * 手机找回密码第一步
+	 * 
+	 * @param request
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "/findPassByPhone", method = RequestMethod.POST)
+	public String findPassByPhone(HttpServletRequest request, Model model) {
+		String path;
+		String message = null;
+		String validateTel = (String) request.getSession().getAttribute("validateTel");
+		String verifyCode = (String) request.getSession().getAttribute("rand");
+		if (new Date().getTime() - ((Date) request.getSession().getAttribute("date")).getTime() > 1000 * 120) {
+			message = MessageHelper.getMessage("forgot.verificationexpire");
+			path = "forgot.findPassbyphoneOrEmail";
+		} else if (validateTel.equals(request.getParameter("iPhone_code"))
+				&& verifyCode.equalsIgnoreCase(request.getParameter("code"))) {
+			path = "forgot.findPassbyphoneSecond";
+			// 把用户名和密码存入安全的session中
+		} else {
+			if (!validateTel.equals(request.getParameter("iPhone_code"))) {
+				message = MessageHelper.getMessage("forgot.phoneError");
+				path = "forgot.findPassbyphoneOrEmail";
+			} else {
+				message = MessageHelper.getMessage("forgot.verificationCodeError");
+				path = "forgot.findPassbyphoneOrEmail";
+			}
+		}
+		model.addAttribute("message", message);
+		request.getSession().setAttribute("phone", request.getParameter("mobile"));
+		return path;
+	}
+	/**
+	 * 忘记密码 发送邮件链接(邮箱找回密码第一步)
+	 * @param request
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "/forGotPassword", method = RequestMethod.GET)
+	public String forGotPassword(HttpServletRequest request, Model model) {
+		User user = null;
+		user = userService.getUserByEmail(request.getParameter("email"));
+		String message = "";
+		String path = "";
+		if (user == null) {
+			message = MessageHelper.getMessage("forgot.noEmail");
+			model.addAttribute("message", message);
+			model.addAttribute("lab", "email");
+			path = "forgot.findPassbyphoneOrEmail";
+		} else {
+			userForgetPassService.insert(request.getParameter("email"));
+			request.getSession().setAttribute("email", request.getParameter("email"));
+			path = "forgot.findPassbyEmailSecond";
+		}
+		return path;
 	}
 }
