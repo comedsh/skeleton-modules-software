@@ -38,8 +38,14 @@ ul.modelUl li:hover{border: 1px solid green;cursor: pointer; color:green;}
 
 
 #modelContent{height: 300px;overflow-y: auto;}
+
+/**/
+.content{
+ background:none!important;
+}
 </style>
 
+<link rel="stylesheet" href="/resources/css/login.css">
 <div class="w">
 
 	<div class="oNav bd">
@@ -81,6 +87,7 @@ ul.modelUl li:hover{border: 1px solid green;cursor: pointer; color:green;}
 
 <script type="text/javascript">
 ocatalogDataObj = {};
+
 $("#brandListDiv .ocatalogsUL li").click(function(){
 	$(".model").removeClass("show");
 	$(".model").addClass("hidden");
