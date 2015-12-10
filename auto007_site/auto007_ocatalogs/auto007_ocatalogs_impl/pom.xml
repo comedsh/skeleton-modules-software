@@ -9,24 +9,20 @@
   </parent>
   <artifactId>auto007_ocatalogs_impl</artifactId>
   <name>auto007_ocatalogs_impl</name>
+  <url>http://maven.apache.org</url>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   <dependencies>
-  	<dependency>
-  		<groupId>com.fenghua</groupId>
-  		<artifactId>auto007_ocatalogs_intf</artifactId>
-  		<version>0.1</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>com.fenghua</groupId>
-  		<artifactId>auto007_common</artifactId>
-  		<version>0.1</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>com.fenghua</groupId>
-  		<artifactId>auto007_core</artifactId>
-  		<version>0.1</version>
-  	</dependency>
+    <dependency>
+    	<groupId>com.fenghua</groupId>
+    	<artifactId>auto007_core</artifactId>
+    	<version>0.1</version>
+    </dependency>
+    <dependency>
+    	<groupId>com.fenghua</groupId>
+    	<artifactId>auto007_common</artifactId>
+    	<version>0.1</version>
+    </dependency>
   </dependencies>
 </project>

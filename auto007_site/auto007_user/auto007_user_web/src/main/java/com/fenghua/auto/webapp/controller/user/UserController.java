@@ -8,9 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.regex.Pattern;
 
-import javax.security.sasl.AuthenticationException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,8 +16,6 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
@@ -216,7 +212,6 @@ public class UserController {
 
 	/**
 	 * 通过用户名获取对应的信息 bin.cheng
-	 * 
 	 * @param model
 	 * @return
 	 */
@@ -239,62 +234,8 @@ public class UserController {
 		}
 		return new ModelAndView("personal.information", model);
 	}
-
-	/**
-	 * 判断是否应该显示图形验证码 bin.cheng
-	 * 
-	 * @param name
-	 * @param req
-	 * @param res
-	 */
-	@RequestMapping(value = "/showPictureCode/{name}", method = RequestMethod.GET)
-	public @ResponseBody CommonMessageTransferObject getValidatePic(@PathVariable("name") String name,
-			HttpServletRequest req, HttpServletResponse res) {
-		CommonMessageTransferObject transferObject = new CommonMessageTransferObject();
-		LabelMessage message = new LabelMessage();
-		message.setMessage("true");
-		if (name == null || name.equals("")) {
-			// 获取是否失败三次的session
-			Object limitCounts = req.getSession().getAttribute("-t");
-			if (limitCounts != null) {
-				if ((int) limitCounts >= Constants.LIMITCOUNTS) {
-					// 显示图形验证码
-					message.setMessage("false");
-				}
-			}
-		} else {
-			String regex_tel = "^((13[0-9])|(15[^4,\\D])|(18[0-9]))\\d{8}$";
-			String regex_email = "^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$";
-			String regex_name = "^[a-zA-Z\\u4e00-\\u9fa5][a-zA-Z0-9\\u4e00-\\u9fa5]{3,19}$";
-			User user = null;
-			// 电话
-			if (Pattern.compile(regex_tel).matcher(name).matches()) {
-				user = userService.getUserByTelephone(name);
-			}
-			// 邮箱
-			if (Pattern.compile(regex_email).matcher(name).matches()) {
-				user = userService.getUserByEmail(name);
-			}
-			// 用户名
-			if (Pattern.compile(regex_name).matcher(name).matches()) {
-				user = userService.getUserByName(name);
-			}
-			if (user != null) {
-				if (user.getFailedLoginTimes() != null) {
-					if (user.getFailedLoginTimes() >= Constants.LIMITCOUNTS) {
-						// 显示图形验证码
-						message.setMessage("false");
-					}
-				}
-			}
-		}
-		transferObject.addMessages(message);
-		return transferObject;
-	}
-
 	/**
 	 * 获取图片验证码 bin.cheng
-	 * 
 	 * @param req
 	 * @param res
 	 */
@@ -311,7 +252,6 @@ public class UserController {
 
 	/**
 	 * 获取手机验证码 bin.cheng
-	 * 
 	 * @param mobilephone
 	 * @param req
 	 * @param res
@@ -341,7 +281,6 @@ public class UserController {
 
 	/**
 	 * 通过用户id查找对应的用户注册信息 bin.cheng
-	 * 
 	 * @param id
 	 * @param model
 	 * @return
@@ -349,52 +288,6 @@ public class UserController {
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public @ResponseBody User getUserById(@PathVariable("id") Long id, Model model) {
 		return userService.getUserById(id);
-	}
-
-	/**
-	 * 找回邮箱或密码跳转页面
-	 * 
-	 * @param request
-	 * @param model
-	 * @return
-	 */
-	@RequestMapping(value = "/findPassbyphoneOrEmail", method = RequestMethod.GET)
-	public String findPassbyphoneOrEmail(HttpServletRequest request, Model model) {
-		return "forgot.findPassbyphoneOrEmail";
-	}
-
-	/**
-	 * 手机找回密码第一步
-	 * 
-	 * @param request
-	 * @param model
-	 * @return
-	 */
-	@RequestMapping(value = "/findPassByPhone", method = RequestMethod.POST)
-	public String findPassByPhone(HttpServletRequest request, Model model) {
-		String path;
-		String message = null;
-		String validateTel = (String) request.getSession().getAttribute("validateTel");
-		String verifyCode = (String) request.getSession().getAttribute("rand");
-		if (new Date().getTime() - ((Date) request.getSession().getAttribute("date")).getTime() > 1000 * 120) {
-			message = MessageHelper.getMessage("forgot.verificationexpire");
-			path = "forgot.findPassbyphoneOrEmail";
-		} else if (validateTel.equals(request.getParameter("iPhone_code"))
-				&& verifyCode.equalsIgnoreCase(request.getParameter("code"))) {
-			path = "forgot.findPassbyphoneSecond";
-			// 把用户名和密码存入安全的session中
-		} else {
-			if (!validateTel.equals(request.getParameter("iPhone_code"))) {
-				message = MessageHelper.getMessage("forgot.phoneError");
-				path = "forgot.findPassbyphoneOrEmail";
-			} else {
-				message = MessageHelper.getMessage("forgot.verificationCodeError");
-				path = "forgot.findPassbyphoneOrEmail";
-			}
-		}
-		model.addAttribute("message", message);
-		request.getSession().setAttribute("phone", request.getParameter("mobile"));
-		return path;
 	}
 
 	/**
@@ -457,33 +350,6 @@ public class UserController {
 			path = "forgot.findPassbyEmailThired";
 		}
 		return new ModelAndView(path, model1);
-	}
-
-	/**
-	 * 忘记密码 发送邮件链接(邮箱找回密码第一步)
-	 * 
-	 * @param email
-	 * @param phone
-	 * @param model
-	 */
-	@RequestMapping(value = "/forGotPassword", method = RequestMethod.POST)
-	public String forGotPassword(HttpServletRequest request, Model model) {
-		User user = null;
-		user = userService.getUserByEmail(request.getParameter("email"));
-		String message = "";
-		String path = "";
-		if (user == null) {
-			message = MessageHelper.getMessage("forgot.noEmail");
-			model.addAttribute("message", message);
-			model.addAttribute("lab", "email");
-			path = "forgot.findPassbyphoneOrEmail";
-		} else {
-			userForgetPassService.insert(request.getParameter("email"));
-			request.getSession().setAttribute("email", request.getParameter("email"));
-			path = "forgot.findPassbyEmailSecond";
-		}
-
-		return path;
 	}
 
 	/**

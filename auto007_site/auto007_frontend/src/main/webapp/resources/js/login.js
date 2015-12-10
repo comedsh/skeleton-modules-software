@@ -21,6 +21,8 @@
 		isNeedCode:false,
 		//验证码图片的url地址(须后端填写)
 		codeImageUrl:'/user/pictureCode',
+		//校验图片路径
+		validateUrl:'/secure/showPictureCode',
 		//登录提交的地址(须后端填写)
 		loginPostUrl:'/login'
 	};
@@ -29,6 +31,9 @@
 			$('input').focus(function(){
 				$(this).removeClass('error');
 				logic.hideError();
+			});
+			$('#txtUserName').blur(function(){
+				logic.validate();
 			});
 			//记住密码
 			data.dom.rememberPwdBtn.click(function(){
@@ -79,29 +84,24 @@
 						autoLogin:data.userInfo.isRememberPwd?1:0
 					},
 					success:function(response){
-						if(response.messages!=null&&!response.message[0].field=="success"){
-							alert('登录成功');
+						if(response==null){
 							//跳转到首页、
 							location.href='/secure/main';
-						}else if(response.errors!=null){
+						}else{
 							logic.stopLogin();
-							logic.showError(response.errors[0].msg);
-							if(true){
-							// if(response.faultThrice){
-								logic.showCodeImage();
+							logic.showError(response.errors[0].error);
+							if (response.messages != null) {
+								if(response.messages[0].field=="showPictureCode"){
+									logic.showCodeImage();
+									logic.changeImageCode();
+								}
 							}
-							logic.changeImageCode();
 						}
 						
 					},
 					error:function(){
 						logic.stopLogin();
 						logic.showError('系统繁忙，请稍后再试');
-						if(true){
-							// if(response.faultThrice){
-								logic.showCodeImage();
-							}
-							logic.changeImageCode();
 					}
 				});
 				return false;
@@ -124,8 +124,28 @@
 		changeImageCode:function(){
 			$('.js-code-box img').attr('src',data.codeImageUrl+'?'+Math.random());
 		},
+		validate:function(){
+			data.userInfo.userName=data.dom.userNameTextBox.val();
+			$.ajax({
+				url:data.validateUrl,
+				type:'GET',
+				dataType:'json',
+				data:{
+					username:data.userInfo.userName
+				},
+				success:function(response){
+					if(response.messages[0].message=='false'){
+						logic.showCodeImage();
+						logic.changeImageCode();
+					}else{
+						//Todo
+					}
+				}
+			});
+		},
 		init:function(){
 			logic.eventBind();
+			logic.validate();
 		}
 	};
 	logic.init();

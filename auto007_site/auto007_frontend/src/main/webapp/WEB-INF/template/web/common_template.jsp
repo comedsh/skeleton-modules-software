@@ -8,8 +8,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title><tiles:getAsString name="title" /></title>
 </style>
-	<link rel="stylesheet" href="/resources/old/css/sprite.css">
-	<link rel="stylesheet" href="/resources/old/css/login.css">
+	<link rel="stylesheet" href="/resources/css/sprite.css">
+<script type="text/javascript" src='/resources/js/lib/fenghua.lib.min.js'></script>
 </head>
 <body>
 	<div class="header">
