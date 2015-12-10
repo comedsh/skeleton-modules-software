@@ -63,5 +63,7 @@
     
     <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
     
+    <put-attribute name="javascript_in_page" value="" />
+    
   </definition>
 </tiles-definitions>
