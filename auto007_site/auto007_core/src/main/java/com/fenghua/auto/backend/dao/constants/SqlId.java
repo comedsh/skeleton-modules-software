@@ -20,6 +20,7 @@ public interface SqlId {
 	public String SQL_SELECT_ORDERHEADERS_BY_ORDERMASTERID = "selectOrderHeadersByOrdermaserId";
 	public String SQL_SELECT_ORDERTRANSPORT_BY_ORDERHEADERID = "selectOrderTransportOrderHeadersByOrdermaserId";
 	public String SQL_SELECT_ORDERITEM_BY_ORDERHEADERID = "selectOrderItemByOrderHeaderId";
+	public String SQL_SELECT_ORDERLIST = "selectOrderList";
 	
 	//用户模块
 	public String SQL_SELECT_BY_NAME = "selectByName";

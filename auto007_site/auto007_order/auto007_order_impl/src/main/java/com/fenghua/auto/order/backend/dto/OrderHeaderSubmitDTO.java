@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.apache.commons.lang.time.DateFormatUtils;
 
+import com.fenghua.auto.backend.core.utils.MessageHelper;
 import com.fenghua.auto.backend.domain.mto.LabelError;
 import com.fenghua.auto.order.backend.domain.OrderHeader;
 import com.fenghua.auto.order.backend.domain.OrderMaster;
@@ -39,7 +40,7 @@ public class OrderHeaderSubmitDTO implements Serializable {
 
     private Integer payMethod;
 
-    private Integer deliveryMethod = 1;
+    private Integer deliveryMethod = OrderConstants.DeliveryMethod.DOORTODOOR.getValue();
 
     private String receiver;
 
@@ -105,7 +106,15 @@ public class OrderHeaderSubmitDTO implements Serializable {
 	
 	public List<LabelError> valid() {
 		List<LabelError> errors = new ArrayList<LabelError>();
-		
+		if(this.deliveryMethod == null || !OrderConstants.DeliveryMethod.has(this.deliveryMethod)) {
+			errors.add(new LabelError("orderHeader.deliveryMethod", MessageHelper.getMessage("order.submit.orderHeader.deliveryMethod.invalid")));
+		}
+		if(this.items == null || this.items.isEmpty()) {
+			errors.add(new LabelError("orderHeader.items", MessageHelper.getMessage("order.submit.orderHeader.items.invalid")));
+		}
+		for (OrderItemSubmitDTO itemSdto : this.items) {
+			errors.addAll(itemSdto.valid());
+		}
 		return errors;
 	}
 	

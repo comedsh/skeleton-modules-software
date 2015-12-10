@@ -16,6 +16,8 @@ import com.fenghua.auto.backend.service.impl.BaseServiceImpl;
 import com.fenghua.auto.finance.backend.dao.OrderPaymentDao;
 import com.fenghua.auto.finance.backend.domain.OrderPayment;
 import com.fenghua.auto.finance.backend.service.OrderPaymentService;
+import com.fenghua.auto.finance.wxpay.service.WXPayService;
+import com.fenghua.auto.finance.wxpay.service.WXPrepayOrder;
 import com.fenghua.auto.order.intf.OrderConstants;
 import com.fenghua.auto.order.intf.dto.OrderMasterDTO;
 import com.fenghua.auto.order.intf.service.IOrderService;
@@ -34,6 +36,8 @@ public class OrderPaymentServiceImpl extends BaseServiceImpl<OrderPayment> imple
 	private OrderPaymentDao dao;
 	@Autowired
 	private IOrderService orderService;
+	@Autowired
+	private WXPayService wxPayService;
 	
 	@Override
 	protected BaseDao<OrderPayment> getBaseDao() {
@@ -89,4 +93,15 @@ public class OrderPaymentServiceImpl extends BaseServiceImpl<OrderPayment> imple
 			throw new BizException("order.payment.parameter.invalid");
 		}
 	}
+
+	@Override
+	public WXPrepayOrder genWxPrepayOrder(Long orderPaymentId) {
+		OrderPayment payment = dao.selectById(orderPaymentId);
+		if(payment == null) {
+			throw new BizException("payment.order.not.exist");
+		}
+		return null;
+	}
+	
+	
 }

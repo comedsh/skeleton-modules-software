@@ -38,7 +38,7 @@ public class OrderListController {
 	 * ajax请求加载列表数据
 	 * @return
 	 */
-	@RequestMapping("/listData")
+	/*@RequestMapping("/listData")
 	@ResponseBody
 	public OrderMTO listData(OrderHeader orderHeader) {
 		OrderMTO oderMTO=new OrderMTO();
@@ -51,7 +51,7 @@ public class OrderListController {
 			oderMTO.addErrorMessage(MessageHelper.getMessage("loadDataError"));
 		}
 		return oderMTO;
-	}
+	}*/
 	
 	/**
 	 * 买家订单明细页面
