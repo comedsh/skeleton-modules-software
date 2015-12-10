@@ -18,7 +18,7 @@ import com.fenghua.auto.order.backend.vo.OrderMasterVO;
  * @createTime 2015-12-09 14:49:35
  *
  */
-public interface OrderListDAO extends BaseDao<OrderHeader>{
+public interface OrderListDAO extends BaseDao<com.fenghua.auto.order.backend.util.OrderListQuery>{
 	/**
 	 * 查询订单
 	 * @param query

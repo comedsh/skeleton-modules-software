@@ -3,8 +3,11 @@ package com.fenghua.auto.webapp.controller.order;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -13,6 +16,7 @@ import com.fenghua.auto.backend.core.utils.UserSecurityUtils;
 import com.fenghua.auto.order.backend.OrderMTO;
 import com.fenghua.auto.order.backend.domain.OrderHeader;
 import com.fenghua.auto.order.backend.service.OrderListService;
+import com.fenghua.auto.order.backend.util.OrderListQuery;
 import com.fenghua.auto.order.backend.vo.OrderMasterVO;
 
 /**
@@ -30,7 +34,7 @@ public class OrderListController {
 	 * 买家订单列表页面
 	 * @return
 	 */
-	@RequestMapping("/list")
+	@RequestMapping("/buyerList")
 	public String list(){
 		return "web.order.buyerOrder_list";
 	}
@@ -38,6 +42,14 @@ public class OrderListController {
 	 * ajax请求加载列表数据
 	 * @return
 	 */
+	@ResponseBody
+	@RequestMapping(value="/listData" )
+	public OrderMTO listData(OrderListQuery query) {
+		OrderMTO oderMTO=new OrderMTO();
+		List<OrderMasterVO> OrderMasterVOs = orderListService.queryOrderMasterVO(query);
+		oderMTO.setData(OrderMasterVOs);
+		return oderMTO;
+	}
 	/*@RequestMapping("/listData")
 	@ResponseBody
 	public OrderMTO listData(OrderHeader orderHeader) {
