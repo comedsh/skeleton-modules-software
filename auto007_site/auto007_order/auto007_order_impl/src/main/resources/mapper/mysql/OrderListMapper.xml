@@ -16,7 +16,7 @@
 			<result column="oh_total_amount" property="totalAmount" />
 			<result column="oh_receive_expire_time" property="receiveExpireTime" />
 			<result column="oh_receive_expire_time" property="receiveExpireTime" />
-			<result column="oh_receiver" property="oh_receiver" />
+			<result column="oh_receiver" property="receiver" />
 			<result column="se_id" property="sellerDTO.id"/>
 			<result column="se_name" property="sellerDTO.name"/>
 			<result column="us_id" property="buyer.id"/>
@@ -26,40 +26,40 @@
 				<result column="trade_price" property="tradePrice" />
 				<result column="oi_qty" property="qty" />
 				<result column="oi_sku_icon" property="skuIcon" />
-				<result column="oi_sky_name" property="oi_sky_name"/>
+				<result column="oi_sky_name" property="skuName"/>
 			</collection>
 		</collection>
 	</resultMap>
 	 <select id="selectOrderList" parameterType="com.fenghua.auto.order.backend.util.OrderListQuery" resultMap="OrderMasterVO">
-				 	SELECT 
-				om.ID omid,
-				om.create_time om_create_time,
-				om.master_order_no om_masterorder_no,
-				om.`status` om_status,
-				om.total_amount om_total_amount,
-					oh.id oh_id,
-					oh.create_time oh_create_time,
-					oh.order_no oh_order_no,
-					oh.`status` oh_status,
-					oh.transport_amount oh_transport_amount,
-					oh.total_amount oh_total_amount,
-					oh.receive_expire_time oh_receive_expire_time,
-					oh.receiver oh_receiver,
-					se.ID se_id,
-					se.`Name` se_name,
-					us.ID us_id,
-					us.`Name` us_name,
-						oi.id oi_id,
-						oi.trade_price oi_trade_price,
-						oi.qty oi_qty,
-						oi.sku_icon oi_sku_icon,
-						oi.sku_name oi_sky_name
-			FROM order_master om
-			JOIN order_header oh ON oh.master_order_id=om.id
-			JOIN `user` us ON us.ID=oh.buyer_id
-			JOIN seller se ON se.ID=oh.seller_id
-			JOIN order_item oi ON oi.order_id=oh.id
-			WHERE 1=1
-			LIMIT 0,9999 
+		SELECT 
+			om.ID omid,
+			om.create_time om_create_time,
+			om.master_order_no om_masterorder_no,
+			om.`status` om_status,
+			om.total_amount om_total_amount,
+				oh.id oh_id,
+				oh.create_time oh_create_time,
+				oh.order_no oh_order_no,
+				oh.`status` oh_status,
+				oh.transport_amount oh_transport_amount,
+				oh.total_amount oh_total_amount,
+				oh.receive_expire_time oh_receive_expire_time,
+				oh.receiver oh_receiver,
+				se.ID se_id,
+				se.`Name` se_name,
+				us.ID us_id,
+				us.`Name` us_name,
+					oi.id oi_id,
+					oi.trade_price oi_trade_price,
+					oi.qty oi_qty,
+					oi.sku_icon oi_sku_icon,
+					oi.sku_name oi_sku_name
+		FROM order_master om
+		JOIN order_header oh ON oh.master_order_id=om.id
+		JOIN `user` us ON us.ID=oh.buyer_id
+		JOIN seller se ON se.ID=oh.seller_id
+		JOIN order_item oi ON oi.order_id=oh.id
+		WHERE 1=1
+		LIMIT 0,9999 
 	 </select>
 </mapper>

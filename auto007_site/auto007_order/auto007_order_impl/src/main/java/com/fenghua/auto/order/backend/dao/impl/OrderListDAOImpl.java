@@ -28,7 +28,7 @@ import com.fenghua.auto.order.backend.vo.OrderMasterVO;
  *
  */
 @Repository
-public class OrderListDAOImpl extends BaseDaoImpl<OrderHeader> implements OrderListDAO {
+public class OrderListDAOImpl extends BaseDaoImpl<com.fenghua.auto.order.backend.util.OrderListQuery> implements OrderListDAO {
 	@Override
 	public List<OrderMasterVO> query(OrderListQuery query) {
 		Assert.notNull(query);

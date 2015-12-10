@@ -3,7 +3,7 @@
 <div align="center"
 	style="min-height: 200px; padding-top: 50px; padding-left: 50px; min-width: 400px; max-width: 990px;"
 	ng-app="buyerOrderList" ng-controller="buyerOrderListController">
-	<font color="red">${buyerOrderMasterVOs}</font>
+
 	<table width="100%" border="1" cellspacing="0">
 		<thead style="background-color: gray; color: white;">
 			<tr>
@@ -62,7 +62,7 @@
 			function($scope, $http) {
 				$http({
 					method : 'POST',
-					url : "/buyerOrder/listData",
+					url : "buyerOrder/listData",
 				}).success(function(data) {
 					if (data.success) {
 						$scope.initData(data.data);
