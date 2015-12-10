@@ -187,7 +187,20 @@
 								<li class="cancel-operation">商品操作</li>
 								<li class="price">实付款(元)</li>
 								<li class="consignee">收货人</li>
-								<li class="status">商品状态<i class="icon-arrow_down_white"></i></li>
+								<li class="status">商品状态
+									<i class="icon-arrow_down_white"></i>
+									<i class="icon-arrow_up"></i>
+									<ul class="status-list">
+										<li><a href="#">待付款</a></li>
+										<li><a href="#">待发货</a></li>
+										<li><a href="#">待评价</a></li>
+										<li><a href="#">待退换货</a></li>
+										<li><a href="#">待质保</a></li>
+										<li><a href="#">已完成</a></li>
+										<li><a href="#">已取消</a></li>
+
+									</ul>
+								</li>
 								<li class="operation">交易操作</li>
 							</ul>
 							<div class="tbody">
@@ -202,11 +215,26 @@
 											<img src="../../resources/img/test_head.jpg" alt="商品">
 										</div>
 										<div class="product-name-box">
-											<p class="product-name">雷贝斯/RAYBESTOS 众E211专用铂金火花塞 新桑塔纳捷达朗逸POLO高尔夫辉腾</p>
-											<p class="adaptive">
+											<p class="product-name"><a href="#">雷贝斯/RAYBESTOS 众E211专用铂金火花塞 新桑塔纳捷达朗逸POLO高尔夫辉腾</a></p>
+											<div class="adaptive">
 												适配所有OE码
 												<i class="icon-arrow_down"></i>
-											</p>
+												<div class="all-adaptive">
+													<div class="white-border">白色边框</div>
+													<div class="all-adaptive-box clear">
+														<a class="adaptive-item">福特 嘉年华 1.5T 2013年产</a>
+														<a class="adaptive-item">福特 嘉年华 1.5T 2013年产</a>
+														<a class="adaptive-item">福特 嘉年华 1.5T 2013年产</a>
+														<a class="adaptive-item">福特 嘉年华 1.5T 2013年产</a>
+														<a class="adaptive-item">福特 嘉年华 1.5T 2013年产</a>
+														<a class="adaptive-item">福特 嘉年华 1.5T 2013年产</a>
+														<a class="adaptive-item">福特 嘉年华 1.5T 2013年产</a>
+														<a class="adaptive-item">福特 嘉年华 1.5T 2013年产</a>
+														<a class="adaptive-item">福特 嘉年华 1.5T 2013年产</a>
+													</div>
+													
+												</div>
+											</div>
 										</div>
 										
 									</li>
@@ -214,7 +242,7 @@
 										<a href="#">申请退款</a>
 									</li>
 									<li class="price">
-										<p>880.00*2=1760.00元</p>
+										<p>880.00*2=<em class="price-num">1760.00</em>元</p>
 										<p>（含运费：0.00）</p>
 									</li>
 									<li class="consignee">梅长苏</li>
@@ -224,7 +252,45 @@
 									</li>
 									<li class="operation">
 										<p>还剩13天23时</p>
-										<a class="vice-btn confirm-receiving-btn" href="#">确认收货</a>
+										<a class="vice-btn confirm-receiving-btn js-confirm-receiving-btn" href="#" data-orderid='111'>确认收货</a>
+									</li>
+								</ul>
+							</div>
+							<div class="tbody completed">
+								<div class="tbody-head">
+									<span>2015-12-09 23:12:20</span>
+									<span>订单号：<em class="order-num">20150220124</em></span>
+									<span>卖家：丰华神州</span>
+									<div class="head-operation">
+										<a class="delete-btn icon-light_gray_rubbish js-delete-order-btn" href="#" title="删除该订单" data-orderid='111'>删除</a>
+									</div>
+								</div>
+								<ul class="tbody-content">
+									<li class="product clear">
+										<div class="product-img-box">
+											<img src="../../resources/img/test_head.jpg" alt="商品">
+										</div>
+										<div class="product-name-box">
+											<p class="product-name"><a href="#">雷贝斯/RAYBESTOS 众E211专用铂金火花塞 新桑塔纳捷达朗逸POLO高尔夫辉腾</a></p>
+											<p class="product-name">MD189124019284</p>
+										</div>
+										
+									</li>
+									<li class="cancel-operation">
+										<a href="#">申请退款</a>
+									</li>
+									<li class="price">
+										<p>880.00*2=<em class="price-num">1760.00</em>元</p>
+										<p>（含运费：0.00）</p>
+									</li>
+									<li class="consignee">梅长苏</li>
+									<li class="status">
+										<p>交易成功</p>
+										<a href="#">订单详情</a>
+										<p>已评价</p>
+									</li>
+									<li class="operation">
+										
 									</li>
 								</ul>
 							</div>
@@ -266,6 +332,19 @@
 		 </div>
 		 
 	</div>
+	
+	<!--弹出框-->
+	<div class="pop-up pop-confirm">
+		<div class="pop-title">提示</div>
+		<div class="pop-content">
+			亲，您确定要确认收货吗？
+		</div>
+		<div class="pop-operation">
+			<a href="#" class="ok-btn">确定</a>
+			<a href="#" class="cancel-btn">取消</a>
+		</div>
+		<a href="#" class="close-btn icon-dark_grey_fail"></a>
+	</div>
 
 	<!--页面底部-->
 	<div class="footer">
@@ -278,6 +357,6 @@
 		</p>
 		<p class="copyright">备案号：新ICP备12057998号-1 新疆丰华神州汽车配件有限公司版权所有</p>
 	</div>
-	<script type="text/javascript" src='../resources/js/lib/fenghua.lib.min.js'></script>
-	<script type="text/javascript" src='../resources/js/login.js'></script>
+	<script type="text/javascript" src='../../resources/js/lib/fenghua.lib.min.js'></script>
+	<script type="text/javascript" src='../../resources/js/buyerusercenter.js'></script>
 </body>

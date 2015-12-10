@@ -1,0 +1,56 @@
+/*
+*弹出框css
+*created by yangzhi on 2015.12.10
+*/
+
+.pop-up{
+	display: none;
+	position: fixed;
+	top:50%;
+	left:50%;
+	z-index:9999;
+	padding:30px 17px;
+	background-color:#fff;
+	box-shadow: 0px 0px 15px rgba(0,0,0,0.3);
+	.pop-title{
+		color:#0364c3;
+		font-size: 18px;
+		padding-left:17px;
+	}
+	.pop-content{
+		border-top:1px solid #eaeaea;
+		padding:24px 17px;
+		font-size: 14px;
+		color:#666;
+	}
+	.pop-operation{
+		padding:0 17px;
+		.ok-btn,.cancel-btn{
+			height: 40px;
+			width: 120px;
+			line-height: 40px;
+			background-color: $siteBtnMainColor;
+			color:#fff;
+			text-align:center;
+			&:hover{
+				background-color:$siteBtnMainHoverColor;
+			}
+		}
+		.ok-btn{
+			float: left;
+		}
+		.cancel-btn{
+			float: right;
+		}
+	}
+	.close-btn{
+		position: absolute;
+		top: 15px;
+		right: 17px;
+	}
+}
+.pop-confirm{
+	width:360px;
+	margin-left:-180px;
+	margin-top:-100px;
+}

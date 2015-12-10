@@ -58,6 +58,14 @@ gulp.task('LoginJS', function () {
 	.pipe(concat('login.js'))
     .pipe(gulp.dest(RESOURCE_ROOT_PATH+'/js/'));
 });
+//合并买家个人中心js
+gulp.task('BuyerUserCenterJS', function () {
+	return gulp.src(['./js/common/confirm.js'
+		,'./js/buyerusercenter.js'
+		, './js/common/header.js'])
+	.pipe(concat('buyerusercenter.js'))
+    .pipe(gulp.dest(RESOURCE_ROOT_PATH+'/js/'));
+});
 
 //合并js库(jquery, angular, underscore)
 gulp.task('libJS', function () {
@@ -122,12 +130,14 @@ gulp.task('start', function() {
 	});
 	watch('./js/**', function() {
 		gulp.run([
+			'BuyerUserCenterJS',
 			'libJS', 
 			'commonJS'
 		]);
 	});
 
 	return gulp.run([
+		'BuyerUserCenterJS',
 		'libJS', 
 		'commonJS', 
 		'copyHTML', 
