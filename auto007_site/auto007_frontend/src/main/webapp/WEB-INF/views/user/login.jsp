@@ -96,7 +96,7 @@
 		 			<a class="checkbox" href="#" id="remenberPwdBtn">
 		 				<em>记住密码</em>
 		 			</a>
-		 			<a class="forget-pwd" href="findPassword.html">忘记密码？</a>
+		 			<a class="forget-pwd" href="/secure/findPassWord">忘记密码？</a>
 		 		</div>
 		 		<div class="text-box code-box js-code-box" style="display:none;">
 		 			<input type="text" name="code" id="txtCode">

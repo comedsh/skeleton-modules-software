@@ -6,8 +6,8 @@
 <tiles-definitions>
 
 <!-- defined for education -->
-   <definition name="forgot.findPassbyphoneOrEmail" extends="web.default_template">
-      <put-attribute name="body" value="/WEB-INF/views/user/forgetPass/findPassbyphone.jsp" />  
+   <definition name="forgot.findPassWord" extends="web.default_template">
+      <put-attribute name="body" value="/WEB-INF/views/user/forget/findPassword.jsp" />  
       
   </definition>
    <definition name="forgot.findPassbyphoneSecond" extends="web.default_template">

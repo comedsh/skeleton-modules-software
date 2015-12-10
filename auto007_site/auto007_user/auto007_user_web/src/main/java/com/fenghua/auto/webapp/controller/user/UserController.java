@@ -8,9 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.regex.Pattern;
 
-import javax.security.sasl.AuthenticationException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,8 +16,6 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
@@ -216,7 +212,6 @@ public class UserController {
 
 	/**
 	 * 通过用户名获取对应的信息 bin.cheng
-	 * 
 	 * @param model
 	 * @return
 	 */
@@ -241,7 +236,6 @@ public class UserController {
 	}
 	/**
 	 * 获取图片验证码 bin.cheng
-	 * 
 	 * @param req
 	 * @param res
 	 */
@@ -258,7 +252,6 @@ public class UserController {
 
 	/**
 	 * 获取手机验证码 bin.cheng
-	 * 
 	 * @param mobilephone
 	 * @param req
 	 * @param res
@@ -288,7 +281,6 @@ public class UserController {
 
 	/**
 	 * 通过用户id查找对应的用户注册信息 bin.cheng
-	 * 
 	 * @param id
 	 * @param model
 	 * @return
@@ -296,52 +288,6 @@ public class UserController {
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public @ResponseBody User getUserById(@PathVariable("id") Long id, Model model) {
 		return userService.getUserById(id);
-	}
-
-	/**
-	 * 找回邮箱或密码跳转页面
-	 * 
-	 * @param request
-	 * @param model
-	 * @return
-	 */
-	@RequestMapping(value = "/findPassbyphoneOrEmail", method = RequestMethod.GET)
-	public String findPassbyphoneOrEmail(HttpServletRequest request, Model model) {
-		return "forgot.findPassbyphoneOrEmail";
-	}
-
-	/**
-	 * 手机找回密码第一步
-	 * 
-	 * @param request
-	 * @param model
-	 * @return
-	 */
-	@RequestMapping(value = "/findPassByPhone", method = RequestMethod.POST)
-	public String findPassByPhone(HttpServletRequest request, Model model) {
-		String path;
-		String message = null;
-		String validateTel = (String) request.getSession().getAttribute("validateTel");
-		String verifyCode = (String) request.getSession().getAttribute("rand");
-		if (new Date().getTime() - ((Date) request.getSession().getAttribute("date")).getTime() > 1000 * 120) {
-			message = MessageHelper.getMessage("forgot.verificationexpire");
-			path = "forgot.findPassbyphoneOrEmail";
-		} else if (validateTel.equals(request.getParameter("iPhone_code"))
-				&& verifyCode.equalsIgnoreCase(request.getParameter("code"))) {
-			path = "forgot.findPassbyphoneSecond";
-			// 把用户名和密码存入安全的session中
-		} else {
-			if (!validateTel.equals(request.getParameter("iPhone_code"))) {
-				message = MessageHelper.getMessage("forgot.phoneError");
-				path = "forgot.findPassbyphoneOrEmail";
-			} else {
-				message = MessageHelper.getMessage("forgot.verificationCodeError");
-				path = "forgot.findPassbyphoneOrEmail";
-			}
-		}
-		model.addAttribute("message", message);
-		request.getSession().setAttribute("phone", request.getParameter("mobile"));
-		return path;
 	}
 
 	/**
@@ -404,33 +350,6 @@ public class UserController {
 			path = "forgot.findPassbyEmailThired";
 		}
 		return new ModelAndView(path, model1);
-	}
-
-	/**
-	 * 忘记密码 发送邮件链接(邮箱找回密码第一步)
-	 * 
-	 * @param email
-	 * @param phone
-	 * @param model
-	 */
-	@RequestMapping(value = "/forGotPassword", method = RequestMethod.POST)
-	public String forGotPassword(HttpServletRequest request, Model model) {
-		User user = null;
-		user = userService.getUserByEmail(request.getParameter("email"));
-		String message = "";
-		String path = "";
-		if (user == null) {
-			message = MessageHelper.getMessage("forgot.noEmail");
-			model.addAttribute("message", message);
-			model.addAttribute("lab", "email");
-			path = "forgot.findPassbyphoneOrEmail";
-		} else {
-			userForgetPassService.insert(request.getParameter("email"));
-			request.getSession().setAttribute("email", request.getParameter("email"));
-			path = "forgot.findPassbyEmailSecond";
-		}
-
-		return path;
 	}
 
 	/**
