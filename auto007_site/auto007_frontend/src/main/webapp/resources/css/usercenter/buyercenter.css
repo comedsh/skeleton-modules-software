@@ -463,7 +463,6 @@ body {
 .right-content {
   float: left;
   width: 100%;
-  height: 500px;
 }
 
 .right-content .main-wrap {
@@ -527,6 +526,7 @@ body {
 .my-info {
   padding: 6px 6px 6px 0;
   margin-bottom: 36px;
+  margin-left: 50px;
   background-color: #fff;
 }
 
@@ -536,7 +536,7 @@ body {
 }
 
 .my-order {
-  margin-left: 347px;
+  margin-left: 297px;
   width: 480px;
 }
 
@@ -555,6 +555,7 @@ body {
 
 .my-order ul li span {
   margin-right: .5em;
+  color: #666;
 }
 
 .my-order ul li .num {
@@ -614,4 +615,181 @@ body {
   position: absolute;
   right: 0;
   bottom: 0;
+}
+
+.my-username {
+  position: absolute;
+  left: -50px;
+  top: -12px;
+  height: 112px;
+}
+
+.my-username .head-box {
+  border: 6px solid #fff;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.my-username .head-box img {
+  width: 100px;
+  height: 100px;
+}
+
+.my-username .username-box {
+  position: absolute;
+  left: 140px;
+  top: 30px;
+  height: 112px;
+  width: 200px;
+}
+
+.my-username .username-box .username {
+  font-size: 18px;
+  height: 32px;
+  line-height: 22px;
+  overflow: hidden;
+}
+
+.my-username .username-box .username a {
+  color: #262626;
+}
+
+.my-username .username-box .user-type {
+  font-size: 12px;
+  color: #666;
+}
+
+/*未处理的订单*/
+.pending-orders {
+  margin-top: 34px;
+  background-color: #fff;
+  color: #666;
+  min-height: 594px;
+}
+
+.pending-orders .order-title {
+  padding: 20px 15px 0;
+}
+
+.pending-orders .order-title h2 {
+  font-size: 16px;
+}
+
+.pending-orders .order-title p {
+  float: right;
+}
+
+.order-content {
+  padding: 30px 15px 0;
+}
+
+.order-content .order-wrap li {
+  float: left;
+  border-right: 1px solid #0380d8;
+  text-align: center;
+  height: 100%;
+}
+
+.order-content .order-wrap li.product {
+  width: 510px;
+}
+
+.order-content .order-wrap li.cancel-operation {
+  width: 90px;
+}
+
+.order-content .order-wrap li.price {
+  width: 150px;
+}
+
+.order-content .order-wrap li.consignee {
+  width: 96px;
+}
+
+.order-content .order-wrap li.status {
+  width: 98px;
+}
+
+.order-content .order-wrap li.operation {
+  width: 106px;
+}
+
+.order-content .order-wrap .row-name {
+  height: 40px;
+  background-color: #0380d8;
+}
+
+.order-content .order-wrap .row-name li {
+  color: #fff;
+  font-size: 14px;
+  height: 40px;
+  line-height: 40px;
+}
+
+.tbody {
+  margin-top: 14px;
+  border: 1px solid #91ccf6;
+}
+
+.tbody .tbody-head {
+  padding-left: 17px;
+  background-color: #bae2fe;
+  height: 35px;
+  line-height: 35px;
+}
+
+.tbody .tbody-head span {
+  display: line-block;
+  margin-right: 10px;
+  color: #7d7d7d;
+}
+
+.tbody .tbody-head .order-num {
+  color: #333;
+}
+
+.tbody .tbody-content {
+  height: 94px;
+  border-top: 1px solid #91ccf6;
+}
+
+.tbody .tbody-content li {
+  border-color: #91ccf6;
+}
+
+.tbody .tbody-content li.product .product-img-box {
+  float: left;
+  padding: 14px 24px  0 18px;
+}
+
+.tbody .tbody-content li.product img {
+  width: 60px;
+  height: 60px;
+}
+
+.tbody .tbody-content li.product .product-name-box {
+  float: left;
+  width: 362px;
+  padding-top: 14px;
+}
+
+.tbody .tbody-content li.product .product-name {
+  font-size: 14px;
+  color: #333;
+  text-align: left;
+  line-height: 1.3;
+}
+
+.tbody .tbody-content li.product .adaptive {
+  height: 27px;
+  line-height: 27px;
+  text-align: center;
+  border: 1px solid #eaeaea;
+  width: 104px;
+  margin-top: 3px;
+  font-size: 12px;
+}
+
+.tbody .tbody-content li.operation {
+  border: none;
 }
