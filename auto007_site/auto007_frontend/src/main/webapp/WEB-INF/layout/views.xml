@@ -50,6 +50,7 @@
 
       <put-attribute name="body" value="/WEB-INF/views/catalogs/ocatalogs.jsp" />  
       
+      <put-attribute name="javascript_in_page" value="/WEB-INF/views/catalogs/ocatalogs.js.jsp" />
   </definition>  
   
   <definition name="web.i18n" extends="web.default_template">

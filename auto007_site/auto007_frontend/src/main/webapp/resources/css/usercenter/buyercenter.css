@@ -710,6 +710,11 @@ body {
   width: 98px;
 }
 
+.order-content .order-wrap li.status i {
+  display: inline-block;
+  margin-left: .5em;
+}
+
 .order-content .order-wrap li.operation {
   width: 106px;
 }
@@ -724,6 +729,25 @@ body {
   font-size: 14px;
   height: 40px;
   line-height: 40px;
+}
+
+.order-content .order-wrap .row-name .status.hover {
+  background-color: #fff;
+  color: #666;
+}
+
+.order-content .no-data .no-data-bg {
+  width: 254px;
+  height: 110px;
+  margin: 14px auto 0;
+  background: url(../../img/cart_msg.png) no-repeat;
+}
+
+.order-content .no-data .no-data-tip {
+  margin-top: 32px;
+  text-align: center;
+  font-size: 14px;
+  color: #b8b8b8;
 }
 
 .tbody {
@@ -755,11 +779,20 @@ body {
 
 .tbody .tbody-content li {
   border-color: #91ccf6;
+  height: 74px;
+  padding-top: 20px;
+  font-size: 12px;
+  color: #333;
 }
 
 .tbody .tbody-content li a {
   font-size: 12px;
   color: #333;
+}
+
+.tbody .tbody-content li.product {
+  padding-top: 0;
+  height: 100%;
 }
 
 .tbody .tbody-content li.product .product-img-box {
@@ -800,5 +833,12 @@ body {
 }
 
 .tbody .tbody-content li.operation {
+  padding-top: 14px;
   border: none;
+}
+
+.tbody .tbody-content li.operation .confirm-receiving-btn {
+  height: 36px;
+  color: #fff;
+  width: 80px;
 }
