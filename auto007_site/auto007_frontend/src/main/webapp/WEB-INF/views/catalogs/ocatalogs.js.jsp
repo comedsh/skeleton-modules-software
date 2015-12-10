@@ -107,7 +107,7 @@ function getModel(brand, layerId, data, value){
 	   beforeSend: function(){
 		   $("#layer_id_"+layerId+" b").text('('+value+')');
 		   
-		   $("#modelContent").html('å è½½ä¸­......');
+		   $("#modelContent").html('加载中......');
 	   }, 
 	   success: function(data){
 			ocatalogDataObj[data.brand].layersData[data.layer_id]={};
