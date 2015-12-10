@@ -17,6 +17,7 @@
     <module>auto007_core</module>
     <module>auto007_frontend</module>
     <module>auto007_ocatalogs</module>
+    <module>auto007_ocatalog</module>
   </modules>
   
 
