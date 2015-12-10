@@ -102,11 +102,6 @@
 					error:function(){
 						logic.stopLogin();
 						logic.showError('系统繁忙，请稍后再试');
-						if(true){
-							// if(response.faultThrice){
-								logic.showCodeImage();
-							}
-							logic.changeImageCode();
 					}
 				});
 				return false;

@@ -757,6 +757,11 @@ body {
   border-color: #91ccf6;
 }
 
+.tbody .tbody-content li a {
+  font-size: 12px;
+  color: #333;
+}
+
 .tbody .tbody-content li.product .product-img-box {
   float: left;
   padding: 14px 24px  0 18px;
@@ -788,6 +793,10 @@ body {
   width: 104px;
   margin-top: 3px;
   font-size: 12px;
+}
+
+.tbody .tbody-content li.product .adaptive i {
+  margin: 0;
 }
 
 .tbody .tbody-content li.operation {

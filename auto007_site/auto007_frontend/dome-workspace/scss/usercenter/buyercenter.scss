@@ -201,6 +201,10 @@
 		border-top:1px solid #91ccf6;
 		li{
 			border-color:#91ccf6;
+			a{
+				font-size: 12px;
+				color:#333;
+			}
 			&.product{
 				.product-img-box{
 					float: left;
@@ -230,6 +234,9 @@
 					width: 104px;
 					margin-top: 3px;
 					font-size: 12px;
+					i{
+						margin: 0;
+					}
 				}
 			}
 			&.operation{
