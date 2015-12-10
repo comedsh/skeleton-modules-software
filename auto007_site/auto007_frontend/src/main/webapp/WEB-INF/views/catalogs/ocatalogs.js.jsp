@@ -208,7 +208,7 @@ function addPanel(title){
 }
 
 $(".oNav div.on").live("click",function(){
-	var layer_id = $(this).attr("layer_id");
+	var layer_id = parseInt($(this).attr("layer_id"));
 	
 	if(layer_id){
 		$("#modelContent").removeClass("hidden");
@@ -221,8 +221,17 @@ $(".oNav div.on").live("click",function(){
 				destroy = true;
 			} else if(destroy){
 				$(this).removeClass("on");
+				$('b',this).text('');
 			}
 		});
+		
+
+		$("#modelContent").attr('brand', brand);
+		$("#modelContent").attr('layer_id', layer_id);
+		 
+		var tmpdata = ocatalogDataObj[brand].layersData[layer_id];
+		tmpdata.brand = brand;
+		modelLayerHtml(tmpdata);
 	} else {
 		$("#modelContent").removeClass("show");
 		$("#modelContent").addClass("hidden");
